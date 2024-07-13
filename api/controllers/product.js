@@ -94,7 +94,7 @@ const getProductCount = asyncErrorHandler(async(req, res)=>{
 const productList = asyncErrorHandler(async(req, res)=>{
     const perPage = 8
     const page = req.params.page? req.params.page : 1
-    const products = await Product.find({})
+    const products = await Product.find({}).populate('category')
     .select('-photo')
     .skip((page - 1)*perPage)
     .limit(perPage)

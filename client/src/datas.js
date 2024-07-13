@@ -32,3 +32,50 @@ export const products = [
         "category": "mens"
       }
 ]
+
+const products_eg = [
+  {
+    id: 1,
+    image: 'path/to/image1.jpg',
+    weight: '500g',
+    packaging: 'Pouch',
+    name: 'Jaggery Powder',
+    rating: 4.5,
+    reviews: 15,
+    price: 99,
+    originalPrice: 105,
+  },
+  {
+    id: 2,
+    image: 'path/to/image2.jpg',
+    weight: '2g',
+    packaging: 'Box',
+    name: 'Kashmiri Mongra Saffron',
+    rating: 4.5,
+    reviews: 61,
+    price: 549,
+    originalPrice: 800,
+  },
+  {
+    id: 3,
+    image: 'path/to/image3.jpg',
+    weight: '350g',
+    packaging: 'Box',
+    name: 'Dry Fruit Paak Sweet',
+    rating: 4.5,
+    reviews: 36,
+    price: 499,
+    originalPrice: 530,
+  },
+  {
+    id: 4,
+    image: 'path/to/image4.jpg',
+    weight: '500g',
+    packaging: 'Jar',
+    name: 'Wild Forest Honey',
+    rating: 4.5,
+    reviews: 66,
+    price: 449,
+    originalPrice: 529,
+  },
+];

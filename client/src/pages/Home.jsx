@@ -3,6 +3,8 @@ import ProductCard from '../components/utilities/ProductCard'
 import API from '../services/api'
 import FilterSidebar from '../components/utilities/FilterSidebar'
 import { toast } from 'react-toastify'
+import Slider from '../components/user/Slider'
+import HighlightedProducts from '../components/user/Highlighted'
 
 const Home = () => {
   const [products, setProducts] = useState([])
@@ -32,11 +34,17 @@ const Home = () => {
   },[page])
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-      <div className="flex flex-col lg:flex-row lg:space-x-4">
-        <div className="sidebar lg:w-1/4 bg-white shadow-lg p-4 rounded-lg mb-4 lg:mb-0">
+      <div className="flex flex-col">
+        {/* <div className="sidebar lg:w-1/4 bg-white shadow-lg p-4 rounded-lg mb-4 lg:mb-0">
           <FilterSidebar productHandler={setProducts} allProducts={allProducts} />
+        </div> */}
+        <div className=" w-full">
+          <Slider/>
         </div>
-        <div className="lg:w-3/4">
+        <div className="">
+          <HighlightedProducts />
+        </div>
+        <div className="lg:w-full">
           <h1 className="text-4xl font-bold text-gray-800 border-b-2 border-gray-300 inline-block pb-2 mb-4">All Products</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-4">
             {products && products.length === 0 && <div className="text-gray-700 font-bold text-2xl">No products</div>}

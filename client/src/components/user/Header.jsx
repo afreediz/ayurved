@@ -144,5 +144,67 @@ const Header = () => {
     </div>
   );
 }
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-export default Header
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <>
+      <div className="bg-green-900 text-white py-2 text-center text-sm">
+        THE WORLDS BEST PURE PRODUCTS
+      </div>
+      <nav className="bg-white shadow">
+        <div className="container mx-auto px-4 flex justify-between items-center py-4">
+          <div className="text-green-800 text-2xl font-bold">
+            NAVJEEVANA
+          </div>
+          <div className="hidden md:flex space-x-8">
+            <a href="#" className="text-gray-600 hover:text-green-800">All Products</a>
+            <div className="relative group">
+              <button className="text-gray-600 hover:text-green-800">
+                Shop by Category
+              </button>
+              <div className="absolute hidden group-hover:block bg-white shadow-lg mt-2">
+                <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-800">Category 1</a>
+                <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-800">Category 2</a>
+              </div>
+            </div>
+            <div className="relative group">
+              <button className="text-gray-600 hover:text-green-800">
+                Shop by Solutions
+              </button>
+              <div className="absolute hidden group-hover:block bg-white shadow-lg mt-2">
+                <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-800">Solution 1</a>
+                <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-800">Solution 2</a>
+              </div>
+            </div>
+            <a href="#" className="text-gray-600 hover:text-green-800">Our Story</a>
+          </div>
+          <div className="flex space-x-4">
+            <a href="#" className="flex items-center space-x-1 text-gray-600 hover:text-green-800">
+              <FaShoppingCart />
+              <span>Cart</span>
+            </a>
+            <button onClick={toggleMenu} className="text-gray-600 hover:text-green-800 md:hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h18M3 12h18m-9 9h9" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        {isOpen && (
+          <div className="md:hidden">
+            <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-800">All Products</a>
+            <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-800">Shop by Category</a>
+            <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-800">Shop by Solutions</a>
+            <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-800">Our Story</a>
+          </div>
+        )}
+      </nav>
+    </>
+  );
+};
+export default Navbar
