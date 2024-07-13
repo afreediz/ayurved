@@ -3,8 +3,9 @@ import API from '../../services/api';
 import { toast } from 'react-toastify';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import ProductCard from '../utilities/ProductCard';
 
 const BestSellers = () => {
     const [products, setProducts] = useState([])
@@ -44,27 +45,12 @@ const BestSellers = () => {
             slidesPerView: 3,
           },
         }}
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}
         className="mySwiper px-4 md:px-10 lg:px-20 mt-8"
       >
         {products.map((product,index) => (
           <SwiperSlide key={index}>
-            <div key={product.id} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 min-h-[500px] max-h-[500px]">
-              <div className="w-full h-48 mb-4 overflow-hidden rounded">
-                <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
-            </div>
-            <div className="text-sm text-gray-600 uppercase">{product.category.name}</div>
-            <h3 className="text-lg font-semibold mt-1">{product.name}</h3>
-            <p className="text-gray-600 mt-2">{product.shortdesc    }</p>
-            <div className="flex items-center mt-4">
-                <div className="text-yellow-500">
-                {'★'.repeat(4)}
-                {'☆'.repeat(4)}
-                </div>
-                <div className="text-gray-600 ml-2">(44)</div>
-            </div>
-            <div className="text-xl font-bold mt-2">₹{product.price.toFixed(2)}</div>
-            </div>
+            <ProductCard product={product} />
           </SwiperSlide>
         ))}
       </Swiper>

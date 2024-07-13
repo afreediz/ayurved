@@ -49,7 +49,7 @@ const Home = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-4">
             {products && products.length === 0 && <div className="text-gray-700 font-bold text-2xl">No products</div>}
             {products && products.map((product, index) => {
-              return <ProductCard data={product} key={index} />
+              return <ProductCard product={product} key={index} />
             })}
           </div>
           <div className="flex justify-center items-center mt-8">
