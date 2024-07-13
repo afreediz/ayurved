@@ -51,8 +51,8 @@ const Slider = () => {
           </div>
         ))}
       </div>
-      <button onClick={prevSlide} className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white bg-opacity-75 p-2 rounded-full">‹</button>
-      <button onClick={nextSlide} className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white bg-opacity-75 p-2 rounded-full">›</button>
+      <button onClick={prevSlide} className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-75 p-3 font-bold rounded-full">‹</button>
+      <button onClick={nextSlide} className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-75 p-3 font-bold rounded-full">›</button>
     </div>
   );
 };
