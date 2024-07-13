@@ -50,6 +50,8 @@ const Profile = () => {
   }
   const deleteAccount = async() => {
     try{
+      const userConfirm = window.confirm('Are you sure you want to delete your account?')
+      if(!userConfirm) return
       const response = await API.delete('users/profile')
       localStorage.removeItem("token")
       setUser(null)

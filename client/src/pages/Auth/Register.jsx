@@ -15,6 +15,7 @@ const Register = () => {
     phone:"",
     address:""
   })
+  const [disabled, setDisabled] = useState(false)
   if(user){
     if(user.role == "admin"){
       return navigate('/admin')
@@ -34,9 +35,12 @@ const Register = () => {
   const register = async(e)=> {
     e.preventDefault()
     try{
-      await API.post('auth/register',{...data})
-      toast.success("User Registration successfull")
-      navigate('/login')
+      const res = await API.post('auth/register',{...data})
+      console.log(res.data.message);
+      setDisabled(true)
+      toast.success("Verification link has been sent to your email, Please verify your email", {
+        autoClose: 10000,
+      })
     }catch(error){
       toast.error(error.response?.data.message)
       console.log(error)
@@ -102,7 +106,9 @@ const Register = () => {
           </div>
           <button 
             type='submit' 
-            className='w-full py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors'
+            // className='w-full py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors'
+            disabled={disabled}
+            className={`w-full py-2 text-white font-semibold rounded-lg ${disabled ? "bg-gray-400" : "bg-green-600 hover:bg-green-700"} transition-colors`}
           >
             Register
           </button>

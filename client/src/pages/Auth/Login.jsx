@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react'
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import { userContext } from '../../context/user';
 import API from '../../services/api';
@@ -81,6 +81,7 @@ const Login = () => {
           >
             Login
           </button>
+          <Link to='/forget-password' ><span className=' text-red-600 block text-center mt-4'>Forgot password</span></Link>
         </form>
       </div>
     </div>
