@@ -26,7 +26,11 @@ const Home = () => {
     <div className="w-full">
         <Slider />
         <HighlightedProducts />
+        good video
         <Why />
+        shop by category
+        seasonal or special
+
         <Dummy products={products} />
     </div>
   );  

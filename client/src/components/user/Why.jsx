@@ -2,7 +2,7 @@ import React from 'react'
 
 const Why = () => {
   return (
-    <div className='w-full text-white bg-green-900 flex flex-col justify-center items-center p-10'>
+    <div className='w-full text-white bg-green-900 flex flex-col justify-center items-center p-10 relative'>
       <h1 className=' pb-6'>Why NAVJEEVANA</h1>
       <div className="items flex justify-center gap-16 lg:gap-60 flex-wrap">
         <div className="item text-center">
