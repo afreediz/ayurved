@@ -23,7 +23,9 @@ const Home = () => {
     getProducts()
   },[])
   return (
-    <div className="w-full">
+    <div className="w-full relative">
+      <img src="/images/why/flowers.png" alt="" className=' absolute opacity-50 brightness-150 left-0 right-0 z-[-1]' />
+
         <Slider />
         <HighlightedProducts />
         good video
@@ -32,6 +34,7 @@ const Home = () => {
         seasonal or special
 
         <Dummy products={products} />
+
     </div>
   );  
   }
