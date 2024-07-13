@@ -156,7 +156,7 @@ const Navbar = () => {
       <div className="bg-green-900 text-white py-2 text-center text-sm">
         THE WORLDS BEST PURE PRODUCTS
       </div>
-      <nav className="bg-white shadow">
+      <nav className="bg-white shadow ">
         <div className="container mx-auto px-4 flex justify-between items-center py-4">
           <div className="text-green-800 text-2xl font-bold">
             NAVJEEVANA

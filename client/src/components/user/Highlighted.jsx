@@ -27,7 +27,7 @@ const BestSellers = () => {
     <div className=" py-10">
       <div className="flex justify-between items-center px-4 md:px-10 lg:px-20">
         <h2 className="text-3xl font-bold">Our Bestsellers</h2>
-        <a href="#" className="text-orange-600 hover:text-orange-800">View All</a>
+        <a href="#" className="text-green-600 hover:text-green-800">View All</a>
       </div>
       <Swiper
         slidesPerView={1}
@@ -47,8 +47,8 @@ const BestSellers = () => {
         modules={[Navigation]}
         className="mySwiper px-4 md:px-10 lg:px-20 mt-8"
       >
-        {products.map((product) => (
-          <SwiperSlide key={product.id}>
+        {products.map((product,index) => (
+          <SwiperSlide key={index}>
             <div key={product.id} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 min-h-[500px] max-h-[500px]">
               <div className="w-full h-48 mb-4 overflow-hidden rounded">
                 <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
