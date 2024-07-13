@@ -41,7 +41,7 @@ const Slider = () => {
   };
 
   return (
-    <div className="relative w-full mx-auto overflow-hidden">
+    <div className="relative mx-auto overflow-hidden">
       <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {slides.map((slide, index) => (
           <div key={index} className="min-w-full h-96 flex justify-center items-center">
