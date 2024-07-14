@@ -33,6 +33,24 @@ export const products = [
       }
 ]
 
+export const caption = "THE WORLDS BEST PURE PRODUCTS"
+
+export const solution_eg = [
+  {
+    id:1,
+    name:"Digestion",
+    slug:"digestion"
+  },{
+    id:2,
+    name:"Immunity",
+    slug:"immunity"
+  },{
+    id:3,
+    name:"Skin",
+    slug:"skin"
+  },
+]
+
 const products_eg = [
   {
     id: 1,

@@ -4,6 +4,7 @@ import { useAuth } from '../context/user'
 import { useCart } from '../context/cart'
 import { toast } from 'react-toastify'
 import API from '../services/api'
+import Center from '../components/utilities/Center'
 
 const Cart = () => {
   const {user} = useAuth()
@@ -38,6 +39,7 @@ const Cart = () => {
     }
   }
   return (
+    <Center>
     <div className='grid grid-cols-1 gap-8 md:grid-cols-8 md:gap-8'>
       {/* Summary Section (For Mobile View) */}
       <div className="summary md:col-span-3 md:bg-gray-100 md:p-6 md:rounded-lg md:order-2">
@@ -84,6 +86,7 @@ const Cart = () => {
         ))}
       </div>
     </div>
+    </Center>
   );
 }
 

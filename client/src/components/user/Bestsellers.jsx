@@ -7,6 +7,7 @@ import { Navigation, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ProductCard from '../utilities/ProductCard';
 import Center from '../utilities/Center';
+import { Link } from 'react-router-dom';
 
 const BestSellers = () => {
     const [products, setProducts] = useState([])
@@ -30,7 +31,7 @@ const BestSellers = () => {
     <div className=" py-10">
       <div className="flex justify-between items-center px-4 md:px-10 lg:px-20">
         <h2 className="text-3xl font-bold">Our Bestsellers</h2>
-        <a href="#" className="text-green-600 hover:text-green-800">View All</a>
+        <Link to={"/products"} className="text-green-600 hover:text-green-800">View All</Link>
       </div>
       <Swiper
         slidesPerView={1}

@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { userContext } from '../../context/user'
-import { FaBars, FaTimes, FaShoppingCart, FaCat } from 'react-icons/fa';
+import { FaBars, FaTimes, FaShoppingCart, FaCat, FaUser, FaUserCircle } from 'react-icons/fa';
 import { cartContext } from '../../context/cart'
 import API from '../../services/api'
 import { toast } from 'react-toastify'
+import CustomDropdown from '../utilities/CustomDropdown';
+import { caption, solution_eg } from '../../datas';
 
 const Header = () => {
   const {user, setUser} = useContext(userContext)
@@ -151,7 +153,8 @@ const Navbar = () => {
   const [categories, setCategories] = useState()
   const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState("")
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+
   const logout = () => {
     localStorage.removeItem('token')
     setUser(null)
@@ -177,6 +180,14 @@ const Navbar = () => {
     navigate(`/category/${selectedCategory}`)
     }
   }
+  const navigateSolutions = (e) => {
+    const selectedSolution = e.target.value;
+    if(selectedSolution == "all"){
+      navigate('/')
+    }else{
+    navigate(`/solutions/${selectedSolution}`)
+    }
+  }
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -184,47 +195,42 @@ const Navbar = () => {
   return (
     <>
       <div className="bg-green-900 text-white py-2 text-center text-sm z-50">
-        THE WORLDS BEST PURE PRODUCTS
+        {caption}
       </div>
-      <nav className="bg-white shadow ">
+      <nav className="bg-white shadow">
         <div className="container mx-auto px-4 flex justify-between items-center py-4">
           <Link to="/" className="text-green-800 text-2xl font-bold">
             NAVJEEVANA
           </Link>
-          <div className="hidden md:flex space-x-8">
-            <a href="#" className="text-gray-600 hover:text-green-800">All Products</a>
+          <div className="hidden md:flex md:items-center space-x-8">
+            <Link to="/products" className="text-gray-600 hover:text-green-800">All Products</Link>
             <div className="relative group z-50">
-              <select
-              onChange={(e) => {
-                navigateCategory(e);
-                setMenuOpen(false);
-              }}
-              className=" bg-transparent text-gray-600"
-              >
-              <option className='bg-white py-10 px-5' value="all">Shop by Category</option>
-              {categories && categories.map((category, index) => (
-                <option className=' py-10 px-5' key={index} value={category.slug}>
-                  {category.name}
-                </option>
-              ))}
-            </select>
+              <CustomDropdown menuOpen={isOpen} mainText="Shop by Category" data={categories} navigateHandler={navigateCategory} setMenuOpen={setIsOpen} />
             </div>
             <div className="relative group z-50">
-              <button className="text-gray-600 hover:text-green-800">
-                Shop by Solutions
-              </button>
-              <div className="absolute hidden group-hover:block bg-white shadow-lg mt-2">
-                <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-800">Solution 1</a>
-                <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-800">Solution 2</a>
-              </div>
+              <CustomDropdown menuOpen={isOpen} mainText="Shop by Solution" data={solution_eg} navigateHandler={navigateSolutions} setMenuOpen={setIsOpen} />
             </div>
-            <a href="#" className="text-gray-600 hover:text-green-800">Our Story</a>
+            <Link to="/out-story" className="text-gray-600 hover:text-green-800">Our Story</Link>
           </div>
           <div className="flex space-x-4">
-            <a href="#" className="flex items-center space-x-1 text-gray-600 hover:text-green-800">
-              <FaShoppingCart />
-              <span>Cart</span>
-            </a>
+            <div className="flex items-center gap-4 text-gray-600 hover:text-green-800">
+              <div className=" flex w-8 md:w-12 lg:w-16 flex-col relative group" onMouseEnter={() => setProfileOpen(true)} onMouseLeave={() => setProfileOpen(false)}>
+                <FaUserCircle className='text-2xl' />
+                {profileOpen && (
+                  <div className=" w-24 border border-gray-300 rounded shadow-lg  mt-6 absolute bg-white z-50">
+                    <Link to={"/login"}>
+                      <div className="py-2 px-1 lg:px-5 hover:bg-gray-100 cursor-pointer">Login</div>
+                    </Link>
+                    <Link to={"/register"}>
+                      <div className="py-2 px-1 lg:px-5 hover:bg-gray-100 cursor-pointer">Sign Up</div>
+                    </Link>
+                  </div>
+                )}
+              </div>
+              <Link to={"/cart"}>
+                <FaShoppingCart className='text-2xl' />
+              </Link>
+            </div>
             <button onClick={toggleMenu} className="text-gray-600 hover:text-green-800 md:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h18M3 12h18m-9 9h9" />
@@ -234,10 +240,10 @@ const Navbar = () => {
         </div>
         {isOpen && (
           <div className="md:hidden">
-            <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-800">All Products</a>
-            <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-800">Shop by Category</a>
-            <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-800">Shop by Solutions</a>
-            <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-800">Our Story</a>
+            <Link to={"/products"} className="block px-4 py-2 text-gray-600 hover:text-green-800">All Products</Link>
+            <CustomDropdown menuOpen={isOpen} mainText="Shop by Category" data={categories} navigateHandler={navigateCategory} setMenuOpen={setIsOpen} />
+            <CustomDropdown menuOpen={isOpen} mainText="Shop by Solution" data={solution_eg} navigateHandler={navigateSolutions} setMenuOpen={setIsOpen} />
+            <Link to={"/our-story"} className="block px-4 py-2 text-gray-600 hover:text-green-800">Our Story</Link>
           </div>
         )}
       </nav>
