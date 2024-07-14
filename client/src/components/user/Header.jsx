@@ -153,7 +153,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="bg-green-900 text-white py-2 text-center text-sm">
+      <div className="bg-green-900 text-white py-2 text-center text-sm z-50">
         THE WORLDS BEST PURE PRODUCTS
       </div>
       <nav className="bg-white shadow ">
@@ -163,7 +163,7 @@ const Navbar = () => {
           </div>
           <div className="hidden md:flex space-x-8">
             <a href="#" className="text-gray-600 hover:text-green-800">All Products</a>
-            <div className="relative group">
+            <div className="relative group z-50">
               <button className="text-gray-600 hover:text-green-800">
                 Shop by Category
               </button>
@@ -172,7 +172,7 @@ const Navbar = () => {
                 <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-800">Category 2</a>
               </div>
             </div>
-            <div className="relative group">
+            <div className="relative group z-50">
               <button className="text-gray-600 hover:text-green-800">
                 Shop by Solutions
               </button>
