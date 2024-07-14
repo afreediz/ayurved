@@ -146,7 +146,37 @@ const Header = () => {
 }
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const {user, setUser} = useContext(userContext)
+  const {cart} = useContext(cartContext);
+  const [categories, setCategories] = useState()
+  const navigate = useNavigate()
+  const [searchQuery, setSearchQuery] = useState("")
+  const [menuOpen, setMenuOpen] = useState(false);
+  const logout = () => {
+    localStorage.removeItem('token')
+    setUser(null)
+    navigate('/login')
+  }
+  useEffect(()=>{
+    async function getCategory(){
+      try{
+        const {data} = await API.get('/category')
+        setCategories(data.categories)
+      }catch(error){
+        toast.error(error.response?.data.message)
+        console.log(error)
+      }
+    }
+    getCategory()
+  },[])
+  const navigateCategory = (e) => {
+    const selectedCategory = e.target.value;
+    if(selectedCategory == "all"){
+      navigate('/')
+    }else{
+    navigate(`/category/${selectedCategory}`)
+    }
+  }
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -158,19 +188,26 @@ const Navbar = () => {
       </div>
       <nav className="bg-white shadow ">
         <div className="container mx-auto px-4 flex justify-between items-center py-4">
-          <div className="text-green-800 text-2xl font-bold">
+          <Link to="/" className="text-green-800 text-2xl font-bold">
             NAVJEEVANA
-          </div>
+          </Link>
           <div className="hidden md:flex space-x-8">
             <a href="#" className="text-gray-600 hover:text-green-800">All Products</a>
             <div className="relative group z-50">
-              <button className="text-gray-600 hover:text-green-800">
-                Shop by Category
-              </button>
-              <div className="absolute hidden group-hover:block bg-white shadow-lg mt-2">
-                <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-800">Category 1</a>
-                <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-800">Category 2</a>
-              </div>
+              <select
+              onChange={(e) => {
+                navigateCategory(e);
+                setMenuOpen(false);
+              }}
+              className=" bg-transparent text-gray-600"
+              >
+              <option className='bg-white py-10 px-5' value="all">Shop by Category</option>
+              {categories && categories.map((category, index) => (
+                <option className=' py-10 px-5' key={index} value={category.slug}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
             </div>
             <div className="relative group z-50">
               <button className="text-gray-600 hover:text-green-800">
