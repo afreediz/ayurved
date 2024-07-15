@@ -9,6 +9,7 @@ import Center from '../components/utilities/Center'
 import Dummy from '../components/utilities/Dummy'
 import Why from '../components/user/Why'
 import ProductVideos from '../components/user/ProductVideos'
+import ShopByCategory from '../components/user/ShopByCategory'
 const Home = () => {
   const [products, setProducts] = useState([])
   useEffect(()=>{
@@ -31,7 +32,7 @@ const Home = () => {
         <HighlightedProducts />
         <ProductVideos />
         <Why />
-        shop by category <br />
+        <ShopByCategory />
         seasonal or special
         what do our customers say
         explore more

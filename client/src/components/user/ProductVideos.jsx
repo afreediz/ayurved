@@ -28,8 +28,8 @@ const VideoCard = ({ videoSrc, title, price }) => {
 const ProductVideos = () => {
   const videos = [
     { src: "/videos/vid1.mp4", title: "Bringadi thailam intense", price: 595 },
-    { src: "/videos/vid1.mp4", title: "Bringadi thailam intense", price: 595 },
-    { src: "/videos/vid1.mp4", title: "Bringadi thailam intense", price: 595 },
+    { src: "/videos/vid2.mp4", title: "Bringadi thailam intense", price: 595 },
+    { src: "/videos/vid3.mp4", title: "Bringadi thailam intense", price: 595 },
     { src: "/videos/vid1.mp4", title: "Bringadi Intensive Repair", price: 995 }
   ];
 

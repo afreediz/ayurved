@@ -76,7 +76,7 @@ const App = () => {
         <Route path='*' element={<div className=''>Not found</div>} />
       </Routes>
       <ToastContainer position='bottom-center' />
-      {loading && <div className="laoder absolute top-0 right-0 left-0 bottom-0 bg-white flex justify-center items-center">Loading...</div>}
+      {loading && <div className="laoder fixed top-0 right-0 left-0 bottom-0 bg-white flex justify-center items-center z-[100] text-4xl font-bold">Loading...</div>}
     </div>
   )
 }
