@@ -8,6 +8,7 @@ import HighlightedProducts from '../components/user/Bestsellers'
 import Center from '../components/utilities/Center'
 import Dummy from '../components/utilities/Dummy'
 import Why from '../components/user/Why'
+import ProductVideos from '../components/user/ProductVideos'
 const Home = () => {
   const [products, setProducts] = useState([])
   useEffect(()=>{
@@ -28,10 +29,13 @@ const Home = () => {
 
         <Slider />
         <HighlightedProducts />
-        good video
+        <ProductVideos />
         <Why />
-        shop by category
+        shop by category <br />
         seasonal or special
+        what do our customers say
+        explore more
+        our incredients
 
         <Dummy products={products} />
 
