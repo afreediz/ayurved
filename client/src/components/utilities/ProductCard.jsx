@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { useCart, cartOperations } from '../../context/cart'
 import {toast} from 'react-toastify'
+import Center from './Center'
 
 const ProductCard = ({product}) => {
   const context = useCart()
@@ -25,6 +26,7 @@ const ProductCard = ({product}) => {
     //     </div>
     //   </div>
     // </div>
+    <Link to={`/products/${product.slug}`}>
   <div key={product._id} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col min-h-[500px] max-h-[500px]">
     <div className="w-full h-48 mb-4 overflow-hidden rounded flex-shrink-0">
       <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
@@ -43,6 +45,7 @@ const ProductCard = ({product}) => {
       <div className="text-xl font-bold mt-2">₹{product.price.toFixed(2)}</div>
     </div>
   </div>
+    </Link>
   );
 }
 

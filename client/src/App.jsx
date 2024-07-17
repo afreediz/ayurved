@@ -24,6 +24,7 @@ import AllProducts from './pages/Admin/AllProducts'
 import AllCategories from './pages/Admin/AllCategories'
 import AdminProductDetails from './pages/Admin/ProductDetails'
 import ChangePassword from './pages/Auth/ChangePassword'
+import UserAllProducts from './pages/AllProducts'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -49,9 +50,10 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path='login' element={<Login />}/>
           <Route path='register' element={<Register />}/>
+          <Route path="allproducts" element={<UserAllProducts />} />
+          <Route path='products/:slug' element={<ProductDetails />} />
           <Route path='change-password/:token' element={<ChangePassword />}/>
           <Route path='forget-password' element={<ForgetPassword />}/>
-          <Route path='products/:slug' element={<ProductDetails />} />
           <Route path='category/:slug' element={<CategoryProducts />} />
           <Route path='search/:query' element={<SearchProducts />} />
           <Route path='cart' element={<Cart />} />

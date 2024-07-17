@@ -35,8 +35,8 @@ const Home = () => {
         <ShopByCategory />
         seasonal or special
         what do our customers say
-        explore more
         our incredients
+        explore more
 
         <Dummy products={products} />
 

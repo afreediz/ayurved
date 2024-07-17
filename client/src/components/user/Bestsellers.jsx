@@ -31,7 +31,7 @@ const BestSellers = () => {
     <div className=" py-10">
       <div className="flex justify-between items-center px-4 md:px-10 lg:px-20">
         <h2 className="text-3xl font-bold">Our Bestsellers</h2>
-        <Link to={"/products"} className="text-green-600 hover:text-green-800">View All</Link>
+        <Link to={"/allproducts"} className="text-green-600 hover:text-green-800">View All</Link>
       </div>
       <Swiper
         slidesPerView={1}

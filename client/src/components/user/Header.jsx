@@ -203,7 +203,7 @@ const Navbar = () => {
             NAVJEEVANA
           </Link>
           <div className="hidden md:flex md:items-center space-x-8">
-            <Link to="/products" className="text-gray-600 hover:text-green-800">All Products</Link>
+            <Link to="/allproducts" className="text-gray-600 hover:text-green-800">All Products</Link>
             <div className="relative group z-50">
               <CustomDropdown menuOpen={isOpen} mainText="Shop by Category" data={categories} navigateHandler={navigateCategory} setMenuOpen={setIsOpen} />
             </div>
@@ -240,7 +240,7 @@ const Navbar = () => {
         </div>
         {isOpen && (
           <div className="md:hidden">
-            <Link to={"/products"} className="block px-4 py-2 text-gray-600 hover:text-green-800">All Products</Link>
+            <Link to={"/allproducts"} className="block px-4 py-2 text-gray-600 hover:text-green-800">All Products</Link>
             <CustomDropdown menuOpen={isOpen} mainText="Shop by Category" data={categories} navigateHandler={navigateCategory} setMenuOpen={setIsOpen} />
             <CustomDropdown menuOpen={isOpen} mainText="Shop by Solution" data={solution_eg} navigateHandler={navigateSolutions} setMenuOpen={setIsOpen} />
             <Link to={"/our-story"} className="block px-4 py-2 text-gray-600 hover:text-green-800">Our Story</Link>
