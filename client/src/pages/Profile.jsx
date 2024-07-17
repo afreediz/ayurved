@@ -4,6 +4,7 @@ import SidebarLayout from '../components/user/SidebarLayout'
 import { toast } from 'react-toastify'
 import API from '../services/api'
 import { useNavigate } from 'react-router-dom'
+import Center from '../components/utilities/Center'
 
 const Profile = () => {
   const [data, setData] = useState()
@@ -63,7 +64,7 @@ const Profile = () => {
     }
   }
   return (
-    <SidebarLayout className='text-xl'>
+    <Center className='text-xl'>
       <form onSubmit={onsubmit} className="space-y-4 bg-white p-6 shadow-lg rounded-lg">
         <div className="my-2">
           <label className='block text-gray-700' htmlFor="name">Name</label>
@@ -88,7 +89,7 @@ const Profile = () => {
           Delete Account
         </button>
       </form>
-    </SidebarLayout>
+    </Center>
   );
 }
 

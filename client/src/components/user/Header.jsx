@@ -216,16 +216,26 @@ const Navbar = () => {
             <div className="flex items-center gap-4 text-gray-600 hover:text-green-800">
               <div className=" flex w-8 md:w-12 lg:w-16 flex-col relative group" onMouseEnter={() => setProfileOpen(true)} onMouseLeave={() => setProfileOpen(false)}>
                 <FaUserCircle className='text-2xl' />
-                {profileOpen && (
+                {profileOpen ? user?
                   <div className=" w-24 border border-gray-300 rounded shadow-lg  mt-6 absolute bg-white z-50">
-                    <Link to={"/login"}>
-                      <div className="py-2 px-1 lg:px-5 hover:bg-gray-100 cursor-pointer">Login</div>
-                    </Link>
-                    <Link to={"/register"}>
-                      <div className="py-2 px-1 lg:px-5 hover:bg-gray-100 cursor-pointer">Sign Up</div>
-                    </Link>
-                  </div>
-                )}
+                  <Link to={"/profile"}>
+                    <div className="py-2 px-1 lg:px-5 hover:bg-gray-100 cursor-pointer">Profile</div>
+                  </Link>
+                  <Link to={"/orders"}>
+                    <div className="py-2 px-1 lg:px-5 hover:bg-gray-100 cursor-pointer">Orders</div>
+                  </Link>
+                  <button onClick={logout} className='w-full p-2 text-red-400 transition-all duration-200 hover:bg-red-500 hover:text-white'>Log out</button>
+                </div>:
+                <div className=" w-24 border border-gray-300 rounded shadow-lg  mt-6 absolute bg-white z-50">
+                  <Link to={"/login"}>
+                    <div className="py-2 px-1 lg:px-5 hover:bg-gray-100 cursor-pointer">Login</div>
+                  </Link>
+                  <Link to={"/register"}>
+                    <div className="py-2 px-1 lg:px-5 hover:bg-gray-100 cursor-pointer">Sign Up</div>
+                  </Link>
+                </div>
+                :""
+                }
               </div>
               <Link to={"/cart"}>
                 <FaShoppingCart className='text-2xl' />

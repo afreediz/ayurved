@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 
 const BestSellers = () => {
     const [products, setProducts] = useState([])
-    console.log(products);
     useEffect(()=>{
         async function getProducts(){
         try{

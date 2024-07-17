@@ -4,9 +4,6 @@ const CustomDropdown = ({ data, mainText, navigateHandler, setMenuOpen, menuOpen
   const [selected, setSelected] = useState('all');
   const [open, setOpen] = useState(false);
 
-  console.log("menuOpen", menuOpen);
-  console.log("open", open);
-
   const handleSelect = (value) => {
     setSelected(value);
     navigateHandler({ target: { value } });

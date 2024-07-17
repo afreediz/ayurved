@@ -36,7 +36,6 @@ const Register = () => {
     e.preventDefault()
     try{
       const res = await API.post('auth/register',{...data})
-      console.log(res.data.message);
       setDisabled(true)
       toast.success("Verification link has been sent to your email, Please verify your email", {
         autoClose: 10000,

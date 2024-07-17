@@ -3,6 +3,7 @@ import OrdersCard from '../components/utilities/OrdersCard'
 import SidebarLayout from '../components/user/SidebarLayout'
 import API from '../services/api'
 import { toast } from 'react-toastify'
+import Center from '../components/utilities/Center'
 
 const Orders = () => {
   const [orders, setOrders] = useState()
@@ -41,7 +42,7 @@ const Orders = () => {
     return `${day}/${month}/${year}`
   }
   return (
-    <SidebarLayout>
+    <Center>
       <h1 className='text-4xl font-bold text-gray-800 mb-4'>Your Orders</h1>
       <div className="overflow-x-auto">
         <table className='w-full bg-white shadow-lg rounded-lg'>
@@ -90,7 +91,7 @@ const Orders = () => {
         ))}
         {orders && orders.length == 0 ?<div className='text-3xl text-center'>No Orders Found</div>:""}
       </div>
-    </SidebarLayout>
+    </Center>
   );
 }
 
