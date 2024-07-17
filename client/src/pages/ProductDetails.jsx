@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import API from '../services/api'
 import {cartOperations, useCart} from '../context/cart'
 import {toast} from 'react-toastify'
+import Center from '../components/utilities/Center'
 const ProductDetails = () => {
   const [product, setProduct] = useState()
   const context = useCart()
@@ -20,7 +21,9 @@ const ProductDetails = () => {
     getProduct()
   },[])
   return (
-    product?<div className='grid grid-cols-1 md:grid-cols-6 gap-8 p-8 bg-gray-900 text-white'>
+    product?(
+<Center>
+  <div className='grid grid-cols-1 md:grid-cols-6 gap-8 p-8 '>
     <div className="image col-span-2 flex justify-center items-center">
       <img src={product.image ? product.image :"https://via.placeholder.com/150"}  alt={product && product.name} className="max-w-full rounded-lg shadow-lg" />
     </div>
@@ -30,9 +33,9 @@ const ProductDetails = () => {
       <h3 className="text-xl mb-4">In stocks : {product && product.quantity > 0 ? product.quantity : "Out of stock"}</h3>
       <p className="text-lg mb-8">{product && product.description}</p>
       <div className="button-container flex gap-4">
-        <button className='py-2 px-4 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-300'>Buy Now</button>
+        <button className='py-2 px-4 bg-blue-500 font-medium rounded-lg hover:bg-blue-600 transition duration-300'>Buy Now</button>
         <button 
-          className='py-2 px-4 bg-green-500 text-white font-medium rounded-lg hover:bg-green-600 transition duration-300'
+          className='py-2 px-4 bg-green-500 font-medium rounded-lg hover:bg-green-600 transition duration-300'
           onClick={() => {
             cartOperations.addToCart(
               { _id: product._id, name: product.name, price: product.price, shortdesc: product.shortdesc, image: product.image },
@@ -45,7 +48,9 @@ const ProductDetails = () => {
         </button>
       </div>
     </div>
-  </div>:"No product found"
+  </div>
+</Center>
+    ):"No product found"
   );
 }
 
