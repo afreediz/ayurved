@@ -4,6 +4,8 @@ const slugify = require('slugify')
 
 const Product = require('../models/product')
 const Category = require("../models/category")
+const Solution = require("../models/solution")
+
 const {uploadImage, deleteImage} = require("../helpers/image")
 
 const getAllProducts = asyncErrorHandler(async(req, res)=>{
@@ -28,12 +30,12 @@ const getProduct = asyncErrorHandler(async(req, res)=>{
 })
 
 const createProduct = asyncErrorHandler(async(req, res)=>{
-    const { name, description, price, category, quantity, image, shortdesc } = req.body
-    if( !name || !description || !price || !category || !shortdesc || !image ) throw new CustomError('Necessary details are not filled', 404)
-        
+    const { name, description, price, category, quantity, image, shortdesc, solutions } = req.body
+    if( !name || !description || !price || !category || !shortdesc || !image ) throw new CustomError('Necessary details are not filled', 404)    
     const result = await uploadImage(image)
+
     try{
-        const product = await new Product({name, slug:slugify(name), shortdesc,description, price, category, quantity, image:result.url}).save()
+        const product = await new Product({name, slug:slugify(name), shortdesc,description, price, category, quantity, image:result.url, solutions:[...solutions]}).save()
         res.status(200).json({
             success:true,
             message:"Product added successfully",
@@ -46,13 +48,13 @@ const createProduct = asyncErrorHandler(async(req, res)=>{
 })
 const updateProduct = asyncErrorHandler(async(req, res)=>{
     const id = req.params.id
-    const { name, description, price, category, quantity, image, old_image, shortdesc } = req.body
+    const { name, description, price, category, quantity, image, old_image, shortdesc, solutions } = req.body
     var result = image
     if(image !== old_image){ 
         await deleteImage(old_image)
         result = await uploadImage(image)
     }
-    const product = await Product.findByIdAndUpdate(id, {$set:{name, slug:slugify(name), shortdesc,description, price, category, quantity, image:result.url}}, {runValidators:true, new:true})
+    const product = await Product.findByIdAndUpdate(id, {$set:{name, slug:slugify(name), shortdesc,description, price, category, quantity, image:result.url, solutions:[...solutions]}}, {runValidators:true, new:true})
 
     res.status(200).json({
         success:true,
@@ -121,8 +123,9 @@ const productSearch = asyncErrorHandler(async(req, res)=>{
     })
 })
 const productsRelated = asyncErrorHandler(async(req, res)=>{
-    const { pid, cid } = req.params
+    const { pid, cid, sid } = req.params
     const products = await Product.find({
+        solutions:{"$in":[sid]},
         category:cid,
         _id:{$ne:pid}
     }).limit(5)
@@ -161,6 +164,38 @@ const categoryProductsCount = asyncErrorHandler(async(req, res)=>{
     res.status(200).json({
         success:true,
         message:`number of products of category : ${slug}`,
+        total
+    })
+})
+const solutionProducts = asyncErrorHandler(async(req, res)=>{
+    const { slug } = req.params
+    const perPage = 8
+    const page = req.params.page? req.params.page : 1
+
+    const solution = await Solution.findOne({slug})
+    if(!solution) throw new CustomError("Invalid Solution", 404)
+
+    const products = await Product.find({solutions:{'$in':[solution._id]}})
+    .populate('solution')
+    .select('-photo')
+    .skip((page - 1)*perPage)
+    .limit(perPage)
+    .sort({createdAt:-1})
+
+    res.status(200).json({
+        success:true,
+        message:`Products of solution : ${category.name}`,
+        products
+    })
+})
+const solutionProductsCount = asyncErrorHandler(async(req, res)=>{
+    const { slug } = req.params
+    const solution = await Category.findOne({slug})
+    if(!solution) throw new CustomError("Invalid solution", 404)
+    const total = await Product.find({solution:{'$in':[solution._id]}}).count()
+    res.status(200).json({
+        success:true,
+        message:`number of products of solution : ${slug}`,
         total
     })
 })
@@ -218,5 +253,7 @@ module.exports = {
     productsRelated,
     categoryProducts,
     categoryProductsCount,
-    dashboardDetails
+    dashboardDetails,
+    solutionProducts,
+    solutionProductsCount
 }

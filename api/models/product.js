@@ -27,6 +27,11 @@ const productSchema = mongoose.Schema({
         ref:'categories',
         required:true
     },
+    solutions:[{
+        type:mongoose.Types.ObjectId,
+        ref:'solutions',
+        required:false
+    }],
     quantity:{
         type:Number,
         default:1,
