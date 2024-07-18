@@ -46,7 +46,7 @@ const AllOrders = () => {
   return (
     <div>
       <h1 className="text-3xl font-semibold mb-6">Orders</h1>
-      <table className="min-w-full bg-gray-800 text-white divide-y divide-gray-600">
+      <table className="min-w-full bg-white divide-y divide-gray-600">
         <thead>
           <tr>
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Index</th>
@@ -68,7 +68,7 @@ const AllOrders = () => {
               <td className="px-6 py-4 whitespace-nowrap">{
                 order.products.map((ordered_product_details)=>{
                   return <div className="">
-                    <div className='bg-gray-900 p-2 rounded my-1'>{ordered_product_details.product ? ordered_product_details.product.name : "Product no longer available"} - {ordered_product_details.cart_quantity}</div>
+                    <div className='p-2 rounded my-1'>{ordered_product_details.product ? ordered_product_details.product.name : "Product no longer available"} - {ordered_product_details.cart_quantity}</div>
                   </div>
                 })
               }</td>
@@ -78,7 +78,7 @@ const AllOrders = () => {
                 <select
                   value={order.shippingStatus}
                   onChange={(e) => handleShippingStatusChange(order._id, e.target.value)}
-                  className="block w-full py-2 px-4 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  className="block w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 >
                   <option value="Shipped">{order.status}</option>
                   <option value="Processing">Processing</option>

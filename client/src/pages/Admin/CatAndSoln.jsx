@@ -21,7 +21,7 @@ const CreateItem = ({setDisplayAdd, createHandler}) => {
         <div className="flex justify-between items-center">
           <i></i>
           <h1 className="text-3xl font-semibold text-center text-gray-700 mb-1">Create </h1>
-          <IoMdClose className='text-2xl' onClick={() => setDisplayAdd(false)} />
+          <IoMdClose className='text-2xl cursor-pointer' onClick={() => setDisplayAdd(false)} />
         </div>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -51,7 +51,7 @@ const CreateItem = ({setDisplayAdd, createHandler}) => {
 
 const Table = ({data, setData, updateHandler, deleteHandler, navigateTo}) => {
   return (
-      <table className="min-w-full bg-gray-800 text-white divide-y divide-gray-200 shadow-md rounded-lg overflow-hidden">
+      <table className="min-w-full bg-white divide-y divide-gray-200 shadow-md rounded-lg overflow-hidden">
         <thead className="">
           <tr>
             <th scope="col" className="px-3 md:px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
@@ -239,7 +239,7 @@ const Solutions = () => {
     <div className='relative'>
       <h1 className="text-3xl font-semibold my-2">All Solutions</h1>
       <div className="flex justify-end px-8 my-2">
-        <button onClick={()=>setDisplayAdd(!displayAdd)} className="py-3 px-6 bg-green-600 text-white font-bold rounded">Add Solutions</button>
+        <button onClick={()=>setDisplayAdd(!displayAdd)} className="py-3 px-6 bg-green-600 text-white font-bold rounded cursor-pointer">Add Solutions</button>
       </div>
       <Table data={solutions} setData={setSolutions} updateHandler={updateHandler} deleteHandler={deleteHandler} navigateTo={navigateTo} />
       <div className="">

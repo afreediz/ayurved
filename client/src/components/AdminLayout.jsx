@@ -8,7 +8,7 @@ const AdminLayout = () => {
   return (
     <div>
       <Header />
-      <div className="grid grid-cols-12 min-h-80vh h-auto">
+      <div className="grid grid-cols-12 min-h-80vh h-auto bg-slate-100">
         <div className="col-span-2">
           <Sidebar />
         </div>
@@ -16,7 +16,6 @@ const AdminLayout = () => {
           <Outlet />
         </div>
       </div>
-      <Footer />
     </div>
   )
 }

@@ -48,7 +48,7 @@ const AllUsers = () => {
   return (
     <div>
       <h1 className="text-3xl font-semibold mb-6">All Users</h1>
-        <table className="min-w-full bg-gray-800 text-white divide-y divide-gray-600">
+        <table className="min-w-full bg-white  divide-y divide-gray-600">
           <thead>
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Index</th>
@@ -71,7 +71,7 @@ const AllUsers = () => {
                 <select
                   value={user.status}
                   onChange={(e)=>{handlUserStatus(user._id, e.target.value)}}
-                  className="block w-full py-2 px-4 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  className="block w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 >
                   <option value="active">Active</option>
                   <option value="inactive">Inactive</option>

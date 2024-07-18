@@ -37,11 +37,11 @@ const ProductTable = () => {
         <div className="flex flex-col">
       <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="flex justify-end px-8">
-          <button onClick={()=>setDisplayAdd(!displayAdd)} className="py-3 px-6 bg-green-600 text-white font-bold rounded">Add product</button>
+          <button onClick={()=>setDisplayAdd(!displayAdd)} className="py-3 px-6 bg-green-600  text-white font-bold rounded">Add product</button>
         </div>
         <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
           <div className="overflow-hidden shadow-md sm:rounded-lg">
-          <table className="min-w-full bg-gray-800 divide-y text-white divide-gray-200 shadow-md rounded-lg overflow-hidden">
+          <table className="bg-white min-w-full divide-y divide-gray-200 shadow-md rounded-lg overflow-hidden">
             <thead className="">
               <tr>
                 <th scope="col" className="px-6 py-4 text-left text-xs font-medium uppercase tracking-wider">

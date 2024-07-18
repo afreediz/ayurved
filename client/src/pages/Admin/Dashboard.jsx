@@ -38,7 +38,7 @@ const Dashboard = () => {
     <div className="mx-4">
       <h1 className="text-3xl font-semibold mb-8">Dashboard</h1>
       <div className="grid grid-cols-1 sm:w-full lg:grid-cols-3 gap-6">
-        <div className="bg-gray-900 text-white rounded-lg p-6 flex items-center justify-between">
+        <div className=" bg-white rounded-lg p-6 flex items-center justify-between shadow-md">
           <div className="flex items-center">
             <FaCube className="text-3xl mr-4" />
             <div>
@@ -47,7 +47,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="bg-gray-900 text-white rounded-lg p-6 flex items-center justify-between">
+        <div className=" bg-white shadow-md rounded-lg p-6 flex items-center justify-between">
           <div className="flex items-center">
             <FaUser className="text-3xl mr-4" />
             <div>
@@ -56,7 +56,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="bg-gray-900 text-white rounded-lg p-6 flex items-center justify-between">
+        <div className=" bg-white shadow-md rounded-lg p-6 flex items-center justify-between">
           <div className="flex items-center">
             <FaClipboardList className="text-3xl mr-4" />
             <div>
@@ -67,15 +67,15 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="grid lg:grid-cols-5 gap-2 mt-8">
-        <div className="bg-gray-900 text-white rounded-lg p-6 col-span-2">
+        <div className=" bg-white shadow-md rounded-lg p-6 col-span-2">
           <h2 className="text-xl font-semibold mb-4">Orders Chart</h2>
           { orders && <OrdersChart orders={orders.orders} />}
         </div>
-        <div className="bg-gray-900 text-white rounded-lg p-6 col-span-2">
+        <div className=" bg-white shadow-md rounded-lg p-6 col-span-2">
           <h2 className="text-xl font-semibold mb-4">Users Chart</h2>
           { users && <UsersChart users={users.users} />}
         </div>
-        <div className="bg-gray-900 text-white rounded-lg p-6 col-span-1">
+        <div className=" bg-white shadow-md rounded-lg p-6 col-span-1">
           <h2 className="text-xl font-semibold mb-4">Products Chart</h2>
           { products && <ProductsChart products={products.products} />}
         </div>
@@ -83,18 +83,18 @@ const Dashboard = () => {
       <div className="mt-8">
         <h2 className="text-xl font-semibold mb-4">Recent Orders</h2>
         <div className="">
-          <table className="min-w-full">
+          <table className="bg-white min-w-full">
             <thead>
-              <tr className='bg-gray-800 border-2 border-slate-100'>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-100 uppercase tracking-wider">Index</th>
-                <th className="max-md:hidden px-6 py-3 text-left text-xs font-medium text-slate-100 uppercase tracking-wider">Order ID</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-100 uppercase tracking-wider">User</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-100 uppercase tracking-wider">Products</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-100 uppercase tracking-wider">Date</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-100 uppercase tracking-wider">Payment Status</th>
+              <tr className=' shadow-md border-2 border-slate-100'>
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Index</th>
+                <th className="max-md:hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Order ID</th>
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">User</th>
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Products</th>
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Date</th>
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Payment Status</th>
               </tr>
             </thead>
-            <tbody className=' bg-gray-800 text-white'>
+            <tbody className='  shadow-md'>
             {orders && orders.recent_orders.map((order, index)=>{
               return (
                 <tr key={order.orderid}>
@@ -104,7 +104,7 @@ const Dashboard = () => {
                 <td className="px-6 py-4 whitespace-nowrap">{
                   order.products.map((ordered_product_details)=>{
                     return <div className="">
-                      <div className='bg-gray-900 p-2 rounded my-1'>{ordered_product_details.product ? ordered_product_details.product.name : "Product no longer available"} - {ordered_product_details.cart_quantity}</div>
+                      <div className=' shadow-md p-2 rounded my-1'>{ordered_product_details.product ? ordered_product_details.product.name : "Product no longer available"} - {ordered_product_details.cart_quantity}</div>
                     </div>
                   })
                 }</td>
