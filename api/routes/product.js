@@ -8,8 +8,8 @@ router.get('/search/:keyword', productSearch)
 router.get('/related-products/:pid/:cid', productsRelated)
 router.get('/category/:slug/count', categoryProductsCount)
 router.get('/category/:slug/:page', categoryProducts)
-router.get('/solution/:slug/count', solutionProductsCount)
-router.get('/solution/:slug/:page', solutionProducts)
+router.get('/solutions/:slug/count', solutionProductsCount)
+router.get('/solutions/:slug/:page', solutionProducts)
 router.get('/', getAllProducts)
 
 // admin

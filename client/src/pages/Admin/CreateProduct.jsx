@@ -1,25 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { IoMdClose } from "react-icons/io";
 import { toast } from 'react-toastify';
 import API from '../../services/api';
+import { solution_eg } from '../../datas';
+import { IoMdAdd, IoMdClose } from "react-icons/io";
+
 const CreateProduct = ({setDisplayAdd, setProducts}) => {
   const [product, setProduct] = useState({
     name: '',
     price: '',
     category: '',
+    solutions: [],
     shortdesc: '',
     description: '',
     quantity:''
   });
+  console.log(product);
 
   const [image, setImage] = useState(null);
   const [categories, setCategories] = useState([]);
+  const [solutions, setSolutions] = useState([]);
 
   useEffect(() => {
     const getCategories = async () => {
       try {
         const { data } = await API.get('/category')
+        const res = await API.get('/solutions')
         setCategories(data.categories)
+        setSolutions(res.data.solutions)
       } catch (error) {
         toast.error(error.response?.data.message)
         console.log(error)
@@ -99,7 +106,7 @@ const CreateProduct = ({setDisplayAdd, setProducts}) => {
               value={product.quantity}
               onChange={handleChange}
               className="w-full px-3 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Price"
+              placeholder="quantity"
             />
           </div>
 
@@ -117,6 +124,40 @@ const CreateProduct = ({setDisplayAdd, setProducts}) => {
                 <option key={index} value={category._id}>{category.name}</option>
               ))}
             </select>
+          </div>
+          <div className="mb-4">
+            Solutions :
+              <div className="flex gap-3">
+                {
+                  solutions.map((solution, index)=>{
+                    if(product.solutions.includes(solution._id)){
+                      return(
+                        <span
+                          key={index}
+                          type="button"
+                          onClick={() => setProduct({ ...product, solutions: product.solutions.filter((item) => item !== solution._id) })}
+                          className="inline-flex my-2 items-center gap-1 p-2 border border-slate-500 rounded cursor-pointer"
+                        >
+                          {solution.name}
+                          <IoMdClose />
+                        </span>
+                      )
+                    }else{
+                      return(
+                        <span
+                          key={index}
+                          type="button"
+                          onClick={() => setProduct({ ...product, solutions: [...product.solutions, solution._id] })}
+                          className="inline-flex my-2 items-center gap-1 p-2 border border-slate-500 rounded cursor-pointer"
+                        >
+                          {solution.name}
+                          <IoMdAdd />
+                        </span>
+                      )
+                    }
+                  })
+                }
+              </div>
           </div>
 
           <div className="mb-4">

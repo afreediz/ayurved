@@ -24,6 +24,7 @@ import CatAndSoln from './pages/Admin/CatAndSoln'
 import AdminProductDetails from './pages/Admin/ProductDetails'
 import ChangePassword from './pages/Auth/ChangePassword'
 import UserAllProducts from './pages/AllProducts'
+import SolutionProducts from './pages/SolutionProducts'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -54,6 +55,7 @@ const App = () => {
           <Route path='change-password/:token' element={<ChangePassword />}/>
           <Route path='forget-password' element={<ForgetPassword />}/>
           <Route path='category/:slug' element={<CategoryProducts />} />
+          <Route path='solutions/:slug' element={<SolutionProducts />} />
           <Route path='search/:query' element={<SearchProducts />} />
           <Route path='cart' element={<Cart />} />
           {user && <>

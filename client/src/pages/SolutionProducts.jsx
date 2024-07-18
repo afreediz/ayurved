@@ -5,15 +5,14 @@ import { useParams } from 'react-router-dom'
 import {toast} from 'react-toastify'
 import Center from '../components/utilities/Center'
 
-const CategoryProducts = () => {
+const SolutionProducts = () => {
   const [products, setProducts] = useState()
   const {slug} = useParams()
   const [page, setPage] = useState(1)
   useEffect(()=>{
     async function getProducts(){
       try{
-        const {data} = await API.get(`products/category/${slug}/${page}`)
-        const res = await API.get(`products/category/${slug}/count`)
+        const {data} = await API.get(`products/solutions/${slug}/${page}`)
         setProducts(data.products)
       }catch(error){
         toast.error(error.response?.data.message)
@@ -66,4 +65,4 @@ const CategoryProducts = () => {
   );  
 }
 
-export default CategoryProducts
+export default SolutionProducts

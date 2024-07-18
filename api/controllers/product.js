@@ -20,8 +20,7 @@ const getAllProducts = asyncErrorHandler(async(req, res)=>{
 })
 const getProduct = asyncErrorHandler(async(req, res)=>{
     const slug = req.params.slug
-    const product = await Product.findOne({slug}).populate('category').select('-photo')
-
+    const product = await Product.findOne({slug}).populate('category').populate('solutions').select('-photo')
     res.status(200).json({
         success:true,
         message:"Product",
@@ -176,7 +175,7 @@ const solutionProducts = asyncErrorHandler(async(req, res)=>{
     if(!solution) throw new CustomError("Invalid Solution", 404)
 
     const products = await Product.find({solutions:{'$in':[solution._id]}})
-    .populate('solution')
+    .populate('solutions')
     .select('-photo')
     .skip((page - 1)*perPage)
     .limit(perPage)
@@ -184,7 +183,7 @@ const solutionProducts = asyncErrorHandler(async(req, res)=>{
 
     res.status(200).json({
         success:true,
-        message:`Products of solution : ${category.name}`,
+        message:`Products of solution : ${solution.name}`,
         products
     })
 })

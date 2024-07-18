@@ -3,24 +3,29 @@ import { useNavigate, useParams } from 'react-router-dom'
 import API from '../../services/api'
 import {toast} from 'react-toastify'
 import slugify from 'slugify'
+import { solution_eg } from '../../datas'
+import { IoMdAdd, IoMdClose } from "react-icons/io";
 
 const AdminProductDetails = () => {
     const [product, setProduct] = useState()
     const [categories, setCategories] = useState([])
+    const [solutions, setSolutions] = useState([])
     const [updateable, setUpdateable] = useState(false)
     const [image, setImage] = useState(null);
     const [old_image, setOldImage] = useState(null);
     const navigate = useNavigate()
-    
+    console.log(product);
+    console.log(solutions);
     const { slug } = useParams()
     useEffect(()=>{
         async function getProduct(){
       try{
         const {data} = await API.get(`products/${slug}`)
+        const res = await API.get('/solutions')
+        setSolutions(res.data.solutions)
         setImage(data.product.image)
         setOldImage(data.product.image)
-        const {_id, category, name, price, shortdesc, description, quantity} = data.product
-        setProduct({_id, category, name, price, shortdesc, description, quantity})
+        setProduct(data.product)
       }catch(error){
         toast.error(error.response?.data.message)
         console.log(error)
@@ -114,7 +119,7 @@ const AdminProductDetails = () => {
         </div>
         <input onChange={onChange} name="shortdesc" value={product && product.shortdesc} className="  border-none outline-none w-full text-lg mb-8 bg-transparent"/>
         <textarea onChange={onChange} name="description" value={product && product.description} className="  border-none outline-none w-full text-lg mb-8 bg-transparent" />
-        <select onChange={onChange} name="category" value={product && product.category._id} className="border-none outline-none w-full text-lg mb-8 bg-transparent">
+        <select onChange={onChange} name="category" value={product && product.category._id} className="border-none outline outline-slate-500 w-[50%] text-lg my-2 bg-transparent">
           <option className=' bg-gray-900 p-2 text-white' value={product && product.category._id}> { product && product.category.name}</option>
           {categories && categories.map((category) => (
             <option  className=' bg-gray-900 p-2 text-white' key={category.name} value={category._id}>
@@ -122,6 +127,44 @@ const AdminProductDetails = () => {
             </option>
           ))}
         </select>
+        <div className="my-4 flex gap-3">
+          {
+                  solutions.map((solution, index)=>{
+                    // console.log( product.solutions.map(solution => solution._id));
+                    if(product.solutions.map(solution => solution._id).includes(solution._id)){
+                      return(
+                        <span
+                          key={index}
+                          type="button"
+                          onClick={() =>{
+                             setProduct({ ...product, solutions: product.solutions.filter((item) => item._id !== solution._id) })
+                              setUpdateable(true)
+                            }}
+                          className="inline-flex my-2 items-center gap-1 p-2 border border-slate-500 rounded cursor-pointer"
+                        >
+                          {solution.name}
+                          <IoMdClose />
+                        </span>
+                      )
+                    }else{
+                      return(
+                        <span
+                          key={index}
+                          type="button"
+                          onClick={() =>{
+                             setProduct({ ...product, solutions: [...product.solutions, solution] })
+                              setUpdateable(true)
+                            }}
+                          className="inline-flex my-2 items-center gap-1 p-2 border border-slate-500 rounded cursor-pointer"
+                        >
+                          {solution.name}
+                          <IoMdAdd />
+                        </span>
+                      )
+                    }
+                  })
+                }
+        </div>
         <div className="button-container flex gap-4">
           <button onClick={handleUpdate} disabled={!updateable} className={`py-2 px-4 ${updateable ? 'bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-300' : 'bg-gray-500 text-white cursor-not-allowed font-medium rounded-lg'}`}>Update </button>
           <button onClick={handleDelete} className='py-2 px-4 bg-red-500 text-white font-medium rounded-lg hover:bg-red-600 transition duration-300'>Delete </button>

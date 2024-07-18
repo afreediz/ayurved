@@ -155,7 +155,6 @@ const Navbar = () => {
   const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState("")
   const [profileOpen, setProfileOpen] = useState(false);
-console.log(solutions);
   const logout = () => {
     localStorage.removeItem('token')
     setUser(null)

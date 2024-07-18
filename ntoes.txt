@@ -1,2 +1,5 @@
 add an error map such that no other error would react frontend.
-additional errors : Duplicate Field Value Enter
+additional errors : 
+Duplicate Field Value Enter
+Invalid category
+Invalid Solution
