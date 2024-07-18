@@ -11,7 +11,6 @@ import Profile from './pages/Profile'
 import Dashboard from './pages/Admin/Dashboard'
 import AllOrders from './pages/Admin/AllOrders'
 import AllUsers from './pages/Admin/AllUsers'
-import CreateCategory from './pages/Admin/CreateCategory'
 import CreateProduct from './pages/Admin/CreateProduct'
 import {ToastContainer, toast} from 'react-toastify'
 import { userContext } from './context/user'
@@ -21,7 +20,7 @@ import API from './services/api'
 import CategoryProducts from './pages/CategoryProducts'
 import SearchProducts from './pages/SearchProducts'
 import AllProducts from './pages/Admin/AllProducts'
-import AllCategories from './pages/Admin/AllCategories'
+import CatAndSoln from './pages/Admin/CatAndSoln'
 import AdminProductDetails from './pages/Admin/ProductDetails'
 import ChangePassword from './pages/Auth/ChangePassword'
 import UserAllProducts from './pages/AllProducts'
@@ -66,13 +65,12 @@ const App = () => {
         {user && user.role == 'admin'?
         <Route path='/admin' element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
-          <Route path='create-category' element={<CreateCategory />} />
           <Route path='create-product' element={<CreateProduct />} />
           <Route path='products' element={<AllProducts />} />
           <Route path='products/:slug' element={<AdminProductDetails />} />
           <Route path='orders' element={<AllOrders />} />
           <Route path='users' element={<AllUsers />} />
-          <Route path='categories' element={<AllCategories />} />
+          <Route path='categories' element={<CatAndSoln />} />
         </Route>:<>Sorry, You dont have access to this page.</>
         }
         <Route path='*' element={<div className=''>Not found</div>} />

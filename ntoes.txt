@@ -1,0 +1,2 @@
+add an error map such that no other error would react frontend.
+additional errors : Duplicate Field Value Enter
