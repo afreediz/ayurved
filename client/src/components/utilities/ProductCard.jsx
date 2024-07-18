@@ -27,11 +27,11 @@ const ProductCard = ({product}) => {
     //   </div>
     // </div>
     <Link to={`/products/${product.slug}`}>
-  <div key={product._id} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col min-h-[500px] max-h-[500px]">
-    <div className="w-full h-48 mb-4 overflow-hidden rounded flex-shrink-0">
-      <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
+  <div key={product._id} className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col min-h-[500px] max-h-[500px]">
+    <div className="w-full h-48 mb-4 overflow-hidden rounded flex-shrink-0 flex justify-center items-center">
+      <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
     </div>
-    <div className="flex-grow">
+    <div className="flex-grow p-6">
       <div className="text-sm text-gray-600 uppercase">{product.category.name}</div>
       <h3 className="text-lg font-semibold mt-1">{product.name}</h3>
       <p className="text-gray-600 mt-2">{product.shortdesc}</p>
