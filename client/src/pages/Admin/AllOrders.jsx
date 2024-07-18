@@ -55,7 +55,7 @@ const AllOrders = () => {
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Products</th>
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Date</th>
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Payment Status</th>
-            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Shipping Status</th>
+            <th className=" px-20 py-3 text-left text-xs font-medium uppercase tracking-wider">Shipping Status</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-600">

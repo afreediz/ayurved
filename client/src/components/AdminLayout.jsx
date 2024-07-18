@@ -9,10 +9,10 @@ const AdminLayout = () => {
     <div>
       <Header />
       <div className="grid grid-cols-12 min-h-80vh h-auto bg-slate-100">
-        <div className="col-span-2">
+        <div className="hidden md:block md:col-span-2">
           <Sidebar />
         </div>
-        <div className="col-span-10 p-4 overflow-y-scroll">
+        <div className="col-span-12 md:col-span-10 p-4 overflow-y-scroll">
           <Outlet />
         </div>
       </div>
