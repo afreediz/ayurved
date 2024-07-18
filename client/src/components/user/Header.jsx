@@ -151,10 +151,11 @@ const Navbar = () => {
   const {user, setUser} = useContext(userContext)
   const {cart} = useContext(cartContext);
   const [categories, setCategories] = useState()
+  const [solutions, setSolutions] = useState()
   const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState("")
   const [profileOpen, setProfileOpen] = useState(false);
-
+console.log(solutions);
   const logout = () => {
     localStorage.removeItem('token')
     setUser(null)
@@ -164,7 +165,9 @@ const Navbar = () => {
     async function getCategory(){
       try{
         const {data} = await API.get('/category')
+        const res = await API.get('/solutions')
         setCategories(data.categories)
+        setSolutions(res.data.solutions)
       }catch(error){
         toast.error(error.response?.data.message)
         console.log(error)
@@ -208,7 +211,7 @@ const Navbar = () => {
               <CustomDropdown menuOpen={isOpen} mainText="Shop by Category" data={categories} navigateHandler={navigateCategory} setMenuOpen={setIsOpen} />
             </div>
             <div className="relative group z-50">
-              <CustomDropdown menuOpen={isOpen} mainText="Shop by Solution" data={solution_eg} navigateHandler={navigateSolutions} setMenuOpen={setIsOpen} />
+              <CustomDropdown menuOpen={isOpen} mainText="Shop by Solution" data={solutions} navigateHandler={navigateSolutions} setMenuOpen={setIsOpen} />
             </div>
             <Link to="/out-story" className="text-gray-600 hover:text-green-800">Our Story</Link>
           </div>
@@ -252,7 +255,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <Link to={"/allproducts"} className="block px-4 py-2 text-gray-600 hover:text-green-800">All Products</Link>
             <CustomDropdown menuOpen={isOpen} mainText="Shop by Category" data={categories} navigateHandler={navigateCategory} setMenuOpen={setIsOpen} />
-            <CustomDropdown menuOpen={isOpen} mainText="Shop by Solution" data={solution_eg} navigateHandler={navigateSolutions} setMenuOpen={setIsOpen} />
+            <CustomDropdown menuOpen={isOpen} mainText="Shop by Solution" data={solutions} navigateHandler={navigateSolutions} setMenuOpen={setIsOpen} />
             <Link to={"/our-story"} className="block px-4 py-2 text-gray-600 hover:text-green-800">Our Story</Link>
           </div>
         )}
