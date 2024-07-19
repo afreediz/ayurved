@@ -7,29 +7,10 @@ import Center from './Center'
 const ProductCard = ({product}) => {
   const context = useCart()
   return (
-    // <div className="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-    //   <div className="image">
-    //     <img src={data.image ? data.image : "https://via.placeholder.com/150"} alt={data.name} className="w-full h-48 object-cover" />
-    //   </div>
-    //   <div className="p-4">
-    //     <div className="title">
-    //       <h3 className="text-lg font-semibold text-gray-800">{data.name}</h3>
-    //       <p className="text-gray-600">${data.price}</p>
-    //     </div>
-    //     <p className="text-gray-600 mt-2">{data.shortdesc}</p>
-    //     <div className="buttons flex mt-4">
-    //       <Link to={`/products/${data.slug}`} className="w-1/2 text-center py-2 bg-green-600 text-white rounded-l-lg hover:bg-green-700">More details</Link>
-    //       <button onClick={() => {
-    //         cartOperations.addToCart(data, context);
-    //         toast.success('Added to cart');
-    //       }} className="w-1/2 py-2 bg-blue-600 text-white rounded-r-lg hover:bg-blue-700">Add to Cart</button>
-    //     </div>
-    //   </div>
-    // </div>
     <Link to={`/products/${product.slug}`}>
   <div key={product._id} className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col min-h-[500px] max-h-[500px]">
     <div className="w-full h-48 mb-4 overflow-hidden rounded flex-shrink-0 flex justify-center items-center">
-      <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+      <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
     </div>
     <div className="flex-grow p-6">
       <div className="text-sm text-gray-600 uppercase">{product.category.name}</div>

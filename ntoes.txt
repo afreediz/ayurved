@@ -4,5 +4,4 @@ Duplicate Field Value Enter
 Invalid category
 Invalid Solution
 Add out of stock
-orders error
 cart page
