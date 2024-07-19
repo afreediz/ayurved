@@ -8,7 +8,7 @@ const ProductCard = ({product}) => {
   const context = useCart()
   return (
     <Link to={`/products/${product.slug}`}>
-  <div key={product._id} className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col min-h-[500px] max-h-[500px]">
+  <div key={product._id} className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col min-h-[450px] max-h-[450px]">
     <div className="w-full h-48 mb-4 overflow-hidden rounded flex-shrink-0 flex justify-center items-center">
       <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
     </div>
@@ -16,12 +16,10 @@ const ProductCard = ({product}) => {
       <div className="text-sm text-gray-600 uppercase">{product.category.name}</div>
       <h3 className="text-lg font-semibold mt-1">{product.name}</h3>
       <p className="text-gray-600 mt-2">{product.shortdesc}</p>
-      <div className="flex items-center mt-4">
+      <div className="flex items-center mt-2">
         <div className="text-yellow-500">
-          {'★'.repeat(4)}
-          {'☆'.repeat(4)}
+          {'★'.repeat(5)}
         </div>
-        <div className="text-gray-600 ml-2">44</div>
       </div>
       <div className="text-xl font-bold mt-2">₹{product.price.toFixed(2)}</div>
     </div>
