@@ -7,7 +7,7 @@ const Layout = () => {
     <div>
       <Header />
       <div className="min-h-screen">
-        <div className="py-12">
+        <div className="">
           <Outlet />
         </div>
       </div>
