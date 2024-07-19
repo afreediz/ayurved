@@ -51,7 +51,7 @@ const Footer = () => {
               <li><a href="#" className="text-sm block">Career</a></li>
             </ul>
           </div>
-          <div className="w-full sm:w-1/4 mb-4 sm:mb-0">
+          <div className="mb-10 w-full sm:w-1/4">
             <h3 className="font-semibold text-xl mb-2">Follow Us</h3>
             <div className="flex space-x-4 justify-center sm:justify-start">
               <a href="#" className="text-white"><i className="fab fa-facebook fa-lg"></i></a>

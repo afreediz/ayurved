@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom'
 import { toast } from 'react-toastify'
 import {userContext} from '../../context/user'
 import API from '../../services/api'
-
+import { Link } from 'react-router-dom'
 const Register = () => {
   const {user} = useContext(userContext)
   const navigate = useNavigate()
@@ -46,7 +46,7 @@ const Register = () => {
     }
   }
   return (
-<div className='flex justify-center items-center bg-gray-100'>
+<div className='flex justify-center items-center bg-gray-100 my-10'>
       <div className='w-full max-w-md p-8 bg-white rounded-lg shadow-md'>
         <h1 className='text-3xl font-semibold text-center text-gray-700 mb-6'>Register Form</h1>
         <form onSubmit={register}>
@@ -111,6 +111,7 @@ const Register = () => {
           >
             Register
           </button>
+          <Link to='/login' ><span className=' text-blue-500 block text-center mt-4'>Login to an existing account</span></Link>
         </form>
       </div>
     </div>

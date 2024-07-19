@@ -5,7 +5,6 @@ import API from '../services/api'
 import { toast } from 'react-toastify'
 import Slider from '../components/user/Slider'
 import HighlightedProducts from '../components/user/Bestsellers'
-import Center from '../components/utilities/Center'
 import Dummy from '../components/utilities/Dummy'
 import Why from '../components/user/Why'
 import ProductVideos from '../components/user/ProductVideos'
@@ -39,7 +38,6 @@ const Home = () => {
         explore more
 
         <Dummy products={products} />
-
     </div>
   );  
   }

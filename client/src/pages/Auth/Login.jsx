@@ -48,7 +48,7 @@ const Login = () => {
     }
   }
   return (
-<div className='flex justify-center items-center bg-gray-100'>
+<div className='flex justify-center items-center bg-gray-100 my-10'>
       <div className='w-full max-w-md p-8 bg-white rounded-lg shadow-md'>
         <h1 className='text-3xl font-semibold text-center text-gray-700 mb-6'>Login Form</h1>
         <form onSubmit={login}>
@@ -81,6 +81,7 @@ const Login = () => {
           >
             Login
           </button>
+          <Link to='/register' ><span className=' text-blue-500 block text-center mt-4'>Create a new account</span></Link>
           <Link to='/forget-password' ><span className=' text-red-600 block text-center mt-4'>Forgot password</span></Link>
         </form>
       </div>
