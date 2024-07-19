@@ -65,7 +65,7 @@ const Profile = () => {
   }
   return (
     <Center className='text-xl'>
-      <form onSubmit={onsubmit} className="space-y-4 bg-white p-6 shadow-lg rounded-lg">
+      <form onSubmit={onsubmit} className="space-y-4 bg-white p-6 shadow-lg rounded-lg my-10">
         <div className="my-2">
           <label className='block text-gray-700' htmlFor="name">Name</label>
           <input name='name' onChange={onchange} type="text" id='name' value={data && data.name} placeholder='Enter your name' className="w-full p-2 border border-gray-300 rounded-lg" />

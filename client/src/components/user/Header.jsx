@@ -36,6 +36,7 @@ const Navbar = () => {
     }
     getCategory()
   },[])
+  console.log(user);
   const navigateCategory = (e) => {
     const selectedCategory = e.target.value;
     if(selectedCategory == "all"){
@@ -114,11 +115,10 @@ const Navbar = () => {
         </div>
         {isOpen && (
           <div className="md:hidden">
-            <Link to={"/allproducts"} className="hidden md:block px-4 py-2 text-gray-600 hover:text-green-800">All Products</Link>
-            <CustomDropdown menuOpen={isOpen} mainText="Shop by Category" data={categories} navigateHandler={navigateCategory} setMenuOpen={setIsOpen} />
-            <CustomDropdown menuOpen={isOpen} mainText="Shop by Solution" data={solutions} navigateHandler={navigateSolutions} setMenuOpen={setIsOpen} />
+            <CustomDropdown menuOpen={isOpen} mainText="Shop by Category +" data={categories} navigateHandler={navigateCategory} setMenuOpen={setIsOpen} />
+            <CustomDropdown menuOpen={isOpen} mainText="Shop by Solution +" data={solutions} navigateHandler={navigateSolutions} setMenuOpen={setIsOpen} />
+            {user == undefined ? <Link to={"/register"} className=" md:block px-4 py-2 text-gray-600 hover:text-green-800">Register</Link>:""}
             <Link to={"/our-story"} className="block px-4 py-2 text-gray-600 hover:text-green-800">Our Story</Link>
-            {!user &&<Link to={"/register"} className="hidden md:block px-4 py-2 text-gray-600 hover:text-green-800">All Products</Link>}
           </div>
         )}
       </nav>
