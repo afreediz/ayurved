@@ -88,8 +88,8 @@ const AdminProductDetails = () => {
   };
   
   return (
-    <div className='grid grid-cols-1 md:grid-cols-6 gap-8 p-8 bg-gray-900 text-white w-screen'>
-      <div className="image w-full md:col-span-2 flex justify-center items-center relative">
+    <div className='grid grid-cols-1 md:grid-cols-6 gap-8 p-8 bg-white w-screen'>
+      <div className="image bg-gray-200 w-full md:col-span-2 flex justify-center items-center relative">
         <div className=" absolute w-full h-full bg-transparent opacity-0 hover:bg-black hover:opacity-60 z-10 transition-all flex justify-center items-center hover:backdrop-blur-lg">
             {/* <input type='file' onChange={handleFileChange} className="outline border-none outline-1 outline-white p-4 hover:outline-red-900 hover:text-red-900 bg-transparent text-white text-center" placeholder='choose an image' /> */}
             <input
