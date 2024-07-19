@@ -41,6 +41,7 @@ const Orders = () => {
 
     return `${day}/${month}/${year}`
   }
+  console.log(orders);
   return (
     <Center>
       <h1 className='text-4xl font-bold text-gray-800 mb-4'>Your Orders</h1>

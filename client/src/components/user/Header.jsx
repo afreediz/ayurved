@@ -36,7 +36,6 @@ const Navbar = () => {
     }
     getCategory()
   },[])
-  console.log(user);
   const navigateCategory = (e) => {
     const selectedCategory = e.target.value;
     if(selectedCategory == "all"){

@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import Center from '../components/utilities/Center'
 
 const Profile = () => {
-  const [data, setData] = useState()
+  const [data, setData] = useState("")
   const [updated, setUpdated] = useState(false)
   const navigate = useNavigate()
   const {setUser} = useContext(userContext)
