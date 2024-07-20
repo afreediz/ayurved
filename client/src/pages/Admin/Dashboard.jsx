@@ -86,21 +86,21 @@ const Dashboard = () => {
           <table className="bg-white min-w-full">
             <thead>
               <tr className=' shadow-md border-2 border-slate-100'>
-                <th className="hidden md:block px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Index</th>
-                <th className=" hidden md:block px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Order ID</th>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">User</th>
+                {/* <th className="hidden md:block px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">Index</th> */}
+                <th className=" hidden md:block px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">Order ID</th>
+                <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">User</th>
                 <th className="hidden md:block px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Products</th>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Date</th>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Payment Status</th>
+                <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">Date</th>
+                <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">Payment Status</th>
               </tr>
             </thead>
             <tbody className='  shadow-md'>
             {orders && orders.recent_orders.map((order, index)=>{
               return (
                 <tr key={order.orderid}>
-                <td className="hidden md:block px-6 py-4 whitespace-nowrap">{index+1}</td>
-                <td className=" hidden md:block px-6 py-4 whitespace-nowrap">{order._id}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{order.user.name}</td>
+                {/* <td className="hidden md:block px-4 py-4 whitespace-nowrap">{index+1}</td> */}
+                <td className=" hidden md:block px-4 py-4 whitespace-nowrap">{order._id}</td>
+                <td className="px-4 py-4 whitespace-nowrap">{order.user.name}</td>
                 <td className="hidden md:block px-6 py-4 whitespace-nowrap">{
                   order.products.map((ordered_product_details)=>{
                     return <div className="">
