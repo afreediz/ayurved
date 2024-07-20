@@ -8,7 +8,7 @@ import HighlightedProducts from '../components/user/Bestsellers'
 import Dummy from '../components/utilities/Dummy'
 import Why from '../components/user/Why'
 import ProductVideos from '../components/user/ProductVideos'
-import ShopByCategory from '../components/user/ShopByCategory'
+import ShopBySolution from '../components/user/ShopBySolution'
 import CustomerReview from '../components/user/CustomerReview'
 const Home = () => {
   const [products, setProducts] = useState([])
@@ -32,7 +32,7 @@ const Home = () => {
         <HighlightedProducts />
         <ProductVideos />
         <Why />
-        <ShopByCategory />
+        <ShopBySolution />
         <CustomerReview />
         what do our customers say
         our incredients
