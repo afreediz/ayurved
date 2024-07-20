@@ -18,23 +18,23 @@ const Why = () => {
       <div className="items flex justify-center gap-16 lg:gap-60 flex-wrap">
         <div className="item text-center">
             <img src="/images/why/fresh.webp" alt="" />
-            <span>organic</span>
+            <span>Farn fresh</span>
         </div>
         <div className="item text-center">
             <img src="/images/why/noflavor.webp" alt="" />
-            <span>organic</span>
+            <span>No flavor</span>
         </div>
         <div className="item text-center">
             <img src="/images/why/positive.webp" alt="" />
-            <span>organic</span>
+            <span>Organic</span>
         </div>
         <div className="item text-center">
             <img src="/images/why/small.webp" alt="" />
-            <span>organic</span>
+            <span>Packed</span>
         </div>
         <div className="item text-center">
             <img src="/images/why/tradition.webp" alt="" />
-            <span>organic</span>
+            <span>Honest</span>
         </div>
       </div>
     </div>

@@ -5,3 +5,4 @@ Invalid category
 Invalid Solution
 self defined errors ( also in filters )
 cart page
+why - logos and content

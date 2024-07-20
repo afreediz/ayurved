@@ -9,6 +9,7 @@ import Dummy from '../components/utilities/Dummy'
 import Why from '../components/user/Why'
 import ProductVideos from '../components/user/ProductVideos'
 import ShopByCategory from '../components/user/ShopByCategory'
+import CustomerReview from '../components/user/CustomerReview'
 const Home = () => {
   const [products, setProducts] = useState([])
   useEffect(()=>{
@@ -32,7 +33,7 @@ const Home = () => {
         <ProductVideos />
         <Why />
         <ShopByCategory />
-        seasonal or special
+        <CustomerReview />
         what do our customers say
         our incredients
         explore more
