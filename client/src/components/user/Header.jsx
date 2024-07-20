@@ -74,7 +74,7 @@ const Navbar = () => {
             <div className="relative group z-50">
               <CustomDropdown menuOpen={isOpen} mainText="Shop by Solution" data={solutions} navigateHandler={navigateSolutions} setMenuOpen={setIsOpen} />
             </div>
-            <Link to="/out-story" className="text-gray-600 hover:text-green-800">Our Story</Link>
+            <Link to="/our-story" className="text-gray-600 hover:text-green-800">Our Story</Link>
           </div>
           <div className="flex space-x-4">
             <div className="flex items-center gap-4 text-gray-600 hover:text-green-800">

@@ -25,6 +25,7 @@ import AdminProductDetails from './pages/Admin/ProductDetails'
 import ChangePassword from './pages/Auth/ChangePassword'
 import UserAllProducts from './pages/AllProducts'
 import SolutionProducts from './pages/SolutionProducts'
+import OurStory from './pages/OurStory'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -58,6 +59,7 @@ const App = () => {
           <Route path='solutions/:slug' element={<SolutionProducts />} />
           <Route path='search/:query' element={<SearchProducts />} />
           <Route path='cart' element={<Cart />} />
+          <Route path='our-story' element={<OurStory />} />
           {user && <>
             <Route path='profile' element={<Profile />} />
             <Route path='orders' element={<Orders />} />

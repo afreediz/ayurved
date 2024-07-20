@@ -10,6 +10,7 @@ import Why from '../components/user/Why'
 import ProductVideos from '../components/user/ProductVideos'
 import ShopBySolution from '../components/user/ShopBySolution'
 import CustomerReview from '../components/user/CustomerReview'
+import ExploreMoreProducts from '../components/user/ExploreMoreProducts'
 const Home = () => {
   const [products, setProducts] = useState([])
   useEffect(()=>{
@@ -34,11 +35,7 @@ const Home = () => {
         <Why />
         <ShopBySolution />
         <CustomerReview />
-        what do our customers say
-        our incredients
-        explore more
-
-        <Dummy products={products} />
+        <ExploreMoreProducts />
     </div>
   );  
   }
