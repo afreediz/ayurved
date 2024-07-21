@@ -9,3 +9,5 @@ why - logos and content
 mobile no. login
 reg address remove
 product details page make it beautiful with so many sections
+register and login page beautiful
+profile page beautiful
