@@ -16,7 +16,7 @@ const Footer = () => {
               <ul>
                 <li><Link to={"/"} className="text-sm block">Home</Link></li>
                 <li><Link to={"/allproducts"} className="text-sm block">All Products</Link></li>
-                <li><Link to={"/our-story"} className="text-sm block">Our Story</Link></li>
+                <li><Link to={"/about-us"} className="text-sm block">Our Story</Link></li>
               </ul>
             </div>
           </div>
