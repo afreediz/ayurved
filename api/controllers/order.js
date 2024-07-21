@@ -3,9 +3,16 @@ const CustomError = require('../utils/CustomError')
 
 const Order = require("../models/order")
 const Product = require("../models/product")
+const User = require("../models/user")
 
 const createOrder = asyncErrorHandler(async(req, res)=>{
     const { cart } = req.body
+    const user = await User.findById(req.user._id).select('ph_verified address')
+    
+    if (!user.ph_verified) throw new CustomError("Please verify your phone number before placing order", 400)
+    if (!user.address) throw new CustomError("Please add your address before placing order", 400)
+    if (cart.length == 0) throw new CustomError("Cart is empty", 400)
+
     for (let p of cart){
         const product = await Product.findById(p.product)
 

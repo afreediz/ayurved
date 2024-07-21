@@ -23,8 +23,9 @@ const profile = asyncErrorHandler(async(req, res)=>{
 })
 const updateProfile = asyncErrorHandler(async(req, res)=>{
     const id = req.user._id
+    const {name, email, password, phone, address} = req.body
     
-    const updated_user = await User.findByIdAndUpdate(id, {...req.body},{runValidators:true, new:true})
+    const updated_user = await User.findByIdAndUpdate(id, {name, email, password, phone, address},{runValidators:true, new:true})
     
     res.status(200).json({
         success:true,

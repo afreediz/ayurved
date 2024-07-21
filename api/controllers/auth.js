@@ -77,12 +77,12 @@ const changePassword = asyncErrorHandler(async(req, res)=>{
 
 const verifyUser = asyncErrorHandler(async(req, res)=>{
     const {token} = req.params
-    const {name, email, password, phone, address} = validateToken(token)
+    const {name, email, password, phone} = validateToken(token)
     try{
         const hashedPassword = await hashPassword(password)
 
         await new User({
-            name, email:email.toLowerCase(), password:hashedPassword, phone, address
+            name, email:email.toLowerCase(), password:hashedPassword, phone
         }).save()
     
         res.status(200).send(`

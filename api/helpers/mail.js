@@ -20,7 +20,6 @@ const sendVerificationEmail = async (email, verificationLink) => {
       html: `<p>Please verify your email by clicking on the link below:</p>
              <a href="${verificationLink}">Verify Email</a>`,
     });
-    console.log('Email sent: %s', info.messageId);
   } catch (error) {
     console.error('Error sending email: ', error);
   }

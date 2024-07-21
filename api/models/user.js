@@ -22,7 +22,6 @@ const userSchema = mongoose.Schema({
     },
     address:{
         type:String,
-        required:true
     },
     role:{
         type:String,
@@ -33,6 +32,10 @@ const userSchema = mongoose.Schema({
         type:String,
         enum:['active','inactive'],
         default:'active'
+    },
+    ph_verified:{
+        type:Boolean,
+        default:false
     }
 }, {timestamps:true})
 
