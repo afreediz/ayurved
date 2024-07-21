@@ -7,21 +7,21 @@ const { generateToken, validateToken } = require("../helpers/jwt")
 const { sendVerificationEmail, sendResetPasswordEmail } = require("../helpers/mail")
 
 const register = asyncErrorHandler(async(req, res)=>{
-    const { name, email, password, address, phone } = req.body
-    if(!name || !email || !password || !phone || !address ){
+    const { name, email, password, phone } = req.body
+    if(!name || !email || !password || !phone ){
         throw new CustomError('Necessary details are not filled', 404)
     }
 
     const isExist = await User.findOne({email})
     if(isExist) throw new CustomError('User already exists, Please Login or try with a different email address')
 
-    const token = generateToken({name, email, password, phone, address}, "1hr")
+    const token = generateToken({name, email, password, phone}, "1hr")
 
     const verification_link = `${process.env.BACKEND}/api/auth/verify/${token}`
 
     await sendVerificationEmail(email, verification_link)
 
-    res.status(200).json({success:true, message:`Verification email has successfull sended to your email ${email}`,token})
+    res.status(200).json({success:true, message:`Verification email has successfull sended to your email ${email}`})
 })
 
 const login = asyncErrorHandler(async(req, res)=>{

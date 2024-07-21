@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { userContext } from '../context/user'
-import SidebarLayout from '../components/user/SidebarLayout'
 import { toast } from 'react-toastify'
 import API from '../services/api'
-import { useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Center from '../components/utilities/Center'
 
 const Profile = () => {
+  const location = useLocation()
+  console.log(location.pathname);
   const [data, setData] = useState("")
   const [updated, setUpdated] = useState(false)
   const navigate = useNavigate()
@@ -64,8 +65,13 @@ const Profile = () => {
     }
   }
   return (
-    <Center className='text-xl'>
-      <form onSubmit={onsubmit} className="space-y-4 bg-white p-6 shadow-lg rounded-lg my-10">
+    <Center className='my-10'>
+      <div className="md:hidden mt-10 w-full flex justify-around text-xl font-semibold border border-gray-800 relative">
+        <Link to={'/profile'}><span className="py-2 text-gray-800">Profile</span></Link>
+        <span className="border-l-2 border-gray-800 h-full absolute left-1/2 transform -translate-x-1/2"></span>
+        <Link to={'/orders'}><span className="py-2 text-gray-400">Orders</span></Link>
+      </div>
+      <form onSubmit={onsubmit} className="space-y-4 bg-white p-6 shadow-lg rounded-lg">
         <div className="my-2">
           <label className='block text-gray-700' htmlFor="name">Name</label>
           <input name='name' onChange={onchange} type="text" id='name' value={data && data.name} placeholder='Enter your name' className="w-full p-2 border border-gray-300 rounded-lg" />

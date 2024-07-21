@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import OrdersCard from '../components/utilities/OrdersCard'
-import SidebarLayout from '../components/user/SidebarLayout'
 import API from '../services/api'
 import { toast } from 'react-toastify'
 import Center from '../components/utilities/Center'
+import { Link, useLocation } from 'react-router-dom'
 
 const Orders = () => {
+  const location = useLocation()
+  console.log(location.pathname);
   const [orders, setOrders] = useState()
   useEffect(()=>{
     async function getOrders(){
@@ -43,14 +45,18 @@ const Orders = () => {
   }
   console.log(orders);
   return (
-    <Center>
-      <h1 className='text-4xl font-bold text-gray-800 mb-4'>Your Orders</h1>
+    <Center className='my-10'>
+      <div className="md:hidden mt-10 w-full flex justify-around text-xl font-semibold border border-gray-800 relative">
+        <Link to={'/profile'}><span className="py-2 text-gray-400">Profile</span></Link>
+        <span className="border-l-2 border-gray-800 h-full absolute left-1/2 transform -translate-x-1/2"></span>
+        <Link to={'/orders'}><span className="py-2 text-gray-800">Orders</span></Link>
+      </div>
       <div className="overflow-x-auto">
         <table className='w-full bg-white shadow-lg rounded-lg'>
           <thead>
             <tr className='bg-gray-200 text-gray-700'>
-              <th className='py-2 px-4 border border-gray-300'>Index</th>
-              <th className='py-2 px-4 border border-gray-300'>Order ID</th>
+              <th className='hidden md:table-cell py-2 px-4 border border-gray-300'>Index</th>
+              <th className='hidden md:table-cell py-2 px-4 border border-gray-300'>Order ID</th>
               <th className='py-2 px-4 border border-gray-300'>Date</th>
               <th className='py-2 px-4 border border-gray-300'>Payment</th>
               <th className='py-2 px-4 border border-gray-300'>Status</th>
@@ -60,8 +66,8 @@ const Orders = () => {
           <tbody>
             {orders && orders.map((order, index) => (
               <tr key={index} className='border-b border-gray-200'>
-                <td className='py-2 px-4 border-r border-gray-300'>{index+1}</td>
-                <td className='py-2 px-4 border-r border-gray-300'>{order._id}</td>
+                <td className='hidden md:table-cell py-2 px-4 border-r border-gray-300'>{index+1}</td>
+                <td className='hidden md:table-cell py-2 px-4 border-r border-gray-300'>{order._id}</td>
                 <td className='py-2 px-4 border-r border-gray-300'>{format_date(order.createdAt)}</td>
                 <td className='py-2 px-4 border-r border-gray-300'>{order.payment}</td>
                 <td className='py-2 px-4 border-r border-gray-300'>{order.status}</td>
