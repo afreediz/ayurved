@@ -1,5 +1,6 @@
 import React from 'react';
 import Center from '../components/utilities/Center';
+import { FaRegPaperPlane, FaRocket } from 'react-icons/fa'
 
 const OurStory = () => {
   return (
@@ -92,7 +93,7 @@ const OurStory = () => {
       </section>
 
       {/* Team Section */}
-      <section className="bg-gray-100 py-16">
+      <section className="bg-green-100 py-16">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-10">Meet Our Team</h2>
           <div className="flex flex-wrap justify-center space-x-6">
@@ -122,13 +123,48 @@ const OurStory = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16">
+      <section className="py-16 px-4">
         <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-10">Get in Touch</h2>
-          <p className="text-lg mb-4">
+          <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
+          <p className="text-lg mb-6 ">
             We'd love to hear from you! If you have any questions, feedback, or just want to say hello, please reach out to us.
           </p>
-          <img src="https://via.placeholder.com/600x400" alt="Contact Image" className="mx-auto rounded-lg shadow-lg" />
+          <div className=" grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="">
+              <img src="https://via.placeholder.com/500x300" alt="" />
+            </div>
+            <form className="">
+              <div className="mb-4">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  className="w-full px-4 py-2 border-none rounded-lg outline outline-gray-200 focus:outline-green-500"
+                />
+              </div>
+              <div className="mb-4">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="w-full px-4 py-2 border-none rounded-lg outline outline-gray-200 focus:outline-green-500"
+                />
+              </div>
+              <div className="mb-4">
+                <textarea
+                  placeholder="Message"
+                  rows="8"
+                  cols="30"
+                  className="w-full px-4 py-2 border-none rounded-lg outline outline-gray-200 focus:outline-green-500"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="bg-green-500 text-white w-full py-3 rounded-lg flex justify-center  font-semibold gap-3"
+              >
+                Send 
+                <FaRegPaperPlane />
+              </button>
+            </form>
+          </div>
         </div>
       </section>
     </div>

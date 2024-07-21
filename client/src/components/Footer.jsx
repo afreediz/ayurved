@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -28,20 +29,9 @@ const Footer = () => {
           <div className="w-full sm:w-1/4 mb-4 sm:mb-0">
             <h3 className="font-semibold text-xl mb-2">Helpful Links</h3>
             <ul>
-              <li><a href="#" className="text-sm block">Our Story</a></li>
-              <li><a href="#" className="text-sm block">All Products</a></li>
-              <li><a href="#" className="text-sm block">Recipes</a></li>
-              <li><a href="#" className="text-sm block">Blog</a></li>
-              <li><a href="#" className="text-sm block">Lab Reports</a></li>
-            </ul>
-          </div>
-          <div className="w-full sm:w-1/4 mb-4 sm:mb-0">
-            <h3 className="font-semibold text-xl mb-2">Policies</h3>
-            <ul>
-              <li><a href="#" className="text-sm block">Refund Policy</a></li>
-              <li><a href="#" className="text-sm block">Shipping Policy</a></li>
-              <li><a href="#" className="text-sm block">Privacy Policy</a></li>
-              <li><a href="#" className="text-sm block">Terms of Service</a></li>
+              <li><Link to={"/"} className="text-sm block">Home</Link></li>
+              <li><Link to={"/allproducts"} className="text-sm block">All Products</Link></li>
+              <li><Link to={"/our-story"} className="text-sm block">Our Story</Link></li>
             </ul>
           </div>
           <div className="w-full sm:w-1/4 mb-4 sm:mb-0">
