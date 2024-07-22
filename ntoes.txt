@@ -4,10 +4,9 @@ Duplicate Field Value Enter
 Invalid category
 Invalid Solution
 self defined errors ( also in filters )
-cart page + beautiful
+cart page beautiful
 why - logos and content
 mobile no. login - important
 product details page make it beautiful with so many sections + related products - important
-register and login page beautiful
-profile page beautiful
 admin panel - profile, viewr, master
+loading

@@ -26,7 +26,6 @@ import ChangePassword from './pages/Auth/ChangePassword'
 import UserAllProducts from './pages/AllProducts'
 import SolutionProducts from './pages/SolutionProducts'
 import OurStory from './pages/OurStory'
-import { FaWhatsapp, FaWhatsappSquare } from 'react-icons/fa'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
