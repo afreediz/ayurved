@@ -14,7 +14,7 @@ const BestSellers = () => {
     useEffect(()=>{
         async function getProducts(){
         try{
-            const {data} = await API.get(`products/list/${1}`)
+            const {data} = await API.get(`products/highlighted`)
             setProducts([
             ...data.products
             ])
@@ -29,7 +29,7 @@ const BestSellers = () => {
     <Center>
     <div className=" py-10">
       <div className="flex justify-between items-center px-4 md:px-10 lg:px-20">
-        <h2 className="text-3xl font-bold">Our Bestsellers</h2>
+        <h2 className="text-3xl font-medium">Our Bestsellers</h2>
         <Link to={"/allproducts"} className="text-green-600 hover:text-green-800">View All</Link>
       </div>
       <Swiper

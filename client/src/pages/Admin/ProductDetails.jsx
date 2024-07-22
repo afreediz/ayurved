@@ -165,6 +165,25 @@ const AdminProductDetails = () => {
                   })
                 }
         </div>
+        {product && product.highlighted ? (
+          <span onClick={() => {
+            setProduct({ ...product, highlighted: false })
+            setUpdateable(true)
+            }} className="inline-flex my-2 items-center gap-1 p-2 border border-slate-500 rounded cursor-pointer bg-blue-500 text-white">
+            Highlighted
+          </span>
+        ) : (
+          <span
+            type="button"
+            onClick={() => {
+              setProduct({ ...product, highlighted: true })
+              setUpdateable(true)
+            }}
+            className="inline-flex my-2 items-center gap-1 p-2 border border-slate-500 rounded cursor-pointer"
+          >
+            Highlight
+          </span>
+        )}
         <div className="button-container flex gap-4">
           <button onClick={handleUpdate} disabled={!updateable} className={`py-2 px-4 ${updateable ? 'bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-300' : 'bg-gray-500 text-white cursor-not-allowed font-medium rounded-lg'}`}>Update </button>
           <button onClick={handleDelete} className='py-2 px-4 bg-red-500 text-white font-medium rounded-lg hover:bg-red-600 transition duration-300'>Delete </button>

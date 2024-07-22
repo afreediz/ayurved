@@ -18,6 +18,16 @@ const getAllProducts = asyncErrorHandler(async(req, res)=>{
         countTotal:products.length
     })
 })
+const highlightedProducts = asyncErrorHandler(async(req, res)=>{
+    const products = await Product.find({ highlighted:true}).populate('category').select('_id name shortdesc price slug quantity image').sort({createdAt:-1})
+
+    res.status(200).json({
+        success:true,
+        message:"All products",
+        products,
+        countTotal:products.length
+    })
+})
 const getProduct = asyncErrorHandler(async(req, res)=>{
     const slug = req.params.slug
     const product = await Product.findOne({slug}).populate('category').populate('solutions').select('-photo')
@@ -47,13 +57,13 @@ const createProduct = asyncErrorHandler(async(req, res)=>{
 })
 const updateProduct = asyncErrorHandler(async(req, res)=>{
     const id = req.params.id
-    const { name, description, price, category, quantity, image, old_image, shortdesc, solutions } = req.body
+    const { name, description, price, category, quantity, image, old_image, shortdesc, solutions, highlighted } = req.body
     var result = image
     if(image !== old_image){ 
         await deleteImage(old_image)
         result = await uploadImage(image)
     }
-    const product = await Product.findByIdAndUpdate(id, {$set:{name, slug:slugify(name), shortdesc,description, price, category, quantity, image:result.url, solutions:[...solutions]}}, {runValidators:true, new:true})
+    const product = await Product.findByIdAndUpdate(id, {$set:{name, slug:slugify(name), shortdesc,description, price, category, quantity, image:result.url, solutions, highlighted}}, {runValidators:true, new:true})
 
     res.status(200).json({
         success:true,
@@ -96,7 +106,7 @@ const productList = asyncErrorHandler(async(req, res)=>{
     const perPage = 8
     const page = req.params.page? req.params.page : 1
     const products = await Product.find({}).populate('category')
-    .select('-photo')
+    .select('_id name shortdesc price slug quantity image')
     .skip((page - 1)*perPage)
     .limit(perPage)
     .sort({createdAt:-1})
@@ -254,5 +264,6 @@ module.exports = {
     categoryProductsCount,
     dashboardDetails,
     solutionProducts,
-    solutionProductsCount
+    solutionProductsCount,
+    highlightedProducts
 }

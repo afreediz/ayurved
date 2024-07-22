@@ -40,6 +40,10 @@ const productSchema = mongoose.Schema({
     image:{
         type:String,
         required:true
+    },
+    highlighted:{
+        type:Boolean,
+        default:false
     }
 }, {timstamps:true})
 

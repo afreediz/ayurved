@@ -3,10 +3,10 @@ const env = require('dotenv').config({
     path:"./config/.env"
 })
 const connection = require('./config/connection')
-const User = require('./models/user')
+const Products = require('./models/product')
 
-User.updateMany({},{
-    $set: {ph_verified:false}
+Products.updateMany({},{
+    $set: {highlighted:true}
 }, {runValidators:true}).then(()=>{
     console.log('done');
 })

@@ -1,4 +1,4 @@
-const { getAllProducts, getProduct, createProduct, getOrders, updateProduct, deleteProduct, orderStatus, getProductCount, productList, productSearch, productsRelated, categoryProducts, categoryProductsCount, dashboardDetails, solutionProducts, solutionProductsCount } = require('../controllers/product')
+const { getAllProducts, getProduct, createProduct, getOrders, updateProduct, deleteProduct, orderStatus, getProductCount, productList, productSearch, productsRelated, categoryProducts, categoryProductsCount, dashboardDetails, solutionProducts, solutionProductsCount, highlightedProducts } = require('../controllers/product')
 const { isAdmin, isAuthenticated } = require('../middlewares/isAuth')
 const router = require('express').Router()
 
@@ -10,6 +10,7 @@ router.get('/category/:slug/count', categoryProductsCount)
 router.get('/category/:slug/:page', categoryProducts)
 router.get('/solutions/:slug/count', solutionProductsCount)
 router.get('/solutions/:slug/:page', solutionProducts)
+router.get('/highlighted', highlightedProducts)
 router.get('/', getAllProducts)
 
 // admin
