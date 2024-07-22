@@ -118,7 +118,6 @@ const Navbar = () => {
             <CustomDropdown menuOpen={isOpen} mainText="Shop by Solution +" data={solutions} navigateHandler={navigateSolutions} setMenuOpen={setIsOpen} />
             {user == undefined ? <Link to={"/register"} className=" md:block px-4 py-2 text-gray-600 hover:text-green-800">Register</Link>:""}
             <Link to={"/about-us"} className="block px-4 py-2 text-gray-600 hover:text-green-800">About Us</Link>
-            {user && <Link to={"/orders"} className="block px-4 py-2 text-gray-600 hover:text-green-800">Orders</Link>}
           </div>
         )}
       </nav>

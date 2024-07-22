@@ -10,3 +10,4 @@ mobile no. login - important
 product details page make it beautiful with so many sections + related products - important
 register and login page beautiful
 profile page beautiful
+admin panel - profile, viewr, master

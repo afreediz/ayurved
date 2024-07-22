@@ -61,4 +61,69 @@ const Slider = () => {
   );
 };
 
+
+// const Slider = () => {
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       const slides = document.querySelectorAll('.slide');
+//       const currentSlide = document.querySelector('.current');
+//       currentSlide.classList.remove('current');
+//       if (currentSlide.nextElementSibling) {
+//         currentSlide.nextElementSibling.classList.add('current');
+//       } else {
+//         slides[0].classList.add('current');
+//       }
+//     }, 5000); // 5 seconds interval for autosliding
+
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   return (
+//     <div className="relative w-full h-screen overflow-hidden">
+//       <div className="slide current absolute w-full h-full">
+//         <picture>
+//           <source
+//             srcSet="/path-to-desktop-image1.jpg"
+//             media="(min-width: 1024px)"
+//           />
+//           <source srcSet="/path-to-mobile-image1.jpg" media="(max-width: 1023px)" />
+//           <img
+//             src="/path-to-desktop-image1.jpg"
+//             alt="Slide 1"
+//             className="w-full h-full object-cover"
+//           />
+//         </picture>
+//       </div>
+//       <div className="slide absolute w-full h-full">
+//         <picture>
+//           <source
+//             srcSet="/path-to-desktop-image2.jpg"
+//             media="(min-width: 1024px)"
+//           />
+//           <source srcSet="/path-to-mobile-image2.jpg" media="(max-width: 1023px)" />
+//           <img
+//             src="/path-to-desktop-image2.jpg"
+//             alt="Slide 2"
+//             className="w-full h-full object-cover"
+//           />
+//         </picture>
+//       </div>
+//       <div className="slide absolute w-full h-full">
+//         <picture>
+//           <source
+//             srcSet="/path-to-desktop-image3.jpg"
+//             media="(min-width: 1024px)"
+//           />
+//           <source srcSet="/path-to-mobile-image3.jpg" media="(max-width: 1023px)" />
+//           <img
+//             src="/path-to-desktop-image3.jpg"
+//             alt="Slide 3"
+//             className="w-full h-full object-cover"
+//           />
+//         </picture>
+//       </div>
+//     </div>
+//   );
+// };
+
 export default Slider;

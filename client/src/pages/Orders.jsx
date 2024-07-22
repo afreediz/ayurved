@@ -46,13 +46,13 @@ const Orders = () => {
   console.log(orders);
   return (
     <Center className='my-10'>
-      <div className="md:hidden mt-10 w-full flex justify-around text-xl font-semibold border border-gray-800 relative">
+      <div className="md:hidden mt-10 w-full flex justify-around text-xl border border-gray-800 relative">
         <Link to={'/profile'}><span className="py-2 text-gray-400">Profile</span></Link>
         <span className="border-l-2 border-gray-800 h-full absolute left-1/2 transform -translate-x-1/2"></span>
         <Link to={'/orders'}><span className="py-2 text-gray-800">Orders</span></Link>
       </div>
       <div className="overflow-x-auto">
-        <table className='w-full bg-white shadow-lg rounded-lg'>
+        <table className='w-full bg-white shadow-lg rounded-lg'>  
           <thead>
             <tr className='bg-gray-200 text-gray-700'>
               <th className='hidden md:table-cell py-2 px-4 border border-gray-300'>Index</th>
