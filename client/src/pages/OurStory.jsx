@@ -1,8 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Center from '../components/utilities/Center';
 import { FaRegPaperPlane, FaRocket } from 'react-icons/fa'
+import API from '../services/api';
+import { toast } from 'react-toastify';
 
 const OurStory = () => {
+  const [data, sendData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  })
+  const onChange = (e) => {
+    const {name, value} = e.target;
+    sendData((old_data)=>{
+      return {
+        ...old_data,
+        [name]:value
+      }
+    })
+  }
+  const sendMail = async() => {
+    try{
+      const {name, email, message} = data
+      if(!name || !email || !message){
+        throw new Error("Please fill all the fields")
+      }
+      await API.post('auth/sendmail', {
+        email, message, name
+      })
+      toast.success("Message Sent Successfully")
+    }catch(error){
+      toast.error(error.response?.data.message)
+      console.log(error)
+    }
+  }
   return (
     <div className="bg-white text-gray-800">
       {/* Hero Section */}
@@ -136,21 +167,30 @@ const OurStory = () => {
             <form className="">
               <div className="mb-4">
                 <input
+                  value={data.name}
+                  onChange={onChange}
                   type="text"
+                  name="name"
                   placeholder="Name"
                   className="w-full px-4 py-2 border-none rounded-lg outline outline-gray-200 focus:outline-green-500"
                 />
               </div>
               <div className="mb-4">
                 <input
+                  value={data.email}
+                  onChange={onChange}
                   type="email"
+                  name="email"
                   placeholder="Email"
                   className="w-full px-4 py-2 border-none rounded-lg outline outline-gray-200 focus:outline-green-500"
                 />
               </div>
               <div className="mb-4">
                 <textarea
+                  value={data.message}
+                  onChange={onChange}
                   placeholder="Message"
+                  name="message"
                   rows="8"
                   cols="30"
                   className="w-full px-4 py-2 border-none rounded-lg outline outline-gray-200 focus:outline-green-500"
@@ -159,6 +199,10 @@ const OurStory = () => {
               <button
                 type="submit"
                 className="bg-green-500 text-white w-full py-3 rounded-lg flex justify-center  font-semibold gap-3"
+                onClick={(e) => {
+                  e.preventDefault()
+                  sendMail()
+                }}
               >
                 Send 
                 <FaRegPaperPlane />

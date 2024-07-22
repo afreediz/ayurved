@@ -85,7 +85,7 @@ const Profile = () => {
         </div>
         <div className="my-2">
           <label className="block text-gray-700" htmlFor="address">Address</label>
-          <input name='address' onChange={onchange} type="text" id="address" value={data && data.address} placeholder='Enter your address' className="w-full p-2 border border-gray-300 rounded-lg" />
+          <textarea rows={5} name='address' onChange={onchange} type="text" id="address" value={data && data.address} placeholder='Enter your address' className="w-full p-2 border border-gray-300 rounded-lg" />
         </div>
         <button type='submit' disabled={!updated} className={`py-2 px-5 ${updated ? "bg-green-600" : "bg-gray-300"} text-white font-medium rounded-lg`} >
           Update

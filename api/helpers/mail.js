@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 const sendVerificationEmail = async (email, verificationLink) => {
   try {
     const info = await transporter.sendMail({
-      from: 'ecommerce@gmail.com',
+      from: 'navajeevana@gmail.com',
       to: email,
       subject: 'Email Verification',
       html: `<p>Please verify your email by clicking on the link below:</p>
@@ -25,10 +25,24 @@ const sendVerificationEmail = async (email, verificationLink) => {
   }
 };
 
+const forwardMailToAdmin = async (name, email, message) => {
+  try {
+    const info = await transporter.sendMail({
+      from: 'navajeevana@gmail.com',
+      to: process.env.ADMIN_EMAIL,
+      subject: 'Query from user.',
+      html: `<p>Name: ${name}, <br /> Email: ${email}, <br /> Message: ${message}</p>`,
+    });
+    console.log('Email sent: %s', info.messageId);
+  } catch (error) {
+    console.error('Error sending email: ', error);
+  }
+};
+
 const sendResetPasswordEmail = async (email, resetLink) => {
   try {
     const info = await transporter.sendMail({
-      from: 'ecommerce@gmail.com',
+      from: 'navajeevana@gmail.com',
       to: email,
       subject: 'Reset Password',
       html: `<p>Please reset your password by clicking on the link below:</p>
@@ -40,4 +54,4 @@ const sendResetPasswordEmail = async (email, resetLink) => {
   }
 };
 
-module.exports = { sendVerificationEmail, sendResetPasswordEmail };
+module.exports = { sendVerificationEmail, sendResetPasswordEmail, forwardMailToAdmin };

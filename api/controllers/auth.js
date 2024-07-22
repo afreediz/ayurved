@@ -1,6 +1,7 @@
 const asyncErrorHandler = require("express-async-handler")
 const CustomError = require('../utils/CustomError')
 const User = require('../models/user')
+const {forwardMailToAdmin} = require('../helpers/mail')
 
 const { hashPassword, comparePassword } = require("../helpers/auth")
 const { generateToken, validateToken } = require("../helpers/jwt")
@@ -73,6 +74,18 @@ const changePassword = asyncErrorHandler(async(req, res)=>{
     await User.findByIdAndUpdate(_id, {password:hashedPassword})
 
     res.status(200).json({success:true, message:"Password changed successfully"})
+})
+
+const forwardMail = asyncErrorHandler(async(req, res)=>{
+    const { name, email, message } = req.body
+    if(!name || !email || !message){
+        throw new CustomError("All fields are required", 400)
+    }
+    forwardMailToAdmin(name, email, message)
+    res.status(200).json({
+        success:true,
+        message:"Message sent successfully"
+    })
 })
 
 const verifyUser = asyncErrorHandler(async(req, res)=>{
@@ -205,5 +218,6 @@ module.exports = {
     login,
     forgetPassword,
     verifyUser,
-    changePassword
+    changePassword,
+    forwardMail
 }

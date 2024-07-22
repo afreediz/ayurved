@@ -111,4 +111,6 @@ const dashboardDetails = asyncErrorHandler(async(req, res)=>{
     })
 })
 
+
+
 module.exports = {getUser, getAdmin, profile, updateProfile, deleteProfile, getAllUsers, userStatus, deleteUser, dashboardDetails }
