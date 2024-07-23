@@ -74,6 +74,7 @@ const Navbar = () => {
             <div className="relative group z-50">
               <CustomDropdown menuOpen={isOpen} mainText="Shop by Solution" data={solutions} navigateHandler={navigateSolutions} setMenuOpen={setIsOpen} />
             </div>
+            <Link to="/blogs" className="text-gray-600 hover:text-green-800">Read Blogs</Link>
             <Link to="/about-us" className="text-gray-600 hover:text-green-800">About Us</Link>
           </div>
           <div className="flex space-x-4">
@@ -117,6 +118,7 @@ const Navbar = () => {
             <CustomDropdown menuOpen={isOpen} mainText="Shop by Category +" data={categories} navigateHandler={navigateCategory} setMenuOpen={setIsOpen} />
             <CustomDropdown menuOpen={isOpen} mainText="Shop by Solution +" data={solutions} navigateHandler={navigateSolutions} setMenuOpen={setIsOpen} />
             {user == undefined ? <Link to={"/register"} className=" md:block px-4 py-2 text-gray-600 hover:text-green-800">Register</Link>:""}
+            <Link to={"/blogs"} className="block px-4 py-2 text-gray-600 hover:text-green-800">Read Blogs</Link>
             <Link to={"/about-us"} className="block px-4 py-2 text-gray-600 hover:text-green-800">About Us</Link>
           </div>
         )}
