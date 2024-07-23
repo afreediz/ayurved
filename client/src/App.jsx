@@ -27,6 +27,8 @@ import UserAllProducts from './pages/AllProducts'
 import SolutionProducts from './pages/SolutionProducts'
 import OurStory from './pages/OurStory'
 import Blogs from './pages/Admin/Blogs'
+import ReadBolgs from './pages/Blogs'
+import BlogDetails from './pages/BlogDetails'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -60,8 +62,8 @@ const App = () => {
           <Route path='solutions/:slug' element={<SolutionProducts />} />
           <Route path='search/:query' element={<SearchProducts />} />
           <Route path='cart' element={<Cart />} />
-          <Route path='blogs' element={<Cart />} />
-          <Route path='blogs/:slug' element={<Cart />} />
+          <Route path='blogs' element={<ReadBolgs />} />
+          <Route path='blogs/:slug' element={<BlogDetails />} />
           <Route path='about-us' element={<OurStory />} />
           {user && <>
             <Route path='profile' element={<Profile />} />

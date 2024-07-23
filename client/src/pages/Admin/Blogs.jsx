@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from 'axios';
+import API from '../../services/api';
 
 const CkeditorComponent = () => {
   const [title, setTitle] = useState('');
@@ -17,10 +18,11 @@ const CkeditorComponent = () => {
     reader.readAsDataURL(file);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
+    console.log(title, content, image);
     e.preventDefault();
     try{
-        const res = axios.post('/blogs', {title, content, image})
+        const res = await API.post('/blogs', {title, content, image})
     }catch(error){
         console.log(error)
     }
@@ -42,7 +44,6 @@ const CkeditorComponent = () => {
           <label>Content:</label>
           <CKEditor
             editor={ClassicEditor}
-            data="<p>Write your content here...</p>"
             onChange={(event, editor) => {
               const data = editor.getData();
               setContent(data);

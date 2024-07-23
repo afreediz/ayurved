@@ -51,27 +51,21 @@ const OurStory = () => {
         </div>
         </section>
                   {/* Introduction Section */}
-      <section className="py-16 px-4 grid grid-cols-1 gap-4 md:grid-cols-5 container mx-auto">
+      <section className="px-4 py-16 mx-auto">
+        <div className="container mx-auto text-center md:text-left grid grid-cols-1 md:grid-cols-5 gap-4">
+        <img src="https://via.placeholder.com/600x400" alt="Mission Image" className="mx-auto rounded-lg shadow-lg  md:col-span-2" />
 
-        <div className="md:col-span-2 mb-8 lg:mb-0">
-            <img src="https://via.placeholder.com/600x400" alt="Farm Image" className="rounded-lg shadow-lg" />
-        </div>
-        <div className="md:col-span-3">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center lg:space-x-10">
-          <div className="lg:w-1/2">
+            <div className=" md:col-span-3">
             <h2 className="text-3xl font-bold mb-4">Our Journey</h2>
-            <p className="text-lg mb-4">
-              We are dedicated to providing the highest quality ghee and milk products, sourced directly from our farm.
-              Our journey began with a passion for purity and a commitment to sustainable farming practices.
-            </p>
-            <p className="text-lg">
-              Our products are made with love and care, ensuring that you get the best nature has to offer. Experience the
-              difference with our 100% pure ghee and milk.
-            </p>
-          </div>
-        </div>
+          <p className="text-lg mb-4">
+          Founded in 2016, our journey began with a simple yet profound mission: to promote good health through pure and organic products. Drawing inspiration from the wisdom of our ancestors, we strive to revive the old culture of natural farming and sustainable living. At Fortune Gate Biodynamic Farm, we are committed to producing the finest quality milk by nurturing our cows with the utmost care and respect.
+
+Our A2A2 certified cows graze freely under the sun and moon, fed with a carefully curated diet of Dasha flowers and Nava grains. We believe in a holistic approach, where the health of our cows directly influences the purity of our milk. After the calves have had their fill, we collect the remaining milk, ensuring it is of the highest quality. Our farming practices are not about mass production but about providing the best products for future generations. This dedication to quality over quantity means we produce less milk but with unmatched purity and nutritional value.
+          </p>
+            </div>
         </div>
       </section>
+
 
       {/* Mission Section */}
       <section className="px-4 bg-green-100 py-16 mx-auto">
@@ -79,8 +73,11 @@ const OurStory = () => {
             <div className=" md:col-span-3">
             <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
           <p className="text-lg mb-4">
-            Our mission is to bring you the purest, most delicious ghee and milk products while supporting sustainable farming
-            practices. We believe in transparency, quality, and care for the environment.
+          Our mission is to offer the purest and healthiest organic milk products, preserving the essence of natural farming for generations to come. We are deeply committed to biodynamic farming practices that respect and enhance the natural environment. Our farm is not driven by profit but by a passion for promoting health and well-being in our community.
+
+We stand firm against the use of artificial enhancers and harmful chemicals that have become prevalent in modern agriculture. Our cows are fed 100% natural fodders, and our ghee is produced through traditional methods, ensuring it retains its natural benefits and purity. By focusing on quality and sustainability, we aim to combat the decline in food quality brought about by the White and Green Revolutions.
+
+At Navajeevana, we are dedicated to creating products that are not only good for you but also good for the planet. Our ghee, made from the milk of freely grazing cows, is a testament to our commitment to health and tradition. We believe in the power of pure, unadulterated food to nourish the body and soul, and we are proud to bring these exceptional products to your table.
           </p>
             </div>
           <img src="https://via.placeholder.com/600x400" alt="Mission Image" className="mx-auto rounded-lg shadow-lg  md:col-span-2" />
@@ -91,8 +88,8 @@ const OurStory = () => {
       <section className="py-16">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-10">Our Values</h2>
-          <div className="flex flex-wrap justify-center space-x-6">
-            <div className="w-full sm:w-1/2 lg:w-1/3 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="w-full mb-8">
               <div className="p-6 bg-white shadow-lg rounded-lg">
                 <img src="https://via.placeholder.com/100x100" alt="Quality Icon" className="mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Quality</h3>
@@ -101,7 +98,7 @@ const OurStory = () => {
                 </p>
               </div>
             </div>
-            <div className="w-full sm:w-1/2 lg:w-1/3 mb-8">
+            <div className="w-full mb-8">
               <div className="p-6 bg-white shadow-lg rounded-lg">
                 <img src="https://via.placeholder.com/100x100" alt="Sustainability Icon" className="mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Sustainability</h3>
@@ -110,7 +107,7 @@ const OurStory = () => {
                 </p>
               </div>
             </div>
-            <div className="w-full sm:w-1/2 lg:w-1/3 mb-8">
+            <div className="w-full mb-8">
               <div className="p-6 bg-white shadow-lg rounded-lg">
                 <img src="https://via.placeholder.com/100x100" alt="Purity Icon" className="mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Purity</h3>

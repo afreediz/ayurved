@@ -5,6 +5,7 @@ const productRoutes = require('./product')
 const categoryRoutes = require('./category')
 const orderRoutes = require('./order')
 const solutionRoutes = require('./solution')
+const blogRoutes = require('./blog')
 
 router.use('/auth', authRoutes)
 router.use('/users', userRoutes)
@@ -13,5 +14,6 @@ router.use('/category', categoryRoutes)
 router.use('/category', categoryRoutes)
 router.use('/orders', orderRoutes)
 router.use('/solutions', solutionRoutes)
+router.use('/blogs', blogRoutes)
 
 module.exports = router

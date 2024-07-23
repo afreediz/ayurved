@@ -8,5 +8,5 @@ cart page beautiful
 why - logos and content
 mobile no. login - important
 product details page make it beautiful with so many sections + related products - important
-admin panel - profile, viewr, master
-loading
+admin panel - profile, viewr, master, email, phone
+loading for everypage
