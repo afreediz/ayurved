@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 
 const CustomDropdown = ({ data, mainText, navigateHandler, setMenuOpen, menuOpen }) => {
   const [selected, setSelected] = useState('all');
@@ -16,8 +17,8 @@ const CustomDropdown = ({ data, mainText, navigateHandler, setMenuOpen, menuOpen
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <div className=" bg-transparent text-gray-600 cursor-pointer py-2 px-1 lg:px-4">
-        {selected === 'all' ? mainText : data.find(c => c.slug === selected)?.name}
+      <div className=" bg-transparent text-gray-600 cursor-pointer py-2 px-1 lg:px-2">
+        {selected === 'all' ? <span className='flex justify-between gap-1 items-center'>{mainText } {open? <FaArrowUp className=' text-sm'  />: <FaArrowDown className=' text-sm' />}</span> : data.find(c => c.slug === selected)?.name}
       </div>
       {open && (
         <ul className={`absolute z-50 mt-2 w-full bg-white border border-gray-300 rounded shadow-lg`}>
