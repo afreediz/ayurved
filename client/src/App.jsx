@@ -26,6 +26,7 @@ import ChangePassword from './pages/Auth/ChangePassword'
 import UserAllProducts from './pages/AllProducts'
 import SolutionProducts from './pages/SolutionProducts'
 import OurStory from './pages/OurStory'
+import Blogs from './pages/Admin/Blogs'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -59,6 +60,8 @@ const App = () => {
           <Route path='solutions/:slug' element={<SolutionProducts />} />
           <Route path='search/:query' element={<SearchProducts />} />
           <Route path='cart' element={<Cart />} />
+          <Route path='blogs' element={<Cart />} />
+          <Route path='blogs/:slug' element={<Cart />} />
           <Route path='about-us' element={<OurStory />} />
           {user && <>
             <Route path='profile' element={<Profile />} />
@@ -70,6 +73,7 @@ const App = () => {
         <Route path='/admin' element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
           <Route path='create-product' element={<CreateProduct />} />
+          <Route path='blogs' element={<Blogs />} />
           <Route path='products' element={<AllProducts />} />
           <Route path='products/:slug' element={<AdminProductDetails />} />
           <Route path='orders' element={<AllOrders />} />

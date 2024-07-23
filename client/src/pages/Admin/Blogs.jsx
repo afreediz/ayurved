@@ -1,0 +1,66 @@
+import React, { useState } from 'react';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import axios from 'axios';
+
+const CkeditorComponent = () => {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [image, setImage] = useState(null);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    try{
+        const res = axios.post('/blogs', {title, content, image})
+    }catch(error){
+        console.log(error)
+    }
+  };
+
+  return (
+    <div>
+      <h2>Create a Blog Post</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Title:</label>
+          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
+        </div>
+        <div>
+          <label>Image:</label>
+          <input type="file" onChange={handleFileChange} required />
+        </div>
+        <div>
+          <label>Content:</label>
+          <CKEditor
+            editor={ClassicEditor}
+            data="<p>Write your content here...</p>"
+            onChange={(event, editor) => {
+              const data = editor.getData();
+              setContent(data);
+            }}
+          />
+        </div>
+        <button className='text-white bg-blue-500 py-2 px-4 my-2' type="submit">Save Post</button>
+      </form>
+    </div>
+  );
+};
+
+const Blogs = () => {
+  return (
+    <div>
+      <CkeditorComponent />
+    </div>
+  );
+};
+
+export default Blogs;
