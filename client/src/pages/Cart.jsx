@@ -5,6 +5,7 @@ import { useCart } from '../context/cart'
 import { toast } from 'react-toastify'
 import API from '../services/api'
 import Center from '../components/utilities/Center'
+import { Link } from 'react-router-dom'
 
 const Cart = () => {
   const {user} = useAuth()
@@ -65,7 +66,7 @@ const Cart = () => {
         </div>
         
         {/* Checkout Button */}
-        {!user && <p className="text-red-500 mb-4">Please login to checkout</p>}
+        {!user && <p className="text-red-500 mb-4">Please {<Link to={"/login"} className=' underline text-blue-500'>login</Link>} to checkout</p>}
         <button
           onClick={checkout}
           className={`w-full py-3 bg-green-500 text-white font-semibold rounded-md ${
