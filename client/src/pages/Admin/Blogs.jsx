@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import axios from 'axios';
 import API from '../../services/api';
 
 const CkeditorComponent = () => {
@@ -19,12 +18,11 @@ const CkeditorComponent = () => {
   };
 
   const handleSubmit = async(e) => {
-    console.log(title, content, image);
     e.preventDefault();
     try{
         const res = await API.post('/blogs', {title, content, image})
     }catch(error){
-        console.log(error)
+        console.log(error.data?.message)
     }
   };
 
@@ -38,14 +36,18 @@ const CkeditorComponent = () => {
         </div>
         <div>
           <label>Image:</label>
-          <input type="file" onChange={handleFileChange} required />
+          <input type="file" onChange={handleFileChange}  />
         </div>
         <div>
           <label>Content:</label>
           <CKEditor
             editor={ClassicEditor}
+            onInit={ editor => {
+              console.log( 'Editor is ready to use!', editor );
+            } }
             onChange={(event, editor) => {
               const data = editor.getData();
+              console.log("CHECK ", data)
               setContent(data);
             }}
           />
