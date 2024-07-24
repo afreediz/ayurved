@@ -89,7 +89,7 @@ const Dashboard = () => {
                 {/* <th className="hidden md:block px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">Index</th> */}
                 <th className=" hidden md:block px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">Order ID</th>
                 <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">User</th>
-                <th className="hidden md:block px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Products</th>
+                <th className="hidden md:block px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Product</th>
                 <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">Date</th>
                 <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">Payment Status</th>
               </tr>
@@ -101,13 +101,7 @@ const Dashboard = () => {
                 {/* <td className="hidden md:block px-4 py-4 whitespace-nowrap">{index+1}</td> */}
                 <td className=" hidden md:block px-4 py-4 whitespace-nowrap">{order._id}</td>
                 <td className="px-4 py-4 whitespace-nowrap">{order.user.name}</td>
-                <td className="hidden md:block px-6 py-4 whitespace-nowrap">{
-                  order.products.map((ordered_product_details)=>{
-                    return <div className="">
-                      <div className=' shadow-md p-2 rounded my-1'>{ordered_product_details.product ? ordered_product_details.product.name : "Product no longer available"} - {ordered_product_details.cart_quantity}</div>
-                    </div>
-                  })
-                }</td>
+                <td className="hidden md:block px-6 py-4 whitespace-nowrap">{order.product? order.product.name:"product no longer available"}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{format_date(order.createdAt)}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{order.payment}</td>
               </tr>

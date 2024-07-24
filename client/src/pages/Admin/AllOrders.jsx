@@ -65,13 +65,7 @@ const AllOrders = () => {
               <td className="px-6 py-4 whitespace-nowrap">{index+1}</td>
               <td className=" max-md:hidden px-6 py-4 whitespace-nowrap">{order._id}</td>
               <td className="px-6 py-4 whitespace-nowrap">{order.user.name}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{
-                order.products.map((ordered_product_details)=>{
-                  return <div className="">
-                    <div className='p-2 rounded my-1'>{ordered_product_details.product ? ordered_product_details.product.name : "Product no longer available"} - {ordered_product_details.cart_quantity}</div>
-                  </div>
-                })
-              }</td>
+              <td className="px-6 py-4 whitespace-nowrap">{order.product? order.product.name:"product no longer available"}</td>
               <td className="px-6 py-4 whitespace-nowrap">{format_date(order.createdAt)}</td>
               <td className="px-6 py-4 whitespace-nowrap">{order.payment}</td>
               <td className="px-6 py-4 whitespace-nowrap">
