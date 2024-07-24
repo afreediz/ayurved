@@ -27,6 +27,7 @@ import UserAllProducts from './pages/AllProducts'
 import SolutionProducts from './pages/SolutionProducts'
 import OurStory from './pages/OurStory'
 import Blogs from './pages/Admin/Blogs'
+import AdminBlogDetails from './pages/Admin/BlogDetails'
 import ReadBolgs from './pages/Blogs'
 import BlogDetails from './pages/BlogDetails'
 
@@ -76,6 +77,7 @@ const App = () => {
           <Route index element={<Dashboard />} />
           <Route path='create-product' element={<CreateProduct />} />
           <Route path='blogs' element={<Blogs />} />
+          <Route path='blogs/:slug' element={<AdminBlogDetails />} />
           <Route path='products' element={<AllProducts />} />
           <Route path='products/:slug' element={<AdminProductDetails />} />
           <Route path='orders' element={<AllOrders />} />
