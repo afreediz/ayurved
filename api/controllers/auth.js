@@ -12,7 +12,7 @@ const register = asyncErrorHandler(async(req, res)=>{
     if(!name || !email || !password || !phone ){
         throw new CustomError('Necessary details are not filled', 404)
     }
-
+    
     const isExist = await User.findOne({email})
     if(isExist) throw new CustomError('User already exists, Please Login or try with a different email address')
 

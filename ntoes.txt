@@ -8,3 +8,4 @@ cart page beautiful a little
 why - logos and content
 mobile no. login - important
 product details page make it beautiful with so many sections + related products - important
+logos
