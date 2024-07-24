@@ -14,7 +14,7 @@ const Why = () => {
   className="w-full text-white flex flex-col justify-center items-center p-10 my-10 relative z-[-1]"
 >
 <div className="absolute inset-0 bg-black opacity-50 z-[-1]"></div>
-      <h1 className=' pb-6'>Why NAVJEEVANA</h1>
+      <h1 className=' pb-6'>WHY NAVJEEVANA</h1>
       <div className="items flex justify-center gap-16 lg:gap-60 flex-wrap">
         <div className="item text-center">
             <img src="/images/why/fresh.webp" alt="" />

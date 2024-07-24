@@ -9,6 +9,7 @@ const ProductDetails = () => {
   const [product, setProduct] = useState()
   const [loading, setLoading] = useState(true)
   const context = useCart()
+  console.log(product);
   const { slug } = useParams()
   useEffect(()=>{
     async function getProduct(){
@@ -25,7 +26,7 @@ const ProductDetails = () => {
   },[])
   return (
     product?(
-<Center>
+<Center className=" my-10">
   <div className='grid grid-cols-1 md:grid-cols-6 gap-8 p-8 '>
     <div className="image col-span-2 flex justify-center items-center">
       <img src={product.image ? product.image :"https://via.placeholder.com/150"}  alt={product && product.name} className="max-w-full rounded-lg shadow-lg" />
@@ -53,6 +54,9 @@ const ProductDetails = () => {
       </div>
     </div>
   </div>
+  {product && <div className='text-xl' dangerouslySetInnerHTML={{ __html: product.associatedBlog.content }}></div>}
+  {/* <img src="/images/why/flowers.png" alt="" className=' absolute opacity-50 brightness-150 left-0 right-0 z-[-1] w-full' /> */}
+  <div className="absolute inset-0 bg-cover bg-center opacity-50 brightness-150 z-[-1]" style={{ backgroundImage: "url('/images/why/flowers.png')" }}></div>
   {loading && <Loader />}
 </Center>
     ):"No product found"

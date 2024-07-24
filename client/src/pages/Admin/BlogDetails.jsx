@@ -5,6 +5,7 @@ import Center from '../../components/utilities/Center';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { toast } from 'react-toastify';
+import { FaCopy } from 'react-icons/fa';
 
 const BlogDetails = () => {
     const { slug } = useParams();
@@ -60,8 +61,9 @@ const BlogDetails = () => {
             <div className="container mx-auto my-10">
                 <div className="flex justify-between items-center">
                     <h1>{blog && blog.title}</h1>
+                    <h3 className='flex gap-2 items-center'>Blog Id : {blog && blog._id} <FaCopy onClick={() => {navigator.clipboard.writeText(blog._id)}} /> </h3>
                     <div>
-                        <button
+                        <button 
                             onClick={() => { 
                                 setUpdateable(false)
                                 updateBlog()

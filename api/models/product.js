@@ -44,6 +44,11 @@ const productSchema = mongoose.Schema({
     highlighted:{
         type:Boolean,
         default:false
+    },
+    associatedBlog:{
+        type:mongoose.Types.ObjectId,
+        ref:'blogs',
+        required:false
     }
 }, {timstamps:true})
 
