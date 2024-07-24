@@ -47,7 +47,7 @@ const OurStory = () => {
         />
         <div className="absolute inset-0 bg-black bg-opacity-60  mx-auto text-center z-20 flex flex-col justify-center items-center">
             <h1 className="text-5xl font-bold mb-4 text-white">About Us</h1>
-            <p className="text-xl text-white">Discover the purity of our ghee and milk products, directly from the farm to your home.</p>
+            <p className="text-xl text-white">Welcome to Fortune Gate Biodynamic Farm. Since 2016, we’ve been committed to pure, organic milk through sustainable practices.</p>
         </div>
         </section>
                   {/* Introduction Section */}
