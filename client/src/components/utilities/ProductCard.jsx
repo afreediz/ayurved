@@ -5,7 +5,6 @@ import {toast} from 'react-toastify'
 import Center from './Center'
 
 const ProductCard = ({product}) => {
-  const context = useCart()
   return (
     <Link to={`/products/${product.slug}`}>
   <div key={product._id} className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col min-h-[450px] max-h-[450px]">

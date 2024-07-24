@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import ProductCard from '../components/utilities/ProductCard'
 import API from '../services/api'
-import FilterSidebar from '../components/utilities/FilterSidebar'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import {toast} from 'react-toastify'
 import Loader from '../components/Loader'
 
 const SearchProducts = () => {
     const [products, setProducts] = useState()
-    const [allProducts, setAllProducts] = useState()
     const {query} = useParams()
+    const [search, setSearch] = useState(query)
   const [loading, setLoading] = useState(true)
+  const navigate = useNavigate()
     
   useEffect(()=>{
     async function getSearchResults(){
+      if (!query) navigate('/allproducts')
+        setSearch(query)
         try{
           const {data} = await API.get(`products/search/${query}`)
-          setAllProducts(data.products)
           setProducts(data.products)
           setLoading(false)
         }catch(error){
@@ -26,20 +27,22 @@ const SearchProducts = () => {
     }
     getSearchResults()
   },[query])
+
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-      <div className="flex flex-col lg:flex-row lg:space-x-4">
-        <div className="sidebar lg:w-1/4 bg-white shadow-lg p-4 rounded-lg mb-4 lg:mb-0">
-          <FilterSidebar productHandler={setProducts} allProducts={allProducts} />
-        </div>
-        <div className="lg:w-3/4">
-          <h1 className="text-4xl font-bold text-gray-800 border-b-2 border-gray-300 inline-block pb-2 mb-4">All Products</h1>
+      <form className="form" onSubmit={(e)=>{
+        e.preventDefault()
+        if (!search) navigate('/allproducts')
+        navigate('/search/'+search)
+        }}>
+        <input type="text" placeholder='search here...' value={search} onChange={(e)=>setSearch(e.target.value)} className="input input-bordered input-primary outline-none w-full text-2xl p-3" />
+      </form>
+      <div className="">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-4">
             {products && products.length === 0 && <div className="text-gray-700 font-bold text-2xl">No products</div>}
             {products && products.map((product, index) => {
-              return <ProductCard data={product} key={index} />
+              return <ProductCard product={product} key={index} />
             })}
-          </div>
         </div>
       </div>
       {loading && <Loader />}

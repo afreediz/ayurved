@@ -61,7 +61,7 @@ const App = () => {
           <Route path='forget-password' element={<ForgetPassword />}/>
           <Route path='category/:slug' element={<CategoryProducts />} />
           <Route path='solutions/:slug' element={<SolutionProducts />} />
-          <Route path='search/:query' element={<SearchProducts />} />
+          <Route path='search/:query?' element={<SearchProducts />} />
           <Route path='cart' element={<Cart />} />
           <Route path='blogs' element={<ReadBolgs />} />
           <Route path='blogs/:slug' element={<BlogDetails />} />
