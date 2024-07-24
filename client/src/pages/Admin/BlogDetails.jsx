@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import API from '../../services/api';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Center from '../../components/utilities/Center';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { toast } from 'react-toastify';
 
 const BlogDetails = () => {
     const { slug } = useParams();
     const [blog, setBlog] = useState(null);
     const [old_image, setOldImage] = useState(null);
     const [updateable, setUpdateable] = useState(false);
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -36,17 +38,19 @@ const BlogDetails = () => {
     };
     const updateBlog = async () => {
         try {
-            const { data } = await API.put(`/blogs/${blog.slug}`, {...blog, old_image});
+            const { data } = await API.put(`/blogs/${blog._id}`, {...blog, old_image});
             setBlog(data.blog);
-            setUpdateable(false);
+            navigate(`/admin/blogs/${data.blog.slug}`);
+            toast.success("Blog Updated Successfully");
         } catch (error) {
             console.log(error);
         }
     }
     const deleteBlog = async () => {
         try {
-            const { data } = await API.delete(`/blogs/${blog.slug}`);
-            console.log(data);
+            const { data } = await API.delete(`/blogs/${blog._id}`);
+            toast.success("Blog Deleted Successfully");
+            navigate('/admin/blogs');
         } catch (error) {
             console.log(error);
         }
@@ -67,7 +71,7 @@ const BlogDetails = () => {
                         >
                             Update
                         </button>
-                        <button className='mr-4 px-4 py-2 bg-red-600 text-white rounded'>Delete</button>
+                        <button className='mr-4 px-4 py-2 bg-red-600 text-white rounded' onClick={deleteBlog}>Delete</button>
                     </div>
                 </div>
                 <div className="relative max-h-[60vh] overflow-hidden">

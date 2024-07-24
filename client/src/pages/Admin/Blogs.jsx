@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { FaRegWindowClose, FaWindowClose } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
 
-const CreateBlog = ({setActive}) => {
+const CreateBlog = ({setActive, setBlogs}) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
@@ -24,7 +24,9 @@ const CreateBlog = ({setActive}) => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     try{
-        const res = await API.post('/blogs', {title, content, image})
+        const {data} = await API.post('/blogs', {title, content, image})
+        setBlogs((prev) => [...prev, data.blog])
+        setActive(false)
     }catch(error){
         console.log(error.data?.message)
     }
@@ -61,15 +63,7 @@ const CreateBlog = ({setActive}) => {
   );
 };
 
-const ReadBlogs = ({setActive}) => {
-  const [blogs, setBlogs] = useState([])
-  useEffect(() => {
-      const fetchBlogs = async () => {
-        const { data } = await API.get('/blogs')
-        setBlogs(data.blogs)
-      }
-      fetchBlogs()
-  },[])
+const ReadBlogs = ({setActive, blogs, setBlogs}) => {
   return (
     <Center className='my-4'>
         <div className="flex justify-between items-center">
@@ -95,11 +89,19 @@ const ReadBlogs = ({setActive}) => {
 
 
 const Blogs = () => {
+  const [blogs, setBlogs] = useState([])
   const [active, setActive] = useState(false);
+  useEffect(() => {
+      const fetchBlogs = async () => {
+        const { data } = await API.get('/blogs')
+        setBlogs(data.blogs)
+      }
+      fetchBlogs()
+  },[])
   return (
     <div className='relative'>
-      <ReadBlogs setActive={setActive} />
-      {active && <CreateBlog setActive={setActive} />}
+      <ReadBlogs setActive={setActive} blogs={blogs} setBlogs={setBlogs} />
+      {active && <CreateBlog setActive={setActive} setBlogs={setBlogs} />}
     </div>
   );
 };

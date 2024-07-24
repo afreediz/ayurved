@@ -41,9 +41,14 @@ const getAllBlogs = asyncErrorHandler(async (req, res) => {
 })
 
 const updateBlog = asyncErrorHandler(async (req, res) => {
-    const {image, title, content} = req.body
+    const {image, title, content, old_image} = req.body
+    result = image
+    if(image !== old_image){
+        await deleteImage(old_image)
+        result = await uploadImage(image)
+    }
 
-    const blog = await Blog.findByIdAndUpdate(req.params.id, {$set:{ image, title, content}}, {
+    const blog = await Blog.findByIdAndUpdate(req.params.id, {$set:{ image:result.url, title, slug:slugify(title), content}}, {
         new: true,
         runValidators: true
     })
