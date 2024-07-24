@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react';
 import API from '../services/api';
 import { useParams } from 'react-router-dom';
 import Center from '../components/utilities/Center';
+import Loader from '../components/Loader';
 
 const BlogDetails = () => {
     const {slug} = useParams()
     const [blog, setBlog] = useState(null);
+    const [loading, setLoading] = useState(true);
   useEffect(() => {
     try{
         const fetchPosts = async () => {
           const { data } = await API.get(`/blogs/${slug}`)
           console.log(data);
           setBlog(data.blog);
+          setLoading(false);
         }
         fetchPosts();
     }
@@ -27,6 +30,7 @@ const BlogDetails = () => {
             {blog &&  <img src={blog.image} className='w-full object-contain max-h-[60vh]' alt={blog.title} />}
             {blog && <div dangerouslySetInnerHTML={{ __html: blog.content }}></div>}
         </div>
+        {loading && <Loader />}
     </Center>
   );
 };

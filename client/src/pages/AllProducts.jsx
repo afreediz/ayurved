@@ -3,17 +3,18 @@ import Center from '../components/utilities/Center'
 import API from '../services/api'
 import { toast } from 'react-toastify'
 import ProductCard from '../components/utilities/ProductCard'
+import Loader from '../components/Loader'
 
 const AllProducts = () => {
     const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
     console.log(products);
     useEffect(()=>{
         async function getProducts(){
         try{
             const {data} = await API.get(`products/list/${1}`)
-            setProducts([
-            ...data.products
-            ])
+            setProducts(data.products)
+            setLoading(false)
         }catch(error){
             toast.error(error.response?.data.message)
             console.log(error)
@@ -30,6 +31,7 @@ const AllProducts = () => {
           <ProductCard product={product} key={index} />
         ))}
       </div>
+      {loading && <Loader />}
     </Center>
   )
 }

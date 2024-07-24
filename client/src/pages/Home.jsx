@@ -11,19 +11,6 @@ import ShopBySolution from '../components/user/ShopBySolution'
 import CustomerReview from '../components/user/CustomerReview'
 import ExploreMoreProducts from '../components/user/ExploreMoreProducts'
 const Home = () => {
-  const [products, setProducts] = useState([])
-  useEffect(()=>{
-    async function getProducts(){
-      try{
-        const {data} = await API.get(`products/list/${1}`)
-        setProducts(data.products)
-      }catch(error){
-        toast.error(error.response?.data.message)
-        console.log(error)
-      }
-    }
-    getProducts()
-  },[])
   return (
     <div className="w-full relative">
       <img src="/images/why/flowers.png" alt="" className=' absolute opacity-50 brightness-150 left-0 right-0 z-[-1]' />

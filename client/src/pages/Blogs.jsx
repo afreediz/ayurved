@@ -3,13 +3,17 @@ import Center from '../components/utilities/Center'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import API from '../services/api'
+import Loader from '../components/Loader'
 
 const Blogs = () => {
     const [blogs, setBlogs] = useState([])
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         const fetchBlogs = async () => {
           const { data } = await API.get('/blogs')
           setBlogs(data.blogs)
+          setLoading(false)
         }
         fetchBlogs()
     },[])
@@ -29,6 +33,7 @@ const Blogs = () => {
       </Link>
       ))}
     </div>
+    {loading && <Loader />}
     </Center>
   )
 }
