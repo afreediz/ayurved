@@ -4,17 +4,21 @@ import API from '../services/api'
 import { useParams } from 'react-router-dom'
 import {toast} from 'react-toastify'
 import Center from '../components/utilities/Center'
+import Loader from '../components/Loader'
 
 const CategoryProducts = () => {
   const [products, setProducts] = useState()
   const {slug} = useParams()
   const [page, setPage] = useState(1)
+  const [loading, setLoading] = useState(true)
+
   useEffect(()=>{
     async function getProducts(){
       try{
         const {data} = await API.get(`products/category/${slug}/${page}`)
         const res = await API.get(`products/category/${slug}/count`)
         setProducts(data.products)
+        setLoading(false)
       }catch(error){
         toast.error(error.response?.data.message)
         console.log(error)
@@ -62,6 +66,7 @@ const CategoryProducts = () => {
         </button>
       )}
       </div>
+      {loading && <Loader />}
     </Center>
   );  
 }

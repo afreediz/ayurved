@@ -4,16 +4,18 @@ import API from '../services/api'
 import { toast } from 'react-toastify'
 import Center from '../components/utilities/Center'
 import { Link, useLocation } from 'react-router-dom'
+import Loader from '../components/Loader'
 
 const Orders = () => {
   const location = useLocation()
-  console.log(location.pathname);
   const [orders, setOrders] = useState()
+  const [loading, setLoading] = useState(true)
   useEffect(()=>{
     async function getOrders(){
       try{
         const {data} = await API.get("orders/")
         setOrders(data.orders)
+        setLoading(false)
       }catch(error){
         toast.error(error.response?.data.message)
         console.log(error)
@@ -21,21 +23,6 @@ const Orders = () => {
     }
     getOrders()
   },[])
-  const cancelOrder = async(id) => {
-    try{
-      const {data} = await API.put(`orders/cancel/${id}`)
-      setOrders(orders.filter((order)=>{
-        if(order._id == id){
-          order.status = "Canceled"
-        }
-        return order
-      }))
-      toast.success(data.message)
-    }catch(error){
-      toast.error(error.response?.data.message)
-      console.log(error)
-    }
-  }
   const format_date = (date)=> {
     const day = new Date(date).getDate()
     const month = new Date(date).getMonth()
@@ -98,6 +85,7 @@ const Orders = () => {
         ))}
         {orders && orders.length == 0 ?<div className='text-3xl text-center'>No Orders Found</div>:""}
       </div>
+      {loading && <Loader />}
     </Center>
   );
 }

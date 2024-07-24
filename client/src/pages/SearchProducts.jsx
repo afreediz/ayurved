@@ -4,17 +4,21 @@ import API from '../services/api'
 import FilterSidebar from '../components/utilities/FilterSidebar'
 import { useParams } from 'react-router-dom'
 import {toast} from 'react-toastify'
+import Loader from '../components/Loader'
 
 const SearchProducts = () => {
     const [products, setProducts] = useState()
     const [allProducts, setAllProducts] = useState()
     const {query} = useParams()
+  const [loading, setLoading] = useState(true)
+    
   useEffect(()=>{
     async function getSearchResults(){
         try{
           const {data} = await API.get(`products/search/${query}`)
           setAllProducts(data.products)
           setProducts(data.products)
+          setLoading(false)
         }catch(error){
           toast.error(error.response?.data.message)
           console.log(error)
@@ -38,6 +42,7 @@ const SearchProducts = () => {
           </div>
         </div>
       </div>
+      {loading && <Loader />}
     </div>
   );
   

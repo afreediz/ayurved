@@ -4,6 +4,7 @@ import { toast } from 'react-toastify'
 import API from '../services/api'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Center from '../components/utilities/Center'
+import Loader from '../components/Loader'
 
 const Profile = () => {
   const location = useLocation()
@@ -12,15 +13,14 @@ const Profile = () => {
   const [updated, setUpdated] = useState(false)
   const navigate = useNavigate()
   const {setUser} = useContext(userContext)
+  const [loading, setLoading] = useState(true)
+  
   useEffect(()=>{
     async function getData(){
       try{
-        const response = await API.get('users/profile',{
-          headers:{
-            "Authorization":localStorage.getItem("token")
-          }
-        })
+        const response = await API.get('users/profile')
         setData(response.data.user)
+        setLoading(false)
       }catch(error){
         toast.error(error.response?.data.message)
         console.log(error)
@@ -106,6 +106,7 @@ const Profile = () => {
           </button>
         </div>
       </div>}
+      {loading && <Loader />}
     </Center>
   );
 }

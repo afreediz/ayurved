@@ -4,8 +4,10 @@ import API from '../services/api'
 import {cartOperations, useCart} from '../context/cart'
 import {toast} from 'react-toastify'
 import Center from '../components/utilities/Center'
+import Loader from '../components/Loader'
 const ProductDetails = () => {
   const [product, setProduct] = useState()
+  const [loading, setLoading] = useState(true)
   const context = useCart()
   const { slug } = useParams()
   useEffect(()=>{
@@ -13,6 +15,7 @@ const ProductDetails = () => {
       try{
         const {data} = await API.get(`products/${slug}`)
         setProduct(data.product)
+        setLoading(false)
       }catch(error){
         toast.error(error.response?.data.message)
         console.log(error)
@@ -50,6 +53,7 @@ const ProductDetails = () => {
       </div>
     </div>
   </div>
+  {loading && <Loader />}
 </Center>
     ):"No product found"
   );
