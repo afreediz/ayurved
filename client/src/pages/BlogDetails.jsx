@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import API from '../services/api';
 import { useParams } from 'react-router-dom';
+import Center from '../components/utilities/Center';
 
 const BlogDetails = () => {
     const {slug} = useParams()
@@ -20,13 +21,13 @@ const BlogDetails = () => {
   }, []);
 
   return (
-    <div>
+    <Center>
         <div className="container mx-auto my-10">
           <h1>{blog && blog.title}</h1>
-            {blog &&  <img src={blog.image} className='w-full object-cover max-h-[60vh]' alt={blog.title} />}
+            {blog &&  <img src={blog.image} className='w-full object-contain max-h-[60vh]' alt={blog.title} />}
             {blog && <div dangerouslySetInnerHTML={{ __html: blog.content }}></div>}
         </div>
-    </div>
+    </Center>
   );
 };
 

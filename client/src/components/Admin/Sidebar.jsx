@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { FaTachometerAlt, FaShoppingCart, FaUsers, FaBox, FaTags } from 'react-icons/fa';
+import { FaTachometerAlt, FaShoppingCart, FaUsers, FaBox, FaTags, FaReadme, FaBook } from 'react-icons/fa';
 
 const Sidebar = () => {
   const location = useLocation();
@@ -27,6 +27,10 @@ const Sidebar = () => {
         <Link to="/admin/categories" className={`flex items-center md:p-1 lg:p-2 rounded-lg transition-colors ${location.pathname === '/admin/categories' ? 'bg-slate-300' : 'hover:bg-gray-200'}`}>
           <FaTags className='md:mr-3 ' />
           <li className=' max-lg:hidden'>Categories</li>
+        </Link>
+        <Link to="/admin/blogs" className={`flex items-center md:p-1 lg:p-2 rounded-lg transition-colors ${location.pathname === '/admin/blogs' ? 'bg-slate-300' : 'hover:bg-gray-200'}`}>
+          <FaBook className='md:mr-3 ' />
+          <li className=' max-lg:hidden'>Blogs</li>
         </Link>
       </ul>
     </div>

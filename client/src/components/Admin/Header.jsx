@@ -40,6 +40,7 @@ const Header = () => {
             <Link to={"/admin/users"} className='inline-block py-4 px-10 bg-slate-900 rounded' >Users</Link>
             <Link to={"/admin/products"} className='inline-block py-4 px-10 bg-slate-900 rounded' >Products</Link>
             <Link to={"/admin/categories"} className='inline-block py-4 px-10 bg-slate-900 rounded' >Categories</Link>
+            <Link to={"/admin/blogs"} className='inline-block py-4 px-10 bg-slate-900 rounded' >Blogs</Link>
           </div>
         </div>
       )}
