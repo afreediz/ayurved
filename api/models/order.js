@@ -5,18 +5,16 @@ const orderSchema = mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:'users'
     },
-    products:[{
-        product: {
-            type:mongoose.Types.ObjectId,
-            ref:'products',
-            required:true
-        },
-        cart_quantity:{
-            type:Number,
-            reqired:true,
-            min:[1, "Product quantity can't be less than 1"]
-        }
-    }],
+    product: {
+        type:mongoose.Types.ObjectId,
+        ref:'products',
+        required:true
+    },
+    cart_quantity:{
+        type:Number,
+        reqired:true,
+        min:[1, "Product quantity can't be less than 1"]
+    },
     payment:{
         type:String,
         default:"Not paid",

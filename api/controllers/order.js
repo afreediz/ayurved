@@ -23,7 +23,11 @@ const createOrder = asyncErrorHandler(async(req, res)=>{
         product.quantity -= p.cart_quantity
         await product.save()
     }
-    await Order.create({user:req.user._id,products:cart})
+
+    for (let p of cart){
+        await Order.create({user:req.user._id,product:p.product, cart_quantity:p.cart_quantity})
+    }
+
     res.status(200).json({success:true, message:"Order placed successfully"})
 })
 
@@ -36,7 +40,7 @@ const deleteOrder = asyncErrorHandler(async(req, res)=>{
 const userOrders = asyncErrorHandler(async(req, res)=>{
     const user = req.user._id
     const orders = await Order.find({user}).populate({
-        path:'products.product',
+        path:'product',
         select:'name shortdesc price image'
     }).sort({createdAt:-1})
     res.status(200).json({success:true, message:"Orders", orders:orders})
@@ -44,7 +48,7 @@ const userOrders = asyncErrorHandler(async(req, res)=>{
 
 const allOrders = asyncErrorHandler(async(req, res)=>{
     const orders = await Order.find({}).populate({
-        path:'products.product user',
+        path:'product user',
         select:'name shortdesc price'
     }).sort({createdAt:-1})
     res.status(200).json({success:true, message:"All orders",orders:orders})
@@ -75,7 +79,7 @@ const orderStatus = asyncErrorHandler(async(req, res)=>{
 const dashboardDetails = asyncErrorHandler(async(req, res)=>{
     const orders_count = await Order.estimatedDocumentCount()
     const recent_orders = await Order.find({}).populate({
-        path:'products.product user',
+        path:'product user',
         select:'name shortdesc price'
     }).limit(6).sort({createdAt:-1})
     const orders = await Order.aggregate([

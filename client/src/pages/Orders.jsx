@@ -10,6 +10,7 @@ const Orders = () => {
   const location = useLocation()
   const [orders, setOrders] = useState()
   const [loading, setLoading] = useState(true)
+  console.log(orders);
   useEffect(()=>{
     async function getOrders(){
       try{
@@ -73,15 +74,13 @@ const Orders = () => {
       </div>
       <div className="mt-8 space-y-4">
         {orders && orders.map((order, index) => (
-          order.products.map((product_data, idx) => (
             <OrdersCard
-              key={idx}
-              product={product_data.product}
-              quantity={product_data.cart_quantity}
+              key={index}
+              product={order.product}
+              quantity={order.cart_quantity}
               order_id={order._id}
               order_date={format_date(order.createdAt)}
             />
-          ))
         ))}
         {orders && orders.length == 0 ?<div className='text-3xl text-center'>No Orders Found</div>:""}
       </div>

@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'
 const Cart = () => {
   const {user} = useAuth()
   const {cart, setCart} = useCart();
+  console.log(cart);
   const shipping_charge = 500
   const totalPrice = ()=> {
     let total = 0;
