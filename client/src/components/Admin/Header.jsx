@@ -41,6 +41,9 @@ const Header = () => {
             <Link to={"/admin/products"} className='inline-block py-4 px-10 bg-slate-900 rounded' >Products</Link>
             <Link to={"/admin/categories"} className='inline-block py-4 px-10 bg-slate-900 rounded' >Categories</Link>
             <Link to={"/admin/blogs"} className='inline-block py-4 px-10 bg-slate-900 rounded' >Blogs</Link>
+            <button onClick={logout} className='py-2 px-3 bg-red-600 text-white font-normal rounded focus:outline-none focus:ring-2 focus:ring-red-500'>
+              Logout
+            </button>
           </div>
         </div>
       )}

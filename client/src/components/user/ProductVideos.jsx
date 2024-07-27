@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const VideoCard = ({ videoSrc, title, price }) => {
     return (
@@ -17,7 +18,7 @@ const VideoCard = ({ videoSrc, title, price }) => {
         <div className="p-4">
           <h3 className="text-lg font-semibold">{title}</h3>
           <p className="text-gray-600">Starting from ₹{price}</p>
-          <button className="mt-2 w-full bg-green-700 text-white py-2 rounded">Shop Now</button>
+          <Link to={`/allproducts`}><button className="mt-2 w-full bg-green-700 text-white py-2 rounded">Shop Now</button></Link>
         </div>
       </div>
     );

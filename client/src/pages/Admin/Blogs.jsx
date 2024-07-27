@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import API from '../../services/api';
 import Center from '../../components/utilities/Center';
 import { Link } from 'react-router-dom';
@@ -47,17 +45,11 @@ const CreateBlog = ({setActive, setBlogs}) => {
           <label>Image:</label>
           <input type="file" onChange={handleFileChange}  />
         </div>
-        <div>
+        <div className='flex flex-col'>
           <label>Content:</label>
-          <CKEditor
-            editor={ClassicEditor}
-            onChange={(event, editor) => {
-              const data = editor.getData();
-              setContent(data);
-            }}
-          />
+          <textarea className='w-full border' rows={10} cols={50} value={content} onChange={(e) => setContent(e.target.value)} required />
         </div>
-        <button className='text-white bg-blue-500 py-2 px-4 my-2' type="submit">Save Post</button>
+        <button className='text-white bg-blue-500 py-2 px-4 my-2' onClick={()=>{alert("Started uploading")}} type="submit">Save Post</button>
       </form>
     </div>
   );

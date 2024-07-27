@@ -31,7 +31,8 @@ li{
 }
 
 body{
-    @apply bg-slate-100
+    @apply bg-slate-100;
+    font-family: Arial, sans-serif;
 }
 
 input[type="number"]::-webkit-inner-spin-button,

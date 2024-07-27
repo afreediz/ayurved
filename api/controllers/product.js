@@ -30,7 +30,7 @@ const highlightedProducts = asyncErrorHandler(async(req, res)=>{
 })
 const getProduct = asyncErrorHandler(async(req, res)=>{
     const slug = req.params.slug
-    const product = await Product.findOne({slug}).populate('category').populate('solutions').populate('associatedBlog').select('-associatedBlog.image');
+    const product = await Product.findOne({slug}).populate('category').populate('solutions');
     res.status(200).json({
         success:true,
         message:"Product",
@@ -57,13 +57,13 @@ const createProduct = asyncErrorHandler(async(req, res)=>{
 })
 const updateProduct = asyncErrorHandler(async(req, res)=>{
     const id = req.params.id
-    const { name, description, price, category, quantity, image, old_image, shortdesc, solutions, highlighted, associatedBlog } = req.body
+    const { name, description, price, category, quantity, image, old_image, shortdesc, solutions, highlighted, contents } = req.body
     var result = image
     if(image !== old_image){ 
         await deleteImage(old_image)
         result = await uploadImage(image)
     }
-    const product = await Product.findByIdAndUpdate(id, {$set:{name, slug:slugify(name), shortdesc,description, price, category, quantity, image:result.url, solutions, highlighted, associatedBlog}}, {runValidators:true, new:true})
+    const product = await Product.findByIdAndUpdate(id, {$set:{name, slug:slugify(name), shortdesc,description, price, category, quantity, image:result.url, solutions, highlighted, contents}}, {runValidators:true, new:true})
 
     res.status(200).json({
         success:true,

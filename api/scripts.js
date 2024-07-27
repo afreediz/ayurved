@@ -6,7 +6,7 @@ const connection = require('./config/connection')
 const Products = require('./models/product')
 
 Products.updateMany({},{
-    $set: {highlighted:true}
+    $unset: {associatedBlog:""}
 }, {runValidators:true}).then(()=>{
     console.log('done');
 })

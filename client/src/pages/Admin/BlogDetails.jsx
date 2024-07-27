@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import API from '../../services/api';
 import { useNavigate, useParams } from 'react-router-dom';
 import Center from '../../components/utilities/Center';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { toast } from 'react-toastify';
 import { FaCopy } from 'react-icons/fa';
 
@@ -61,15 +59,13 @@ const BlogDetails = () => {
             <div className="container mx-auto my-10">
                 <div className="flex justify-between items-center">
                     <h1>{blog && blog.title}</h1>
-                    <h3 className='flex gap-2 items-center'>Blog Id : {blog && blog._id} <FaCopy onClick={() => {navigator.clipboard.writeText(blog._id)}} /> </h3>
+                    <h3 className='flex gap-2 items-center'>Blog Id : {blog && blog._id} <FaCopy className='hover:text-blue-500' onClick={() => {navigator.clipboard.writeText(blog._id)}} /> </h3>
                     <div>
                         <button 
                             onClick={() => { 
-                                setUpdateable(false)
                                 updateBlog()
                              }}
-                            disabled={!updateable}
-                            className={`mr-4 px-4 py-2 ${updateable ? "bg-blue-600" : "bg-gray-600 cursor-not-allowed"} text-white rounded`}
+                            className={`mr-4 px-4 py-2 bg-blue-600 text-white rounded`}
                         >
                             Update
                         </button>
@@ -97,7 +93,7 @@ const BlogDetails = () => {
                         className="rounded-lg shadow-lg w-full max-h-[60vh] object-contain"
                     />
                 </div>
-                <div>
+                <div className='flex flex-col'>
                     <label>Title:</label>
                     <input
                         type="text"
@@ -106,9 +102,9 @@ const BlogDetails = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className='flex flex-col'>
                     <label>Content:</label>
-                    <CKEditor
+                    {/* <CKEditor
                         editor={ClassicEditor}
                         data={blog?.content}
                         onChange={(event, editor) => {
@@ -117,6 +113,12 @@ const BlogDetails = () => {
                             setUpdateable(true);
                             setBlog((prev) => ({ ...prev, content: data }));
                         }}
+                    /> */}
+                    <textarea
+                        className='w-full h-96'
+                        value={blog?.content}
+                        onChange={(e) => setBlog((prev) => ({ ...prev, content: e.target.value }))}
+                        required
                     />
                 </div>
             </div>

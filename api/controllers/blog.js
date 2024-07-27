@@ -33,7 +33,6 @@ const getBlog = asyncErrorHandler(async (req, res) => {
 
 const getAllBlogs = asyncErrorHandler(async (req, res) => {
     const blogs = await Blog.find({})
-    console.log(blogs)
     res.status(200).json({
         success: true,
         blogs

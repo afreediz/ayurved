@@ -12,6 +12,7 @@ const ProductDetails = () => {
   console.log(product);
   const { slug } = useParams()
   useEffect(()=>{
+    window.scrollTo(0, 0)
     async function getProduct(){
       try{
         const {data} = await API.get(`products/${slug}`)
@@ -35,12 +36,13 @@ const ProductDetails = () => {
       <h2 className="text-4xl font-bold mb-4">{product && product.name}</h2>
       <h3 className="text-2xl font-semibold mb-4">${product && product.price}</h3>
       {product && product.quantity > 0 ?<h3 className="text-xl mb-4">In stocks :  {product.quantity}  </h3>:
-      <span className='text-red-500'>Out of Stocks</span>}
+      <span className='text-red-500 text-2xl'>Out of Stocks</span>}
       <p className="text-lg mb-8">{product && product.description}</p>
       <div className="button-container flex gap-4">
-        <button className='py-2 px-4 bg-blue-500 font-medium rounded-lg hover:bg-blue-600 transition duration-300'>Buy Now</button>
+        <button className='py-2 px-4 bg-blue-500 font-medium rounded-lg hover:bg-blue-600 transition duration-300 text-white'>Buy Now</button>
         <button 
-          className='py-2 px-4 bg-green-500 font-medium rounded-lg hover:bg-green-600 transition duration-300'
+          disabled={product.quantity === 0}
+          className={`py-2 px-4 ${product.quantity === 0 ? 'bg-gray-500 cursor-not-allowed' : 'bg-green-500 cursor-pointer'}  font-medium rounded-lg transition duration-300 text-white`}
           onClick={() => {
             cartOperations.addToCart(
               { _id: product._id, name: product.name, price: product.price, shortdesc: product.shortdesc, image: product.image },
@@ -54,7 +56,7 @@ const ProductDetails = () => {
       </div>
     </div>
   </div>
-  {product && <div className='text-xl' dangerouslySetInnerHTML={{ __html: product.associatedBlog.content }}></div>}
+  {product && <div className='text-xl' dangerouslySetInnerHTML={{ __html: product.associatedBlog?.content }}></div>}
   {/* <img src="/images/why/flowers.png" alt="" className=' absolute opacity-50 brightness-150 left-0 right-0 z-[-1] w-full' /> */}
   <div className="absolute inset-0 bg-cover bg-center opacity-50 brightness-150 z-[-1]" style={{ backgroundImage: "url('/images/why/flowers.png')" }}></div>
   {loading && <Loader />}

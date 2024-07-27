@@ -47,6 +47,9 @@ const ProductTable = () => {
                 <th scope="col" className="px-6 py-4 text-left text-xs font-medium uppercase tracking-wider">
                   Index
                 </th>
+                <th scope="col" className=" hidden md:table-cell px-6 py-4 text-left text-xs font-medium uppercase tracking-wider">
+                  Product Id
+                </th>
                 <th scope="col" className="px-6 py-4 text-left text-xs font-medium uppercase tracking-wider">
                   Name
                 </th>
@@ -68,6 +71,7 @@ const ProductTable = () => {
               {products.map((product, index) => (
                 <tr key={index} className="">
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">{index+1}</td>
+                  <td className="hidden md:table-cell px-6 py-4 whitespace-nowrap text-sm font-medium">{product._id}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{product.name}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{product.quantity}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{product.price}</td>
