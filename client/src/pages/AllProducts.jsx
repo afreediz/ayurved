@@ -11,7 +11,6 @@ const AllProducts = () => {
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
     const [query, setQuery ] = useState("")
-    console.log(products);
     useEffect(()=>{
         async function getProducts(){
         try{
@@ -32,7 +31,7 @@ const AllProducts = () => {
         console.log('query', query);
         navigate('/search/'+query)
         }}>
-        <input type="text" placeholder='search here...' onChange={(e)=>setQuery(e.target.value)} className="input input-bordered input-primary outline-none w-full text-2xl p-3" />
+        <input type="text" placeholder='search ' onChange={(e)=>setQuery(e.target.value)} className="border-none outline outline-slate-200 rounded w-full text-2xl p-3" />
       </form>
       <h1>All Products</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-4">

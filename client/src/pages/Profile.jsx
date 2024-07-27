@@ -65,7 +65,7 @@ const Profile = () => {
   }
   return (
     <Center className='my-10 relative'>
-      <div className="md:hidden mt-10 w-full flex justify-around text-xl border border-gray-800 relative">
+      <div className="md:hidden mt-10 w-full flex justify-around rounded text-xl border border-gray-800 relative">
         <Link to={'/profile'}><span className="py-2 text-gray-800">Profile</span></Link>
         <span className="border-l-2 border-gray-800 h-full absolute left-1/2 transform -translate-x-1/2"></span>
         <Link to={'/orders'}><span className="py-2 text-gray-400">Orders</span></Link>
