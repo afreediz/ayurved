@@ -5,11 +5,16 @@ import {cartOperations, useCart} from '../context/cart'
 import {toast} from 'react-toastify'
 import Center from '../components/utilities/Center'
 import Loader from '../components/Loader'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import ProductCard from '../components/utilities/ProductCard'
+import { Link,  } from 'react-router-dom'
+import { Navigation, Autoplay } from 'swiper/modules';
+
 const ProductDetails = () => {
   const [product, setProduct] = useState()
+  const [relatedProd, setRelatedProd] = useState()
   const [loading, setLoading] = useState(true)
   const context = useCart()
-  console.log(product);
   const { slug } = useParams()
   useEffect(()=>{
     window.scrollTo(0, 0)
@@ -17,6 +22,9 @@ const ProductDetails = () => {
       try{
         const {data} = await API.get(`products/${slug}`)
         setProduct(data.product)
+        const d = await API.get(`products/related-products/${data.product._id}/${data.product.category._id}`)
+        console.log(d);
+        setRelatedProd(d.data.products)
         setLoading(false)
       }catch(error){
         toast.error(error.response?.data.message)
@@ -56,7 +64,39 @@ const ProductDetails = () => {
       </div>
     </div>
   </div>
-  {product && <div className='text-xl' dangerouslySetInnerHTML={{ __html: product.associatedBlog?.content }}></div>}
+  {product && <div className='text-xl' dangerouslySetInnerHTML={{ __html: product.contents }}></div>}
+  {relatedProd?.length > 0 &&  <Center>
+    <div className=" py-10">
+      <div className="flex justify-between items-center px-4 md:px-10 lg:px-20">
+        <h2 className="text-3xl font-bold">Explore More Products</h2>
+        <Link to={"/allproducts"} className="text-green-600 hover:text-green-800">View All</Link>
+      </div>
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={20}
+        navigation
+        breakpoints={{
+          640: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+        }}
+        modules={[Navigation, Autoplay]}
+        className="mySwiper px-4 md:px-10 lg:px-20 mt-8"
+      >
+        {relatedProd && relatedProd.map((product,index) => (
+          <SwiperSlide key={index}>
+            <ProductCard product={product} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+    </Center>}
   {/* <img src="/images/why/flowers.png" alt="" className=' absolute opacity-50 brightness-150 left-0 right-0 z-[-1] w-full' /> */}
   <div className="absolute inset-0 bg-cover bg-center opacity-50 brightness-150 z-[-1]" style={{ backgroundImage: "url('/images/why/flowers.png')" }}></div>
   {loading && <Loader />}

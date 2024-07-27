@@ -94,6 +94,7 @@ const filterProducts = asyncErrorHandler(async(req, res)=>{
         products
     })
 })
+
 const getProductCount = asyncErrorHandler(async(req, res)=>{
     const total = await Product.find({}).estimatedDocumentCount()
     res.status(200).json({
@@ -132,9 +133,8 @@ const productSearch = asyncErrorHandler(async(req, res)=>{
     })
 })
 const productsRelated = asyncErrorHandler(async(req, res)=>{
-    const { pid, cid, sid } = req.params
+    const { pid, cid } = req.params
     const products = await Product.find({
-        solutions:{"$in":[sid]},
         category:cid,
         _id:{$ne:pid}
     }).limit(5)
