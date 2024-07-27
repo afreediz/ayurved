@@ -96,6 +96,10 @@ const Cart = () => {
         {cart?.map((product, index) => (
           <CartCard key={index} product={product} />
         ))}
+        {cart.length == 0 && <div className="font-semibold flex flex-col items-center justify-center">
+            <span className='text-xl'>Cart is empty</span>
+            <Link to="/allproducts" className="text text-blue-500">Shop Now</Link>
+          </div>}
       </div>
     </div>
     </Center>

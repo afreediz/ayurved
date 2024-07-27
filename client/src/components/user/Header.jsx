@@ -103,10 +103,13 @@ const Navbar = () => {
                 }
               </div>
               <Link to={"/cart"}>
-                <FaShoppingBag className='text-2xl' />
+              <div className=" relative">
+                <FaShoppingBag className='text-3xl' />
+                {cart?.length > 0 && <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-red-500 text-white text-center font-semibold">{cart?.length}</div>}
+              </div>
               </Link>
             </div>
-            <button onClick={toggleMenu} className="text-gray-600 hover:text-green-800 md:hidden">
+            <button onClick={toggleMenu} className="text-gray-600 text-2xl hover:text-green-800 md:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h18M3 12h18m-9 9h9" />
               </svg>
