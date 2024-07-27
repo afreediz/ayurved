@@ -42,35 +42,45 @@ const Cart = () => {
   }
   return (
     <Center>
-    <div className='grid grid-cols-1 gap-8 md:grid-cols-8 md:gap-8'>
+    <div className='grid grid-cols-1 gap-4 md:grid-cols-8 md:gap-4'>
       {/* Summary Section (For Mobile View) */}
       <div className="summary md:col-span-3 md:bg-gray-100 md:p-6 md:rounded-lg md:order-2">
-        <h1 className="text-3xl font-semibold mb-4">Cart Summary</h1>
-        <h2 className="text-lg mb-2">No. of Products: {cart?.length}</h2>
+        <h1 className="text-2xl font-semibold">Cart Summary</h1>
+        <h2 className="text-lg opacity-50">{cart?.length} products in cart.</h2>
         
         {/* Individual Costs */}
-        <div className="costs mb-4">
-          <h2 className="text-lg mb-2">Individual Costs</h2>
+        <div className="costs mb-2">
           <div className="individual-costs">
             {cart?.map((product, index) => (
-              <div key={index} className="flex justify-between mb-1">
-                <span>{product.name} * {product.cart_quantity}: ${product.price * product.cart_quantity}</span>
+              <div key={index} className="mb-4 flex flex-col gap-1">
+                <div className="flex justify-between">
+                  <span>{product.name}</span>
+                  <span>${product.price}</span>
+                </div>
+                <div className="flex justify-between border-b border-black">
+                  <span>quantity :</span>
+                  <span>{product.cart_quantity}</span>
+                </div>
+                <div className=" flex justify-between">
+                  <span>subtotal :</span>
+                  <span className=' font-semibold'>${product.price * product.cart_quantity}</span>
+                </div>
               </div>
             ))}
           </div>
-          
-          {/* Shipping Charge */}
-          <h3 className="text-lg mb-2">Shipping Charge: ${cart.length > 0 ? shipping_charge : 0}</h3>
-          
+                    
           {/* Grand Total */}
-          <h2 className="text-lg mb-2">Grand Total: {cart.length > 0 ? totalPrice() : 0}</h2>
+          <div className="text-xl mb-2 flex justify-between">
+            <span>Grand total Price: </span>
+            <span className='text-2xl font-bold'>{cart.length > 0 ? totalPrice() : 0}</span>
+          </div>
         </div>
         
         {/* Checkout Button */}
         {!user && <p className="text-red-500 mb-4">Please {<Link to={"/login"} className=' underline text-blue-500'>login</Link>} to checkout</p>}
         <button
           onClick={checkout}
-          className={`w-full py-3 bg-green-500 text-white font-semibold rounded-md ${
+          className={`w-full py-3 bg-green-500 hover:bg-green-700 transition-all text-white font-semibold rounded-md ${
             !user || cart.length === 0 ? 'opacity-50 cursor-not-allowed' : ''
           }`}
           disabled={!user || cart.length === 0}

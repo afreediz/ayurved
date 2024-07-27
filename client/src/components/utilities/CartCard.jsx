@@ -5,7 +5,7 @@ import {toast} from 'react-toastify'
 const CartCard = ({product}) => {
   const context = useCart()
   return (
-    <div className='grid grid-cols-5 m-8 p-4 gap-4 rounded-lg border border-gray-300 shadow-md'>
+    <div className='grid grid-cols-5 m-8 p-4 gap-4 rounded-lg border border-gray-300 shadow-md bg-white'>
       {/* Image Section */}
       <div className="image sm:col-span-1 col-span-5">
         <img
