@@ -7,13 +7,14 @@ import Center from '../components/utilities/Center'
 import Loader from '../components/Loader'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ProductCard from '../components/utilities/ProductCard'
-import { Link,  } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Navigation, Autoplay } from 'swiper/modules';
 
 const ProductDetails = () => {
   const [product, setProduct] = useState()
   const [relatedProd, setRelatedProd] = useState()
   const [loading, setLoading] = useState(true)
+  const navigate = useNavigate()
   const context = useCart()
   const { slug } = useParams()
   useEffect(()=>{
@@ -23,7 +24,6 @@ const ProductDetails = () => {
         const {data} = await API.get(`products/${slug}`)
         setProduct(data.product)
         const d = await API.get(`products/related-products/${data.product._id}/${data.product.category._id}`)
-        console.log(d);
         setRelatedProd(d.data.products)
         setLoading(false)
       }catch(error){
@@ -47,7 +47,19 @@ const ProductDetails = () => {
       <span className='text-red-500 text-2xl'>Out of Stocks</span>}
       <p className="text-lg mb-8">{product && product.description}</p>
       <div className="button-container flex gap-4">
-        <button className='py-2 px-4 bg-blue-500 font-medium rounded-lg hover:bg-blue-600 transition duration-300 text-white'>Buy Now</button>
+      <button 
+          disabled={product.quantity === 0}
+          className={`py-2 px-4 ${product.quantity === 0 ? 'bg-gray-500 cursor-not-allowed' : 'bg-blue-500 cursor-pointer'}  font-medium rounded-lg transition duration-300 text-white`}
+          onClick={() => {
+            cartOperations.addToCart(
+              { _id: product._id, name: product.name, price: product.price, shortdesc: product.shortdesc, image: product.image },
+              context
+            );
+            navigate('/cart')
+          }}
+        >
+          Buy Now
+        </button>
         <button 
           disabled={product.quantity === 0}
           className={`py-2 px-4 ${product.quantity === 0 ? 'bg-gray-500 cursor-not-allowed' : 'bg-green-500 cursor-pointer'}  font-medium rounded-lg transition duration-300 text-white`}
