@@ -34,10 +34,10 @@ const loginValidation = [
             // Check for specific errors and throw custom errors
             errors.array().forEach(error => {
                 if (error.path === 'email') {
-                    throw new CustomError('Email is not valid', 400);
+                    throw new CustomError('CUSTOM ERROR: Email is not valid', 400);
                 }
                 if (error.path === 'password') {
-                    throw new CustomError('Password must be at least 8 characters', 400);
+                    throw new CustomError('CUSTOM ERROR: Password must be at least 8 characters', 400);
                 }
             });
         }
@@ -57,16 +57,16 @@ const registerValidation = [
         if (!errors.isEmpty()) {
             errors.array().forEach(error => {
                 if (error.path === 'name') {
-                    throw new CustomError('Name must be at least 3 characters', 400);
+                    throw new CustomError('CUSTOM ERROR: Name must be at least 3 characters', 400);
                 }
                 if (error.path === 'email') {
-                    throw new CustomError('Email is not valid', 400);
+                    throw new CustomError('CUSTOM ERROR: Email is not valid', 400);
                 }
                 if (error.path === 'password') {
-                    throw new CustomError('Password must be at least 8 characters', 400);
+                    throw new CustomError('CUSTOM ERROR: Password must be at least 8 characters', 400);
                 }
                 if (error.path === 'phone') {
-                    throw new CustomError('Phone number is not valid', 400);
+                    throw new CustomError('CUSTOM ERROR: Phone number is not valid', 400);
                 }
             });
         }
@@ -84,10 +84,10 @@ const orderValidation = [
         if (!errors.isEmpty()) {
             errors.array().forEach(error => {
                 if (error.path === 'cart.*.id') {
-                    throw new CustomError('Product ID must not be empty', 400);
+                    throw new CustomError('CUSTOM ERROR: Product ID must not be empty', 400);
                 }
                 if (error.path === 'cart.*.quantity') {
-                    throw new CustomError('Quantity must be at least 1', 400);
+                    throw new CustomError('CUSTOM ERROR: Quantity must be at least 1', 400);
                 }
             });
         }
