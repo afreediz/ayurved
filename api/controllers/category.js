@@ -26,7 +26,7 @@ const createCategory = asyncErrorHandler(async(req, res)=>{
     if(!name) throw new CustomError("CUSTOM ERROR: Necessary details are not filled", 404)
 
     const isExist = await Category.findOne({name})
-    if(isExist) throw new CustomError("Category already exist, please choose a different name", 400)
+    if(isExist) throw new CustomError("CUSTOM ERROR: Category already exist, please choose a different name", 400)
 
     const category = await new Category({
         name:name,
@@ -42,7 +42,7 @@ const createCategory = asyncErrorHandler(async(req, res)=>{
 const updateCategory = asyncErrorHandler(async(req, res)=>{
     const { id } = req.params
     const { name } = req.body
-    if(!name) throw new CustomError("new name must be specified to update category", 400)
+    if(!name) throw new CustomError("CUSTOM ERROR: new name must be specified to update category", 400)
 
     const category = await Category.findByIdAndUpdate(id, {$set:{name, slug:slugify(name)}},{new:true})
 
