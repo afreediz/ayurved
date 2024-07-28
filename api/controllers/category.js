@@ -23,7 +23,7 @@ const getAllCategory = asyncErrorHandler(async(req, res)=>{
 })
 const createCategory = asyncErrorHandler(async(req, res)=>{
     const { name } = req.body
-    if(!name) throw new CustomError("Necessary details are not filled", 404)
+    if(!name) throw new CustomError("CUSTOM ERROR: Necessary details are not filled", 404)
 
     const isExist = await Category.findOne({name})
     if(isExist) throw new CustomError("Category already exist, please choose a different name", 400)

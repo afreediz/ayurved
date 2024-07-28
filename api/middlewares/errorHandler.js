@@ -1,5 +1,11 @@
 module.exports = (err, req, res, next)=> {
     console.log(err);
+    // if (err instanceof CustomError) {
+    //     return res.status(err.statusCode).json({
+    //         success: false,
+    //         message: err.message
+    //     });
+    // }
     if(err.code == 11000){
         err.message = "Duplicate Field Value Enter"
     }
@@ -14,9 +20,15 @@ module.exports = (err, req, res, next)=> {
             err.message = "Signin required"
         default:
     }
-
-    return res.status(err.statusCode || 500).json({
-        success:false,
-        message:err.message || 'Internal server error'
-    })
+    if (err.message.startsWith("CUSTOM ERROR: ")) {
+        return res.status(400).json({
+            success: false,
+            message: err.message.replace("CUSTOM ERROR: ", "")
+        })
+    }else{
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error"
+        })
+    }
 }

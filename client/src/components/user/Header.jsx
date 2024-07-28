@@ -47,7 +47,7 @@ const Navbar = () => {
   const navigateSolutions = (e) => {
     const selectedSolution = e.target.value;
     if(selectedSolution == "all"){
-      navigate('/')
+      navigate('/allproducts')
     }else{
     navigate(`/solutions/${selectedSolution}`)
     }
@@ -63,8 +63,9 @@ const Navbar = () => {
       </div>
       <nav className="bg-white shadow transition-all duration-100">
         <div className="container mx-auto px-4 flex justify-between items-center py-4">
-          <Link to="/" className="text-green-800 text-2xl font-bold">
-            NAVJEEVANA
+          <Link to="/" className="text-green-800 text-2xl font-bold flex items-center">
+            <img src="/images/logo.jpeg" alt="" className=' h-10' />
+            <img src="/images/name.jpeg" alt="" className='h-10' />
           </Link>
           <div className="hidden md:flex md:items-center space-x-8">
             <Link to="/allproducts" className="text-gray-600 hover:text-green-800">All Products</Link>

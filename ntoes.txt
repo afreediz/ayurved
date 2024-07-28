@@ -1,9 +1,3 @@
-add an error map such that no other error would react frontend.
-additional errors : 
-Duplicate Field Value Enter
-Invalid category
-Invalid Solution
-self defined errors ( also in filters )
 cart page beautiful a little
 mobile no. login - important
 why - logos and content

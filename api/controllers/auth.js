@@ -10,11 +10,11 @@ const { sendVerificationEmail, sendResetPasswordEmail } = require("../helpers/ma
 const register = asyncErrorHandler(async(req, res)=>{
     const { name, email, password, phone } = req.body
     if(!name || !email || !password || !phone ){
-        throw new CustomError('Necessary details are not filled', 404)
+        throw new CustomError('CUSTOM ERROR: Necessary details are not filled', 404)
     }
     
     const isExist = await User.findOne({email})
-    if(isExist) throw new CustomError('User already exists, Please Login or try with a different email address')
+    if(isExist) throw new CustomError('CUSTOM ERROR: User already exists, Please Login or try with a different email address')
 
     const token = generateToken({name, email, password, phone}, "1hr")
 
@@ -27,10 +27,10 @@ const register = asyncErrorHandler(async(req, res)=>{
 
 const login = asyncErrorHandler(async(req, res)=>{
     const {email, password} = req.body
-    if(!email || !password) throw new CustomError("Necessary details are not filled", 404)
+    if(!email || !password) throw new CustomError("CUSTOM ERROR: Necessary details are not filled", 404)
 
     const user = await User.findOne({email})
-    if(!user) throw new CustomError("User does not exist", 404)
+    if(!user) throw new CustomError("CUSTOM ERROR: User does not exist", 404)
 
     if(user.status == "inactive") throw new CustomError("Your account is inactive", 400)
 
