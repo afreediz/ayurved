@@ -40,7 +40,7 @@ const getProduct = asyncErrorHandler(async(req, res)=>{
 
 const createProduct = asyncErrorHandler(async(req, res)=>{
     const { name, description, price, category, quantity, image, shortdesc, solutions } = req.body
-    if( !name || !description || !price || !category || !shortdesc || !image ) throw new CustomError('Necessary details are not filled', 404)    
+    if( !name || !description || !price || !category || !shortdesc || !image ) throw new CustomError('CUSTOM ERROR: Necessary details are not filled', 404)    
     const result = await uploadImage(image)
 
     try{
@@ -52,7 +52,7 @@ const createProduct = asyncErrorHandler(async(req, res)=>{
         })
     }catch(err){
         await deleteImage(result.url)
-        throw new CustomError(err.message, 500)
+        throw new CustomError(`CUSTOM ERROR: ${err.message}`, 500)
     }
 })
 const updateProduct = asyncErrorHandler(async(req, res)=>{
@@ -150,7 +150,7 @@ const categoryProducts = asyncErrorHandler(async(req, res)=>{
     const page = req.params.page? req.params.page : 1
 
     const category = await Category.findOne({slug})
-    if(!category) throw new CustomError("Invalid category", 404)
+    if(!category) throw new CustomError("CUSTOM ERROR: Invalid category", 404)
 
     const products = await Product.find({category:category._id})
     .populate('category')
@@ -168,7 +168,7 @@ const categoryProducts = asyncErrorHandler(async(req, res)=>{
 const categoryProductsCount = asyncErrorHandler(async(req, res)=>{
     const { slug } = req.params
     const category = await Category.findOne({slug})
-    if(!category) throw new CustomError("Invalid category", 404)
+    if(!category) throw new CustomError("CUSTOM ERROR: Invalid category", 404)
     const total = await Product.find({category:category._id}).count()
     res.status(200).json({
         success:true,
@@ -182,7 +182,7 @@ const solutionProducts = asyncErrorHandler(async(req, res)=>{
     const page = req.params.page? req.params.page : 1
 
     const solution = await Solution.findOne({slug})
-    if(!solution) throw new CustomError("Invalid Solution", 404)
+    if(!solution) throw new CustomError("CUSTOM ERROR: Invalid Solution", 404)
 
     const products = await Product.find({solutions:{'$in':[solution._id]}})
     .populate('solutions')
@@ -200,7 +200,7 @@ const solutionProducts = asyncErrorHandler(async(req, res)=>{
 const solutionProductsCount = asyncErrorHandler(async(req, res)=>{
     const { slug } = req.params
     const solution = await Category.findOne({slug})
-    if(!solution) throw new CustomError("Invalid solution", 404)
+    if(!solution) throw new CustomError("CUSTOM ERROR: Invalid solution", 404)
     const total = await Product.find({solution:{'$in':[solution._id]}}).count()
     res.status(200).json({
         success:true,
