@@ -27,14 +27,14 @@ const register = asyncErrorHandler(async(req, res)=>{
 
 const login = asyncErrorHandler(async(req, res)=>{
     const {email, password} = req.body
-    if(!email || !password) throw new CustomError("CUSTOM ERROR: Necessary details are not filled", 404)
+    if(!email || !password) throw new CustomError("CUSTOM ERROR: CUSTOM ERROR: Necessary details are not filled", 404)
 
     const user = await User.findOne({email})
     if(!user) throw new CustomError("CUSTOM ERROR: User does not exist", 404)
 
-    if(user.status == "inactive") throw new CustomError("Your account is inactive", 400)
+    if(user.status == "inactive") throw new CustomError("CUSTOM ERROR: Your account is inactive", 400)
 
-    if(!await comparePassword(password, user.password)) throw new CustomError("Password does not match", 400)
+    if(!await comparePassword(password, user.password)) throw new CustomError("CUSTOM ERROR: Password does not match", 400)
 
     const token = generateToken({_id:user._id}, "7d")
 
@@ -52,10 +52,10 @@ const login = asyncErrorHandler(async(req, res)=>{
 
 const forgetPassword = asyncErrorHandler(async(req, res)=>{
     const {email} = req.body
-    if(!email) throw new CustomError("Necessary details are not filled", 404)
+    if(!email) throw new CustomError("CUSTOM ERROR: Necessary details are not filled", 404)
 
     const user = await User.findOne({email})
-    if(!user) throw new CustomError("User does not exist", 404)
+    if(!user) throw new CustomError("CUSTOM ERROR: User does not exist", 404)
 
     const token = generateToken({_id:user._id}, "1hr")
 
@@ -79,7 +79,7 @@ const changePassword = asyncErrorHandler(async(req, res)=>{
 const forwardMail = asyncErrorHandler(async(req, res)=>{
     const { name, email, message } = req.body
     if(!name || !email || !message){
-        throw new CustomError("All fields are required", 400)
+        throw new CustomError("CUSTOM ERROR: All fields are required", 400)
     }
     forwardMailToAdmin(name, email, message)
     res.status(200).json({
