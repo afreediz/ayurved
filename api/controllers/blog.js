@@ -6,7 +6,7 @@ const slugify = require('slugify')
 
 const createBlog = asyncErrorHandler(async (req, res) => {
     const {image, title, content} = req.body
-    if (!image || !title || !content) throw new CustomError('Necessary details are not filled', 404)
+    if (!image || !title || !content) throw new CustomError('CUSTOM ERROR: Necessary details are not filled', 404)
 
     const result = await uploadImage(image)
         
@@ -24,6 +24,7 @@ const createBlog = asyncErrorHandler(async (req, res) => {
 
 const getBlog = asyncErrorHandler(async (req, res) => {
     const slug = req.params.slug
+    if (!slug) throw new CustomError('CUSTOM ERROR: Necessary details are not filled', 404)
     const blog = await Blog.findOne({slug})    
     res.status(200).json({
         success: true,
@@ -58,6 +59,7 @@ const updateBlog = asyncErrorHandler(async (req, res) => {
 })
 
 const deleteBlog = asyncErrorHandler(async (req, res) => {
+    if (!req.params.id) throw new CustomError('CUSTOM ERROR: Necessary details are not filled', 404)
     const blog = await Blog.findByIdAndDelete(req.params.id)
     await deleteImage(blog.image)
     res.status(200).json({
