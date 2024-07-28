@@ -9,16 +9,16 @@ const createOrder = asyncErrorHandler(async(req, res)=>{
     const { cart } = req.body
     const user = await User.findById(req.user._id).select('ph_verified address')
     
-    if (!user.ph_verified) throw new CustomError("Please verify your phone number before placing order", 400)
-    if (!user.address) throw new CustomError("Please add your address before placing order", 400)
-    if (cart.length == 0) throw new CustomError("Cart is empty", 400)
+    if (!user.ph_verified) throw new CustomError("CUSTOM ERROR: Please verify your phone number before placing order", 400)
+    if (!user.address) throw new CustomError("CUSTOM ERROR: Please add your address before placing order", 400)
+    if (cart.length == 0) throw new CustomError("CUSTOM ERROR: Cart is empty", 400)
 
     for (let p of cart){
         const product = await Product.findById(p.product)
 
-        if(!product) throw new CustomError("Product not found", 400)
+        if(!product) throw new CustomError("CUSTOM ERROR: Product not found", 400)
 
-        if(product.quantity < p.cart_quantity) throw new CustomError("Product quantity is not available", 400)
+        if(product.quantity < p.cart_quantity) throw new CustomError("CUSTOM ERROR: Product quantity is not available", 400)
 
         product.quantity -= p.cart_quantity
         await product.save()
