@@ -17,7 +17,6 @@ const Cart = () => {
     cart?.map((p)=>{
       total = total + p.price * p.cart_quantity
     })
-    total = total + shipping_charge
     return total.toLocaleString("en-Us",{
       style:"currency",
       currency:'USD'
