@@ -28,7 +28,7 @@ const BlogDetails = () => {
         <div className="container mx-auto my-10">
           <h1>{blog && blog.title}</h1>
             {blog &&  <img src={blog.image} className='w-full object-contain max-h-[60vh]' alt={blog.title} />}
-            {blog && <div dangerouslySetInnerHTML={{ __html: blog.content }}></div>}
+            {blog && <div className='my-5 font-sans text-lg' dangerouslySetInnerHTML={{ __html: blog.content }}></div>}
         </div>
         {loading && <Loader />}
     </Center>
