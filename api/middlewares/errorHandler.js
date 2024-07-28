@@ -1,11 +1,5 @@
 module.exports = (err, req, res, next)=> {
     console.log(err);
-    // if (err instanceof CustomError) {
-    //     return res.status(err.statusCode).json({
-    //         success: false,
-    //         message: err.message
-    //     });
-    // }
     if(err.code == 11000){
         err.message = "Duplicate Field Value Enter"
     }
