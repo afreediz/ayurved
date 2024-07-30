@@ -2,3 +2,9 @@ cart page beautiful a little
 mobile no. login - important
 why - logos and content
 logos
+fix payment gateway cart
+pagination
+admin profile modfication
+view full details of user for admin
+
+add the cart policy in web

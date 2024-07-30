@@ -20,6 +20,10 @@ const orderSchema = mongoose.Schema({
         default:"Not paid",
         enum:["Not paid", "Paid"]
     },
+    order_id:{
+        type:String,
+        required:true
+    },
     status:{
         type:String,
         default:"Not processed",
