@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 import API from '../services/api'
 import Center from '../components/utilities/Center'
 import { Link } from 'react-router-dom'
+import { api_url } from '../datas'
 
 const Cart = () => {
   const {user} = useAuth()
@@ -32,8 +33,17 @@ const Cart = () => {
           }
         })
       })
-      toast.success(data.message)
-      setCart([])
+      const options = {
+        key: "rzp_test_4wRqHdbX5YleJ3",
+        amount: data.amount,
+        currency: "INR",
+        name: data.name,
+        order_id: data.order_id,
+        callback_url: `http://localhost:3002/api/orders/paymentverification`,
+    };
+    const razor = new window.Razorpay(options);
+    razor.open();
+      // setCart([])
     }catch(error){
       toast.error(error.response?.data.message)
       console.log(error)

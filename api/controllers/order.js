@@ -1,8 +1,7 @@
 const asyncErrorHandler = require("express-async-handler")
 const CustomError = require('../utils/CustomError')
-const instance = require('../utils/razorpay')
-const {getCurrentDateFormatted} = require('../utils/razorpay')
-
+const {instance, getCurrentDateFormatted} = require('../utils/razorpay')
+const crypto = require('crypto')
 const Order = require("../models/order")
 const Product = require("../models/product")
 const User = require("../models/user")
@@ -13,7 +12,6 @@ const createOrder = asyncErrorHandler(async(req, res)=>{
     
     if (!user.ph_verified) throw new CustomError("CUSTOM ERROR: Please verify your phone number before placing order", 400)
     if (!user.address) throw new CustomError("CUSTOM ERROR: Please add your address before placing order", 400)
-    if (cart.length == 0) throw new CustomError("CUSTOM ERROR: Cart is empty", 400)
 
     let totalAmount = 0
     for (let p of cart){
@@ -40,13 +38,25 @@ const createOrder = asyncErrorHandler(async(req, res)=>{
         await Order.create({user:req.user._id,product:p.product, cart_quantity:p.cart_quantity, order_id:orders.id})
     }
 
-    res.status(200).json({success:true, message:"", order_id:orders.id})
+    res.status(200).json({success:true, message:"", order_id:orders.id, amount:totalAmount, name:user.name})
 })
 
 const verifyOrder = asyncErrorHandler(async(req, res)=>{
-    // lgoic
-    const { orderid } = req.params
-    const order = await Order.findByIdAndUpdate(orderid, {payment:"Paid"}, {new:true, runValidators:true})
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+    req.body;
+
+    const body = razorpay_order_id + "|" + razorpay_payment_id;
+
+    const expectedSignature = crypto
+        .createHmac("sha256", process.env.RP_SECRET_KEY)
+        .update(body.toString())
+        .digest("hex");
+    console.log(expectedSignature, razorpay_signature);
+    const isAuthentic = expectedSignature === razorpay_signature;
+
+    if (!isAuthentic) return res.status(400).json({ error: "Invalid signature" });
+
+    const order = await Order.findByIdAndUpdate(razorpay_order_id, {payment:"Paid"}, {new:true, runValidators:true})
     res.status(200).json({
         success:true,
         message:"Order verified succesfully",
@@ -135,4 +145,4 @@ const dashboardDetails = asyncErrorHandler(async(req, res)=>{
     })
 })
 
-module.exports = { orderStatus, createOrder, userOrders, allOrders, deleteOrder, cancelOrder, dashboardDetails }
+module.exports = { orderStatus, createOrder, userOrders, allOrders, deleteOrder, cancelOrder, dashboardDetails, verifyOrder }

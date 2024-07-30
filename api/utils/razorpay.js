@@ -1,11 +1,11 @@
 const Razorpay = require('razorpay')
 
-export default instance = new Razorpay({
-    key_id: process.env.RAZORPAY_KEY_ID,
-    key_secret: process.env.RAZORPAY_KEY_SECRET
+const instance = new Razorpay({
+    key_id: process.env.RP_KEY_ID,
+    key_secret: process.env.RP_SECRET_KEY
 })
 
-export const getCurrentDateFormatted = function () {
+const getCurrentDateFormatted = function () {
     const date = new Date();
   
     const day = String(date.getDate()).padStart(2, '0');
@@ -14,3 +14,5 @@ export const getCurrentDateFormatted = function () {
   
     return `${day}-${month}-${year}`;
   }
+
+module.exports = { instance, getCurrentDateFormatted }

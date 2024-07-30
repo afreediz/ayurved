@@ -14,7 +14,7 @@ module.exports = (err, req, res, next)=> {
             err.message = "Signin required"
         default:
     }
-    if (err.message.startsWith("CUSTOM ERROR: ")) {
+    if (err.message && err.message.startsWith("CUSTOM ERROR: ")) {
         return res.status(400).json({
             success: false,
             message: err.message.replace("CUSTOM ERROR: ", "")
