@@ -1,6 +1,5 @@
 mobile no. login - important
 why - logos and content
-pagination
 admin profile modfication
 view full details of user for admin
 
