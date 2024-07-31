@@ -39,8 +39,23 @@ const Cart = () => {
         currency: "INR",
         name: data.name,
         order_id: data.order_id,
-        callback_url: `http://localhost:3002/api/orders/paymentverification`,
-    };
+        // callback_url: `http://localhost:3002/api/orders/paymentverification`,
+        handler: async function (response) {
+          const data = {
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+          }
+
+        const result = await API.post("/orders/paymentverification", data);
+        if (result.data.success) {
+            toast.success("Order Successful")
+            setCart([])
+        } else {
+            toast.error("Payment Failed")
+        }
+    }
+  };
     const razor = new window.Razorpay(options);
     razor.open();
       // setCart([])
