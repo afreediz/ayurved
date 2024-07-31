@@ -50,7 +50,7 @@ const AllOrders = () => {
         <thead>
           <tr>
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Index</th>
-            <th className=" max-md:hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Order ID</th>
+            <th className=" max-md:hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Unique ID</th>
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">User</th>
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Products</th>
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Date</th>

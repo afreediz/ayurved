@@ -38,6 +38,7 @@ const Cart = () => {
         amount: data.amount,
         currency: "INR",
         name: data.name,
+        description: "session will expire in 5 minutes",
         order_id: data.order_id,
         // callback_url: `http://localhost:3002/api/orders/paymentverification`,
         handler: async function (response) {

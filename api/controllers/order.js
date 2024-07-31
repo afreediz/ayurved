@@ -5,6 +5,7 @@ const crypto = require('crypto')
 const Order = require("../models/order")
 const Product = require("../models/product")
 const User = require("../models/user")
+const cron = require("node-cron")
 
 const createOrder = asyncErrorHandler(async(req, res)=>{
     const { cart } = req.body
@@ -141,5 +142,15 @@ const dashboardDetails = asyncErrorHandler(async(req, res)=>{
         recent_orders:recent_orders
     })
 })
+
+// cron.schedule("0 0 * * *", async()=>{
+//     try{
+//         console.log("cron job running");
+//         // delete payments that are not paid every day
+//         await Order.deleteMany({payment:"Not paid"})
+//     }catch(error){
+//         console.log(error)
+//     }
+// })
 
 module.exports = { orderStatus, createOrder, userOrders, allOrders, deleteOrder, cancelOrder, dashboardDetails, verifyOrder }
