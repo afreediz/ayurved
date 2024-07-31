@@ -1,7 +1,7 @@
 const router = require('express').Router()
 
 const { isAuthenticated, isAdmin } = require('../middlewares/isAuth')
-const { orderStatus, createOrder, userOrders, allOrders, deleteOrder, dashboardDetails, verifyOrder } = require('../controllers/order')
+const { orderStatus, createOrder, userOrders, allOrders, deleteOrder, dashboardDetails, verifyOrder, getOrder } = require('../controllers/order')
 const { orderValidation } = require('../helpers/validators')
 
 router.get('/', isAuthenticated, userOrders)
@@ -11,6 +11,7 @@ router.post('/paymentverification', verifyOrder)
 // admin
 router.get('/all', isAuthenticated, isAdmin, allOrders)
 router.get('/dashboard', isAuthenticated, isAdmin, dashboardDetails)
+router.get('/:id', isAuthenticated, isAdmin, getOrder)
 router.put('/:id', isAuthenticated, isAdmin, orderStatus)
 router.delete('/:id', isAuthenticated, isAdmin, deleteOrder)
 

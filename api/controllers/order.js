@@ -1,15 +1,15 @@
 const asyncErrorHandler = require("express-async-handler")
 const CustomError = require('../utils/CustomError')
-const {instance, getCurrentDateFormatted} = require('../utils/razorpay')
+const {instance} = require('../utils/razorpay')
+const {generateUnique10DigitNumber, getCurrentDateFormatted} = require('../utils/general')
 const crypto = require('crypto')
 const Order = require("../models/order")
 const Product = require("../models/product")
 const User = require("../models/user")
-const cron = require("node-cron")
 
 const createOrder = asyncErrorHandler(async(req, res)=>{
     const { cart } = req.body
-    const user = await User.findById(req.user._id).select('ph_verified address')
+    const user = await User.findById(req.user._id).select('ph_verified address email')
     
     if (!user.ph_verified) throw new CustomError("CUSTOM ERROR: Please verify your phone number before placing order", 400)
     if (!user.address) throw new CustomError("CUSTOM ERROR: Please add your address before placing order", 400)
@@ -26,7 +26,8 @@ const createOrder = asyncErrorHandler(async(req, res)=>{
         // product.quantity -= p.cart_quantity
         // await product.save()
     }
-    const receipt = `receipt_${getCurrentDateFormatted()}_${req.user.email}`
+    const receipt = `rcpt_${getCurrentDateFormatted()}_${user._id}`
+    console.log(receipt, receipt.length);
     const options = {
         amount: totalAmount * 100,
         currency: 'INR',
@@ -152,16 +153,26 @@ const dashboardDetails = asyncErrorHandler(async(req, res)=>{
     })
 })
 
+const getOrder = asyncErrorHandler(async(req, res)=>{
+    const { id } = req.params
+    const order = await Order.findById(id).populate({
+        path:'product',
+        select:'name'
+    }).populate({
+        path:'user',
+        select:'email'
+    })
+    res.status(200).json({success:true, message:"Order", order})
+})
 
-
+// delete payments that are not paid every day
 // cron.schedule("0 0 * * *", async()=>{
 //     try{
 //         console.log("cron job running");
-//         // delete payments that are not paid every day
 //         await Order.deleteMany({payment:"Not paid"})
 //     }catch(error){
 //         console.log(error)
 //     }
 // })
 
-module.exports = { orderStatus, createOrder, userOrders, allOrders, deleteOrder, cancelOrder, dashboardDetails, verifyOrder }
+module.exports = { orderStatus, createOrder, userOrders, allOrders, deleteOrder, cancelOrder, dashboardDetails, verifyOrder, getOrder }
