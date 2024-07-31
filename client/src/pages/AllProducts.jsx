@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom'
 const AllProducts = () => {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
+    const [page, setPage] = useState(1)
     const navigate = useNavigate()
     const [query, setQuery ] = useState("")
     useEffect(()=>{
@@ -18,7 +19,7 @@ const AllProducts = () => {
       })
         async function getProducts(){
         try{
-            const {data} = await API.get(`products/list/${1}`)
+            const {data} = await API.get(`products/list/${page}`)
             setProducts(data.products)
             setLoading(false)
         }catch(error){
@@ -43,6 +44,38 @@ const AllProducts = () => {
         {products && products.map((product, index) => (
           <ProductCard product={product} key={index} />
         ))}
+      </div>
+
+      <div className="flex justify-center items-center mt-8">
+      {page > 1 && (
+        <button
+          onClick={() => { 
+            setPage(page - 1); 
+            window.scrollTo({
+              top:0,
+              behavior:"smooth"
+            })
+          }}
+          className="border-2 border-gray-300 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-200"
+        >
+          Prev
+        </button>
+      )}
+      <span className="text-2xl text-gray-500 px-4 py-2">Page: {page}</span>
+      {products && products.length === 8 && (
+        <button
+          onClick={() => {
+            setPage(page + 1); 
+              window.scrollTo({
+                top:0,
+                behavior:"smooth"
+              })
+            }}
+          className="text-2xl text-blue-500 px-4 py-2 rounded-lg hover:bg-blue-100"
+        >
+          Next
+        </button>
+      )}
       </div>
       {loading && <Loader />}
     </Center>

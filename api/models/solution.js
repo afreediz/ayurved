@@ -7,7 +7,8 @@ const SoltionSchema = mognoose.Schema({
     },
     slug:{
         type:String,
-        lowercase:true
+        lowercase:true,
+        unique:true
     }
 })
 

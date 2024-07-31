@@ -27,7 +27,7 @@ const createSolutions = asyncErrorHandler(async(req, res)=>{
 
     const isExist = await Solution.findOne({name})
     console.log(isExist);
-    if(isExist) throw new CustomError("CUSTOM ERROR: Category already exist, please choose a different name", 400)
+    if(isExist) throw new CustomError("CUSTOM ERROR: Solution already exist, please choose a different name", 400)
 
     const solution = await new Solution({
         name:name,
@@ -43,7 +43,7 @@ const createSolutions = asyncErrorHandler(async(req, res)=>{
 const updateSolutions = asyncErrorHandler(async(req, res)=>{
     const { id } = req.params
     const { name } = req.body
-    if(!name) throw new CustomError("CUSTOM ERROR: new name must be specified to update category", 400)
+    if(!name) throw new CustomError("CUSTOM ERROR: new name must be specified to update solution", 400)
 
     const solution = await Solution.findByIdAndUpdate(id, {$set:{name, slug:slugify(name)}},{new:true})
 
@@ -60,7 +60,7 @@ const deleteSolutions = asyncErrorHandler(async(req, res)=>{
 
     res.status(200).json({
         success:true,
-        message:"Catergory deleted successfully"
+        message:"solution deleted successfully"
     })
 })
 

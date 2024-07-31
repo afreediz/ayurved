@@ -1,11 +1,7 @@
-cart page beautiful a little
 mobile no. login - important
 why - logos and content
-logos
-fix payment gateway cart
 pagination
 admin profile modfication
-ENV AT Frontend
 view full details of user for admin
 
 add the cart policy in web

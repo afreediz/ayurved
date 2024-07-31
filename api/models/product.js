@@ -8,7 +8,8 @@ const productSchema = mongoose.Schema({
     },
     slug:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     shortdesc:{
         type:String,
