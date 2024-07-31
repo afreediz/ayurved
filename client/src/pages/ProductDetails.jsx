@@ -35,7 +35,7 @@ const ProductDetails = () => {
       }
     }
     getProduct()
-  },[])
+  },[slug])
   return (
     product?(
 <Center className=" my-10">

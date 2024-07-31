@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import API, { format_date }  from '../../services/api';
 import {toast} from 'react-toastify'
+import { Link } from 'react-router-dom';
 const AllOrders = () => {
   const [orders, setOrders] = useState()
 
@@ -49,8 +50,8 @@ const AllOrders = () => {
       <table className="min-w-full bg-white divide-y divide-gray-600">
         <thead>
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Index</th>
-            <th className=" max-md:hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Unique ID</th>
+            <th className="hidden md:table-cell px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Index</th>
+            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Unique ID</th>
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">User</th>
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Products</th>
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Date</th>
@@ -62,8 +63,8 @@ const AllOrders = () => {
           {orders && orders.map((order, index)=>{
             return (
               <tr key={order.orderid}>
-              <td className="px-6 py-4 whitespace-nowrap">{index+1}</td>
-              <td className=" max-md:hidden px-6 py-4 whitespace-nowrap">{order._id}</td>
+              <td className="hidden md:table-cell px-6 py-4 whitespace-nowrap">{index+1}</td>
+              <Link to={`/admin/orders/${order._id}`}><td className="px-6 py-4 whitespace-nowrap underline">{order._id}</td></Link>
               <td className="px-6 py-4 whitespace-nowrap">{order.user.name}</td>
               <td className="px-6 py-4 whitespace-nowrap">{order.product? order.product.name:"product no longer available"}</td>
               <td className="px-6 py-4 whitespace-nowrap">{format_date(order.createdAt)}</td>

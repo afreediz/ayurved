@@ -52,8 +52,8 @@ const AllUsers = () => {
         <table className="min-w-full bg-white  divide-y divide-gray-600">
           <thead>
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Index</th>
-              <th className=" max-md:hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Email</th>
+              <th className="hidden md:table-cell  px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Index</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Email</th>
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Username</th>
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Phone</th>
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Joined Date</th>
@@ -63,8 +63,8 @@ const AllUsers = () => {
           <tbody className="divide-y divide-gray-600">
           {users && users.map((user,index) => (
             <tr key={user.id}>
-              <td className="px-6 py-4 whitespace-nowrap">{index+1}</td>
-              <Link to={`/admin/users/${user.email}`} ><td className=" max-md:hidden px-6 py-4 whitespace-nowrap underline">{user.email}</td></Link>
+              <td className="hidden md:table-cell px-6 py-4 whitespace-nowrap">{index+1}</td>
+              <Link to={`/admin/users/${user.email}`} ><td className="px-6 py-4 whitespace-nowrap underline">{user.email}</td></Link>
               <td className="px-6 py-4 whitespace-nowrap">{user.name}</td>
               <td className="px-6 py-4 whitespace-nowrap">{user.phone}</td>
               <td className="px-6 py-4 whitespace-nowrap">{format_date(user.createdAt)}</td>

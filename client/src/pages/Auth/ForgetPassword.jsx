@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import API from '../../services/api';
+import Center from '../../components/utilities/Center';
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState('');
@@ -19,13 +20,13 @@ const ForgetPassword = () => {
   };
 
   return (
-    <div className="flex justify-center items-center bg-gray-100">
-        <div className="bg-white p-8 rounded-lg shadow-md w-96">
+    <Center className="my-10 max-w-[700px]">
+        <div className="bg-white p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Enter your email</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="new-password">
-              Email
+              We will share the link to reset your password
             </label>
             <input
               type="email"
@@ -38,14 +39,13 @@ const ForgetPassword = () => {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
           >
             Send
           </button>
         </form>
       </div>
-    </div>
-
+    </Center>
   );
 };
 

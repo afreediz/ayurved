@@ -29,7 +29,6 @@ const loginValidation = [
     // Middleware to handle the validation results
     asyncErrorHandler((req, res, next) => {
         const errors = validationResult(req);
-        console.log(errors);
         if (!errors.isEmpty()) {
             // Check for specific errors and throw custom errors
             errors.array().forEach(error => {
@@ -51,7 +50,6 @@ const emailValidation = [
     // Middleware to handle the validation results
     asyncErrorHandler((req, res, next) => {
         const errors = validationResult(req);
-        console.log(errors);
         if (!errors.isEmpty()) {
             // Check for specific errors and throw custom errors
             errors.array().forEach(error => {
@@ -70,7 +68,6 @@ const passwordValidation = [
     // Middleware to handle the validation results
     asyncErrorHandler((req, res, next) => {
         const errors = validationResult(req);
-        console.log(errors);
         if (!errors.isEmpty()) {
             // Check for specific errors and throw custom errors
             errors.array().forEach(error => {
@@ -91,7 +88,6 @@ const registerValidation = [
     body('password').isLength({ min: 8 }),
     asyncErrorHandler((req, res, next) => {
         const errors = validationResult(req);
-        console.log(errors);
         if (!errors.isEmpty()) {
             errors.array().forEach(error => {
                 if (error.path === 'name') {

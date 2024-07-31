@@ -31,6 +31,7 @@ import AdminBlogDetails from './pages/Admin/BlogDetails'
 import ReadBolgs from './pages/Blogs'
 import BlogDetails from './pages/BlogDetails'
 import UserDetails from './pages/Admin/UserDetails'
+import OrderDetails from './pages/Admin/OrderDetails'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -82,7 +83,7 @@ const App = () => {
           <Route path='products' element={<AllProducts />} />
           <Route path='products/:slug' element={<AdminProductDetails />} />
           <Route path='orders' element={<AllOrders />} />
-          <Route path='orders/:id' element={<AllOrders />} />
+          <Route path='orders/:id' element={<OrderDetails />} />
           <Route path='users' element={<AllUsers />} />
           <Route path='users/:email' element={<UserDetails />} />
           <Route path='categories' element={<CatAndSoln />} />
