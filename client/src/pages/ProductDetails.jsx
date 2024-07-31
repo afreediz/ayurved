@@ -18,7 +18,10 @@ const ProductDetails = () => {
   const context = useCart()
   const { slug } = useParams()
   useEffect(()=>{
-    window.scrollTo(0, 0)
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    })
     async function getProduct(){
       try{
         const {data} = await API.get(`products/${slug}`)

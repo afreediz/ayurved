@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Center from '../components/utilities/Center';
 import { FaRegPaperPlane, FaRocket } from 'react-icons/fa'
 import API from '../services/api';
 import { toast } from 'react-toastify';
 
 const OurStory = () => {
+  useEffect(()=>{
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    })
+  },[])
   const [data, sendData] = useState({
     name: "",
     email: "",

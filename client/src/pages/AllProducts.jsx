@@ -12,6 +12,10 @@ const AllProducts = () => {
     const navigate = useNavigate()
     const [query, setQuery ] = useState("")
     useEffect(()=>{
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      })
         async function getProducts(){
         try{
             const {data} = await API.get(`products/list/${1}`)

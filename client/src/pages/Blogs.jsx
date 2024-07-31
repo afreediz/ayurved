@@ -10,6 +10,10 @@ const Blogs = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      })
         const fetchBlogs = async () => {
           const { data } = await API.get('/blogs')
           setBlogs(data.blogs)

@@ -55,7 +55,16 @@ const verifyOrder = asyncErrorHandler(async(req, res)=>{
 
     if (!isAuthentic) return res.status(400).json({ error: "Invalid signature" });
 
-    const order = await Order.updateMany({"order_id":razorpay_order_id}, {payment:"Paid"}, {new:true, runValidators:true})
+    const order = await Order.find({order_id:razorpay_order_id})
+
+    for (let p of order){
+        const product = await Product.findById(p.product)
+        product.quantity -= p.cart_quantity
+        await product.save()
+    }
+
+    await Order.updateMany({"order_id":razorpay_order_id}, {payment:"Paid"}, {new:true, runValidators:true})
+
     res.status(200).json({
         success:true,
         message:"Order verified succesfully",

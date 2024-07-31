@@ -7,11 +7,14 @@ import { Link, useLocation } from 'react-router-dom'
 import Loader from '../components/Loader'
 
 const Orders = () => {
-  const location = useLocation()
   const [orders, setOrders] = useState()
   const [loading, setLoading] = useState(true)
   console.log(orders);
   useEffect(()=>{
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    })
     async function getOrders(){
       try{
         const {data} = await API.get("orders/")
