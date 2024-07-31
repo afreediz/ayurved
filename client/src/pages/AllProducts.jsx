@@ -28,7 +28,7 @@ const AllProducts = () => {
         }
         }
         getProducts()
-    },[])
+    },[page])
   return (
     <Center className="my-8">
       <form className="form" onSubmit={(e)=>{
