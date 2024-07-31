@@ -25,7 +25,7 @@ const sanitizeAllFields = (req, res, next) => {
 const loginValidation = [
     sanitizeAllFields,
     body('email').isEmail().normalizeEmail(),
-    body('password').isLength({ min: 1   }),
+    body('password').isLength({ min: 8   }),
     // Middleware to handle the validation results
     asyncErrorHandler((req, res, next) => {
         const errors = validationResult(req);
@@ -36,6 +36,44 @@ const loginValidation = [
                 if (error.path === 'email') {
                     throw new CustomError('CUSTOM ERROR: Email is not valid', 400);
                 }
+                if (error.path === 'password') {
+                    throw new CustomError('CUSTOM ERROR: Password must be at least 8 characters', 400);
+                }
+            });
+        }
+        next();
+    })
+];
+
+const emailValidation = [
+    sanitizeAllFields,
+    body('email').isEmail().normalizeEmail(),
+    // Middleware to handle the validation results
+    asyncErrorHandler((req, res, next) => {
+        const errors = validationResult(req);
+        console.log(errors);
+        if (!errors.isEmpty()) {
+            // Check for specific errors and throw custom errors
+            errors.array().forEach(error => {
+                if (error.path === 'email') {
+                    throw new CustomError('CUSTOM ERROR: Email is not valid', 400);
+                }
+            });
+        }
+        next();
+    })
+];
+
+const passwordValidation = [
+    sanitizeAllFields,
+    body('password').isLength({ min: 8   }),
+    // Middleware to handle the validation results
+    asyncErrorHandler((req, res, next) => {
+        const errors = validationResult(req);
+        console.log(errors);
+        if (!errors.isEmpty()) {
+            // Check for specific errors and throw custom errors
+            errors.array().forEach(error => {
                 if (error.path === 'password') {
                     throw new CustomError('CUSTOM ERROR: Password must be at least 8 characters', 400);
                 }
@@ -95,4 +133,4 @@ const orderValidation = [
     })
 ];
 
-module.exports = { loginValidation, registerValidation, orderValidation }
+module.exports = { loginValidation, registerValidation, orderValidation, emailValidation, passwordValidation }
