@@ -6,7 +6,6 @@ import { toast } from 'react-toastify'
 import API from '../services/api'
 import Center from '../components/utilities/Center'
 import { Link } from 'react-router-dom'
-import { api_url } from '../datas'
 
 const Cart = () => {
   const {user} = useAuth()

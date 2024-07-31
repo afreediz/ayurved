@@ -33,7 +33,7 @@ const getBlog = asyncErrorHandler(async (req, res) => {
 })
 
 const getAllBlogs = asyncErrorHandler(async (req, res) => {
-    const blogs = await Blog.find({})
+    const blogs = await Blog.find({}).select('_id slug title image')
     res.status(200).json({
         success: true,
         blogs

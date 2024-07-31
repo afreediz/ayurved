@@ -1,7 +1,7 @@
 import axios from "axios";
-import { api_url } from "../datas";
 
-const API = axios.create({baseURL:api_url})
+console.log("process.env.REACT_APP_API_URL",process.env.REACT_APP_API_URL);
+const API = axios.create({baseURL:process.env.REACT_APP_API_URL})
 
 API.interceptors.request.use((req)=>{
     if(localStorage.getItem('token')){
