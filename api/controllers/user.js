@@ -75,6 +75,15 @@ const getAdmin = asyncErrorHandler(async(req, res)=>{
         authorized:true
     })
 })
+const getUserForAdmin = asyncErrorHandler(async(req, res)=>{
+    const email = req.params.email
+    const user = await User.findOne({email})
+    res.status(200).json({
+        success:true,
+        message:"User",
+        user
+    })
+})
 const getAllUsers = asyncErrorHandler(async(req, res)=>{
     const users = await User.find({}).sort({createdAt:-1})
     res.status(200).json({
@@ -116,4 +125,4 @@ const dashboardDetails = asyncErrorHandler(async(req, res)=>{
 
 
 
-module.exports = {getUser, getAdmin, profile, updateProfile, deleteProfile, getAllUsers, userStatus, deleteUser, dashboardDetails }
+module.exports = {getUser, getAdmin, profile, updateProfile, deleteProfile, getAllUsers, userStatus, deleteUser, dashboardDetails, getUserForAdmin }

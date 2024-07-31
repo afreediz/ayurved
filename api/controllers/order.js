@@ -26,17 +26,17 @@ const createOrder = asyncErrorHandler(async(req, res)=>{
         // product.quantity -= p.cart_quantity
         // await product.save()
     }
-
+    const receipt = `receipt_${getCurrentDateFormatted()}_${req.user.email}`
     const options = {
         amount: totalAmount * 100,
         currency: 'INR',
-        receipt: `receipt_${getCurrentDateFormatted()}_${req.user.email}`,
+        receipt: receipt,
         payment_capture: 1
     }
     const orders = await instance.orders.create(options)
     if (!orders) throw new CustomError("CUSTOM ERROR: Something went wrong", 500)
     for (let p of cart){
-        await Order.create({user:req.user._id,product:p.product, cart_quantity:p.cart_quantity, order_id:orders.id})
+        await Order.create({user:req.user._id,product:p.product, cart_quantity:p.cart_quantity, order_id:orders.id, receipt:receipt})
     }
 
     res.status(200).json({success:true, message:"", order_id:orders.id, amount:totalAmount, name:user.name})
@@ -63,7 +63,7 @@ const verifyOrder = asyncErrorHandler(async(req, res)=>{
         await product.save()
     }
 
-    await Order.updateMany({"order_id":razorpay_order_id}, {payment:"Paid"}, {new:true, runValidators:true})
+    await Order.updateMany({"order_id":razorpay_order_id}, {payment:"Paid", payment_id:razorpay_payment_id}, {new:true, runValidators:true})
 
     res.status(200).json({
         success:true,

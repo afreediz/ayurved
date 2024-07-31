@@ -24,6 +24,13 @@ const orderSchema = mongoose.Schema({
         type:String,
         required:true
     },
+    receipt:{
+        type:String,
+        required:true
+    },
+    payment_id:{
+        type:String
+    },
     status:{
         type:String,
         default:"Not processed",

@@ -30,6 +30,7 @@ import Blogs from './pages/Admin/Blogs'
 import AdminBlogDetails from './pages/Admin/BlogDetails'
 import ReadBolgs from './pages/Blogs'
 import BlogDetails from './pages/BlogDetails'
+import UserDetails from './pages/Admin/UserDetails'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -81,7 +82,9 @@ const App = () => {
           <Route path='products' element={<AllProducts />} />
           <Route path='products/:slug' element={<AdminProductDetails />} />
           <Route path='orders' element={<AllOrders />} />
+          <Route path='orders/:id' element={<AllOrders />} />
           <Route path='users' element={<AllUsers />} />
+          <Route path='users/:email' element={<UserDetails />} />
           <Route path='categories' element={<CatAndSoln />} />
         </Route>:<>Sorry, You dont have access to this page.</>
         }

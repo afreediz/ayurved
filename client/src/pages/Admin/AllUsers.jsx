@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import API, {format_date} from '../../services/api';
 import {toast} from 'react-toastify'
+import { Link } from 'react-router-dom';
 const AllUsers = () => {
   const [users, setUsers] = useState()
 
@@ -52,9 +53,9 @@ const AllUsers = () => {
           <thead>
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Index</th>
-              <th className=" max-md:hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">ID</th>
+              <th className=" max-md:hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Email</th>
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Username</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Username</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Phone</th>
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Joined Date</th>
               <th className="px-20 py-3 text-left text-xs font-medium uppercase tracking-wider">Status</th>
             </tr>
@@ -63,9 +64,9 @@ const AllUsers = () => {
           {users && users.map((user,index) => (
             <tr key={user.id}>
               <td className="px-6 py-4 whitespace-nowrap">{index+1}</td>
-              <td className=" max-md:hidden px-6 py-4 whitespace-nowrap">{user._id}</td>
+              <Link to={`/admin/users/${user.email}`} ><td className=" max-md:hidden px-6 py-4 whitespace-nowrap underline">{user.email}</td></Link>
               <td className="px-6 py-4 whitespace-nowrap">{user.name}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{user.role}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{user.phone}</td>
               <td className="px-6 py-4 whitespace-nowrap">{format_date(user.createdAt)}</td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <select
