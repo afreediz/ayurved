@@ -36,7 +36,9 @@ const login = asyncErrorHandler(async(req, res)=>{
 
     if(!await comparePassword(password, user.password)) throw new CustomError("CUSTOM ERROR: Password does not match", 400)
 
-    const token = generateToken({_id:user._id}, "7d")
+    if(user.role == "admin") if(req.body.secret_key != process.env.ADMIN_SECRET_KEY) throw new CustomError("CUSTOM ERROR: Secret key does not match", 400)
+
+    const token = generateToken({_id:user._id}, "90d")
 
     res.status(200).json({
         success:true,

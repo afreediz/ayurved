@@ -1,0 +1,99 @@
+import axios from 'axios';
+import React, { useContext, useState } from 'react'
+import {Link, useNavigate} from 'react-router-dom'
+import {toast} from 'react-toastify'
+import { userContext } from '../../context/user';
+import API from '../../services/api';
+
+const AdminLogin = () => {
+  const navigate = useNavigate()
+  const {user, setUser} = useContext(userContext)
+  const [data, setData] = useState({
+    email:"",
+    password:"",
+    secret_key:""
+  })
+  const onchange = (e) => {
+    const {name, value} = e.target;
+    setData((old_data)=>{
+      return {
+        ...old_data,
+        [name]:value
+      }
+    })
+  }
+  const login = async(e) => {
+    e.preventDefault();
+    try{
+      const response = await API.post('auth/login',{
+        ...data
+      })
+      if(response.data.user.role == 'admin'){
+        setUser(response.data.user)
+        navigate('/navjeevana/admin')
+        localStorage.setItem('token',response.data.token)
+        toast.success("Admin Login successfull")
+      }else{
+        setUser({})
+        localStorage.removeItem('token')
+        alert('Please login with admin credentials')
+      }
+    }catch(error){
+      toast.error(error.response?.data.message)
+      console.log(error)
+    }
+  }
+  return (
+<div className='flex justify-center items-center bg-gray-100 my-10'>
+      <div className='w-full max-w-md p-8 bg-white rounded-lg shadow-md'>
+        <h1 className='text-3xl font-semibold text-center text-gray-700 mb-6'>Admin Login</h1>
+        <form onSubmit={login}>
+          <div className='mb-4'>
+            <input 
+              type="email" 
+              name='email' 
+              required 
+              value={data.email} 
+              onChange={onchange} 
+              className='w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500' 
+              placeholder='Email' 
+            />
+          </div>
+          <div className='mb-6'>
+            <input 
+              type="password" 
+              name='password' 
+              required 
+              minLength={8}
+              value={data.password} 
+              onChange={onchange} 
+              className='w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500' 
+              placeholder='Password' 
+            />
+          </div>
+          <div className='mb-6'>
+            <input 
+              type="password" 
+              name='secret_key' 
+              required 
+              value={data.secret_key} 
+              onChange={onchange} 
+              className='w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500' 
+              placeholder='Enter secret key' 
+            />
+          </div>
+          <button 
+            type='submit' 
+            className='w-full py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors'
+          >
+            Login
+          </button>
+          <Link to='/register' ><span className=' text-blue-500 block text-center mt-4'>Create a new account</span></Link>
+          <Link to='/forget-password' ><span className=' text-red-600 block text-center mt-4'>Forgot password</span></Link>
+        </form>
+      </div>
+    </div>
+  )
+}
+
+export default AdminLogin

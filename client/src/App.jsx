@@ -32,6 +32,7 @@ import ReadBolgs from './pages/Blogs'
 import BlogDetails from './pages/BlogDetails'
 import UserDetails from './pages/Admin/UserDetails'
 import OrderDetails from './pages/Admin/OrderDetails'
+import AdminLogin from './pages/Auth/AdminLogin'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -74,8 +75,9 @@ const App = () => {
             </>
           }
         </Route>
+        <Route path='/navjeevana/adminlogin' element={<AdminLogin />}/>
         {user && user.role == 'admin'?
-        <Route path='/admin' element={<AdminLayout />}>
+        <Route path='/navjeevana/admin' element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
           <Route path='create-product' element={<CreateProduct />} />
           <Route path='blogs' element={<Blogs />} />
