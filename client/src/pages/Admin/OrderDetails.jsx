@@ -34,7 +34,7 @@ const OrderDetails = () => {
         </div>
         <div className="my-2">
           <label className="block text-gray-700" htmlFor="phone">Cart Quantity</label>
-          <input name='status' type="text" id="status" value={order && order.status} placeholder='Enter your phone' className="w-full p-2 border border-gray-300 rounded-lg" />
+          <input name='status' type="text" id="status" value={order && order.cart_quantity} placeholder='Enter your phone' className="w-full p-2 border border-gray-300 rounded-lg" />
         </div>        
         <div className="my-2">
           <label className="block text-gray-700" htmlFor="phone">Payment</label>
