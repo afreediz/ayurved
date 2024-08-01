@@ -1,6 +1,12 @@
 mobile no. login - important
 why - logos and content
-admin profile modfication
 
 currency change
 add the cart policy in web
+
+services :
+mongodb atlas
+hosting - digital ocean
+cloudinary
+domain
+twilio
