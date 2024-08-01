@@ -14,13 +14,13 @@ const categorySchema = mongoose.Schema({
     }
 })
 
-categorySchema.pre('deleteOne', { document: false, query: true }, async function(next) {
-    try {
-        await Product.deleteMany({ category: this._conditions._id });
-        next();
-    } catch (error) {
-        next(error);
-    }
-});
+// categorySchema.pre('deleteOne', { document: false, query: true }, async function(next) {
+//     try {
+//         await Product.deleteMany({ category: this._conditions._id });
+//         next();
+//     } catch (error) {
+//         next(error);
+//     }
+// });
 
 module.exports = mongoose.model('categories', categorySchema)

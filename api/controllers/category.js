@@ -2,6 +2,8 @@ const asyncErrorHandler = require("express-async-handler")
 const CustomError = require('../utils/CustomError')
 const slugify = require('slugify')
 const Category = require('../models/category')
+const Product = require('../models/product')
+const { deleteImage } = require("../helpers/image")
 
 const getCategory = asyncErrorHandler(async(req, res)=>{
     const { slug } = req.params
@@ -55,6 +57,12 @@ const updateCategory = asyncErrorHandler(async(req, res)=>{
 const deleteCategory = asyncErrorHandler(async(req, res)=>{
     const { id } = req.params
 
+    const products = await Product.find({category:id}).select('_id image')
+    for (const product of products) {
+        console.log(product);
+        await deleteImage(product.image)
+    }
+    Product.deleteMany({category:id})
     await Category.deleteOne({_id:id})
 
     res.status(200).json({
