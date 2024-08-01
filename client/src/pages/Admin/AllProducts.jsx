@@ -68,7 +68,7 @@ const ProductTable = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {products.map((product, index) => (
+              {products.length > 0 && products.map((product, index) => (
                 <tr key={index} className="">
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">{index+1}</td>
                   <td className="hidden md:table-cell px-6 py-4 whitespace-nowrap text-sm font-medium">{product._id}</td>

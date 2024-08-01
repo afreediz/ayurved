@@ -62,7 +62,7 @@ const deleteCategory = asyncErrorHandler(async(req, res)=>{
         console.log(product);
         await deleteImage(product.image)
     }
-    Product.deleteMany({category:id})
+    await Product.deleteMany({category:id})
     await Category.deleteOne({_id:id})
 
     res.status(200).json({
