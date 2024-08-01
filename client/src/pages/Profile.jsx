@@ -77,11 +77,14 @@ const Profile = () => {
         </div>
         <div className="my-2">
           <label className="block text-gray-700" htmlFor="email">Email</label>
-          <input name='email' onChange={onchange} type="text" id="email" value={data && data.email} placeholder='Enter your email' className="w-full p-2 border border-gray-300 rounded-lg" />
+          <input name='email' disabled type="text" id="email" value={data && data.email} placeholder='Enter your email' className="w-full p-2 border border-gray-300 rounded-lg" />
         </div>
         <div className="my-2">
           <label className="block text-gray-700" htmlFor="phone">Phone</label>
-          <input name='phone' onChange={onchange} type="text" id="phone" value={data && data.phone} placeholder='Enter your phone' className="w-full p-2 border border-gray-300 rounded-lg" />
+          <div className="">
+            <input name='phone' onChange={onchange} type="text" id="phone" value={data && data.phone} placeholder='Enter your phone' className="w-full p-2 border border-gray-300 rounded-lg" />
+            <button className={`px-4 py-1 rounded text-white ${data && data.ph_verified ? "bg-green-600 cursor-not-allowed" : "bg-blue-500"}`} disabled={data && data.ph_verified}>{data && data.ph_verified ? "Verified" : "Verify"}</button>
+          </div>
         </div>
         <div className="my-2">
           <label className="block text-gray-700" htmlFor="address">Address</label>
