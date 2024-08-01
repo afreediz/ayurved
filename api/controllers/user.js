@@ -38,6 +38,9 @@ const updateProfile = asyncErrorHandler(async(req, res)=>{
 })
 const deleteProfile = asyncErrorHandler(async(req, res)=>{
     const id = req.user._id
+
+    const user = await User.findById(id)
+    if(user.role == "admin") throw new CustomError("CUSTOM ERROR: Admin profile can't be deleted", 400)
     await User.deleteOne({_id:id})
     
     res.status(200).json({
@@ -47,6 +50,9 @@ const deleteProfile = asyncErrorHandler(async(req, res)=>{
 })
 const deleteUser = asyncErrorHandler(async(req, res)=>{
     const id = req.params.id
+
+    const user = await User.findById(id)
+    if(user.role == "admin") throw new CustomError("CUSTOM ERROR: Admin profile can't be deleted", 400)
     await User.deleteOne({_id:id})
     
     res.status(200).json({
