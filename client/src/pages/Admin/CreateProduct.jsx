@@ -200,7 +200,6 @@ const CreateProduct = ({setDisplayAdd, setProducts}) => {
           <button
             type="submit"
             className="w-full py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
-             onClick={()=>{alert("Started uploading")}}
           >
             Create Product
           </button>

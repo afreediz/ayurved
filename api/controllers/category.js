@@ -59,7 +59,6 @@ const deleteCategory = asyncErrorHandler(async(req, res)=>{
 
     const products = await Product.find({category:id}).select('_id image')
     for (const product of products) {
-        console.log(product);
         await deleteImage(product.image)
     }
     await Product.deleteMany({category:id})
