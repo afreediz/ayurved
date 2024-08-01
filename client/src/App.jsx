@@ -75,9 +75,9 @@ const App = () => {
             </>
           }
         </Route>
-        <Route path='/navjeevana/adminlogin' element={<AdminLogin />}/>
+        <Route path='/navjeevanabrand/adminlogin' element={<AdminLogin />}/>
         {user && user.role == 'admin'?
-        <Route path='/navjeevana/admin' element={<AdminLayout />}>
+        <Route path='/navjeevanabrand/admin' element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
           <Route path='create-product' element={<CreateProduct />} />
           <Route path='blogs' element={<Blogs />} />

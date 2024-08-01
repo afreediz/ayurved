@@ -13,11 +13,7 @@ const Login = () => {
     password:""
   })
   if(user){
-    if(user.role == "admin"){
-      return navigate('/admin')
-    }else{
-      return navigate('/')
-    }
+    return navigate('/')
   }
   const onchange = (e) => {
     const {name, value} = e.target;
@@ -37,14 +33,9 @@ const Login = () => {
       setUser(response.data.user)
       toast.success("User Login successfull")
       localStorage.setItem('token',response.data.token)
-      if(response.data.user.role == 'admin'){
-        navigate('/admin')
-      }else{
-        navigate('/')
-      }
+      navigate('/')
     }catch(error){
       toast.error(error.response?.data.message)
-      console.log(error)
     }
   }
   return (

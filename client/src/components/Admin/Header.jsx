@@ -35,12 +35,12 @@ const Header = () => {
             <FaTimes onClick={() => setMenuOpen(!menuOpen)} className='text-white text-3xl cursor-pointer ' />
           </div>
           <div className="flex flex-col items-center my-10 h-full text-white text-2xl gap-6">
-            <Link to={"/admin"} onClick={() => setMenuOpen(!menuOpen)} className='inline-block py-4 px-10 bg-slate-900 rounded' >Dashboard</Link>
-            <Link to={"/admin/orders"} onClick={() => setMenuOpen(!menuOpen)}  className='inline-block py-4 px-10 bg-slate-900 rounded' >Orders</Link>
-            <Link to={"/admin/users"} onClick={() => setMenuOpen(!menuOpen)}  className='inline-block py-4 px-10 bg-slate-900 rounded' >Users</Link>
-            <Link to={"/admin/products"} onClick={() => setMenuOpen(!menuOpen)}  className='inline-block py-4 px-10 bg-slate-900 rounded' >Products</Link>
-            <Link to={"/admin/categories"} onClick={() => setMenuOpen(!menuOpen)}  className='inline-block py-4 px-10 bg-slate-900 rounded' >Categories</Link>
-            <Link to={"/admin/blogs"} onClick={() => setMenuOpen(!menuOpen)}  className='inline-block py-4 px-10 bg-slate-900 rounded' >Blogs</Link>
+            <Link to={"/navjeevanabrand/admin"} onClick={() => setMenuOpen(!menuOpen)} className='inline-block py-4 px-10 bg-slate-900 rounded' >Dashboard</Link>
+            <Link to={"/navjeevanabrand/admin/orders"} onClick={() => setMenuOpen(!menuOpen)}  className='inline-block py-4 px-10 bg-slate-900 rounded' >Orders</Link>
+            <Link to={"/navjeevanabrand/admin/users"} onClick={() => setMenuOpen(!menuOpen)}  className='inline-block py-4 px-10 bg-slate-900 rounded' >Users</Link>
+            <Link to={"/navjeevanabrand/admin/products"} onClick={() => setMenuOpen(!menuOpen)}  className='inline-block py-4 px-10 bg-slate-900 rounded' >Products</Link>
+            <Link to={"/navjeevanabrand/admin/categories"} onClick={() => setMenuOpen(!menuOpen)}  className='inline-block py-4 px-10 bg-slate-900 rounded' >Categories</Link>
+            <Link to={"/navjeevanabrand/admin/blogs"} onClick={() => setMenuOpen(!menuOpen)}  className='inline-block py-4 px-10 bg-slate-900 rounded' >Blogs</Link>
             <button onClick={logout} className='py-2 px-3 bg-red-600 text-white font-normal rounded focus:outline-none focus:ring-2 focus:ring-red-500'>
               Logout
             </button>

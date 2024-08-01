@@ -65,7 +65,7 @@ const ReadBlogs = ({setActive, blogs, setBlogs}) => {
         {blogs && blogs.length === 0 && <p className='text-2xl text-center py-10'>No blogs found</p>}
     <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4'>
       {blogs && blogs.map((blog, index) => (
-        <Link  key={index} to={`/admin/blogs/${blog.slug}`}>
+        <Link  key={index} to={`/navjeevanabrand/admin/blogs/${blog.slug}`}>
             <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col min-h-[350px] max-h-[350px]">
               <div className="w-full h-48 overflow-hidden rounded flex-shrink-0 flex justify-center items-center">
                   <img src={blog.image} alt={blog.title} className="w-full h-full object-cover" />

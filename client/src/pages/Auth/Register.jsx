@@ -17,11 +17,7 @@ const Register = () => {
   })
   const [disabled, setDisabled] = useState(false)
   if(user){
-    if(user.role == "admin"){
-      return navigate('/admin')
-    }else{
-      return navigate('/')
-    }
+    return navigate('/')
   }
   const onchange = (e) => {
     const {name, value} = e.target;

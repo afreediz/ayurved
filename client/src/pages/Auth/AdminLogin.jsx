@@ -30,7 +30,7 @@ const AdminLogin = () => {
       })
       if(response.data.user.role == 'admin'){
         setUser(response.data.user)
-        navigate('/navjeevana/admin')
+        navigate('/navjeevanabrand/admin')
         localStorage.setItem('token',response.data.token)
         toast.success("Admin Login successfull")
       }else{

@@ -111,6 +111,7 @@ const productList = asyncErrorHandler(async(req, res)=>{
     .skip((page - 1)*perPage)
     .limit(perPage)
     .sort({createdAt:-1})
+    console.log(products);
     res.status(200).json({
         success:true,
         message:`Products of page ${page}`,

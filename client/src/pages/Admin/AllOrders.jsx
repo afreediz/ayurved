@@ -64,7 +64,7 @@ const AllOrders = () => {
             return (
               <tr key={order.orderid}>
               <td className="hidden md:table-cell px-6 py-4 whitespace-nowrap">{index+1}</td>
-              <Link to={`/admin/orders/${order._id}`}><td className="px-6 py-4 whitespace-nowrap underline">{order._id}</td></Link>
+              <Link to={`/navjeevanabrand/admin/orders/${order._id}`}><td className="px-6 py-4 whitespace-nowrap underline">{order._id}</td></Link>
               <td className="px-6 py-4 whitespace-nowrap">{order.user.name}</td>
               <td className="px-6 py-4 whitespace-nowrap">{order.product? order.product.name:"product no longer available"}</td>
               <td className="px-6 py-4 whitespace-nowrap">{format_date(order.createdAt)}</td>

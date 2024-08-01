@@ -39,7 +39,7 @@ const BlogDetails = () => {
         try {
             const { data } = await API.put(`/blogs/${blog._id}`, {...blog, old_image});
             setBlog(data.blog);
-            navigate(`/admin/blogs/${data.blog.slug}`);
+            navigate(`/navjeevanabrand/admin/blogs/${data.blog.slug}`);
             toast.success("Blog Updated Successfully");
         } catch (error) {
             console.log(error);
@@ -49,7 +49,7 @@ const BlogDetails = () => {
         try {
             const { data } = await API.delete(`/blogs/${blog._id}`);
             toast.success("Blog Deleted Successfully");
-            navigate('/admin/blogs');
+            navigate('/navjeevanabrand/admin/blogs');
         } catch (error) {
             console.log(error);
         }

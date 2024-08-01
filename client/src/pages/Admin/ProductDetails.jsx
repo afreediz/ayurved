@@ -55,7 +55,7 @@ const AdminProductDetails = () => {
   const handleDelete = async () => {
     try{
       const {data} = await API.delete(`products/${product._id}`)
-      navigate('/admin/products')
+      navigate('/navjeevanabrand/admin/products')
       toast.success(data.message)
     }catch(error){
       toast.error(error.response?.data.message)
@@ -69,7 +69,7 @@ const AdminProductDetails = () => {
       const {data} = await API.put(`products/${product._id}`, {
         ...product, image, old_image
       })
-      navigate(`/admin/products/${slugify(product.name)}`)
+      navigate(`/navjeevanabrand/admin/products/${slugify(product.name)}`)
       setUpdateable(false)
       toast.success(data.message)
     }catch(error){

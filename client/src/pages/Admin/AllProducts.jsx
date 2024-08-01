@@ -5,13 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 const ProductTable = () => {
   const [displayAdd, setDisplayAdd] = useState(false)
-  const [displayProduct, setDisplayProduct] = useState(false)
   const [products, setProducts] = useState([])
   const navigate = useNavigate()
   useEffect(()=>{
     async function getProducts(){
       try{
         const {data} = await API.get(`products/`)
+        console.log(products);
         setProducts(data.products)
       }catch(error){
         toast.error(error.response?.data.message)
@@ -77,7 +77,7 @@ const ProductTable = () => {
                   <td className="px-6 py-4 whitespace-nowrap">{product.price}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{product.category.name}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                    <button onClick={()=>navigate(`/admin/products/${product.slug}`)} className="text-green-600 hover:text-green-900 mr-2">View</button>
+                    <button onClick={()=>navigate(`/navjeevanabrand/admin/products/${product.slug}`)} className="text-green-600 hover:text-green-900 mr-2">View</button>
                     <button onClick={()=>handleDelete(product._id)} className="text-red-600 hover:text-red-900">Delete</button>
                   </td>
                 </tr>
