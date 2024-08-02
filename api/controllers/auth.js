@@ -215,11 +215,12 @@ const verifyUser = asyncErrorHandler(async(req, res)=>{
     }
 })
 
+
 module.exports = {
     register,
     login,
     forgetPassword,
     verifyUser,
     changePassword,
-    forwardMail
+    forwardMail,
 }

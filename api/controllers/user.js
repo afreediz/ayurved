@@ -1,5 +1,7 @@
 const asyncErrorHandler = require("express-async-handler")
 const CustomError = require('../utils/CustomError')
+const twilio = require('twilio')
+const smsClient = twilio(process.env.TWILIO_ACC_SID, process.env.TWILIO_AUTH_TOKEN)
 
 const User = require('../models/user')
 
@@ -48,6 +50,47 @@ const deleteProfile = asyncErrorHandler(async(req, res)=>{
         message:"User profile deleted successfully",
     })
 })
+
+const sendVerificationCode = asyncErrorHandler(async (req, res) => {
+    const userId = req.user._id
+    const user = await User.findById(userId)
+    const phoneNumber = user.phone
+    smsClient.verify.v2.services(process.env.TWILIO_SERVICE_ID)
+        .verifications.create({ 
+            to: phoneNumber, 
+            channel: 'sms' })
+        .then((verification)=>{ 
+            res.json({ success: true, verification })
+        })
+        .catch((error)=>{
+            throw new CustomError(error.message, 500)
+        });
+})
+
+const verifyCode = asyncErrorHandler(async (req, res)=>{
+    const userId = req.user._id
+    const {code} = req.body
+    const user = await User.findById(userId)
+    const phoneNumber = user.phone
+    smsClient.verify.v2.services(process.env.TWILIO_SERVICE_ID)
+        .verificationChecks.create({ to: phoneNumber, code })
+        .then((verification_check) => {
+            if (verification_check.status === 'approved') {
+                user.ph_verified = true
+                user.save()
+                res.json({ success: true, message:"Verification Successfull" });
+            } else {
+                res.status(400).json({ success: false, message: 'Invalid code' });
+            }
+        })
+        .catch((error) => {
+            res.status(500).json({ success: false, message:"Code expired, Please resend the code and try again" })
+        });
+})
+
+
+
+
 const deleteUser = asyncErrorHandler(async(req, res)=>{
     const id = req.params.id
 
@@ -131,4 +174,15 @@ const dashboardDetails = asyncErrorHandler(async(req, res)=>{
 
 
 
-module.exports = {getUser, getAdmin, profile, updateProfile, deleteProfile, getAllUsers, userStatus, deleteUser, dashboardDetails, getUserForAdmin }
+module.exports = { getUser, 
+    getAdmin, 
+    profile, 
+    updateProfile, 
+    deleteProfile, 
+    getAllUsers, 
+    userStatus, 
+    deleteUser, 
+    dashboardDetails, 
+    getUserForAdmin,
+    sendVerificationCode,
+    verifyCode }
