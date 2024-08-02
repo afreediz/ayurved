@@ -5,8 +5,8 @@ const rateLimit = require('express-rate-limit')
 
 const emailLimiter = rateLimit({
     windowMs: 1 * 60 * 60 * 1000, // 1 hour
-    max: 1, // limit each IP to 3 email requests per windowMs
-    message: 'You can only send 5 messages per hour'
+    max: 5, // limit each IP to 3 email requests per windowMs
+    message: {message:'You can only send 5 messages per hour'}
 });
 
 router.post('/sendmail', emailLimiter, forwardMail)

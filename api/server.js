@@ -8,9 +8,7 @@ const path = require('path')
 const helmet = require('helmet')
 const rateLimiter = require('express-rate-limit')
 
-require('dotenv').config({
-    path:"./config/.env"
-})
+require('dotenv').config()
 require('./config/connection')
 
 const PORT = process.env.PORT || 3001
@@ -37,13 +35,13 @@ app.use(helmet.contentSecurityPolicy({
 const apiLimiter = rateLimiter({
     windowMs: 30 * 60 * 1000, // 15 minutes
     max: 100, // limit each IP to 100 requests per windowMs
-    message: 'Too many requests from this IP, please try again later.'
+    message: {message:'Too many requests from this IP, please try again later.'}
 });
 
 app.use('/api', apiLimiter)
-app.use(express.static(path.join(__dirname, 'build')))
 app.use('/api', route)
 
+app.use(express.static(path.join(__dirname, 'build')))
 app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })
