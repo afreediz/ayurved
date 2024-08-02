@@ -4,6 +4,9 @@ const cors = require('cors')
 const logger = require('morgan')
 const errorHandler = require('./middlewares/errorHandler')
 const bodyParser = require('body-parser')
+const path = require('path')
+const helmet = require('helmet')
+const rateLimiter = require('express-rate-limit')
 
 require('dotenv').config({
     path:"./config/.env"
@@ -13,12 +16,37 @@ require('./config/connection')
 const PORT = process.env.PORT || 3001
 const route = require('./routes/index')
 
-app.use(cors())
+app.use(cors(
+    {
+        origin:"http://localhost:3002",
+        credentials:true
+    }
+))
 app.use(bodyParser.json({limit:'50mb'}))
 app.use(bodyParser.urlencoded({limit:'50mb', extended:true, parameterLimit:50000}))
 app.use(logger('dev'))
+// app.use(helmet())
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      imgSrc: ["'self'", '*'],
+      // Other directives...
+    }
+  }));
 
+const apiLimiter = rateLimiter({
+    windowMs: 30 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    message: 'Too many requests from this IP, please try again later.'
+});
+
+app.use('/api', apiLimiter)
+app.use(express.static(path.join(__dirname, 'build')))
 app.use('/api', route)
+
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+})
 
 app.use((req, res)=>{
     res.status(404).json({success:false, message:`path doesnot exist ${req.url}`})

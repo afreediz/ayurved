@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Center from '../components/utilities/Center';
-import { FaRegPaperPlane, FaRocket } from 'react-icons/fa'
+import { FaRegPaperPlane } from 'react-icons/fa'
 import API from '../services/api';
 import { toast } from 'react-toastify';
 
