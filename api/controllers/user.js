@@ -54,6 +54,7 @@ const deleteProfile = asyncErrorHandler(async(req, res)=>{
 const sendVerificationCode = asyncErrorHandler(async (req, res) => {
     const userId = req.user._id
     const user = await User.findById(userId)
+    if(user.ph_verified) throw new CustomError("CUSTOM ERROR: Phone number is already verified", 400)
     const phoneNumber = user.phone
     smsClient.verify.v2.services(process.env.TWILIO_SERVICE_ID)
         .verifications.create({ 
