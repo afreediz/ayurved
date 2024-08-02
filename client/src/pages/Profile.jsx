@@ -5,15 +5,19 @@ import API from '../services/api'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Center from '../components/utilities/Center'
 import Loader from '../components/Loader'
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
 
 const Profile = () => {
   const location = useLocation()
-  console.log(location.pathname);
   const [data, setData] = useState("")
   const [updated, setUpdated] = useState(false)
   const navigate = useNavigate()
   const {setUser} = useContext(userContext)
   const [loading, setLoading] = useState(true)
+  console.log(data.phone);
+  const [isVerifying, setIsVerifying] = useState(false)
+  const [verificationCode, setVerificationCode] = useState(false)
   
   useEffect(()=>{
     async function getData(){
@@ -63,6 +67,36 @@ const Profile = () => {
       console.log(error);
     }
   }
+  const sendVerificatioCode = async() => {
+    try{
+      const response  = await API.post('/users/sendVerificationCode')
+      setIsVerifying(true)
+      toast.success(response?.data.message)
+    }catch(error){
+      toast.error(error.response?.data.message)
+      console.log(error);
+    }
+  }
+
+  const verifyCode = async() => {
+    try{
+      const response = await API.post('/users/verifyCode', {
+        code: verificationCode
+      })
+      setData((user)=>{
+        return {
+          ...user,
+          ph_verified:true
+        }
+      })
+      setVerificationCode("")
+      setIsVerifying(false)
+      toast.success(response?.data.message)
+    }catch(error){
+      toast.error(error.response?.data.message)
+      console.log(error);
+    }
+  }
   return (
     <Center className='my-10 relative'>
       <div className="md:hidden mt-10 w-full flex justify-around rounded text-xl border border-gray-800 relative">
@@ -82,8 +116,18 @@ const Profile = () => {
         <div className="my-2">
           <label className="block text-gray-700" htmlFor="phone">Phone</label>
           <div className="">
-            <input name='phone' onChange={onchange} type="text" id="phone" value={data && data.phone} placeholder='Enter your phone' className="w-full p-2 border border-gray-300 rounded-lg" />
-            <button className={`px-4 py-1 rounded text-white ${data && data.ph_verified ? "bg-green-600 cursor-not-allowed" : "bg-blue-500"}`} disabled={data && data.ph_verified}>{data && data.ph_verified ? "Verified" : "Verify"}</button>
+            {/* <input name='phone' onChange={onchange} type="text" id="phone" value={data && data.phone} placeholder='Enter your phone' className="w-full p-2 border border-gray-300 rounded-lg" /> */}
+            <PhoneInput country={'in'} value={`${data.phone}`} onChange={(phone)=>{setData((old_data)=>{
+              return {
+                ...old_data,
+                phone
+              }
+            })}} />
+            {isVerifying && <input type="number" value={verificationCode} onChange={(e)=>{setVerificationCode(e.target.value)}} placeholder='Enter verification code' className="w-full p-2 border border-gray-300 rounded-lg" />}
+            {
+            !isVerifying ? <button className={`px-3 py-1 my-1 rounded text-white ${data && data.ph_verified ? "bg-green-600 cursor-not-allowed" : "bg-blue-500"}`} disabled={data && data.ph_verified} onClick={sendVerificatioCode}>{data && data.ph_verified ? "Verified" : "Verify"}</button>:
+            <button onClick={()=>{verifyCode()}} className={`px-4 py-1 rounded text-white "bg-blue-500"}`}>Verify Code</button>
+            }
           </div>
         </div>
         <div className="my-2">

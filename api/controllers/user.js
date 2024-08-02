@@ -57,7 +57,7 @@ const sendVerificationCode = asyncErrorHandler(async (req, res) => {
     const phoneNumber = user.phone
     smsClient.verify.v2.services(process.env.TWILIO_SERVICE_ID)
         .verifications.create({ 
-            to: phoneNumber, 
+            to: `+${phoneNumber}`, 
             channel: 'sms' })
         .then((verification)=>{ 
             res.json({ success: true, verification })
@@ -73,7 +73,7 @@ const verifyCode = asyncErrorHandler(async (req, res)=>{
     const user = await User.findById(userId)
     const phoneNumber = user.phone
     smsClient.verify.v2.services(process.env.TWILIO_SERVICE_ID)
-        .verificationChecks.create({ to: phoneNumber, code })
+        .verificationChecks.create({ to: `+${phoneNumber}`, code })
         .then((verification_check) => {
             if (verification_check.status === 'approved') {
                 user.ph_verified = true
