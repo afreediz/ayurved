@@ -45,14 +45,9 @@ const ProductDetails = () => {
     </div>
     <div className="col-span-4">
       <h2 className="text-4xl font-bold mb-4">{product && product.name}</h2>
-      <h3 className="text-2xl font-semibold mb-4">${product && product.price}</h3>
+      <h3 className="text-2xl font-semibold mb-4">₹{product && product.price}</h3>
       {product && product.quantity > 0 ?<h3 className="text-xl mb-4">In stocks :  {product.quantity}  </h3>:
       <span className='text-red-500 text-2xl'>Out of Stocks</span>}
-      <div className="flex items-center gap-5 my-3">
-        <div className="border border-black bg-gray-100 text-base font-semibold rounded-lg p-3 transition hover:bg-gray-300">1L</div>
-        <div className="border border-black bg-gray-100 text-base font-semibold rounded-lg p-3 transition hover:bg-gray-300">0.5L</div>
-        <div className="border border-black bg-gray-100 text-base font-semibold rounded-lg p-3 transition hover:bg-gray-300">100g</div>
-      </div>
       <p className="text-lg mb-8">{product && product.description}</p>
       <div className="button-container flex gap-4">
       <button 

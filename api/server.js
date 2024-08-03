@@ -16,7 +16,7 @@ const route = require('./routes/index')
 
 app.use(cors(
     {
-        origin:"http://localhost:3002",
+        origin:"*",
         credentials:true
     }
 ))

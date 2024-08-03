@@ -61,7 +61,7 @@ const forgetPassword = asyncErrorHandler(async(req, res)=>{
 
     const token = generateToken({_id:user._id}, "1hr")
 
-    const reset_link = `${process.env.FRONTEND}/change-password/${token}`
+    const reset_link = `${process.env.WEB_URL}/change-password/${token}`
 
     await sendResetPasswordEmail(email, reset_link)
 
@@ -150,7 +150,7 @@ const verifyUser = asyncErrorHandler(async(req, res)=>{
         <div class="container">
             <h1>Verification Successful</h1>
             <p>Your email has been successfully verified.</p>
-            <a href="${process.env.FRONTEND}/login">Click here to login</a>
+            <a href="${process.env.WEB_URL}/login">Click here to login</a>
         </div>
     </body>
     </html>
@@ -207,7 +207,7 @@ const verifyUser = asyncErrorHandler(async(req, res)=>{
         <div class="container">
             <h1>Verification unuccessful</h1>
             <p>Opps! Something went wrong.</p>
-            <a href="${process.env.FRONTEND}/register">Click here to go back to register page</a>
+            <a href="${process.env.WEB_URL}/register">Click here to go back to register page</a>
         </div>
     </body>
     </html>

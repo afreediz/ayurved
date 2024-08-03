@@ -33,6 +33,7 @@ import BlogDetails from './pages/BlogDetails'
 import UserDetails from './pages/Admin/UserDetails'
 import OrderDetails from './pages/Admin/OrderDetails'
 import AdminLogin from './pages/Auth/AdminLogin'
+import Loader from './components/Loader'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -95,7 +96,7 @@ const App = () => {
       </Routes>
       <ToastContainer position='bottom-center' />
       <img src='/images/whtspimg.png' className=' w-10 h-10 md:w-16 md:h-16 rounded-full fixed bottom-20 right-5 z-10 text-5xl md:text-6xl ' />
-      {loading && <div className="laoder fixed top-0 right-0 left-0 bottom-0 bg-white flex justify-center items-center z-[100] text-4xl font-bold">Loading...</div>}
+      {loading && <Loader />}
     </div>
   )
 }

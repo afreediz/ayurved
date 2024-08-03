@@ -28,7 +28,7 @@ const CustomDropdown = ({ data, mainText, navigateHandler, setMenuOpen, menuOpen
           >
             {mainText}
           </li>
-          {data.map((category, index) => (
+          {data && data.map((category, index) => (
             <li
               key={index}
               onClick={() => handleSelect(category.slug)}

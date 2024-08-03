@@ -19,7 +19,7 @@ const Cart = () => {
     })
     return total.toLocaleString("en-Us",{
       style:"currency",
-      currency:'USD'
+      currency:'INR'
     })
   }
   const checkout = async()=>{
@@ -79,7 +79,7 @@ const Cart = () => {
               <div key={index} className="mb-4 flex flex-col gap-1">
                 <div className="flex justify-between">
                   <span>{product.name}</span>
-                  <span>${product.price}</span>
+                  <span>₹{product.price}</span>
                 </div>
                 <div className="flex justify-between border-b border-black">
                   <span>quantity :</span>
@@ -87,7 +87,7 @@ const Cart = () => {
                 </div>
                 <div className=" flex justify-between">
                   <span>subtotal :</span>
-                  <span className=' font-semibold'>${product.price * product.cart_quantity}</span>
+                  <span className=' font-semibold'>₹{product.price * product.cart_quantity}</span>
                 </div>
               </div>
             ))}
