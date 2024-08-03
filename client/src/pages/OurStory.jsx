@@ -94,7 +94,7 @@ At Navajeevana, we are dedicated to creating products that are not only good for
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-10">Our Values</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="w-full mb-8">
+            <div data-aos="flip-up" className="w-full mb-8">
               <div className="p-6 bg-white shadow-lg rounded-lg">
                 <img src="https://via.placeholder.com/100x100" alt="Quality Icon" className="mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Quality</h3>
@@ -103,7 +103,7 @@ At Navajeevana, we are dedicated to creating products that are not only good for
                 </p>
               </div>
             </div>
-            <div className="w-full mb-8">
+            <div data-aos="flip-up" className="w-full mb-8">
               <div className="p-6 bg-white shadow-lg rounded-lg">
                 <img src="https://via.placeholder.com/100x100" alt="Sustainability Icon" className="mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Sustainability</h3>
@@ -112,7 +112,7 @@ At Navajeevana, we are dedicated to creating products that are not only good for
                 </p>
               </div>
             </div>
-            <div className="w-full mb-8">
+            <div data-aos="flip-up" className="w-full mb-8">
               <div className="p-6 bg-white shadow-lg rounded-lg">
                 <img src="https://via.placeholder.com/100x100" alt="Purity Icon" className="mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Purity</h3>
@@ -130,21 +130,21 @@ At Navajeevana, we are dedicated to creating products that are not only good for
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-10">Meet Our Team</h2>
           <div className="flex flex-wrap justify-center space-x-6">
-            <div className="w-full sm:w-1/2 lg:w-1/4 mb-8">
+            <div data-aos="fade-up" className="w-full sm:w-1/2 lg:w-1/4 mb-8">
               <div className="p-6 bg-white shadow-lg rounded-lg">
                 <img src="https://via.placeholder.com/150x150" alt="Team Member" className="mx-auto rounded-full mb-4" />
                 <h3 className="text-xl font-semibold mb-2">John Doe</h3>
                 <p>Founder & CEO</p>
               </div>
             </div>
-            <div className="w-full sm:w-1/2 lg:w-1/4 mb-8">
+            <div data-aos="fade-up" className="w-full sm:w-1/2 lg:w-1/4 mb-8">
               <div className="p-6 bg-white shadow-lg rounded-lg">
                 <img src="https://via.placeholder.com/150x150" alt="Team Member" className="mx-auto rounded-full mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Jane Smith</h3>
                 <p>Head of Operations</p>
               </div>
             </div>
-            <div className="w-full sm:w-1/2 lg:w-1/4 mb-8">
+            <div data-aos="fade-up" className="w-full sm:w-1/2 lg:w-1/4 mb-8">
               <div className="p-6 bg-white shadow-lg rounded-lg">
                 <img src="https://via.placeholder.com/150x150" alt="Team Member" className="mx-auto rounded-full mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Michael Brown</h3>

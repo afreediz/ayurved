@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const VideoCard = ({ videoSrc, title, price }) => {
     return (
       <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-        <div className="relative pb-96"> {/* Increase the height to 75% of the width */}
+        <div data-aos="fade-up" className="relative pb-96"> {/* Increase the height to 75% of the width */}
           <video 
             className="absolute top-0 left-0 w-full h-full object-cover"
             src={videoSrc}
@@ -39,7 +39,7 @@ const ProductVideos = () => {
       <h2 className="text-2xl font-medium mb-6 text-center">Explore & Shop</h2>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4">
         {videos.map((video, index) => (
-          <VideoCard key={index} videoSrc={video.src} title={video.title} price={video.price} />
+          <VideoCard  key={index} videoSrc={video.src} title={video.title} price={video.price} />
         ))}
       </div>
     </div>

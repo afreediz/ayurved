@@ -73,7 +73,8 @@ const verifyCode = asyncErrorHandler(async (req, res)=>{
     const {code} = req.body
     const user = await User.findById(userId)
     const phoneNumber = user.phone
-    smsClient.verify.v2.services(process.env.TWILIO_SERVICE_ID)
+    try{
+        smsClient.verify.v2.services(process.env.TWILIO_SERVICE_ID)
         .verificationChecks.create({ to: `+${phoneNumber}`, code })
         .then((verification_check) => {
             if (verification_check.status === 'approved') {
@@ -87,6 +88,11 @@ const verifyCode = asyncErrorHandler(async (req, res)=>{
         .catch((error) => {
             res.status(500).json({ success: false, message:"Code expired, Please resend the code and try again" })
         });
+    }catch(error){
+        console.log(error);
+        res.status(500).json({ success: false, message:"Something went wrong, please try again later" })
+    }
+
 })
 
 

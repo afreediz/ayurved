@@ -10,7 +10,11 @@ import ProductVideos from '../components/user/ProductVideos'
 import ShopBySolution from '../components/user/ShopBySolution'
 import CustomerReview from '../components/user/CustomerReview'
 import ExploreMoreProducts from '../components/user/ExploreMoreProducts'
+
 const Home = () => {
+  useEffect(() => {
+
+  },[])
   return (
     <div className="w-full relative">
       <img src="/images/why/flowers.png" alt="" className=' absolute opacity-50 brightness-150 left-0 right-0 z-[-1]' />

@@ -34,8 +34,14 @@ import UserDetails from './pages/Admin/UserDetails'
 import OrderDetails from './pages/Admin/OrderDetails'
 import AdminLogin from './pages/Auth/AdminLogin'
 import Loader from './components/Loader'
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 const App = () => {
+  AOS.init({
+    once:true,
+    duration: 700,
+    easing: "ease-out-cubic",
+  });
   const [loading, setLoading] = useState(true)
   const {user, setUser} = useContext(userContext);
   useEffect(()=>{

@@ -23,7 +23,7 @@ const CustomerReview = () => {
       <h2 className="text-center text-2xl font-semibold mb-8">Read what our customers say</h2>
       <div className="max-w-6xl mx-auto grid gap-8 md:grid-cols-2">
         {reviews.map((review, index) => (
-          <div key={index} className="bg-white p-8 rounded-lg shadow-md">
+          <div data-aos="fade-up" key={index} className="bg-white p-8 rounded-lg shadow-md">
             <p className="text-gray-700 italic mb-4">"{review.quote}"</p>
             <div className="flex items-center">
               <img src={review.image} alt={review.name} className="w-16 h-16 rounded-full mr-4" />

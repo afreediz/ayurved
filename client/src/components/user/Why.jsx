@@ -16,25 +16,25 @@ const Why = () => {
 <div className="absolute inset-0 bg-black opacity-50 z-[-1]"></div>
       <h1 className=' pb-6'>WHY NAVJEEVANA</h1>
       <div className="items flex justify-center gap-16 lg:gap-60 flex-wrap">
-        <div className="item text-center">
-            <img src="/images/why/fresh.webp" alt="" />
-            <span>Farn fresh</span>
+        <div data-aos="zoom-in-right" className="flex flex-col justify-center items-center gap-2">
+            <img src="/images/why/fresh.png" className=' max-w-24' alt="" />
+            <span className='text-xl font-bold'>Farn fresh</span>
         </div>
-        <div className="item text-center">
-            <img src="/images/why/noflavor.webp" alt="" />
-            <span>No flavor</span>
+        <div data-aos="zoom-in-left" className="flex flex-col justify-center items-center gap-2">
+            <img src="/images/why/nochemicals.png" className=' max-w-24' alt="" />
+            <span className='text-xl font-bold'>No flavor</span>
         </div>
-        <div className="item text-center">
-            <img src="/images/why/positive.webp" alt="" />
-            <span>Organic</span>
+        <div data-aos="zoom-in" className="flex flex-col justify-center items-center gap-2">
+            <img src="/images/why/number1.png" className=' max-w-24' alt="" />
+            <span className='text-xl font-bold'>Number 1 Ghee in the world</span>
         </div>
-        <div className="item text-center">
-            <img src="/images/why/small.webp" alt="" />
-            <span>Packed</span>
+        <div data-aos="zoom-in-right" className="flex flex-col justify-center items-center gap-2">
+            <img src="/images/why/packed.png" className=' max-w-24' alt="" />
+            <span className='text-xl font-bold'>Well Packed</span>
         </div>
-        <div className="item text-center">
-            <img src="/images/why/tradition.webp" alt="" />
-            <span>Honest</span>
+        <div data-aos="zoom-in-left" className="flex flex-col justify-center items-center gap-2">
+            <img src="/images/why/handshake.png" className=' max-w-24' alt="" />
+            <span className='text-xl font-bold'>Honest</span>
         </div>
       </div>
     </div>

@@ -6,8 +6,8 @@ const rateLimit = require('express-rate-limit')
 
 const otpRateLimiter = rateLimit({
     windowMs: 1 * 60 * 60 * 1000, // 1 hour
-    max: 6, // limit each IP to 3 email requests per windowMs
-    message: {message:'You can only resend/verify otp 6 messages per hour'}
+    max: 3, // limit each IP to 3 email requests per windowMs
+    message: {message:'You can only resend/verify otp 3 times per hour, Please try again after some time.'}
 });
 
 

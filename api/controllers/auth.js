@@ -158,6 +158,7 @@ const verifyUser = asyncErrorHandler(async(req, res)=>{
     
             `)
     }catch(err){
+        console.log(err);
         res.status(400).send(`
              <!DOCTYPE html>
     <html lang="en">
