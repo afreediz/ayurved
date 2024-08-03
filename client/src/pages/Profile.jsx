@@ -10,6 +10,7 @@ import 'react-phone-input-2/lib/style.css'
 
 const Profile = () => {
   const [data, setData] = useState("")
+  const [oldPh, setOldPh] = useState("")
   const [updated, setUpdated] = useState(false)
   const navigate = useNavigate()
   const {setUser} = useContext(userContext)
@@ -23,6 +24,7 @@ const Profile = () => {
       try{
         const response = await API.get('users/profile')
         setData(response.data.user)
+        setOldPh(response.data.user.phone)
         setLoading(false)
       }catch(error){
         toast.error(error.response?.data.message)
@@ -38,6 +40,7 @@ const Profile = () => {
         ...data
       })
       setData(response.data.user)
+      setOldPh(response.data.user.phone)
       toast.success(response?.data.message)
       setUpdated(false)
     }catch(error){
@@ -128,7 +131,7 @@ const Profile = () => {
             })}} />
             {isVerifying && <><span className=' text-sm text-gray-700'>we have shared a verification code to your mobile number</span><div className=""><input type="number" value={verificationCode} onChange={(e)=>{setVerificationCode(e.target.value)}} placeholder='Enter verification code' className="my-2 p-2 border border-gray-300 rounded-lg" /> <button onClick={verifyCode} className={`px-4 py-2 rounded text-white bg-blue-500`}>Submit</button></div></>}
             {
-            !isVerifying ? <button className={`px-3 py-1 my-1 rounded text-white font-bold ${data && data.ph_verified ? "bg-green-400 cursor-not-allowed" : "bg-blue-500"}`} disabled={data && data.ph_verified} onClick={sendVerificatioCode}>{data && data.ph_verified ? "Verified" : "Verify"}</button>:
+            !isVerifying ? ( data && data.phone == oldPh ? <button className={`px-3 py-1 my-1 rounded text-white font-bold ${data && data.ph_verified ? "bg-green-400 cursor-not-allowed" : "bg-blue-500"}`} disabled={data && data.ph_verified} onClick={sendVerificatioCode}>{data && data.ph_verified ? "Verified" : "Verify"}</button> : <span className=' text-sm text-gray-700'>Please update your profile by clicking the update button below.</span>):
             <button onClick={()=>{verifyCode()}} className={`px-4 py-1 rounded text-white "bg-blue-500"}`}>Verify Code</button>
             }
           </div>
