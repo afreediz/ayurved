@@ -8,17 +8,17 @@ const { generateToken, validateToken } = require("../helpers/jwt")
 const { sendVerificationEmail, sendResetPasswordEmail } = require("../helpers/mail")
 
 const register = asyncErrorHandler(async(req, res)=>{
-    const { name, email, password, phone } = req.body
-    if(!name || !email || !password || !phone ){
+    const { name, email, password } = req.body
+    if(!name || !email || !password ){
         throw new CustomError('CUSTOM ERROR: Necessary details are not filled', 404)
     }
     
     const isExist = await User.findOne({email})
     if(isExist) throw new CustomError('CUSTOM ERROR: User already exists, Please Login or try with a different email address')
 
-    const token = generateToken({name, email, password, phone}, "1hr")
+    const token = generateToken({name, email, password}, "1hr")
 
-    const verification_link = `${process.env.BACKEND}/api/auth/verify/${token}`
+    const verification_link = `${process.env.WEB_URL}/api/auth/verify/${token}`
 
     await sendVerificationEmail(email, verification_link)
 
@@ -26,6 +26,7 @@ const register = asyncErrorHandler(async(req, res)=>{
 })
 
 const login = asyncErrorHandler(async(req, res)=>{
+    console.log('web url - ',process.env.WEB_URL);
     const {email, password} = req.body
     if(!email || !password) throw new CustomError("CUSTOM ERROR: CUSTOM ERROR: Necessary details are not filled", 404)
 
@@ -92,12 +93,12 @@ const forwardMail = asyncErrorHandler(async(req, res)=>{
 
 const verifyUser = asyncErrorHandler(async(req, res)=>{
     const {token} = req.params
-    const {name, email, password, phone} = validateToken(token)
+    const {name, email, password} = validateToken(token)
     try{
         const hashedPassword = await hashPassword(password)
 
         await new User({
-            name, email:email.toLowerCase(), password:hashedPassword, phone
+            name, email:email.toLowerCase(), password:hashedPassword
         }).save()
     
         res.status(200).send(`

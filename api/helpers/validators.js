@@ -80,11 +80,28 @@ const passwordValidation = [
     })
 ];
 
+const phoneValidation = [
+    sanitizeAllFields,
+    body('phone').isMobilePhone().isLength({ min: 7, max: 15 }),
+    // Middleware to handle the validation results
+    asyncErrorHandler((req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            // Check for specific errors and throw custom errors
+            errors.array().forEach(error => {
+                if (error.path === 'phone') {
+                    throw new CustomError('CUSTOM ERROR: Phone number is not valid', 400);
+                }
+            });
+        }
+        next();
+    })
+];
+
 const registerValidation = [
     sanitizeAllFields,
     body('name').isLength({ min: 3 }),
     body('email').isEmail(),
-    body('phone').isMobilePhone(),
     body('password').isLength({ min: 8 }),
     asyncErrorHandler((req, res, next) => {
         const errors = validationResult(req);
@@ -129,4 +146,11 @@ const orderValidation = [
     })
 ];
 
-module.exports = { loginValidation, registerValidation, orderValidation, emailValidation, passwordValidation }
+module.exports = { 
+    loginValidation, 
+    registerValidation, 
+    orderValidation, 
+    emailValidation, 
+    passwordValidation,
+    phoneValidation
+ }

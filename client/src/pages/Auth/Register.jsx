@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react'
-import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import { toast } from 'react-toastify'
 import {userContext} from '../../context/user'
 import API from '../../services/api'
 import { Link } from 'react-router-dom'
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
 const Register = () => {
   const {user} = useContext(userContext)
   const navigate = useNavigate()
@@ -12,7 +13,6 @@ const Register = () => {
     name:"",
     email:"",
     password:"",
-    phone:"",
     address:""
   })
   const [disabled, setDisabled] = useState(false)
@@ -44,7 +44,7 @@ const Register = () => {
   return (
 <div className='flex justify-center items-center bg-gray-100 my-10'>
       <div className='w-full max-w-md p-8 bg-white rounded-lg shadow-md'>
-        <h1 className='text-3xl font-semibold text-center text-gray-700 mb-6'>Register Form</h1>
+        <h1 className='text-3xl font-semibold text-center text-gray-700 mb-6'>Register</h1>
         <form onSubmit={register}>
           <div className='mb-4'>
             <input 
@@ -76,17 +76,6 @@ const Register = () => {
               onChange={onchange} 
               className='w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500' 
               placeholder='Password' 
-            />
-          </div>
-          <div className='mb-4'>
-            <input 
-              type="number" 
-              name='phone' 
-              minLength={10}
-              value={data.phone} 
-              onChange={onchange} 
-              className='w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500' 
-              placeholder='Phone' 
             />
           </div>
           <button 

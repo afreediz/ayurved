@@ -1,8 +1,4 @@
 why - logos and content
-ph desgin at reg
-currency change
-loader update at home page
-remove liters
 add the cart policy in web
 
 services :

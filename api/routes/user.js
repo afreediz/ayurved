@@ -1,5 +1,6 @@
 const router = require('express').Router()
-const { getUser, getAdmin, profile, updateProfile, deleteProfile, getAllUsers, userStatus, deleteUser, dashboardDetails, getUserForAdmin, sendVerificationCode, verifyCode } = require('../controllers/user')
+const { getUser, getAdmin, profile, updateProfile, deleteProfile, getAllUsers, userStatus, deleteUser, dashboardDetails, getUserForAdmin, sendVerificationCode, verifyCode } = require('../controllers/user');
+const { phoneValidation } = require('../helpers/validators');
 const { isAuthenticated, isAdmin } = require('../middlewares/isAuth')
 const rateLimit = require('express-rate-limit')
 
@@ -12,7 +13,7 @@ const otpRateLimiter = rateLimit({
 
 router.get('/get-user', isAuthenticated, getUser)
 router.get('/profile', isAuthenticated, profile)
-router.put('/profile', isAuthenticated, updateProfile)
+router.put('/profile', isAuthenticated, phoneValidation, updateProfile)
 router.delete('/profile', isAuthenticated, deleteProfile)
 router.post('/sendVerificationCode', otpRateLimiter, isAuthenticated, sendVerificationCode)
 router.post('/verifyCode', otpRateLimiter, isAuthenticated, verifyCode)

@@ -9,7 +9,6 @@ import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
 const Profile = () => {
-  const location = useLocation()
   const [data, setData] = useState("")
   const [updated, setUpdated] = useState(false)
   const navigate = useNavigate()
@@ -42,7 +41,7 @@ const Profile = () => {
       toast.success(response?.data.message)
       setUpdated(false)
     }catch(error){
-      throw error
+      toast.error(error.response?.data.message)
     }
   }
   const onchange = (e) => {
