@@ -56,7 +56,8 @@ const sendVerificationCode = asyncErrorHandler(async (req, res) => {
     const user = await User.findById(userId)
     if(user.ph_verified) throw new CustomError("CUSTOM ERROR: Phone number is already verified", 400)
     const phoneNumber = user.phone
-    smsClient.verify.v2.services(process.env.TWILIO_SERVICE_ID)
+    try{
+        smsClient.verify.v2.services(process.env.TWILIO_SERVICE_ID)
         .verifications.create({ 
             to: `+${phoneNumber}`, 
             channel: 'sms' })
@@ -64,8 +65,13 @@ const sendVerificationCode = asyncErrorHandler(async (req, res) => {
             res.json({ success: true, verification })
         })
         .catch((error)=>{
-            throw new CustomError(error.message, 500)
+            res.status(500).json({ success: false, message:"Something went wrong, please try again later" })
         });
+    }catch(error){
+        console.log(error);
+        res.status(500).json({ success: false, message:"Something went wrong, please try again later" })
+    }
+
 })
 
 const verifyCode = asyncErrorHandler(async (req, res)=>{
