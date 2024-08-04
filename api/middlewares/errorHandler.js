@@ -1,5 +1,4 @@
 module.exports = (err, req, res, next)=> {
-    console.log(err);
     if (err.message && err.message.startsWith("CUSTOM ERROR: ")) {
         return res.status(400).json({
             success: false,
@@ -27,6 +26,7 @@ module.exports = (err, req, res, next)=> {
                 }
                 break
         }
+        console.log(err);
         return res.status(500).json({
             success: false,
             message: err.message
