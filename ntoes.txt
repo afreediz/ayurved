@@ -1,5 +1,8 @@
 add the cart policy in web
-
+razorpay prefill
+whatsapp number
+admin email
+read old page and get contents & policy
 services :
 mongodb atlas
 hosting - digital ocean
