@@ -93,13 +93,13 @@ const Table = ({data, setData, updateHandler, deleteHandler, navigateTo}) => {
               </td>
               <td className="px-2 md:px-6 py-4 whitespace-nowrap text-sm font-medium">
                 <div className=" flex gap-2">
-                <button className="text-blue-600 hover:text-blue-900" onClick={()=>{navigateTo(item.slug)}}>view</button>
-                <form action="" onSubmit={async(e)=>{
-                  e.preventDefault()
-                  deleteHandler(item._id)
-                }}>
-                  <button className="text-red-600 hover:text-red-900">Delete</button>
-                </form>
+                  <button className="text-blue-600 hover:text-blue-900" onClick={()=>{navigateTo(item.slug)}}>view</button>
+                  <form action="" onSubmit={async(e)=>{
+                    e.preventDefault()
+                    deleteHandler(item._id)
+                  }}>
+                    <button className="text-red-600 hover:text-red-900">Delete</button>
+                  </form>
                 </div>
               </td>
             </tr>

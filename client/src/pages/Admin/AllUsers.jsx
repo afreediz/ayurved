@@ -62,9 +62,9 @@ const AllUsers = () => {
           </thead>
           <tbody className="divide-y divide-gray-600">
           {users && users.map((user,index) => (
-            <tr key={user.id}>
+            <tr key={index}>
               <td className="hidden md:table-cell px-6 py-4 whitespace-nowrap">{index+1}</td>
-              <Link to={`/navjeevanabrand/admin/users/${user.email}`} ><td className="px-6 py-4 whitespace-nowrap underline">{user.email}</td></Link>
+              <td className="px-6 py-4 whitespace-nowrap underline"><Link to={`/navjeevanabrand/admin/users/${user.email}`} >{user.email}</Link></td>
               <td className="px-6 py-4 whitespace-nowrap">{user.name}</td>
               <td className="px-6 py-4 whitespace-nowrap">{user.phone}</td>
               <td className="px-6 py-4 whitespace-nowrap">{format_date(user.createdAt)}</td>
