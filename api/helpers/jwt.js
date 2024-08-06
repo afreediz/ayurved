@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const CustomError = require('../utils/CustomError')
 
 const generateToken = (data, expires) => {
-    return jwt.sign({...data}, process.env.JWT_SECRET, { expiresIn:expires })
+    return jwt.sign({...data}, process.env.JWT_SECRET, { expiresIn:expires, algorithm: 'HS256' })
 }
 
 const validateToken = (token) => {

@@ -39,7 +39,7 @@ const login = asyncErrorHandler(async(req, res)=>{
 
     if(user.role == "admin") if(req.body.secret_key != process.env.ADMIN_SECRET_KEY) throw new CustomError("CUSTOM ERROR: Secret key does not match", 400)
 
-    const token = generateToken({_id:user._id}, "90d")
+    const token = generateToken({_id:user._id}, "50d")
 
     res.status(200).json({
         success:true,
