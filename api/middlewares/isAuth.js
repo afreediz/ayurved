@@ -4,7 +4,8 @@ const User = require('../models/user')
 const CustomError = require('../utils/CustomError')
 
 const isAuthenticated = asyncErrorHandler(async(req, res, next) => {
-    const token = req.headers.authorization
+    const authorization = req.headers.authorization;
+    const token = authorization && authorization.startsWith('Bearer ') ? authorization.split(' ')[1] : token;
     const decoded = validateToken(token)
     const user = await User.findById(decoded._id).select('_id name role status')
     if(!user) throw new CustomError("CUSTOM ERROR: Signin required", 400)
