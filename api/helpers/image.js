@@ -18,9 +18,7 @@ const uploadImage = async(image) => {
 }
 const deleteImage = async(image_url) => {
     try {
-        console.log(image_url);
         const publicId = image_url.split('/').pop().split('.')[0];
-        console.log(publicId);
         const result = await cloudinary.uploader.destroy(publicId, { invalidate: true });
         return result;
       } catch (error) {

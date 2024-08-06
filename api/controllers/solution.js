@@ -26,7 +26,6 @@ const createSolutions = asyncErrorHandler(async(req, res)=>{
     if(!name) throw new CustomError("CUSTOM ERROR: Necessary details are not filled", 404)
 
     const isExist = await Solution.findOne({name})
-    console.log(isExist);
     if(isExist) throw new CustomError("CUSTOM ERROR: Solution already exist, please choose a different name", 400)
 
     const solution = await new Solution({

@@ -27,7 +27,6 @@ const createOrder = asyncErrorHandler(async(req, res)=>{
         // await product.save()
     }
     const receipt = `rcpt_${getCurrentDateFormatted()}_${user._id}`
-    console.log(receipt, receipt.length);
     const options = {
         amount: totalAmount * 100,
         currency: 'INR',

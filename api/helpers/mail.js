@@ -33,7 +33,6 @@ const forwardMailToAdmin = async (name, email, message) => {
       subject: 'Query from user.',
       html: `<p>Name: ${name}, <br /> Email: ${email}, <br /> Message: ${message}</p>`,
     });
-    console.log('Email sent: %s', info.messageId);
   } catch (error) {
     console.error('Error sending email: ', error);
   }
@@ -48,7 +47,6 @@ const sendResetPasswordEmail = async (email, resetLink) => {
       html: `<p>Please reset your password by clicking on the link below:</p>
              <a href="${resetLink}">Reset Password</a>`,
     });
-    console.log('Email sent: %s', info.messageId);
   } catch (error) {
     console.error('Error sending email: ', error);
   }

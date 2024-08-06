@@ -55,7 +55,6 @@ const getCartDetails = asyncErrorHandler(async(req, res)=>{
         const product = await Product.findById(cart[i]._id).select('_id name slug price shortdesc image').lean();
         cartDetails.push({...product, cart_quantity:cart[i].cart_quantity})
     }
-    console.log(cartDetails);
     res.status(200).json({
         success:true,
         message:"Cart Details",

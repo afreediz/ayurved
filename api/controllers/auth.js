@@ -26,7 +26,6 @@ const register = asyncErrorHandler(async(req, res)=>{
 })
 
 const login = asyncErrorHandler(async(req, res)=>{
-    console.log('web url - ',process.env.WEB_URL);
     const {email, password} = req.body
     if(!email || !password) throw new CustomError("CUSTOM ERROR: CUSTOM ERROR: Necessary details are not filled", 404)
 
