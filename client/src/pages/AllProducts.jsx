@@ -33,7 +33,6 @@ const AllProducts = () => {
     <Center className="my-8">
       <form className="form" onSubmit={(e)=>{
         e.preventDefault()
-        console.log('query', query);
         navigate('/search/'+query)
         }}>
         <input type="text" placeholder='search ' onChange={(e)=>setQuery(e.target.value)} className="border-none outline outline-slate-200 rounded w-full text-2xl p-3" />

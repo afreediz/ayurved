@@ -188,7 +188,6 @@ const Solutions = () => {
   }
   const createHandler = async(name) => {
     try {
-      console.log(name);
       const { data } = await API.post('/solutions', {name});
       setSolutions((prev)=>{
         return [data.solution, ...prev]

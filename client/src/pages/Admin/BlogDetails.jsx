@@ -16,7 +16,6 @@ const BlogDetails = () => {
         const fetchPosts = async () => {
             try {
                 const { data } = await API.get(`/blogs/${slug}`);
-                console.log(data);
                 setBlog(data.blog);
                 setOldImage(data.blog.image);
             } catch (error) {

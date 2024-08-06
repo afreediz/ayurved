@@ -7,8 +7,6 @@ const OrderDetails = () => {
   const {id} = useParams()
   const [order, setOrder] = useState("")
   const [loading, setLoading] = useState(true)
-
-  console.log(order);
   useEffect(() => {
     async function getData(){
       const {data} = await API.get(`/orders/${id}`)

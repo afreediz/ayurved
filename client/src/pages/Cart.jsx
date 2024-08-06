@@ -11,13 +11,10 @@ const Cart = () => {
   const {user} = useAuth()
   const {cart, setCart} = useCart();
   const [data, setData] = useState([]);
-  console.log(data);
   useEffect(()=>{
     async function getCartData(){
       try{
-        console.log('red');
         const res = await API.post('/products/getcart',{cart})
-        console.log(res);
         setData(res.data.cartDetails)
       }catch(error){
         toast.error(error.response?.data.message)

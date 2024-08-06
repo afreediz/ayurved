@@ -12,7 +12,6 @@ const BlogDetails = () => {
     try{
         const fetchPosts = async () => {
           const { data } = await API.get(`/blogs/${slug}`)
-          console.log(data);
           setBlog(data.blog);
           setLoading(false);
         }

@@ -9,7 +9,6 @@ import Loader from '../components/Loader'
 const Orders = () => {
   const [orders, setOrders] = useState()
   const [loading, setLoading] = useState(true)
-  console.log(orders);
   useEffect(()=>{
     window.scrollTo({
       top:0,
@@ -34,7 +33,6 @@ const Orders = () => {
 
     return `${day}/${month}/${year}`
   }
-  console.log(orders);
   return (
     <Center className='my-10'>
       <div className="md:hidden mt-10 w-full flex rounded justify-around text-xl border border-gray-800 relative">

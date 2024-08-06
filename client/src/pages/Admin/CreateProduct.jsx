@@ -14,7 +14,6 @@ const CreateProduct = ({setDisplayAdd, setProducts}) => {
     description: '',
     quantity:''
   });
-  console.log(product);
 
   const [image, setImage] = useState(null);
   const [categories, setCategories] = useState([]);

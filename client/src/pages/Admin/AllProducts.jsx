@@ -11,7 +11,6 @@ const ProductTable = () => {
     async function getProducts(){
       try{
         const {data} = await API.get(`products/`)
-        console.log(products);
         setProducts(data.products)
       }catch(error){
         toast.error(error.response?.data.message)

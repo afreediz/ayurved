@@ -15,7 +15,6 @@ const Profile = () => {
   const navigate = useNavigate()
   const {setUser} = useContext(userContext)
   const [loading, setLoading] = useState(true)
-  console.log(data.phone);
   const [isVerifying, setIsVerifying] = useState(false)
   const [verificationCode, setVerificationCode] = useState(false)
   

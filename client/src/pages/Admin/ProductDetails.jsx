@@ -14,8 +14,6 @@ const AdminProductDetails = () => {
     const [image, setImage] = useState(null);
     const [old_image, setOldImage] = useState(null);
     const navigate = useNavigate()
-    console.log(product);
-    console.log(solutions);
     const { slug } = useParams()
     useEffect(()=>{
         async function getProduct(){
