@@ -97,7 +97,7 @@ const Dashboard = () => {
             <tbody className='  shadow-md'>
             {orders && orders.recent_orders.map((order, index)=>{
               return (
-                <tr key={order.orderid}>
+                <tr key={index}>
                 {/* <td className="hidden md:block px-4 py-4 whitespace-nowrap">{index+1}</td> */}
                 <td className=" hidden md:block px-4 py-4 whitespace-nowrap">{order._id}</td>
                 <td className="px-4 py-4 whitespace-nowrap">{order.user.name}</td>

@@ -55,7 +55,7 @@ const ProductDetails = () => {
           className={`py-2 px-4 ${product.quantity === 0 ? 'bg-gray-500 cursor-not-allowed' : 'bg-blue-500 cursor-pointer'}  font-medium rounded-lg transition duration-300 text-white`}
           onClick={() => {
             cartOperations.addToCart(
-              { _id: product._id, name: product.name, price: product.price, shortdesc: product.shortdesc, image: product.image },
+              { _id: product._id },
               context
             );
             navigate('/cart')
@@ -68,7 +68,7 @@ const ProductDetails = () => {
           className={`py-2 px-4 ${product.quantity === 0 ? 'bg-gray-500 cursor-not-allowed' : 'bg-green-500 cursor-pointer'}  font-medium rounded-lg transition duration-300 text-white`}
           onClick={() => {
             cartOperations.addToCart(
-              { _id: product._id, name: product.name, price: product.price, shortdesc: product.shortdesc, image: product.image },
+              { _id: product._id },
               context
             );
             toast.success('Added to cart');

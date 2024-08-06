@@ -38,6 +38,31 @@ const getProduct = asyncErrorHandler(async(req, res)=>{
     })
 })
 
+const getShortDetails = asyncErrorHandler(async(req, res)=>{
+    const id = req.params.id
+    const product = await Product.findById(id).select('_id name slug price shortdesc');
+    res.status(200).json({
+        success:true,
+        message:"Product",
+        product
+    })
+})
+
+const getCartDetails = asyncErrorHandler(async(req, res)=>{
+    const cart = req.body.cart
+    var cartDetails = []
+    for(let i=0;i<cart.length;i++){
+        const product = await Product.findById(cart[i]._id).select('_id name slug price shortdesc image').lean();
+        cartDetails.push({...product, cart_quantity:cart[i].cart_quantity})
+    }
+    console.log(cartDetails);
+    res.status(200).json({
+        success:true,
+        message:"Cart Details",
+        cartDetails
+    })
+})
+
 const createProduct = asyncErrorHandler(async(req, res)=>{
     const { name, description, price, category, quantity, image, shortdesc, solutions } = req.body
     if( !name || !description || !price || !category || !shortdesc || !image ) throw new CustomError('CUSTOM ERROR: Necessary details are not filled', 404)    
@@ -265,5 +290,7 @@ module.exports = {
     dashboardDetails,
     solutionProducts,
     solutionProductsCount,
-    highlightedProducts
+    highlightedProducts,
+    getShortDetails,
+    getCartDetails
 }

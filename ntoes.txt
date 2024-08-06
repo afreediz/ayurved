@@ -1,4 +1,3 @@
-add the cart policy in web
 razorpay prefill
 whatsapp number
 admin email
