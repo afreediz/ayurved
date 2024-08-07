@@ -22,5 +22,3 @@ try {
 } catch (err) {
     console.error('JWT verification failed:', err.message);
 }
-
-console.log('something');
