@@ -6,16 +6,15 @@ import { cartContext } from '../../context/cart'
 import API from '../../services/api'
 import { toast } from 'react-toastify'
 import CustomDropdown from '../utilities/CustomDropdown';
-import { caption } from '../../datas';
+import { available_currencies, caption } from '../../datas';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const {user, setUser} = useContext(userContext)
-  const {cart} = useContext(cartContext);
+  const {cart, currency, setCurrency, baseCurrencyRate} = useContext(cartContext);
   const [categories, setCategories] = useState()
   const [solutions, setSolutions] = useState()
   const navigate = useNavigate()
-  const [searchQuery, setSearchQuery] = useState("")
   const [profileOpen, setProfileOpen] = useState(false);
   const logout = () => {
     localStorage.removeItem('token')
@@ -55,6 +54,9 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+  const handleCurrencyChange = (e)=> {
+    setCurrency(e.target.value)
+  }
 
   return (
     <>
@@ -102,6 +104,15 @@ const Navbar = () => {
                 </div>
                 :""
                 }
+              </div>
+              <div className="w-8 md:w-12 my-1 bg-transparent font-bold border-none outline-none">
+                {90*baseCurrencyRate}
+              <select className='my-1 bg-transparent font-bold border-none outline-none' value={currency} onChange={handleCurrencyChange}>
+                <option value={available_currencies.INDIA}>INR</option>
+                <option value={available_currencies.USA}>USD</option>
+                <option value={available_currencies.EUROPE}>EUR</option>
+                <option value={available_currencies.UAE}>AED</option>
+              </select>
               </div>
               <Link to={"/cart"}>
               <div className=" relative">
