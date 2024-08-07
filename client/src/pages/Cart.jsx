@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 const Cart = () => {
   const {user} = useAuth()
-  const {cart, setCart} = useCart();
+  const {cart, setCart, baseCurrencyRate} = useCart();
   const [data, setData] = useState([]);
   useEffect(()=>{
     async function getCartData(){
@@ -29,6 +29,7 @@ const Cart = () => {
     data?.map((p)=>{
       total = total + p.price * p.cart_quantity
     })
+    total = total*baseCurrencyRate
     return total.toLocaleString("en-Us",{
       style:"currency",
       currency:'INR'
@@ -91,7 +92,7 @@ const Cart = () => {
               <div key={index} className="mb-4 flex flex-col gap-1">
                 <div className="flex justify-between">
                   <span>{product.name}</span>
-                  <span>₹{product.price}</span>
+                  <span>₹{product.price*baseCurrencyRate}</span>
                 </div>
                 <div className="flex justify-between border-b border-black">
                   <span>quantity :</span>
@@ -99,7 +100,7 @@ const Cart = () => {
                 </div>
                 <div className=" flex justify-between">
                   <span>subtotal :</span>
-                  <span className=' font-semibold'>₹{product.price * product.cart_quantity}</span>
+                  <span className=' font-semibold'>₹{product.price * product.cart_quantity * baseCurrencyRate}</span>
                 </div>
               </div>
             ))}

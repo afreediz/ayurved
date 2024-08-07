@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { userContext } from '../../context/user'
 import { FaShoppingBag, FaUserCircle } from 'react-icons/fa';
-import { cartContext } from '../../context/cart'
+import { useCart } from '../../context/cart'
 import API from '../../services/api'
 import { toast } from 'react-toastify'
 import CustomDropdown from '../utilities/CustomDropdown';
@@ -11,7 +11,7 @@ import { available_currencies, caption } from '../../datas';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const {user, setUser} = useContext(userContext)
-  const {cart, currency, setCurrency, baseCurrencyRate} = useContext(cartContext);
+  const {cart, currency, setCurrency, baseCurrencyRate} = useCart()
   const [categories, setCategories] = useState()
   const [solutions, setSolutions] = useState()
   const navigate = useNavigate()
