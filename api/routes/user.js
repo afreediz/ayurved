@@ -14,7 +14,7 @@ const otpRateLimiter = rateLimit({
 router.get('/get-user', isAuthenticated, getUser)
 router.get('/profile', isAuthenticated, profile)
 router.put('/profile', isAuthenticated, phoneValidation, updateProfile)
-router.delete('/profile', isAuthenticated, deleteProfile)
+// router.delete('/profile', isAuthenticated, deleteProfile)
 router.post('/sendVerificationCode', otpRateLimiter, isAuthenticated, sendVerificationCode)
 router.post('/verifyCode', otpRateLimiter, isAuthenticated, verifyCode)
 

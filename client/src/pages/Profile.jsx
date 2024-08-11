@@ -12,8 +12,6 @@ const Profile = () => {
   const [data, setData] = useState("")
   const [oldPh, setOldPh] = useState("")
   const [updated, setUpdated] = useState(false)
-  const navigate = useNavigate()
-  const {setUser} = useContext(userContext)
   const [loading, setLoading] = useState(true)
   const [isVerifying, setIsVerifying] = useState(false)
   const [verificationCode, setVerificationCode] = useState(false)
@@ -56,19 +54,19 @@ const Profile = () => {
       }
     })
   }
-  const [deleteacc, setDeleteAcc] = useState(false)
-  const deleteAccount = async() => {
-    try{
-      const response = await API.delete('users/profile')
-      localStorage.removeItem("token")
-      setUser(null)
-      navigate('/login')
-      toast.success(response?.data.message)
-    }catch(error){
-      toast.error(error.response?.data.message)
-      console.log(error);
-    }
-  }
+  // const [deleteacc, setDeleteAcc] = useState(false)
+  // const deleteAccount = async() => {
+  //   try{
+  //     const response = await API.delete('users/profile')
+  //     localStorage.removeItem("token")
+  //     setUser(null)
+  //     navigate('/login')
+  //     toast.success(response?.data.message)
+  //   }catch(error){
+  //     toast.error(error.response?.data.message)
+  //     console.log(error);
+  //   }
+  // }
   const sendVerificatioCode = async() => {
     toast.warn("Sending verification code...")
     try{
@@ -142,11 +140,11 @@ const Profile = () => {
         <button type='submit' onClick={onsubmit} disabled={!updated} className={`py-2 px-5 ${updated ? "bg-green-600" : "bg-gray-300"} text-white font-medium rounded-lg`} >
           Update
         </button>
-        <button type='button' onClick={()=>{setDeleteAcc(true)}} className='py-2 px-5 mx-4 bg-red-600 text-white font-medium rounded-lg' >
+        {/*<button type='button' onClick={()=>{setDeleteAcc(true)}} className='py-2 px-5 mx-4 bg-red-600 text-white font-medium rounded-lg' >
           Delete Account
-        </button>
+        </button>*/}
       </form>
-      { deleteacc && <div className="fixed top-0 left-0 right-0 bottom-0 bg-black p-5 shadow-lg border border-gray-800 text-white opacity-70 flex flex-col justify-center items-center text-center text-lg">
+      {/* deleteacc && <div className="fixed top-0 left-0 right-0 bottom-0 bg-black p-5 shadow-lg border border-gray-800 text-white opacity-70 flex flex-col justify-center items-center text-center text-lg">
         <h3 className='font-medium'>Warning : This action is irreversible</h3>
         <p>Are you sure you want to delete your account? Account will be deleted permanently.</p>
         <div className="mt-5">
@@ -157,7 +155,7 @@ const Profile = () => {
             No
           </button>
         </div>
-      </div>}
+      </div>*/}
       {loading && <Loader />}
     </Center>
   );
