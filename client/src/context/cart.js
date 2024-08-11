@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { available_currencies, exchange_rates } from "../datas";
+import { available_currencies, currency_symbols, exchange_rates } from "../datas";
 
 
 export const cartContext = createContext()
@@ -8,6 +8,7 @@ export const CartContextProvider = ({children}) => {
     const [cart, setCart] = useState([])
     const [baseCurrencyRate, setBaseCurrencyRate] = useState(1)
     const [currency, setCurrency] = useState(available_currencies.INDIA)
+    const [currencySymbol, setCurrencySymbol] = useState(currency_symbols.INR)
 
     useEffect(()=>{
         setCart(localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [])
@@ -15,13 +16,14 @@ export const CartContextProvider = ({children}) => {
     
     useEffect(()=>{
       setBaseCurrencyRate(exchange_rates[currency])
+      setCurrencySymbol(currency_symbols[currency])
     },[currency])
 
     useEffect(()=>{
         localStorage.setItem("cart", JSON.stringify(cart))
     },[cart])
 
-    return (<cartContext.Provider value={{cart, setCart, baseCurrencyRate, currency, setCurrency}}>
+    return (<cartContext.Provider value={{cart, setCart, baseCurrencyRate, currencySymbol, currency, setCurrency}}>
         {children}
     </cartContext.Provider>)
 }

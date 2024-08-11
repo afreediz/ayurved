@@ -106,8 +106,7 @@ const Navbar = () => {
                 }
               </div>
               <div className="w-8 md:w-12 my-1 bg-transparent font-bold border-none outline-none">
-                {90*baseCurrencyRate}
-              <select className='my-1 bg-transparent font-bold border-none outline-none' value={currency} onChange={handleCurrencyChange}>
+              <select className='my-1 mx-2 bg-transparent font-bold border-none outline-none' value={currency} onChange={handleCurrencyChange}>
                 <option value={available_currencies.INDIA}>INR</option>
                 <option value={available_currencies.USA}>USD</option>
                 <option value={available_currencies.EUROPE}>EUR</option>

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 const Cart = () => {
   const {user} = useAuth()
-  const {cart, setCart, baseCurrencyRate} = useCart();
+  const {cart, setCart, baseCurrencyRate, currencySymbol} = useCart();
   const [data, setData] = useState([]);
   useEffect(()=>{
     async function getCartData(){
@@ -30,10 +30,7 @@ const Cart = () => {
       total = total + p.price * p.cart_quantity
     })
     total = total*baseCurrencyRate
-    return total.toLocaleString("en-Us",{
-      style:"currency",
-      currency:'INR'
-    })
+    return total.toString()
   }
   const checkout = async()=>{
     try{
@@ -92,7 +89,7 @@ const Cart = () => {
               <div key={index} className="mb-4 flex flex-col gap-1">
                 <div className="flex justify-between">
                   <span>{product.name}</span>
-                  <span>₹{product.price*baseCurrencyRate}</span>
+                  <span>{currencySymbol} {product.price*baseCurrencyRate}</span>
                 </div>
                 <div className="flex justify-between border-b border-black">
                   <span>quantity :</span>
@@ -100,7 +97,7 @@ const Cart = () => {
                 </div>
                 <div className=" flex justify-between">
                   <span>subtotal :</span>
-                  <span className=' font-semibold'>₹{product.price * product.cart_quantity * baseCurrencyRate}</span>
+                  <span className=' font-semibold'>{currencySymbol} {product.price * product.cart_quantity * baseCurrencyRate}</span>
                 </div>
               </div>
             ))}
@@ -109,7 +106,7 @@ const Cart = () => {
           {/* Grand Total */}
           <div className="text-xl mb-2 flex justify-between">
             <span>Grand total Price: </span>
-            <span className='text-2xl font-bold'>{cart.length > 0 ? totalPrice() : 0}</span>
+            <span className='text-2xl font-bold'>{currencySymbol} {cart.length > 0 ? totalPrice() : 0}</span>
           </div>
         </div>
         
