@@ -15,6 +15,13 @@ export const exchange_rates = {
   "AED": 0.044
 }
 
+export const currency_symbols = {
+  "INR":"₹",
+  "USD":"$",
+  "EUR":"€",
+  "AED":"AED"
+}
+
 export const users = [
     {
         "number_of_users": 2,

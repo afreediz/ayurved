@@ -45,7 +45,7 @@ const ProductDetails = () => {
     </div>
     <div className="col-span-4">
       <h2 className="text-4xl font-bold mb-4">{product && product.name}</h2>
-      <h3 className="text-2xl font-semibold mb-4">₹{product && product.price * context.baseCurrencyRate}</h3>
+      <h3 className="text-2xl font-semibold mb-4">{context.currencySymbol} {product && product.price * context.baseCurrencyRate}</h3>
       {product && product.quantity > 0 ?<h3 className="text-xl mb-4">In stocks :  {product.quantity}  </h3>:
       <span className='text-red-500 text-2xl'>Out of Stocks</span>}
       <p className="text-lg mb-8">{product && product.description}</p>

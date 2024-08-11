@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useCart } from '../../context/cart';
 
 const ProductCard = ({product}) => {
-  const {baseCurrencyRate} = useCart()
+  const {baseCurrencyRate, currencySymbol} = useCart()
   return (
     <Link to={`/products/${product.slug}`}>
   <div key={product._id} className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col min-h-[450px] max-h-[450px]">
@@ -19,7 +19,7 @@ const ProductCard = ({product}) => {
           {'★'.repeat(5)}
         </div>
       </div>
-      <div className="text-xl font-bold mt-2">₹{product.price.toFixed(2)*baseCurrencyRate}</div>
+      <div className="text-xl font-bold mt-2">{currencySymbol} {product.price.toFixed(2)*baseCurrencyRate}</div>
     </div>
   </div>
     </Link>
