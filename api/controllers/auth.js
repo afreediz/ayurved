@@ -16,7 +16,7 @@ const register = asyncErrorHandler(async(req, res)=>{
     const isExist = await User.findOne({email})
     if(isExist) throw new CustomError('CUSTOM ERROR: User already exists, Please Login or try with a different email address')
 
-    const token = generateToken({name, email, password}, "1hr")
+    const token = generateToken({name, email, password: await hashPassword(password)}, "1hr")
 
     const verification_link = `${process.env.WEB_URL}/api/auth/verify/${token}`
 
@@ -94,10 +94,8 @@ const verifyUser = asyncErrorHandler(async(req, res)=>{
     const {token} = req.params
     const {name, email, password} = validateToken(token)
     try{
-        const hashedPassword = await hashPassword(password)
-
         await new User({
-            name, email:email.toLowerCase(), password:hashedPassword
+            name, email:email.toLowerCase(), password
         }).save()
     
         res.status(200).send(`

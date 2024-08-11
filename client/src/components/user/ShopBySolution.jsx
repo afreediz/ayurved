@@ -18,8 +18,8 @@ const ShopBySolution = () => {
       </div>
       <div className="container grid grid-cols-2 md:grid-cols-4 gap-1">
         {categories.map((category, index) => (
-          <Link to="/allproducts">
-          <div key={index} className="p-4">
+          <Link key={index} to="/allproducts">
+          <div className="p-4">
             <div className="w-full h-72 overflow-hidden bg-gray-300">
               <img src={category.imageUrl} alt={category.name} className="w-full h-full object-cover rounded-lg mb-4 object-center" />
             </div>

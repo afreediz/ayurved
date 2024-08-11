@@ -38,18 +38,18 @@ const updateProfile = asyncErrorHandler(async(req, res)=>{
         user:updated_user
     })
 })
-const deleteProfile = asyncErrorHandler(async(req, res)=>{
-    const id = req.user._id
+// const deleteProfile = asyncErrorHandler(async(req, res)=>{
+//     const id = req.user._id
 
-    const user = await User.findById(id)
-    if(user.role == "admin") throw new CustomError("CUSTOM ERROR: Admin profile can't be deleted", 400)
-    await User.deleteOne({_id:id})
+//     const user = await User.findById(id)
+//     if(user.role == "admin") throw new CustomError("CUSTOM ERROR: Admin profile can't be deleted", 400)
+//     await User.deleteOne({_id:id})
     
-    res.status(200).json({
-        success:true,
-        message:"User profile deleted successfully",
-    })
-})
+//     res.status(200).json({
+//         success:true,
+//         message:"User profile deleted successfully",
+//     })
+// })
 
 const sendVerificationCode = asyncErrorHandler(async (req, res) => {
     const userId = req.user._id
@@ -100,9 +100,6 @@ const verifyCode = asyncErrorHandler(async (req, res)=>{
     }
 
 })
-
-
-
 
 const deleteUser = asyncErrorHandler(async(req, res)=>{
     const id = req.params.id
@@ -191,7 +188,7 @@ module.exports = { getUser,
     getAdmin, 
     profile, 
     updateProfile, 
-    deleteProfile, 
+    // deleteProfile, 
     getAllUsers, 
     userStatus, 
     deleteUser, 
