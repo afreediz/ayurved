@@ -6,9 +6,12 @@ const crypto = require('crypto')
 const Order = require("../models/order")
 const Product = require("../models/product")
 const User = require("../models/user")
+const { exchange_rates } = require("../scripts")
 
 const createOrder = asyncErrorHandler(async(req, res)=>{
-    const { cart } = req.body
+    const { cart, currency } = req.body
+    console.log(currency);
+    
     const user = await User.findById(req.user._id).select('ph_verified address email')
     
     if (!user.ph_verified) throw new CustomError("CUSTOM ERROR: Please verify your phone number before placing order", 400)
@@ -22,14 +25,16 @@ const createOrder = asyncErrorHandler(async(req, res)=>{
 
         if(product.quantity < p.cart_quantity) throw new CustomError("CUSTOM ERROR: Product quantity is not available", 400)
         
-        totalAmount += product.price * p.cart_quantity
+        // if (exchange_rates.hasOwnProperty(currency)) throw new CustomError("CUSTOM ERROR: Invalid currency", 400)
+
+        totalAmount += product.price * exchange_rates[currency] * p.cart_quantity
         // product.quantity -= p.cart_quantity
         // await product.save()
     }
     const receipt = `rcpt_${getCurrentDateFormatted()}_${user._id}`
     const options = {
         amount: totalAmount * 100,
-        currency: 'INR',
+        currency: currency,
         receipt: receipt,
         payment_capture: 1
     }

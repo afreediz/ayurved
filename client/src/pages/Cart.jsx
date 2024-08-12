@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 const Cart = () => {
   const {user} = useAuth()
-  const {cart, setCart, baseCurrencyRate, currencySymbol} = useCart();
+  const {cart, setCart, baseCurrencyRate, currencySymbol, currency} = useCart();
   const [data, setData] = useState([]);
   useEffect(()=>{
     async function getCartData(){
@@ -38,9 +38,10 @@ const Cart = () => {
         cart:cart.map((product)=>{  
           return {
             product:product._id,
-            cart_quantity:product.cart_quantity
+            cart_quantity:product.cart_quantity,
+            currency:currency
           }
-        })
+        }), currency:currency
       })
       const options = {
         key: "rzp_test_4wRqHdbX5YleJ3",
