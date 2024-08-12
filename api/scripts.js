@@ -1,24 +1,37 @@
-const { default: mongoose } = require('mongoose')
-const env = require('dotenv').config({
-    path:"./config/.env"
+const readLine = require('readline')
+
+const rl = readLine.createInterface({
+  input: process.stdin,
+  output: process.stdout
 })
-const connection = require('./config/connection')
-const Products = require('./models/product')
 
-// Products.updateMany({},{
-//     $unset: {associatedBlog:""}
-// }, {runValidators:true}).then(()=>{
-//     console.log('done');
-// })
-const jwt = require('jsonwebtoken');
-
-// JWT and secret key
-const secretKey = '123abc'; 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmEwYzNjZmQxODA3NTVkZTg4NzNkYjciLCJpYXQiOjE3MjI5NjQ5NTYsImV4cCI6MTcyNzI4NDk1Nn0.DRV5fujqUrqCvJwPg4uzQKzzz7ETnEQis9Ca2SlX7ts';
-
-try {
-    const decoded = jwt.verify(token, secretKey);
-    console.log('JWT is valid. Decoded payload:', decoded);
-} catch (err) {
-    console.error('JWT verification failed:', err.message);
+const available_currencies = {
+"INDIA":"INR",
+"USA":"USD",
+"EUROPE":"EUR",
+"UAE":"AED",
 }
+
+const exchange_rates = {
+"INR": 1,
+"USD": 0.012,
+"EUR": 0.011,
+"AED": 0.044
+}
+
+const currency_symbols = {
+"INR":"₹",
+"USD":"$",
+"EUR":"€",
+"AED":"AED"
+}
+
+rl.question('Enter the currency: ', (currency) => {
+    console.log(currency);
+  const rate = exchange_rates[currency]
+  console.log(rate);
+  rl.close()
+})
+
+
+module.exports = {available_currencies, exchange_rates, currency_symbols}

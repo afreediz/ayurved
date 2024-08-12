@@ -7,7 +7,6 @@ const generateToken = (data, expires) => {
 
 const validateToken = (token) => {
     try{
-        console.log(process.env.JWT_SECRET)
         return jwt.verify(token, process.env.JWT_SECRET)
     }
     catch(err){
