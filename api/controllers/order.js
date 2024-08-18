@@ -1,7 +1,7 @@
 const asyncErrorHandler = require("express-async-handler")
 const CustomError = require('../utils/CustomError')
 const {instance} = require('../utils/razorpay')
-const {generateUnique10DigitNumber, getCurrentDateFormatted} = require('../utils/general')
+const {generateUnique10DigitNumber, getCurrentDateFormatted, currencyExchangeRates} = require('../utils/general')
 const crypto = require('crypto')
 const Order = require("../models/order")
 const Product = require("../models/product")
@@ -10,6 +10,7 @@ const { exchange_rates } = require("../scripts")
 
 const createOrder = asyncErrorHandler(async(req, res)=>{
     const { cart, currency } = req.body
+    currencyRates = await currencyExchangeRates()
     
     const user = await User.findById(req.user._id).select('ph_verified address email')
     
@@ -26,7 +27,7 @@ const createOrder = asyncErrorHandler(async(req, res)=>{
         
         // if (exchange_rates.hasOwnProperty(currency)) throw new CustomError("CUSTOM ERROR: Invalid currency", 400)
 
-        totalAmount += product.price * exchange_rates[currency] * p.cart_quantity
+        totalAmount += product.price * currencyRates[currency] * p.cart_quantity
         // product.quantity -= p.cart_quantity
         // await product.save()
     }

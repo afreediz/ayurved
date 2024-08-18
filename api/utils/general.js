@@ -1,4 +1,23 @@
 const { v4: uuidv4 } = require('uuid');
+const CC = require('currency-converter-lt')
+
+let currencyConverter = new CC({amount:1})
+currencyValues = {}
+
+const currencyExchangeRates = async () => {
+  currencyValues['INR'] = 1
+  currencyConverter.currencyFrom = "INR"
+  currencyConverter.currencyTo = "USD"
+  currencyValues["USD"] = await currencyConverter.convert()
+  currencyConverter.currencyFrom = "INR"
+  currencyConverter.currencyTo = "EUR"
+  currencyValues["EUR"] = await currencyConverter.convert()
+  currencyConverter.currencyFrom = "INR"
+  currencyConverter.currencyTo = "AED"
+  currencyValues["AED"] = await currencyConverter.convert()
+  return currencyValues
+}
+
 
 const  generateUnique10DigitNumber = function() {
     // Generate a UUID and convert the first part to a number
@@ -17,4 +36,4 @@ const getCurrentDateFormatted = function () {
     return `${day}-${month}-${year}`;
   }
 
-module.exports = { generateUnique10DigitNumber, getCurrentDateFormatted }
+module.exports = { generateUnique10DigitNumber, getCurrentDateFormatted, currencyExchangeRates }
