@@ -1,6 +1,27 @@
 // export const api_url = 'https://7mstkkhh-3002.inc1.devtunnels.ms/api/'
 // export const api_url = 'http://localhost:3002/api/'
 
+export const available_currencies = {
+  "INDIA":"INR",
+  "USA":"USD",
+  "EUROPE":"EUR",
+  "UAE":"AED",
+}
+
+export const exchange_rates = {
+  "INR": 1,
+  "USD": 0.012,
+  "EUR": 0.011,
+  "AED": 0.044
+}
+
+export const currency_symbols = {
+  "INR":"₹",
+  "USD":"$",
+  "EUR":"€",
+  "AED":"AED"
+}
+
 export const users = [
     {
         "number_of_users": 2,

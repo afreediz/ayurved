@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 const Cart = () => {
   const {user} = useAuth()
-  const {cart, setCart} = useCart();
+  const {cart, setCart, baseCurrencyRate, currencySymbol, currency} = useCart();
   const [data, setData] = useState([]);
   useEffect(()=>{
     async function getCartData(){
@@ -29,10 +29,8 @@ const Cart = () => {
     data?.map((p)=>{
       total = total + p.price * p.cart_quantity
     })
-    return total.toLocaleString("en-Us",{
-      style:"currency",
-      currency:'INR'
-    })
+    total = total*baseCurrencyRate
+    return total.toString()
   }
   const checkout = async()=>{
     try{
@@ -40,15 +38,16 @@ const Cart = () => {
         cart:cart.map((product)=>{  
           return {
             product:product._id,
-            cart_quantity:product.cart_quantity
+            cart_quantity:product.cart_quantity,
+            currency:currency
           }
-        })
+        }), currency:currency
       })
       const options = {
         key: "rzp_test_4wRqHdbX5YleJ3",
         amount: res.data.amount,
         currency: "INR",
-        name: res.data.name,
+        name: "NAVJEEVANA",
         description: "session will expire in 5 minutes",
         order_id: res.data.order_id,
         // callback_url: `http://localhost:3002/api/orders/paymentverification`,
@@ -66,7 +65,12 @@ const Cart = () => {
         } else {
             toast.error("Payment Failed")
         }
-    }
+      },
+      "prefill": {
+        "name": res.data.name, // Customer's name
+        "email": res.data.email, // Customer's email
+        "contact": res.data.phone // Customer's phone number
+      },
   };
     const razor = new window.Razorpay(options);
     razor.open();
@@ -91,7 +95,7 @@ const Cart = () => {
               <div key={index} className="mb-4 flex flex-col gap-1">
                 <div className="flex justify-between">
                   <span>{product.name}</span>
-                  <span>₹{product.price}</span>
+                  <span>{currencySymbol} {product.price*baseCurrencyRate}</span>
                 </div>
                 <div className="flex justify-between border-b border-black">
                   <span>quantity :</span>
@@ -99,7 +103,7 @@ const Cart = () => {
                 </div>
                 <div className=" flex justify-between">
                   <span>subtotal :</span>
-                  <span className=' font-semibold'>₹{product.price * product.cart_quantity}</span>
+                  <span className=' font-semibold'>{currencySymbol} {product.price * product.cart_quantity * baseCurrencyRate}</span>
                 </div>
               </div>
             ))}
@@ -108,7 +112,7 @@ const Cart = () => {
           {/* Grand Total */}
           <div className="text-xl mb-2 flex justify-between">
             <span>Grand total Price: </span>
-            <span className='text-2xl font-bold'>{cart.length > 0 ? totalPrice() : 0}</span>
+            <span className='text-2xl font-bold'>{currencySymbol} {cart.length > 0 ? totalPrice() : 0}</span>
           </div>
         </div>
         

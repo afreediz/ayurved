@@ -1,14 +1,17 @@
 const asyncErrorHandler = require("express-async-handler")
 const CustomError = require('../utils/CustomError')
 const {instance} = require('../utils/razorpay')
-const {generateUnique10DigitNumber, getCurrentDateFormatted} = require('../utils/general')
+const {generateUnique10DigitNumber, getCurrentDateFormatted, currencyExchangeRates} = require('../utils/general')
 const crypto = require('crypto')
 const Order = require("../models/order")
 const Product = require("../models/product")
 const User = require("../models/user")
+const { exchange_rates } = require("../scripts")
 
 const createOrder = asyncErrorHandler(async(req, res)=>{
-    const { cart } = req.body
+    const { cart, currency } = req.body
+    currencyRates = await currencyExchangeRates()
+    
     const user = await User.findById(req.user._id).select('ph_verified address email')
     
     if (!user.ph_verified) throw new CustomError("CUSTOM ERROR: Please verify your phone number before placing order", 400)
@@ -22,14 +25,16 @@ const createOrder = asyncErrorHandler(async(req, res)=>{
 
         if(product.quantity < p.cart_quantity) throw new CustomError("CUSTOM ERROR: Product quantity is not available", 400)
         
-        totalAmount += product.price * p.cart_quantity
+        // if (exchange_rates.hasOwnProperty(currency)) throw new CustomError("CUSTOM ERROR: Invalid currency", 400)
+
+        totalAmount += product.price * currencyRates[currency] * p.cart_quantity
         // product.quantity -= p.cart_quantity
         // await product.save()
     }
     const receipt = `rcpt_${getCurrentDateFormatted()}_${user._id}`
     const options = {
         amount: totalAmount * 100,
-        currency: 'INR',
+        currency: currency,
         receipt: receipt,
         payment_capture: 1
     }
@@ -39,7 +44,7 @@ const createOrder = asyncErrorHandler(async(req, res)=>{
         await Order.create({user:req.user._id,product:p.product, cart_quantity:p.cart_quantity, order_id:orders.id, receipt:receipt})
     }
 
-    res.status(200).json({success:true, message:"", order_id:orders.id, amount:totalAmount, name:user.name})
+    res.status(200).json({success:true, message:"Order Details", order_id:orders.id, amount:totalAmount, name:user.name, email:user.email, phone:user.phone})
 })
 
 const verifyOrder = asyncErrorHandler(async(req, res)=>{
@@ -94,15 +99,15 @@ const allOrders = asyncErrorHandler(async(req, res)=>{
     res.status(200).json({success:true, message:"All orders",orders:orders})
 })
 
-const cancelOrder = asyncErrorHandler(async(req, res)=>{
-    const { id } = req.params
-    const order = await Order.findByIdAndUpdate(id, {status:"Canceled"}, {new:true, runValidators:true})
-    res.status(200).json({
-        success:true,
-        message:"Order cancelled succesfully",
-        order
-    })
-})
+// const cancelOrder = asyncErrorHandler(async(req, res)=>{
+//     const { id } = req.params
+//     const order = await Order.findByIdAndUpdate(id, {status:"Canceled"}, {new:true, runValidators:true})
+//     res.status(200).json({
+//         success:true,
+//         message:"Order cancelled succesfully",
+//         order
+//     })
+// })
 
 const orderStatus = asyncErrorHandler(async(req, res)=>{
     const { id } = req.params
@@ -174,4 +179,4 @@ const getOrder = asyncErrorHandler(async(req, res)=>{
 //     }
 // })
 
-module.exports = { orderStatus, createOrder, userOrders, allOrders, deleteOrder, cancelOrder, dashboardDetails, verifyOrder, getOrder }
+module.exports = { orderStatus, createOrder, userOrders, allOrders, deleteOrder, dashboardDetails, verifyOrder, getOrder }

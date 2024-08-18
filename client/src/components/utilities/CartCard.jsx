@@ -21,7 +21,7 @@ const CartCard = ({product}) => {
         <h2 className='text-3xl font-semibold'>{product.name}</h2>
 
         {/* Product Price */}
-        <h2 className='text-2xl font-semibold'>₹{product.price}</h2>
+        <h2 className='text-2xl font-semibold'>{context.currencySymbol} {product.price*context.baseCurrencyRate}</h2>
 
         {/* Product Short Description */}
         <h3 className='text-lg'>{product.shortdesc}</h3>

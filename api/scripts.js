@@ -1,24 +1,45 @@
-const { default: mongoose } = require('mongoose')
-const env = require('dotenv').config({
-    path:"./config/.env"
-})
-const connection = require('./config/connection')
-const Products = require('./models/product')
+// const CC = require('currency-converter-lt')
 
-// Products.updateMany({},{
-//     $unset: {associatedBlog:""}
-// }, {runValidators:true}).then(()=>{
-//     console.log('done');
-// })
-const jwt = require('jsonwebtoken');
+// let currencyConverter = new CC({amount:1})
+// currencyValues = {}
 
-// JWT and secret key
-const secretKey = '123abc'; 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmEwYzNjZmQxODA3NTVkZTg4NzNkYjciLCJpYXQiOjE3MjI5NjQ5NTYsImV4cCI6MTcyNzI4NDk1Nn0.DRV5fujqUrqCvJwPg4uzQKzzz7ETnEQis9Ca2SlX7ts';
+// const currencyExchangeRates = async () => {
+//   currencyConverter.currencyFrom = "INR"
+//   currencyConverter.currencyTo = "USD"
+//   currencyValues["USD"] = await currencyConverter.convert()
+//   currencyConverter.currencyFrom = "INR"
+//   currencyConverter.currencyTo = "EUR"
+//   currencyValues["EUR"] = await currencyConverter.convert()
+//   currencyConverter.currencyFrom = "INR"
+//   currencyConverter.currencyTo = "AED"
+//   currencyValues["AED"] = await currencyConverter.convert()
+    
+//   return currencyValues
+// }
 
-try {
-    const decoded = jwt.verify(token, secretKey);
-    console.log('JWT is valid. Decoded payload:', decoded);
-} catch (err) {
-    console.error('JWT verification failed:', err.message);
-}
+// currencyExchangeRates()
+
+
+// const available_currencies = {
+// "INDIA":"INR",
+// "USA":"USD",
+// "EUROPE":"EUR",
+// "UAE":"AED",
+// }
+
+// const exchange_rates = {
+// "INR": 1,
+// "USD": 0.012,
+// "EUR": 0.011,
+// "AED": 0.044
+// }
+
+// const currency_symbols = {
+// "INR":"₹",
+// "USD":"$",
+// "EUR":"€",
+// "AED":"AED"
+// }
+
+
+// module.exports = {available_currencies, exchange_rates, currency_symbols}
