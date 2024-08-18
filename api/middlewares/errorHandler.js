@@ -5,6 +5,7 @@ module.exports = (err, req, res, next)=> {
             message: err.message.replace("CUSTOM ERROR: ", "")
         })
     }else{
+        console.log(err);
         switch(err.name){
             case "SyntaxError":
                 err.message = "Unexpected syntax"
@@ -26,7 +27,6 @@ module.exports = (err, req, res, next)=> {
                 }
                 break
         }
-        console.log(err);
         return res.status(500).json({
             success: false,
             message: err.message

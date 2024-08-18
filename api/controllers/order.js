@@ -10,7 +10,6 @@ const { exchange_rates } = require("../scripts")
 
 const createOrder = asyncErrorHandler(async(req, res)=>{
     const { cart, currency } = req.body
-    console.log(currency);
     
     const user = await User.findById(req.user._id).select('ph_verified address email')
     
@@ -99,15 +98,15 @@ const allOrders = asyncErrorHandler(async(req, res)=>{
     res.status(200).json({success:true, message:"All orders",orders:orders})
 })
 
-const cancelOrder = asyncErrorHandler(async(req, res)=>{
-    const { id } = req.params
-    const order = await Order.findByIdAndUpdate(id, {status:"Canceled"}, {new:true, runValidators:true})
-    res.status(200).json({
-        success:true,
-        message:"Order cancelled succesfully",
-        order
-    })
-})
+// const cancelOrder = asyncErrorHandler(async(req, res)=>{
+//     const { id } = req.params
+//     const order = await Order.findByIdAndUpdate(id, {status:"Canceled"}, {new:true, runValidators:true})
+//     res.status(200).json({
+//         success:true,
+//         message:"Order cancelled succesfully",
+//         order
+//     })
+// })
 
 const orderStatus = asyncErrorHandler(async(req, res)=>{
     const { id } = req.params
@@ -179,4 +178,4 @@ const getOrder = asyncErrorHandler(async(req, res)=>{
 //     }
 // })
 
-module.exports = { orderStatus, createOrder, userOrders, allOrders, deleteOrder, cancelOrder, dashboardDetails, verifyOrder, getOrder }
+module.exports = { orderStatus, createOrder, userOrders, allOrders, deleteOrder, dashboardDetails, verifyOrder, getOrder }
