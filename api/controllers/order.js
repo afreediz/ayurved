@@ -44,7 +44,7 @@ const createOrder = asyncErrorHandler(async(req, res)=>{
         await Order.create({user:req.user._id,product:p.product, cart_quantity:p.cart_quantity, order_id:orders.id, receipt:receipt})
     }
 
-    res.status(200).json({success:true, message:"", order_id:orders.id, amount:totalAmount, name:user.name})
+    res.status(200).json({success:true, message:"Order Details", order_id:orders.id, amount:totalAmount, name:user.name, email:user.email, phone:user.phone})
 })
 
 const verifyOrder = asyncErrorHandler(async(req, res)=>{
