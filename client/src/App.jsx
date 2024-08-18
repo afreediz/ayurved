@@ -36,6 +36,7 @@ import AdminLogin from './pages/Auth/AdminLogin'
 import Loader from './components/Loader'
 import AOS from "aos";
 import "aos/dist/aos.css";
+import PrivacyPolicy from './pages/PrivacyAndPolicy'
 const App = () => {
   AOS.init({
     once:true,
@@ -76,6 +77,7 @@ const App = () => {
           <Route path='blogs' element={<ReadBolgs />} />
           <Route path='blogs/:slug' element={<BlogDetails />} />
           <Route path='about-us' element={<OurStory />} />
+          <Route path='privacy-and-policy' element={<PrivacyPolicy />} />
           {user && <>
             <Route path='profile' element={<Profile />} />
             <Route path='orders' element={<Orders />} />
