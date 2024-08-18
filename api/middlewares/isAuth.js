@@ -5,10 +5,12 @@ const CustomError = require('../utils/CustomError')
 
 const isAuthenticated = asyncErrorHandler(async(req, res, next) => {
     const authorization = req.headers.authorization;
+    if(!authorization) throw new CustomError("CUSTOM ERROR: Signin required", 400)
     const token = authorization && authorization.startsWith('Bearer ') ? authorization.split(' ')[1] : token;
     const decoded = validateToken(token)
+    
     const user = await User.findById(decoded._id).select('_id name role status')
-    if(!user) throw new CustomError("CUSTOM ERROR: Signin required", 400)
+    if(!user) throw new CustomError("CUSTOM ERROR: User not found", 400)
     if( user.status == "inactive") throw new CustomError("CUSTOM ERROR: Your account has been deactivated for some reasons, Please contact with our team for further clarifications.", 400)
     req.user = user
     next()
