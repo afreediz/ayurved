@@ -47,7 +47,7 @@ const Cart = () => {
         key: "rzp_test_4wRqHdbX5YleJ3",
         amount: res.data.amount,
         currency: "INR",
-        name: res.data.name,
+        name: "NAVJEEVANA",
         description: "session will expire in 5 minutes",
         order_id: res.data.order_id,
         // callback_url: `http://localhost:3002/api/orders/paymentverification`,
@@ -65,7 +65,12 @@ const Cart = () => {
         } else {
             toast.error("Payment Failed")
         }
-    }
+      },
+      "prefill": {
+        "name": res.data.name, // Customer's name
+        "email": res.data.email, // Customer's email
+        "contact": res.data.phone // Customer's phone number
+      },
   };
     const razor = new window.Razorpay(options);
     razor.open();
