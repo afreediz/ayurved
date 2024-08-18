@@ -1,21 +1,33 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { available_currencies, currency_symbols, exchange_rates } from "../datas";
-
-
+import API from '../services/api'
+import { toast } from "react-toastify";
 export const cartContext = createContext()
 
 export const CartContextProvider = ({children}) => {
     const [cart, setCart] = useState([])
+    const [currencyExchangeRates, setCurrencyExchangeRates] = useState()
     const [baseCurrencyRate, setBaseCurrencyRate] = useState(1)
     const [currency, setCurrency] = useState(available_currencies.INDIA)
     const [currencySymbol, setCurrencySymbol] = useState(currency_symbols.INR)
 
     useEffect(()=>{
         setCart(localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [])
+        async function getCurrencyExchangeRates() {
+          try{
+            const {data} = await API.get('/products/currencyExchangeRates')
+            setCurrencyExchangeRates(data.rates)
+          }catch(error){
+            toast.error(error.response?.data.message)
+          }
+        }
+        getCurrencyExchangeRates()
     },[])
     
     useEffect(()=>{
-      setBaseCurrencyRate(exchange_rates[currency])
+      if(currencyExchangeRates){
+        setBaseCurrencyRate(currencyExchangeRates[currency])
+      }
       setCurrencySymbol(currency_symbols[currency])
     },[currency])
 
