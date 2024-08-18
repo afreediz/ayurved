@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-green-900 text-white py-8 px-4">
-      <p className="text-xl italic text-center md:hidden">"Reviving Tradition, Nourishing Generations"</p>
+    <footer className="bg-green-900 text-white pt-8 px-4">
+        <p className="text-xl italic text-center md:hidden">"Reviving Tradition, Nourishing Generations"</p>
         <div className="grid grid-cols-1 md:grid-cols-2 mt-8 justify-between container mx-auto">
           <div className="w-full sm:w-auto sm:text-left mb-4 sm:mb-0">
             <div className="text-white text-5xl font-bold">
@@ -37,6 +37,9 @@ const Footer = () => {
               </ul>
             </div>
           </div>
+        </div>
+        <div className=" flex flex-col justify-center items-center py-3 bg-white text-black w-full mt-8">
+          <span className='px-1'>© NAVJEEVANA, FORTUNE GATE ORGANIC FARMING | DESIGNED BY <a href='https://www.linkedin.com/in/Afreediz/' className=' text-blue-400'>AFREEDI</a> </span>
         </div>
     </footer>
   );
