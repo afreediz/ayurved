@@ -4,7 +4,7 @@ require('dotenv').config();
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: process.env.SMTP_PORT,
-  secure: false,
+  secure: true,
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 const sendVerificationEmail = async (email, verificationLink) => {
   try {
     const info = await transporter.sendMail({
-      from: 'navajeevana@gmail.com',
+      from: 'ecommerce@navjeevana.com',
       to: email,
       subject: 'Email Verification',
       html: `<p>Please verify your email by clicking on the link below:</p>
@@ -28,7 +28,7 @@ const sendVerificationEmail = async (email, verificationLink) => {
 const forwardMailToAdmin = async (name, email, message) => {
   try {
     const info = await transporter.sendMail({
-      from: 'navajeevana@gmail.com',
+      from: process.env.ADMIN_EMAIL,
       to: process.env.ADMIN_EMAIL,
       subject: 'Query from user.',
       html: `<p>Name: ${name}, <br /> Email: ${email}, <br /> Message: ${message}</p>`,
@@ -41,7 +41,7 @@ const forwardMailToAdmin = async (name, email, message) => {
 const sendResetPasswordEmail = async (email, resetLink) => {
   try {
     const info = await transporter.sendMail({
-      from: 'navajeevana@gmail.com',
+      from: 'ecommerce@navjeevana.com',
       to: email,
       subject: 'Reset Password',
       html: `<p>Please reset your password by clicking on the link below:</p>
