@@ -41,6 +41,7 @@ const BlogDetails = () => {
             navigate(`/navjeevanabrand/admin/blogs/${data.blog.slug}`);
             toast.success("Blog Updated Successfully");
         } catch (error) {
+            toast.error(error.response?.data.message)
             console.log(error);
         }
     }
@@ -50,6 +51,7 @@ const BlogDetails = () => {
             toast.success("Blog Deleted Successfully");
             navigate('/navjeevanabrand/admin/blogs');
         } catch (error) {
+            toast.error(error.response?.data.message)
             console.log(error);
         }
     }
