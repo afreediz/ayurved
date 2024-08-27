@@ -172,7 +172,7 @@ const getOrder = asyncErrorHandler(async(req, res)=>{
 // delete payments that are not paid every day
 // cron.schedule("0 0 * * *", async()=>{
 //     try{
-//         console.log("cron job running");
+//         ("cron job running");
 //         await Order.deleteMany({payment:"Not paid"})
 //     }catch(error){
 //         console.log(error)

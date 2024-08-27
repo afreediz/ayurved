@@ -26,6 +26,7 @@ const CreateBlog = ({setActive, setBlogs}) => {
         setBlogs((prev) => [...prev, data.blog])
         setActive(false)
     }catch(error){
+      toast.error(error.response?.data.message)
         console.log(error.data?.message)
     }
   };

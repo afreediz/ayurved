@@ -1,7 +1,5 @@
-razorpay prefill
+solve sec issues in github
 whatsapp number
-admin email
-read old page and get contents & policy
 slider images, social medias
 services :
 mongodb atlas
