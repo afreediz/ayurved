@@ -30,7 +30,7 @@ const Footer = () => {
                 <li className='flex items-center gap-1 font text-xl text-white'><a href="mailto:navjeevana@gmail.com" className=""> fortunegate@navjeevana.com</a></li>
               </ul>
               <ul className='flex gap-4 text-3xl mt-5'>
-                <li><a href='' className=""><FaInstagram className=' text-red-500' /></a></li>
+                <li><a href='https://www.instagram.com/navjeevanakerala/' className=""><FaInstagram className=' text-red-500' /></a></li>
                 <li><a href='' className=""><FaFacebook className=' text-blue-500' /></a></li>
                 <li><a href='' className=""><FaYoutube className=' text-red-500' /></a></li>
                 <li><a href='' className=""><FaTwitter className=' text-blue-500' /></a></li>

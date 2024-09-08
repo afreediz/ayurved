@@ -58,7 +58,7 @@ const OurStory = () => {
                   {/* Introduction Section */}
       <section className="px-4 py-16 mx-auto">
         <div className="container mx-auto text-center md:text-left grid grid-cols-1 md:grid-cols-5 gap-4">
-        <img src="https://via.placeholder.com/600x400" alt="Mission Image" className="mx-auto rounded-lg shadow-lg  md:col-span-2" />
+        <img src="/images/price.jpg" alt="Mission Image" className="mx-auto rounded-lg shadow-lg  md:col-span-2" />
 
             <div className=" md:col-span-3">
             <h2 className="text-3xl font-bold mb-4">Our Journey</h2>
@@ -85,12 +85,13 @@ We stand firm against the use of artificial enhancers and harmful chemicals that
 At Navajeevana, we are dedicated to creating products that are not only good for you but also good for the planet. Our ghee, made from the milk of freely grazing cows, is a testament to our commitment to health and tradition. We believe in the power of pure, unadulterated food to nourish the body and soul, and we are proud to bring these exceptional products to your table.
           </p>
             </div>
-          <img src="https://via.placeholder.com/600x400" alt="Mission Image" className="mx-auto rounded-lg shadow-lg  md:col-span-2" />
+            <video src="images/cows.mp4" alt="Mission Image" className="mx-auto rounded-lg shadow-lg md:col-span-2" autoplay="true" muted loop />
+
         </div>
       </section>
 
       {/* Values Section */}
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-10">Our Values</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -123,10 +124,18 @@ At Navajeevana, we are dedicated to creating products that are not only good for
             </div>
           </div>
         </div>
+      </section> */}
+
+      {/* Team Section */}
+      <section className="py-16">
+        <div className="container mx-auto text-center">
+          <video src="videos/gkumar.mp4" alt="Mission Image" className="mx-auto rounded-lg shadow-lg md:col-span-2 w-full" autoplay="true" loo controls />
+
+          </div>
       </section>
 
       {/* Team Section */}
-      <section className="bg-green-100 py-16">
+      <section className="py-16">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-10">Meet Our Team</h2>
           <div className="flex flex-wrap justify-center space-x-6">
@@ -156,7 +165,7 @@ At Navajeevana, we are dedicated to creating products that are not only good for
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 px-4">
+      <section className="bg-green-100 py-16 px-4">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
           <p className="text-lg mb-6 ">
@@ -164,7 +173,7 @@ At Navajeevana, we are dedicated to creating products that are not only good for
           </p>
           <div className=" grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="">
-              <img src="https://via.placeholder.com/500x300" alt="" />
+              <img src="/images/contact.avif" alt="" />
             </div>
             <form className="">
               <div className="mb-4">
