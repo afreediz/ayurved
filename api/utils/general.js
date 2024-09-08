@@ -1,22 +1,13 @@
 const { v4: uuidv4 } = require('uuid');
-const CC = require('currency-converter-lt')
+const { Convert } = require("easy-currencies");
 
-let currencyConverter = new CC({amount:1})
 currencyValues = {}
 
 const currencyExchangeRates = async () => {
   currencyValues['INR'] = 1
-  currencyConverter.currencyFrom = "INR"
-  currencyConverter.currencyTo = "USD"
-  currencyValues["USD"] = await currencyConverter.convert()
-  console.log(currencyValues);
-  currencyConverter.currencyFrom = "INR"
-  currencyConverter.currencyTo = "EUR"
-  currencyValues["EUR"] = await currencyConverter.convert()
-  console.log(currencyValues);
-  currencyConverter.currencyFrom = "INR"
-  currencyConverter.currencyTo = "AED"
-  currencyValues["AED"] = await currencyConverter.convert()
+  currencyValues["USD"] = await Convert(1).from("INR").to("USD");
+  currencyValues["EUR"] = await Convert(1).from("INR").to("EUR");
+  currencyValues["AED"] = await Convert(1).from("INR").to("AED");
   return currencyValues
 }
 
