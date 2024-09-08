@@ -10,7 +10,7 @@ const slides = [
     image:"/images/gheequality.jpeg",
     link:"/allproducts",
   },{
-    image:"/images/gheequality.jpeg",
+    image:"/images/newimg.jpeg",
     link:"/allproducts",
   }
 ];
