@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 
 const slides = [
   {
-    image:"https://www.linuscartitsolutions.com/drtrimurthy.com/assets/img/resource/aboutayurveda-banner.jpg",
-    link:"https://example.com/slide1",
+    image:"/images/cartoonghee.webp",
+    link:"/allproducts",
   },{
-    image:"https://yashremedies.com/cdn/shop/files/Banner1_6617d195-69fd-484c-99a9-9eeac21e126a.jpg?v=1692598358",
-    link:"https://example.com/slide1",
+    image:"/images/gheequality.jpeg",
+    link:"/allproducts",
   },{
-    image:"https://www.aimilpharma.life/cdn/shop/articles/blog-banner.jpg?v=1602927357",
-    link:"https://example.com/slide1",
+    image:"/images/gheequality.jpeg",
+    link:"/allproducts",
   }
 ];
 
