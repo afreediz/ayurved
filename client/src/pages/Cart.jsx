@@ -46,7 +46,7 @@ const Cart = () => {
       console.log(res);
       
       const options = {
-        key: "rzp_test_4wRqHdbX5YleJ3",
+        key: "rzp_live_AONloOEyl1iDRf",//
         amount: res.data.amount,
         currency: "INR",
         name: "NAVJEEVANA",
