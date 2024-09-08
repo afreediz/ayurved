@@ -3,6 +3,7 @@ import API from '../services/api';
 import { useParams } from 'react-router-dom';
 import Center from '../components/utilities/Center';
 import Loader from '../components/Loader';
+import { toast } from 'react-toastify';
 
 const BlogDetails = () => {
     const {slug} = useParams()

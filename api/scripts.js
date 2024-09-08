@@ -1,6 +1,14 @@
-// const CC = require('currency-converter-lt')
+const CC = require('currency-converter-lt')
 
-// let currencyConverter = new CC({amount:1})
+let currencyConverter = new CC({amount:1})
+  currencyConverter.currencyFrom = "INR"
+  currencyConverter.currencyTo = "USD"
+  async function test(){
+    console.log("it is ",await currencyConverter.convert())
+    }
+    test()
+    
+
 // currencyValues = {}
 
 // const currencyExchangeRates = async () => {

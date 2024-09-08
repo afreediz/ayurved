@@ -9,9 +9,11 @@ const currencyExchangeRates = async () => {
   currencyConverter.currencyFrom = "INR"
   currencyConverter.currencyTo = "USD"
   currencyValues["USD"] = await currencyConverter.convert()
+  console.log(currencyValues);
   currencyConverter.currencyFrom = "INR"
   currencyConverter.currencyTo = "EUR"
   currencyValues["EUR"] = await currencyConverter.convert()
+  console.log(currencyValues);
   currencyConverter.currencyFrom = "INR"
   currencyConverter.currencyTo = "AED"
   currencyValues["AED"] = await currencyConverter.convert()
