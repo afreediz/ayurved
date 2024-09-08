@@ -24,7 +24,7 @@ const Home = () => {
         <ProductVideos />
         <Why />
         <ShopBySolution />
-        <CustomerReview />
+        {/* <CustomerReview /> */}
         <ExploreMoreProducts />
     </div>
   );  

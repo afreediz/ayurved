@@ -19,7 +19,7 @@ const ProductCard = ({product}) => {
           {'★'.repeat(5)}
         </div>
       </div>
-      <div className="text-xl font-bold mt-2">{currencySymbol} {product.price*baseCurrencyRate}</div>
+      <div className="text-xl font-bold mt-2">{currencySymbol} {(product.price*baseCurrencyRate).toFixed(2)}</div>
     </div>
   </div>
     </Link>
