@@ -43,6 +43,8 @@ const Cart = () => {
           }
         }), currency:currency
       })
+      console.log(res);
+      
       const options = {
         key: "rzp_test_4wRqHdbX5YleJ3",
         amount: res.data.amount,

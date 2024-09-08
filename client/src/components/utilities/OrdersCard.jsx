@@ -1,6 +1,9 @@
 import React from 'react'
+import { useCart } from '../../context/cart';
 
 const OrdersCard = ({product, quantity, order_id, order_date}) => {
+  const {baseCurrencyRate, currencySymbol, currency} = useCart();
+
   return (
     <div className='w-full border border-gray-300 rounded-lg my-4 bg-white shadow-md'>
       <div className="product grid grid-cols-1 md:grid-cols-5 gap-4 p-4">
@@ -12,7 +15,7 @@ const OrdersCard = ({product, quantity, order_id, order_date}) => {
           {product ? (
             <div className="">
               <h2 className='text-lg font-semibold text-gray-700'>Title: <span className='text-gray-500'>{product.name}</span></h2>
-              <h2 className='text-lg font-semibold text-gray-700'>Price: <span className='text-gray-500'>${product.price}</span></h2>
+              <h2 className='text-lg font-semibold text-gray-700'>Price: <span className='text-gray-500'>{currencySymbol} {product.price}</span></h2>
             </div>
           ): "Product no longer available"}
           <h2 className='text-lg font-semibold text-gray-700'>Quantity: <span className='text-gray-500'>{quantity}</span></h2>
