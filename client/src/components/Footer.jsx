@@ -26,7 +26,8 @@ const Footer = () => {
             <div className=" mb-4 sm:mb-0">
               <h3 className="font-semibold text-2xl mb-2">Connect With Us</h3>
               <ul>
-                <li className='flex items-center gap-1 font text-xl text-white'><FaPhone />+91 80783 11510</li>
+                <li className='flex items-center gap-1 font text-xl text-white'><FaPhone /> +91 80783 11510</li>
+                <li className='flex items-center gap-1 font text-xl text-white'><FaPhone /> 00971556784334</li>
                 <li className='flex items-center gap-1 font text-xl text-white'><a href="mailto:navjeevana@gmail.com" className=""> fortunegate@navjeevana.com</a></li>
               </ul>
               <ul className='flex gap-4 text-3xl mt-5'>
