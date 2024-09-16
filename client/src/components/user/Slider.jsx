@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const slides = [
   {
-    image:"/images/cartoonghee.webp",
-    link:"/allproducts",
-  },{
     image:"/images/gheequality.jpeg",
+    link:"/allproducts",
+  },  {
+    image:"/images/cows.jpeg",
     link:"/allproducts",
   },{
     image:"/images/newimg.jpeg",
