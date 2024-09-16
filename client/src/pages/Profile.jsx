@@ -126,11 +126,6 @@ const Profile = () => {
                 phone
               }
             })}} />
-            {isVerifying && <><span className=' text-sm text-gray-700'>we have shared a verification code to your mobile number</span><div className=""><input type="number" value={verificationCode} onChange={(e)=>{setVerificationCode(e.target.value)}} placeholder='Enter verification code' className="my-2 p-2 border border-gray-300 rounded-lg" /> <button onClick={verifyCode} className={`px-4 py-2 rounded text-white bg-blue-500`}>Submit</button></div></>}
-            {
-            !isVerifying ? ( data && data.phone == oldPh ? <button className={`px-3 py-1 my-1 rounded text-white font-bold ${data && data.ph_verified ? "bg-green-400 cursor-not-allowed" : "bg-blue-500"}`} disabled={data && data.ph_verified} onClick={sendVerificatioCode}>{data && data.ph_verified ? "Verified" : "Verify"}</button> : <span className=' text-sm text-gray-700'>Please update your profile by clicking the update button below.</span>):
-            <button onClick={()=>{verifyCode()}} className={`px-4 py-1 rounded text-white "bg-blue-500"}`}>Verify Code</button>
-            }
           </div>
         </div>
         <div className="my-2">
