@@ -85,7 +85,7 @@ We stand firm against the use of artificial enhancers and harmful chemicals that
 At Navajeevana, we are dedicated to creating products that are not only good for you but also good for the planet. Our ghee, made from the milk of freely grazing cows, is a testament to our commitment to health and tradition. We believe in the power of pure, unadulterated food to nourish the body and soul, and we are proud to bring these exceptional products to your table.
           </p>
             </div>
-            <video src="images/cows.mp4" alt="Mission Image" className="mx-auto rounded-lg shadow-lg md:col-span-2" autoplay="true" muted loop />
+            <video src="images/cows.mp4" alt="Mission Image" className="mx-auto rounded-lg shadow-lg md:col-span-2" autoPlay={true} muted loop />
 
         </div>
       </section>
@@ -129,7 +129,7 @@ At Navajeevana, we are dedicated to creating products that are not only good for
       {/* Team Section */}
       <section className="py-16">
         <div className="container mx-auto text-center">
-          <video src="videos/gkumar.mp4" alt="Mission Image" className="mx-auto rounded-lg shadow-lg md:col-span-2 w-full" autoplay="true" loo controls />
+          <video src="videos/gkumar.mp4" alt="Mission Image" className="mx-auto rounded-lg shadow-lg md:col-span-2 w-full" autoPlay={true} loop controls />
 
           </div>
       </section>
