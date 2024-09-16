@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "currency-converter-lt": "^2.0.1",
     "dotenv": "^16.4.5",
+    "easy-currencies": "^1.8.1",
     "express": "^4.19.2",
     "express-async-handler": "^1.2.0",
     "express-rate-limit": "^7.4.0",

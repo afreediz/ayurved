@@ -12,9 +12,9 @@ const createOrder = asyncErrorHandler(async(req, res)=>{
     const { cart, currency } = req.body
     currencyRates = await currencyExchangeRates()
     
-    const user = await User.findById(req.user._id).select('ph_verified address email')
+    const user = await User.findById(req.user._id).select('ph_verified address email phone')
     
-    if (!user.ph_verified) throw new CustomError("CUSTOM ERROR: Please verify your phone number before placing order", 400)
+    if (user.phone == null || new String(user.phone).length == 0) throw new CustomError("CUSTOM ERROR: Please add your phone number before placing order", 400)
     if (!user.address) throw new CustomError("CUSTOM ERROR: Please add your address before placing order", 400)
 
     let totalAmount = 0
