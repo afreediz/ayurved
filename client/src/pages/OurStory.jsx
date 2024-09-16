@@ -141,23 +141,16 @@ At Navajeevana, we are dedicated to creating products that are not only good for
           <div className="flex flex-wrap justify-center space-x-6">
             <div data-aos="fade-up" className="w-full sm:w-1/2 lg:w-1/4 mb-8">
               <div className="p-6 bg-white shadow-lg rounded-lg">
-                <img src="https://via.placeholder.com/150x150" alt="Team Member" className="mx-auto rounded-full mb-4" />
-                <h3 className="text-xl font-semibold mb-2">John Doe</h3>
-                <p>Founder & CEO</p>
+                <img src="/images/jijikumar.jpeg" alt="Team Member" className="mx-auto rounded-full mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Jiji Kumar</h3>
+                <p>Founder</p>
               </div>
             </div>
             <div data-aos="fade-up" className="w-full sm:w-1/2 lg:w-1/4 mb-8">
               <div className="p-6 bg-white shadow-lg rounded-lg">
-                <img src="https://via.placeholder.com/150x150" alt="Team Member" className="mx-auto rounded-full mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Jane Smith</h3>
-                <p>Head of Operations</p>
-              </div>
-            </div>
-            <div data-aos="fade-up" className="w-full sm:w-1/2 lg:w-1/4 mb-8">
-              <div className="p-6 bg-white shadow-lg rounded-lg">
-                <img src="https://via.placeholder.com/150x150" alt="Team Member" className="mx-auto rounded-full mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Michael Brown</h3>
-                <p>Chief Marketing Officer</p>
+                <img src="/images/wife.jpeg" alt="Team Member" className="mx-auto rounded-full mb-4" />
+                {/* <h3 className="text-xl font-semibold mb-2">Jane Smith</h3> */}
+                <p>Co-Founder</p>
               </div>
             </div>
           </div>
