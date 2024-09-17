@@ -15,11 +15,6 @@ const VideoCard = ({ videoSrc, title, price }) => {
             muted
           ></video>
         </div>
-        <div className="p-4">
-          <h3 className="text-lg font-semibold">{title}</h3>
-          <p className="text-gray-600">Starting from ₹{price}</p>
-          <Link to={`/allproducts`}><button className="mt-2 w-full bg-green-700 text-white py-2 rounded">Shop Now</button></Link>
-        </div>
       </div>
     );
   };
