@@ -112,7 +112,6 @@ const ProductDetails = () => {
       </Swiper>
     </div>
     </Center>}
-  {/* <img src="/images/why/flowers.png" alt="" className=' absolute opacity-50 brightness-150 left-0 right-0 z-[-1] w-full' /> */}
   <div className="absolute inset-0 bg-cover bg-center opacity-50 brightness-150 z-[-1]" style={{ backgroundImage: "url('/images/why/flowers.png')" }}></div>
   {loading && <Loader />}
 </Center>

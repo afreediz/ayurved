@@ -82,7 +82,7 @@ Our A2A2 certified cows graze freely under the sun and moon, fed with a carefull
 
 We stand firm against the use of artificial enhancers and harmful chemicals that have become prevalent in modern agriculture. Our cows are fed 100% natural fodders, and our ghee is produced through traditional methods, ensuring it retains its natural benefits and purity. By focusing on quality and sustainability, we aim to combat the decline in food quality brought about by the White and Green Revolutions.
 
-At Navajeevana, we are dedicated to creating products that are not only good for you but also good for the planet. Our ghee, made from the milk of freely grazing cows, is a testament to our commitment to health and tradition. We believe in the power of pure, unadulterated food to nourish the body and soul, and we are proud to bring these exceptional products to your table.
+At Navjeevana, we are dedicated to creating products that are not only good for you but also good for the planet. Our ghee, made from the milk of freely grazing cows, is a testament to our commitment to health and tradition. We believe in the power of pure, unadulterated food to nourish the body and soul, and we are proud to bring these exceptional products to your table.
           </p>
             </div>
             <video src="images/cows.mp4" alt="Mission Image" className="mx-auto rounded-lg shadow-lg md:col-span-2" autoPlay={true} muted loop />
@@ -141,16 +141,23 @@ At Navajeevana, we are dedicated to creating products that are not only good for
           <div className="flex flex-wrap justify-center space-x-6">
             <div data-aos="fade-up" className="w-full sm:w-1/2 lg:w-1/4 mb-8">
               <div className="p-6 bg-white shadow-lg rounded-lg">
+                <img src="/images/wife.jpeg" alt="Team Member" className="mx-auto rounded-full mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Shailaja Geegikumar</h3>
+                {/* <p>Co-Founder</p> */}
+              </div>
+            </div>
+            <div data-aos="fade-up" className="w-full sm:w-1/2 lg:w-1/4 mb-8">
+              <div className="p-6 bg-white shadow-lg rounded-lg">
                 <img src="/images/jijikumar.jpeg" alt="Team Member" className="mx-auto rounded-full mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Jiji Kumar</h3>
+                <h3 className="text-xl font-semibold mb-2">Geegi Kumar</h3>
                 <p>Founder</p>
               </div>
             </div>
             <div data-aos="fade-up" className="w-full sm:w-1/2 lg:w-1/4 mb-8">
               <div className="p-6 bg-white shadow-lg rounded-lg">
-                <img src="/images/wife.jpeg" alt="Team Member" className="mx-auto rounded-full mb-4" />
-                {/* <h3 className="text-xl font-semibold mb-2">Jane Smith</h3> */}
-                <p>Co-Founder</p>
+                <img src="/images/son.jpeg" alt="Team Member" className="mx-auto rounded-full mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Akash Geegikumar</h3>
+                {/* <p>Co-Founder</p> */}
               </div>
             </div>
           </div>

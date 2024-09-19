@@ -17,23 +17,23 @@ const Why = () => {
       <h1 className=' pb-6'>WHY NAVJEEVANA</h1>
       <div className="items flex justify-center gap-16 lg:gap-60 flex-wrap">
         <div data-aos="zoom-in-right" className="flex flex-col justify-center items-center gap-2">
-            <img src="/images/why/fresh.png" className=' max-w-24' alt="" />
-            <span className='text-xl font-bold'>Farn fresh</span>
+            <img src="/images/why/fresh_new.png" className=' max-w-24 rounded-full' alt="" />
+            <span className='text-xl font-bold'>Farm fresh</span>
         </div>
         <div data-aos="zoom-in-left" className="flex flex-col justify-center items-center gap-2">
-            <img src="/images/why/nochemicals.png" className=' max-w-24' alt="" />
+            <img src="/images/why/nochemicals_new.png" className=' max-w-24 rounded-full' alt="" />
             <span className='text-xl font-bold'>No flavor</span>
         </div>
         <div data-aos="zoom-in" className="flex flex-col justify-center items-center gap-2">
-            <img src="/images/why/number1.png" className=' max-w-24' alt="" />
+            <img src="/images/why/number1_new.png" className=' max-w-24 rounded-full' alt="" />
             <span className='text-xl font-bold'>Number 1 Ghee in the world</span>
         </div>
         <div data-aos="zoom-in-right" className="flex flex-col justify-center items-center gap-2">
-            <img src="/images/why/packed.png" className=' max-w-24' alt="" />
+            <img src="/images/why/packed_new.png" className=' max-w-24 rounded-full' alt="" />
             <span className='text-xl font-bold'>Well Packed</span>
         </div>
         <div data-aos="zoom-in-left" className="flex flex-col justify-center items-center gap-2">
-            <img src="/images/why/handshake.png" className=' max-w-24' alt="" />
+            <img src="/images/why/handshake_new.png" className=' max-w-24 rounded-full' alt="" />
             <span className='text-xl font-bold'>Honest</span>
         </div>
       </div>
