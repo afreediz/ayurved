@@ -103,7 +103,7 @@ const App = () => {
         <Route path='*' element={<div className=''>Not found</div>} />
       </Routes>
       <ToastContainer position='bottom-center' />
-      <a href="https://wa.me/+918078311510">
+      <a href="https://wa.me/+919446027777">
       <img src='/images/whtspimg.png' className=' w-10 h-10 md:w-16 md:h-16 rounded-full fixed bottom-20 right-5 z-10 text-5xl md:text-6xl ' />
       </a>
       {loading && <Loader />}
