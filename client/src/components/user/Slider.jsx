@@ -44,12 +44,12 @@ const Slider = () => {
     <div className="relative mx-auto overflow-hidden">
       <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {slides.map((slide, index) => (
-          <div key={index} className=" min-w-full h-50vh">
+          <div key={index} className=" min-w-full" style={{height:"70vh"}}>
             <Link to={slide.link}>
               <img 
                 src={slide.image} 
                 alt={`Slide ${index + 1}`} 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-fill"
               />
             </Link>
           </div>
