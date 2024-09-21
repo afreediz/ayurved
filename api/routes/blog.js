@@ -9,5 +9,4 @@ router.post('/', isAuthenticated, isAdmin, createBlog)
 router.put('/:id', isAuthenticated, isAdmin,  updateBlog)
 router.delete('/:id', isAuthenticated, isAdmin,  deleteBlog)
 
-
 module.exports = router

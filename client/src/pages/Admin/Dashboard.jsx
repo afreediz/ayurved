@@ -16,12 +16,14 @@ import {
   PointElement,
   LineElement
 } from 'chart.js';
+import SliderShow from '../../components/Admin/SliderDashboard';
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, PointElement, LineElement);
 
 const Dashboard = () => {
   const [products, setProducts] = useState();
   const [users, setUsers] = useState();
   const [orders, setOrders] = useState();
+  const [sliders, setSliders] = useState();
 
   useEffect(() => {
     async function fetchData() {
@@ -80,6 +82,9 @@ const Dashboard = () => {
           { products && <ProductsChart products={products.products} />}
         </div>
       </div>
+      <div className="sliders">
+        <SliderShow />
+      </div>
       <div className="mt-8">
         <h2 className="text-xl font-semibold mb-4">Recent Orders</h2>
         <div className="">
@@ -94,7 +99,7 @@ const Dashboard = () => {
                 <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">Payment Status</th>
               </tr>
             </thead>
-            <tbody className='  shadow-md'>
+            <tbody className='shadow-md'>
             {orders && orders.recent_orders.map((order, index)=>{
               return (
                 <tr key={index}>
