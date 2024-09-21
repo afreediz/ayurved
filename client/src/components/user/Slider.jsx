@@ -1,51 +1,61 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import API from '../../services/api';
 
-const slides = [
-  {
-    image:"/images/gheequality.jpeg",
-    link:"/allproducts",
-  },  {
-    image:"/images/cows.jpeg",
-    link:"/allproducts",
-  },{
-    image:"/images/newimg.jpeg",
-    link:"/allproducts",
-  }
-];
+// const slides = [
+//   {
+//     image:"/images/gheequality.jpeg",
+//     link:"/allproducts",
+//   },  {
+//     image:"/images/cows.jpeg",
+//     link:"/allproducts",
+//   },{
+//     image:"/images/newimg.jpeg",
+//     link:"/allproducts",
+//   }
+// ];
 
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [slides, setSlides] = useState([])
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === slides.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 3000); // Change slide every 3 seconds
+    async function getSlides(){
+      console.log('requested');
+      
+      const {data} = await API.get('/slider')
+      setSlides(data.sliders)
+      const interval = setInterval(() => {
+        setCurrentIndex((prevIndex) =>
+          prevIndex === 3 - 1 ? 0 : prevIndex + 1
+        );
+      }, 3000); // Change slide every 3 seconds
+      
+      return () => clearInterval(interval);
+    }
 
-    return () => clearInterval(interval);
+    getSlides()
   }, []);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === slides.length - 1 ? 0 : prevIndex + 1
+      prevIndex === 3 - 1 ? 0 : prevIndex + 1
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? slides.length - 1 : prevIndex - 1
+      prevIndex === 0 ? 3 - 1 : prevIndex - 1
     );
   };
 
   return (
     <div className="relative mx-auto overflow-hidden">
       <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-        {slides.map((slide, index) => (
+        {slides && slides.map((slide, index) => (
           <div key={index} className=" min-w-full" style={{height:"70vh"}}>
-            <Link to={slide.link}>
+            <Link to={slide.url}>
               <img 
                 src={slide.image} 
                 alt={`Slide ${index + 1}`} 
