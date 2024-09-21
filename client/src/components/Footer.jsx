@@ -40,7 +40,7 @@ const Footer = () => {
           </div>
         </div>
         <div className=" flex flex-col justify-center items-center py-3 bg-white text-black w-full mt-8 text-sm">
-          <span className='px-1'>© NAVJEEVANA, FORTUNE GATE ORGANIC FARMING | DESIGNED BY <a href='https://www.linkedin.com/in/Afreediz/' className=' text-blue-400'>AFREEDI</a> </span>
+          <span className='px-1'>© NAVJEEVANA, FORTUNE GATE ORGANIC FARMING | DESIGNED AND DEVELOPED BY <a href='https://www.linkedin.com/in/Afreediz/' className=' text-blue-400'>AFREEDI</a> </span>
         </div>
     </footer>
   );

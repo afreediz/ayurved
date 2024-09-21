@@ -30,7 +30,7 @@ const Blogs = () => {
         <Link  key={index} to={`/blogs/${blog.slug}`}>
             <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col min-h-[350px] max-h-[350px]">
               <div className="w-full h-48 overflow-hidden rounded flex-shrink-0 flex justify-center items-center">
-                  <img src={blog.image} alt={blog.title} className="w-full h-full object-cover" />
+                  <img src={blog.image} alt={blog.title} className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg font-semibold p-4">{blog.title}</h3>
           </div>
