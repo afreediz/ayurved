@@ -21,7 +21,7 @@ const CustomDropdown = ({ data, mainText, navigateHandler, setMenuOpen, menuOpen
         {selected === 'all' ? <span className='flex justify-between gap-1 items-center'>{mainText } {open? <FaArrowUp className=' text-sm'  />: <FaArrowDown className=' text-sm' />}</span> : data.find(c => c.slug === selected)?.name}
       </div>
       {open && (
-        <ul className={`absolute z-50 mt-2 w-full bg-white border border-gray-300 rounded shadow-lg`}>
+        <ul className={`absolute z-50 w-full bg-white border border-gray-300 rounded shadow-lg`}>
           <li
             onClick={() => handleSelect('all')}
             className="py-2 px-1 lg:px-5 hover:bg-gray-100 cursor-pointer"
