@@ -23,7 +23,7 @@ app.use(cors(
 ))
 
 app.use(bodyParser.json({limit:'50mb'}))
-app.use(bodyParser.urlencoded({limit:'50mb', extended:true, parameterLimit:50000}))
+app.use(bodyParser.urlencoded({limit:'500mb', extended:true, parameterLimit:50000}))
 app.use(logger('dev'))
 app.use(helmet())
 app.use(helmet.contentSecurityPolicy({
