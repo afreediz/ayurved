@@ -42,10 +42,13 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="bg-[#fefcf9] py-16 px-4">
+    <section className="bg-[#fefcf9] py-16 px-4 my-16">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-center text-[#3d2c1e] mb-12 leading-tight">
-          Experience Pure Wellness from Nature’s Best
+        <h2 className="sub-heading">
+          Experience Pure {""}
+          <span className='green-gradient-text'>Wellness</span>
+          {" "}
+           from <span className='green-gradient-text'>Nature’s</span> Best
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {slides.map((slide, index) => (

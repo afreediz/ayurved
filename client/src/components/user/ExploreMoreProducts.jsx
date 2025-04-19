@@ -28,9 +28,9 @@ const ExploreMoreProducts = () => {
   return (
     <Center>
     <div className=" py-10">
-      <div className="flex justify-between items-center px-4 md:px-10 lg:px-20">
-        <h2 className="text-3xl font-bold">Explore More Products</h2>
-        <Link to={"/allproducts"} className="text-green-600 hover:text-green-800">View All</Link>
+      <div className="flex justify-center items-center px-4 md:px-10 lg:px-20">
+        <h2 className="sub-heading">Explore More <span className='green-gradient-text'>Products</span></h2>
+        {/* <Link to={"/allproducts"} className="text-green-600 hover:text-green-800">View All</Link> */}
       </div>
       <Swiper
         slidesPerView={1}
@@ -50,11 +50,13 @@ const ExploreMoreProducts = () => {
         modules={[Navigation, Autoplay]}
         className="mySwiper px-4 md:px-10 lg:px-20 mt-8"
       >
-        {products.map((product,index) => (
-          <SwiperSlide key={index}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {products.reverse().map((product,index) => (
+          <div key={index}>
             <ProductCard product={product} />
-          </SwiperSlide>
+          </div>
         ))}
+        </div>
       </Swiper>
     </div>
     </Center>
