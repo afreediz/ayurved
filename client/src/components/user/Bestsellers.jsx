@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import API from '../../services/api';
-import { toast } from 'react-toastify';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import { Navigation, Autoplay } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import ProductCard from '../utilities/ProductCard';
-import Center from '../utilities/Center';
-import { Link } from 'react-router-dom';
-
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import API from "../../services/api";
+import { toast } from "react-toastify";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import ProductCard from "../utilities/ProductCard";
+import Center from "../utilities/Center";
+import { Link } from "react-router-dom";
 
 const BestSellers = () => {
   const [products, setProducts] = useState([]);
@@ -23,7 +22,9 @@ const BestSellers = () => {
         // Limit to 4 products
         setProducts(data.products.slice(0, 4));
       } catch (error) {
-        toast.error(error.response?.data.message || 'Failed to load bestsellers');
+        toast.error(
+          error.response?.data.message || "Failed to load bestsellers"
+        );
         console.error(error);
       } finally {
         setLoading(false);
@@ -42,7 +43,7 @@ const BestSellers = () => {
             transition={{ duration: 0.5 }}
             className="sub-heading"
           >
-            Our <span className='green-gradient-text'>Best sellers</span>
+            Our <span className="green-gradient-text">Best sellers</span>
           </motion.h2>
           {/* <Link
             to="/allproducts"
@@ -84,8 +85,8 @@ const BestSellers = () => {
               spaceBetween={20}
               loop={products.length > 1} // Loop only if more than 1 product
               navigation={{
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
               }}
               autoplay={{
                 delay: 4000,
@@ -128,6 +129,27 @@ const BestSellers = () => {
           )}
         </div>
       </Center>
+      <div className="flex items-center justify-center mt-6 mb-6">
+        <Link
+          to="/allproducts"
+          className="p-2 bg-green-600 text-white rounded-lg hover:bg-green-700 w-44  flex items-center justify-center font-medium py-3 gap-2"
+        >
+          View All
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </Link>
+      </div>
     </section>
   );
 };
