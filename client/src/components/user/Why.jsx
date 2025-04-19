@@ -1,44 +1,102 @@
-import React from 'react'
+import { Flower } from "lucide-react";
+import { motion } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 
-const Why = () => {
+export default function Why() {
+  const scrollerRef = useRef(null);
+  const [scrollerWidth, setScrollerWidth] = useState(0);
+  const [containerWidth, setContainerWidth] = useState(0);
+  
+  useEffect(() => {
+    if (scrollerRef.current) {
+      setScrollerWidth(scrollerRef.current.scrollWidth);
+      setContainerWidth(scrollerRef.current.offsetWidth);
+    }
+  }, []);
+
+  const benefits = [
+    "Farm Fresh",
+    "No Chemicals",
+    "Number 1 Ghee in the world",
+    "Well Packed",
+    "Honest",
+    "No Flavour",
+    "Premium Quality",
+    "Eco-Friendly"
+  ];
+
+  const duplicatedBenefits = [...benefits, ...benefits];
+  
   return (
-    <div
-  style={{
-    backgroundImage: "url('/images/why/bg.jpeg')",
-    backgroundSize: "cover", // Ensure the entire image fits within the div
-    backgroundPosition: "center", // Center the image,
-    backgroundRepeat: "no-repeat",
-    width: "100%", // Ensure the div takes full width
-    height: "auto" // Let height adjust based on content or use a fixed height,
-  }}
-  className="w-full text-white flex flex-col justify-center items-center p-10 my-10 relative z-[-1]"
->
-<div className="absolute inset-0 bg-black opacity-50 z-[-1]"></div>
-      <h1 className=' pb-6'>WHY NAVJEEVANA</h1>
-      <div className="items flex justify-center gap-16 lg:gap-60 flex-wrap">
-        <div data-aos="zoom-in-right" className="flex flex-col justify-center items-center gap-2">
-            <img src="/images/why/fresh_new.png" className=' max-w-24 rounded-full' alt="" />
-            <span className='text-xl font-bold'>Farm fresh</span>
-        </div>
-        <div data-aos="zoom-in-left" className="flex flex-col justify-center items-center gap-2">
-            <img src="/images/why/nochemicals_new.png" className=' max-w-24 rounded-full' alt="" />
-            <span className='text-xl font-bold'>No flavor</span>
-        </div>
-        <div data-aos="zoom-in" className="flex flex-col justify-center items-center gap-2">
-            <img src="/images/why/number1_new.png" className=' max-w-24 rounded-full' alt="" />
-            <span className='text-xl font-bold'>Number 1 Ghee in the world</span>
-        </div>
-        <div data-aos="zoom-in-right" className="flex flex-col justify-center items-center gap-2">
-            <img src="/images/why/packed_new.png" className=' max-w-24 rounded-full' alt="" />
-            <span className='text-xl font-bold'>Well Packed</span>
-        </div>
-        <div data-aos="zoom-in-left" className="flex flex-col justify-center items-center gap-2">
-            <img src="/images/why/handshake_new.png" className=' max-w-24 rounded-full' alt="" />
-            <span className='text-xl font-bold'>Honest</span>
-        </div>
-      </div>
-    </div>
-  )
+    <main className="w-full overflow-hidden bg-gradient-to-r from-green-600 to-green-700 py-8 my-16">
+      <motion.div
+        className="flex items-center"
+        ref={scrollerRef}
+        animate={{
+          x: scrollerWidth > 0 ? -scrollerWidth / 2 : 0
+        }}
+        transition={{
+          duration: 40,
+          ease: "linear",
+          repeat: Infinity,
+        }}
+      >
+        {duplicatedBenefits.map((benefit, index) => (
+          <div 
+            key={index} 
+            className="flex items-center mx-6 whitespace-nowrap"
+          >
+            <Flower className="text-white mr-2" size={24} />
+            <span className="text-white font-medium text-xl uppercase">{benefit}</span>
+          </div>
+        ))}
+      </motion.div>
+    </main>
+  );
 }
 
-export default Why
+
+// import React from 'react'
+
+// const Why = () => {
+//   return (
+//     <div
+//   style={{
+//     backgroundImage: "url('/images/why/bg.jpeg')",
+//     backgroundSize: "cover", // Ensure the entire image fits within the div
+//     backgroundPosition: "center", // Center the image,
+//     backgroundRepeat: "no-repeat",
+//     width: "100%", // Ensure the div takes full width
+//     height: "auto" // Let height adjust based on content or use a fixed height,
+//   }}
+//   className="w-full text-white flex flex-col justify-center items-center p-10 my-10 relative z-[-1]"
+// >
+// <div className="absolute inset-0 bg-black opacity-50 z-[-1]"></div>
+//       <h1 className=' pb-6'>WHY NAVJEEVANA</h1>
+//       <div className="items flex justify-center gap-16 lg:gap-60 flex-wrap">
+//         <div data-aos="zoom-in-right" className="flex flex-col justify-center items-center gap-2">
+//             <img src="/images/why/fresh_new.png" className=' max-w-24 rounded-full' alt="" />
+//             <span className='text-xl font-bold'>Farm fresh</span>
+//         </div>
+//         <div data-aos="zoom-in-left" className="flex flex-col justify-center items-center gap-2">
+//             <img src="/images/why/nochemicals_new.png" className=' max-w-24 rounded-full' alt="" />
+//             <span className='text-xl font-bold'>No flavor</span>
+//         </div>
+//         <div data-aos="zoom-in" className="flex flex-col justify-center items-center gap-2">
+//             <img src="/images/why/number1_new.png" className=' max-w-24 rounded-full' alt="" />
+//             <span className='text-xl font-bold'>Number 1 Ghee in the world</span>
+//         </div>
+//         <div data-aos="zoom-in-right" className="flex flex-col justify-center items-center gap-2">
+//             <img src="/images/why/packed_new.png" className=' max-w-24 rounded-full' alt="" />
+//             <span className='text-xl font-bold'>Well Packed</span>
+//         </div>
+//         <div data-aos="zoom-in-left" className="flex flex-col justify-center items-center gap-2">
+//             <img src="/images/why/handshake_new.png" className=' max-w-24 rounded-full' alt="" />
+//             <span className='text-xl font-bold'>Honest</span>
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default Why

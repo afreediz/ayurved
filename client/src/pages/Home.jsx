@@ -20,10 +20,12 @@ const Home = () => {
       <img src="/images/why/flowers.png" alt="" className=' absolute opacity-50 brightness-150 left-0 right-0 z-[-1]' />
 
         <ProductVideos />
+        <div className="">
         <Slider />
         <HighlightedProducts />
         <Why />
         <ShopBySolution />
+        </div>
         {/* <CustomerReview /> */}
         <ExploreMoreProducts />
     </div>
