@@ -43,20 +43,33 @@ const ProductDetails = () => {
   if (!product)
     return <div className="text-center py-20 text-xl">No product found</div>;
 
-  // Parse product contents and wrap images with Lens
+  // Parse product contents and wrap only the first three images with Lens
   const parseContent = (content) => {
+    let currentImageIndex = 0;
     return parse(content, {
       replace: (domNode) => {
         if (domNode.name === "img") {
+          currentImageIndex++;
           const { src, alt } = domNode.attribs;
+          // Wrap only the first three images with Lens
+          if (currentImageIndex <= 3) {
+            return (
+              <Lens hovering={hovering} setHovering={setHovering}>
+                <img
+                  src={src || "https://via.placeholder.com/600"}
+                  alt={alt || "Product content image"}
+                  className="object-contain h-full w-full transition duration-300 hover:scale-105"
+                />
+              </Lens>
+            );
+          }
+          // For images beyond the third, return without Lens
           return (
-            <Lens hovering={hovering} setHovering={setHovering}>
-              <img
-                src={src || "https://via.placeholder.com/600"}
-                alt={alt || "Product content image"}
-                className="object-contain h-full w-full transition duration-300 hover:scale-105"
-              />
-            </Lens>
+            <img
+              src={src || "https://via.placeholder.com/600"}
+              alt={alt || "Product content image"}
+              className="object-contain h-full w-full transition duration-300 hover:scale-105"
+            />
           );
         }
       },
@@ -66,13 +79,13 @@ const ProductDetails = () => {
   return (
     <div className="bg-neutral-50 min-h-screen">
       {/* Hero section with subtle background */}
-      <div className="relative bg-gradient-to-b from-neutral-50 to-neutral-100 py-16">
+      <div className="relative bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-12">
             {/* Product image */}
             <div className="w-full md:w-1/2 lg:w-2/5">
-              <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-neutral-100">
-                <div className="aspect-square bg-white flex items-center justify-center p-8">
+              <div className="rounded-2xl  overflow-hidden border">
+                <div className=" flex items-center justify-center p-8">
                   <Lens hovering={hovering} setHovering={setHovering}>
                     <img
                       src={product.image || "https://via.placeholder.com/600"}
