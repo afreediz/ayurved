@@ -96,27 +96,64 @@ const Cart = () => {
 
   const calculateSubtotal = () => {
     let total = 0;
-    data?.map((p)=>{
-      total = total + p.price * p.cart_quantity
-    })
-    total = total*baseCurrencyRate
-    return total.toString()
-  }
-  const checkout = async()=>{
-    try{
-      const res = await API.post('/orders',{
-        cart:cart.map((product)=>{  
-          return {
-            product:product._id,
-            cart_quantity:product.cart_quantity,
-            currency:currency
-          }
-        }), currency:currency
-      })
-      console.log(res);
+    data?.forEach((p) => {
+      total = total + p.price * p.cart_quantity;
+    });
+    total = total * baseCurrencyRate;
+    return total.toFixed(2);
+  };
+
+  const calculateTax = () => {
+    const subtotal = parseFloat(calculateSubtotal());
+    return (subtotal * 0.05).toFixed(2); // Assuming 5% tax
+  };
+
+  const calculateTotal = () => {
+    const subtotal = parseFloat(calculateSubtotal());
+    const tax = parseFloat(calculateTax());
+    return (subtotal + tax).toFixed(2);
+  };
+
+  const updateItemQuantity = (productId, newQuantity) => {
+    if (newQuantity < 1) return;
+    
+    const updatedCart = cart.map(item => 
+      item._id === productId ? { ...item, cart_quantity: newQuantity } : item
+    );
+    setCart(updatedCart);
+  };
+
+  const removeItem = (productId) => {
+    const updatedCart = cart.filter(item => item._id !== productId);
+    setCart(updatedCart);
+    toast.success('Item removed from cart');
+  };
+
+  const checkout = async () => {
+    if (!user) {
+      toast.error('Please login to checkout');
+      return;
+    }
+    
+    if (cart.length === 0) {
+      toast.error('Your cart is empty');
+      return;
+    }
+    
+    setIsProcessing(true);
+    
+    try {
+      const res = await API.post('/orders', {
+        cart: cart.map((product) => ({
+          product: product._id,
+          cart_quantity: product.cart_quantity,
+          currency: currency
+        })),
+        currency: currency
+      });
       
       const options = {
-        key: "rzp_live_AONloOEyl1iDRf",//
+        key: "rzp_live_AONloOEyl1iDRf",
         amount: res.data.amount,
         currency: "INR",
         name: "NAVJEEVANA",
@@ -131,10 +168,10 @@ const Cart = () => {
 
           const result = await API.post("/orders/paymentverification", data);
           if (result.data.success) {
-            toast.success("Order placed successfully");
+            toast.success("Order Successful");
             setCart([]);
           } else {
-            toast.error("Payment failed. Please try again.");
+            toast.error("Payment Failed");
           }
         },
         "prefill": {
@@ -150,7 +187,7 @@ const Cart = () => {
       const razor = new window.Razorpay(options);
       razor.open();
     } catch (error) {
-      toast.error(error.response?.data.message || 'Checkout failed');
+      toast.error(error.response?.data.message);
       console.error(error);
     } finally {
       setIsProcessing(false);
@@ -241,7 +278,7 @@ const Cart = () => {
                       'opacity-60 cursor-not-allowed' : 
                       'hover:bg-gray-800 transition-colors'}`}
                 >
-                  {isProcessing ? 'Processing...' : 'Proceed to Checkout'}
+                  {isProcessing ? 'Processing...' : 'PAY'}
                 </button>
                 
                 <div className="mt-6 text-xs text-gray-500 text-center">
