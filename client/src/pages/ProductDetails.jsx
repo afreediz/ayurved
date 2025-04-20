@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import ProductCard from "../components/utilities/ProductCard";
 import { Lens } from "../components/utilities/lens";
 import parse from "html-react-parser";
+import { ArrowRight } from "lucide-react";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState();
@@ -271,20 +272,7 @@ const ProductDetails = () => {
               >
                 <span className="text-neutral-800 font-medium">View All</span>
                 <span className="w-8 h-8 rounded-full bg-neutral-900 flex items-center justify-center text-white group-hover:bg-green-600 transition-colors duration-300">
-                  <svg
-                    className="w-4 h-4 transition-transform duration-300 transform group-hover:translate-x-0.5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 5l7 7-7 7"
-                    ></path>
-                  </svg>
+                 <ArrowRight />
                 </span>
               </Link>
             </div>
