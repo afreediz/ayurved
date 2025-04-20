@@ -10,6 +10,12 @@
   }
 
 
+  .green-gradient-text {
+    @apply text-transparent bg-gradient-to-r from-green-500 to-green-600 bg-clip-text
+  }
+.sub-heading {
+    @apply text-xl md:text-2xl lg:text-5xl font-semibold text-slate-800 text-center mb-4 lg:mb-8 max-w-3xl mx-auto tracking-wide
+}
 
 h1{
     @apply font-bold my-4 text-4xl block

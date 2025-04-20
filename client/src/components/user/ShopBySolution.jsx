@@ -42,7 +42,7 @@ const ShopBySolution = () => {
   return (
     <Center>
       <motion.section 
-        className="py-20 px-4"
+        className="py-20 px-4 my-16"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -54,24 +54,10 @@ const ShopBySolution = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h2 className="text-3xl md:text-4xl font-light text-gray-900 tracking-wide uppercase">
-            Exclusive <span className="font-semibold">Wellness</span> Solutions
+          <h2 className="sub-heading">
+            Exclusive <span className="green-gradient-text">Wellness</span> Solutions
           </h2>
-          <motion.div 
-            className="w-16 h-px bg-gray-400 mx-auto mt-6"
-            initial={{ width: 0 }}
-            animate={{ width: 64 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          ></motion.div>
-          <motion.p 
-            className="mt-6 text-base text-gray-600 max-w-xl mx-auto font-light"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-          >
-            Meticulously crafted premium formulations for discerning health
-            enthusiasts
-          </motion.p>
+  
         </motion.div>
 
         {/* Main Category Showcase with Framer Motion */}
