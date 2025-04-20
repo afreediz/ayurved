@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ayurved/static/css/main.3de1add1.css",
+    "main.js": "/ayurved/static/js/main.24665730.js",
+    "index.html": "/ayurved/index.html",
+    "main.3de1add1.css.map": "/ayurved/static/css/main.3de1add1.css.map",
+    "main.24665730.js.map": "/ayurved/static/js/main.24665730.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3de1add1.css",
+    "static/js/main.24665730.js"
+  ]
+}
