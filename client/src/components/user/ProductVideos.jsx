@@ -93,7 +93,7 @@ const ProductIntroShowcase = () => {
         className="absolute inset-0 z-0"
         style={{ y: backgroundY }}
       >
-        <div className="absolute inset-0 bg-black/50 z-10"></div> {/* Increased opacity for mobile readability */}
+        {/* <div className="absolute inset-0 bg-black/50 z-10"></div>  */}
         
         {/* Video backgrounds */}
         {products.map((product, index) => (
@@ -125,37 +125,7 @@ const ProductIntroShowcase = () => {
 
       {/* Main content container */}
       <div className="relative z-20 min-h-screen flex flex-col">
-        <header className="py-2 px-4 sm:px-8">
-          <div className="flex justify-between items-center">
-            <motion.div
-              className="h-1 w-12 sm:w-16 "
-              initial={{ width: 0 }}
-              animate={{ width: "100%" }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            ></motion.div>
-
-            <nav className="flex items-center space-x-3">
-              <motion.button
-                onClick={goToPrev}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20"
-                aria-label="Previous product"
-              >
-                <ArrowLeft size={20} className="text-white" />
-              </motion.button>
-              <motion.button
-                onClick={goToNext}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20"
-                aria-label="Next product"
-              >
-                <ArrowRight size={20} className="text-white" />
-              </motion.button>
-            </nav>
-          </div>
-        </header>
+      
 
         <div className="flex-1 flex items-center">
           <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-8">
@@ -174,6 +144,7 @@ const ProductIntroShowcase = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5 }}
+                    className='bg-black/50 p-6 rounded-[24px]'
                   >
                     <motion.div
                       className="inline-block px-3 py-1 rounded-full bg-green-500/10 border border-green-500/30 text-green-300 text-xs sm:text-sm font-medium mb-4"
@@ -242,6 +213,37 @@ const ProductIntroShowcase = () => {
                           <Volume2 size={20} className="text-white" />
                         )}
                       </motion.button>
+
+
+                      <div className="flex justify-between items-center">
+            <motion.div
+              className="h-1 w-12 sm:w-16 "
+              initial={{ width: 0 }}
+              animate={{ width: "100%" }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            ></motion.div>
+
+            <nav className="flex items-center space-x-3">
+              <motion.button
+                onClick={goToPrev}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20"
+                aria-label="Previous product"
+              >
+                <ArrowLeft size={20} className="text-white" />
+              </motion.button>
+              <motion.button
+                onClick={goToNext}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20"
+                aria-label="Next product"
+              >
+                <ArrowRight size={20} className="text-white" />
+              </motion.button>
+            </nav>
+          </div>
                     </div>
                   </motion.div>
                 </AnimatePresence>

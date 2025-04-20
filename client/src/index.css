@@ -2,14 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-.noto-sans-gfont {
-    font-family: "Noto Sans", sans-serif;
+.body {
+    font-family: "Rubik", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 200;
+    font-weight: 500;
     font-style: normal;
-    font-variation-settings:
-      "wdth" 100;
   }
+
+
 
 h1{
     @apply font-bold my-4 text-4xl block
