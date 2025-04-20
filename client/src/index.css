@@ -50,3 +50,142 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
     -moz-appearance: textfield; /* For Firefox */
 }
+
+
+/* Modern, minimal and luxury styling for product content */
+
+.product-content {
+    /* Main content styling */
+    color: #333;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+  }
+  
+  /* Image styling */
+  .product-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  }
+  
+  .product-content img:hover {
+    transform: translateY(-4px);
+  }
+  
+  /* Heading styling */
+  .product-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+    position: relative;
+    padding-bottom: 0.75rem;
+  }
+  
+  .product-content h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 3rem;
+    height: 2px;
+    background-color: #2d2d2d;
+  }
+  
+  /* Paragraph styling */
+  .product-content p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Images grid container */
+  .product-content > div:first-child {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  /* Benefits section styling */
+  .product-content > div:last-child {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid #eaeaea;
+  }
+  
+  /* Individual benefit item */
+  .product-content > div:last-child > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+  }
+  
+  .product-content > div:last-child > div:hover {
+    background-color: #f3f3f3;
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Benefit icons */
+  .product-content > div:last-child img {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1rem;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  
+  /* Benefit text */
+  .product-content > div:last-child p {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #2d2d2d;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Extra styling for lists */
+  .product-content ul, 
+  .product-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.25rem;
+  }
+  
+  .product-content li {
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .product-content > div:first-child {
+      grid-template-columns: 1fr;
+    }
+    
+    .product-content > div:last-child {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+    
+    .product-content h2 {
+      font-size: 1.5rem;
+    }
+    
+    .product-content p {
+      font-size: 1rem;
+    }
+  }
