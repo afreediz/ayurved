@@ -15,7 +15,7 @@ const PhoneOptions = () => {
   }
 
   return (
-    <div className='fixed bottom-0 left-0 right-0 flex md:hidden justify-around gap-4 z-10 bg-white border-gray-800 border-t text-slate-700 py-1'>
+    <div className='fixed bottom-0 left-0 right-0 flex md:hidden justify-around gap-4 z-10 bg-white border-gray-800 border-t text-slate-700 py-1 z-50'>
         <Link to={"/"} className="flex flex-col items-center">
           <FaHome className=' text-2xl'/>
           <span>Home</span>
