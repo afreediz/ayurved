@@ -60,7 +60,7 @@ const App = () => {
     checkAuth()
   },[])
   return (
-    <div className="">
+    <div className="App">
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />

@@ -132,7 +132,7 @@ const BestSellers = () => {
       <div className="flex items-center justify-center mt-6 mb-6">
         <Link
           to="/allproducts"
-          className="p-2 bg-green-600 text-white rounded-lg hover:bg-green-700 w-44  flex items-center justify-center font-medium py-3 gap-2"
+          className="p-2 bg-white text-green-500 rounded-lg border border-green-500 hover:text-white hover:bg-green-700 w-44  flex items-center justify-center font-medium py-3 gap-2"
         >
           View All
           <svg

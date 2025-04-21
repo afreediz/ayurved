@@ -142,7 +142,7 @@ const Navbar = () => {
                       {categories?.map((category, index) => (
                         <DropdownItem
                           key={index}
-                          onClick={() => navigateCategory(category._id)}
+                          onClick={() => navigateCategory(category.name)}
                         >
                           {category.name}
                         </DropdownItem>
@@ -186,7 +186,7 @@ const Navbar = () => {
                       {solutions?.map((solution, index) => (
                         <DropdownItem
                           key={index}
-                          onClick={() => navigateSolutions(solution._id)}
+                          onClick={() => navigateSolutions(solution.name)}
                         >
                           {solution.name}
                         </DropdownItem>
