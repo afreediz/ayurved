@@ -72,7 +72,7 @@ const Footer = () => {
     <footer className="bg-gradient-to-r from-green-900 to-green-800 text-gray-100">
       {/* Top curved separator with animation */}
       <div className="w-full overflow-hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 48" className="fill-white w-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 48" className="fill-[#f3f4f6] w-full">
           <motion.path
             initial="initial"
             animate="animate"
@@ -108,7 +108,7 @@ const Footer = () => {
             >
               <FaLeaf className="text-green-400 text-3xl" />
             </motion.div>
-            <h1 className="text-5xl font-extrabold tracking-wider text-white">
+            <h1 className="text-3xl lg:text-5xl font-extrabold tracking-wider text-white">
               NAVJEEVANA
             </h1>
           </motion.div>

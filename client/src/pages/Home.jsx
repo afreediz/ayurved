@@ -10,6 +10,7 @@ import ProductVideos from '../components/user/ProductVideos'
 import ShopBySolution from '../components/user/ShopBySolution'
 import CustomerReview from '../components/user/CustomerReview'
 import ExploreMoreProducts from '../components/user/ExploreMoreProducts'
+import CTA from '../components/user/cta'
 
 const Home = () => {
   useEffect(() => {
@@ -26,8 +27,10 @@ const Home = () => {
         <Why />
         <ShopBySolution />
         </div>
+        <CTA/>
         {/* <CustomerReview /> */}
         <ExploreMoreProducts />
+
     </div>
   );  
   }
