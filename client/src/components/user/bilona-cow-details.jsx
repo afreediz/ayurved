@@ -7,8 +7,8 @@ export default function BilonaCowDetails() {
   const features = [
     {
       icon: "🥛",
-      title: "Natural A2 Protein",
-      description: "Produces natural A2 protein milk—easier to digest"
+      title: "Natural A2A2 Protein",
+      description: "Produces natural A2A2 protein milk—easier to digest"
     },
     {
       icon: "💪",
@@ -48,7 +48,7 @@ export default function BilonaCowDetails() {
               </h1>
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
                 Meet the <span className="text-green-600 relative">
-                  A2 Gir Cow
+                  A2A2 Gir Cow
                   <svg className="absolute -bottom-1 left-0 w-full h-3 text-green-300" viewBox="0 0 100 10" preserveAspectRatio="none">
                     <path d="M0 5 Q 50 0 100 5" stroke="currentColor" strokeWidth="3" fill="none"/>
                   </svg>
@@ -58,7 +58,7 @@ export default function BilonaCowDetails() {
 
             {/* Description */}
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Revered in Ayurveda and native to India, the Gir cow is a sacred and gentle breed known for producing highly nutritious A2 milk. Raised in stress-free, cruelty-free environments, these cows provide milk that is rich in beta-casein protein.
+              Revered in Ayurveda and native to India, the Gir cow is a sacred and gentle breed known for producing highly nutritious A2A2 milk. Raised in stress-free, cruelty-free environments, these cows provide milk that is rich in beta-casein protein.
             </p>
 
             {/* Interactive Feature Cards */}
@@ -116,7 +116,7 @@ export default function BilonaCowDetails() {
             <div className="relative z-10 p-8">
               <img
                 src="/images/bilonaa_cow.png"
-                alt="A2 Gir Cow"
+                alt="A2A2 Gir Cow"
                 className="w-full h-auto object-contain transform transition-all duration-700 hover:scale-105"
               />
             </div>
@@ -134,7 +134,7 @@ export default function BilonaCowDetails() {
           <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white px-6 py-3 rounded-full shadow-lg">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-sm font-semibold text-gray-700">100% Pure A2 Milk</span>
+              <span className="text-sm font-semibold text-gray-700">100% Pure A2A2 Milk</span>
             </div>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function BilonaCowDetails() {
         <div className="text-center">
           <div className="text-3xl mb-2">🏆</div>
           <h4 className="font-semibold text-gray-800">Premium Quality</h4>
-          <p className="text-sm text-gray-600">Certified A2 milk</p>
+          <p className="text-sm text-gray-600">Certified A2A2 milk</p>
         </div>
         <div className="text-center">
           <div className="text-3xl mb-2">🌱</div>
