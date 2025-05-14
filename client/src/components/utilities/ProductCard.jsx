@@ -25,7 +25,7 @@ const ProductCard= ({ product }) => {
         )}
         
         {/* Image Container */}
-        <div className="relative aspect-square bg-gradient-to-b from-gray-50 to-gray-100 flex items-center justify-center p-10 overflow-hidden">
+        <div className="relative aspect-square  flex items-center justify-center p-10 overflow-hidden">
           <img
             src={product.image}
             alt={product.name}

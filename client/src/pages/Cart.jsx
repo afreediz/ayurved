@@ -206,7 +206,7 @@ const Cart = () => {
             <p className="text-gray-500 mb-6">Discover our collection of luxury products</p>
             <Link 
               to="/allproducts" 
-              className="flex items-center px-6 py-3 bg-black text-white hover:bg-gray-800 transition-colors"
+              className="flex items-center p-2 bg-gradient-to-r from-green-600 to-green-800 text-white "
             >
               Continue Shopping
               <ArrowRight size={16} className="ml-2" />
@@ -229,8 +229,9 @@ const Cart = () => {
               <div className="mt-8">
                 <Link 
                   to="/allproducts" 
-                  className="text-sm font-medium text-gray-600 hover:text-black flex items-center"
-                >
+                  className="w-56 flex items-center p-2 bg-gradient-to-r from-green-600 to-green-800 text-white "
+            >
+         
                   <ArrowRight size={16} className="mr-2 rotate-180" />
                   Continue Shopping
                 </Link>
