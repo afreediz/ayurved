@@ -100,59 +100,184 @@ const Profile = () => {
     }
   }
   return (
-    <Center className='my-10 relative'>
-      <div className="md:hidden mt-10 w-full flex justify-around rounded text-xl border border-gray-800 relative">
-        <Link to={'/profile'}><span className="py-2 text-gray-800">Profile</span></Link>
-        <span className="border-l-2 border-gray-800 h-full absolute left-1/2 transform -translate-x-1/2"></span>
-        <Link to={'/orders'}><span className="py-2 text-gray-400">Orders</span></Link>
-      </div>
-      <form onSubmit={(e)=>e.preventDefault()} className="space-y-4 bg-white p-6 shadow-lg rounded-lg">
-        <div className="my-2">
-          <label className='block text-gray-700' htmlFor="name">Name</label>
-          <input name='name' onChange={onchange} type="text" id='name' value={data && data.name} placeholder='Enter your name' className="w-full p-2 border border-gray-300 rounded-lg" />
-        </div>
-        <div className="my-2">
-          <label className="block text-gray-700" htmlFor="email">Email</label>
-          <input name='email' disabled type="text" id="email" value={data && data.email} placeholder='Enter your email' className="w-full p-2 border border-gray-300 rounded-lg" />
-        </div>
-        <div className="my-2">
-          <label className="block text-gray-700" htmlFor="phone">Phone</label>
-          <div className="">
-            {/* <input name='phone' onChange={onchange} type="text" id="phone" value={data && data.phone} placeholder='Enter your phone' className="w-full p-2 border border-gray-300 rounded-lg" /> */}
-            <PhoneInput country={'in'} value={`${data.phone}`} onChange={(phone)=>{setData((old_data)=>{
-              setUpdated(true)
-              return {
-                ...old_data,
-                phone
-              }
-            })}} />
+    <div className='min-h-screen bg-gray-50 py-8'>
+      <Center className='max-w-4xl mx-auto'>
+        {/* Mobile Tab Navigation */}
+        <div className="md:hidden mb-8 bg-white rounded-xl shadow-sm overflow-hidden">
+          <div className="flex">
+            <Link to={'/profile'} className="flex-1">
+              <div className="py-4 text-center bg-indigo-600 text-white font-medium">
+                Profile
+              </div>
+            </Link>
+            <Link to={'/orders'} className="flex-1">
+              <div className="py-4 text-center text-gray-600 hover:bg-gray-50 transition-colors">
+                Orders
+              </div>
+            </Link>
           </div>
         </div>
-        <div className="my-2">
-          <label className="block text-gray-700" htmlFor="address">Address</label>
-          <textarea rows={5} name='address' onChange={onchange} type="text" id="address" value={data && data.address} placeholder='Enter your address' className="w-full p-2 border border-gray-300 rounded-lg" />
+
+        {/* Profile Form */}
+        <div className="bg-white rounded-xl shadow-sm">
+          <div className="p-6 border-b border-gray-100">
+            <h2 className="text-2xl font-semibold text-gray-800">Profile Settings</h2>
+            <p className="text-gray-600 mt-1">Manage your account information</p>
+          </div>
+          
+          <form onSubmit={(e)=>e.preventDefault()} className="p-6">
+            <div className="space-y-6">
+              {/* Name Field */}
+              <div>
+                <label className='block text-sm font-medium text-gray-700 mb-2' htmlFor="name">
+                  Full Name
+                </label>
+                <input 
+                  name='name' 
+                  onChange={onchange} 
+                  type="text" 
+                  id='name' 
+                  value={data && data.name} 
+                  placeholder='Enter your name' 
+                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200" 
+                />
+              </div>
+
+              {/* Email Field */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="email">
+                  Email Address
+                </label>
+                <div className="relative">
+                  <input 
+                    name='email' 
+                    disabled 
+                    type="text" 
+                    id="email" 
+                    value={data && data.email} 
+                    placeholder='Enter your email' 
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-500 cursor-not-allowed" 
+                  />
+                  <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-gray-400">
+                    Cannot be changed
+                  </span>
+                </div>
+              </div>
+
+              {/* Phone Field */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="phone">
+                  Phone Number
+                </label>
+                <div className="relative">
+                  {/* <input name='phone' onChange={onchange} type="text" id="phone" value={data && data.phone} placeholder='Enter your phone' className="w-full p-2 border border-gray-300 rounded-lg" /> */}
+                  <PhoneInput 
+                    country={'in'} 
+                    value={`${data.phone}`} 
+                    onChange={(phone)=>{
+                      setData((old_data)=>{
+                        setUpdated(true)
+                        return {
+                          ...old_data,
+                          phone
+                        }
+                      })
+                    }} 
+                    containerClass="phone-input-container"
+                    inputClass="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+                    buttonClass="phone-dropdown-button"
+                  />
+                  {data && !data.ph_verified && (
+                    <button 
+                      type="button" 
+                      onClick={sendVerificatioCode}
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-indigo-600 hover:text-indigo-700 font-medium"
+                    >
+                      Verify
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {/* Verification Code Input */}
+              {isVerifying && (
+                <div className="bg-indigo-50 p-4 rounded-lg">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Verification Code
+                  </label>
+                  <div className="flex gap-3">
+                    <input 
+                      type="text" 
+                      value={verificationCode}
+                      onChange={(e) => setVerificationCode(e.target.value)}
+                      placeholder="Enter 6-digit code" 
+                      className="flex-1 px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    />
+                    <button 
+                      type="button"
+                      onClick={verifyCode}
+                      className="px-6 py-3 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors"
+                    >
+                      Verify
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Address Field */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="address">
+                  Address
+                </label>
+                <textarea 
+                  rows={4} 
+                  name='address' 
+                  onChange={onchange} 
+                  type="text" 
+                  id="address" 
+                  value={data && data.address} 
+                  placeholder='Enter your complete address' 
+                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 resize-none" 
+                />
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-4 pt-4">
+                <button 
+                  type='submit' 
+                  onClick={onsubmit} 
+                  disabled={!updated} 
+                  className={`px-6 py-3 font-medium rounded-lg transition-all duration-200 ${
+                    updated 
+                      ? "bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm" 
+                      : "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  }`}
+                >
+                  {updated ? 'Save Changes' : 'No Changes'}
+                </button>
+                {/*<button type='button' onClick={()=>{setDeleteAcc(true)}} className='py-2 px-5 mx-4 bg-red-600 text-white font-medium rounded-lg' >
+                  Delete Account
+                </button>*/}
+              </div>
+            </div>
+          </form>
         </div>
-        <button type='submit' onClick={onsubmit} disabled={!updated} className={`py-2 px-5 ${updated ? "bg-green-600" : "bg-gray-300"} text-white font-medium rounded-lg`} >
-          Update
-        </button>
-        {/*<button type='button' onClick={()=>{setDeleteAcc(true)}} className='py-2 px-5 mx-4 bg-red-600 text-white font-medium rounded-lg' >
-          Delete Account
-        </button>*/}
-      </form>
-      {/* deleteacc && <div className="fixed top-0 left-0 right-0 bottom-0 bg-black p-5 shadow-lg border border-gray-800 text-white opacity-70 flex flex-col justify-center items-center text-center text-lg">
-        <h3 className='font-medium'>Warning : This action is irreversible</h3>
-        <p>Are you sure you want to delete your account? Account will be deleted permanently.</p>
-        <div className="mt-5">
-          <button onClick={deleteAccount} className='py-2 px-5 mx-4 bg-red-700 text-white font-medium rounded-lg' >
-            Yes
-          </button>
-          <button onClick={()=>{setDeleteAcc(false)}} className='py-2 px-5 mx-4 bg-green-700 text-white font-medium rounded-lg' >
-            No
-          </button>
-        </div>
-      </div>*/}
-      {loading && <Loader />}
-    </Center>
+
+        {/* deleteacc && <div className="fixed top-0 left-0 right-0 bottom-0 bg-black p-5 shadow-lg border border-gray-800 text-white opacity-70 flex flex-col justify-center items-center text-center text-lg">
+          <h3 className='font-medium'>Warning : This action is irreversible</h3>
+          <p>Are you sure you want to delete your account? Account will be deleted permanently.</p>
+          <div className="mt-5">
+            <button onClick={deleteAccount} className='py-2 px-5 mx-4 bg-red-700 text-white font-medium rounded-lg' >
+              Yes
+            </button>
+            <button onClick={()=>{setDeleteAcc(false)}} className='py-2 px-5 mx-4 bg-green-700 text-white font-medium rounded-lg' >
+              No
+            </button>
+          </div>
+        </div>*/}
+        {loading && <Loader />}
+      </Center>
+    </div>
   );
 }
 
