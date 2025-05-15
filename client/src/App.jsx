@@ -37,6 +37,8 @@ import Loader from './components/Loader'
 import AOS from "aos";
 import "aos/dist/aos.css";
 import PrivacyPolicy from './pages/PrivacyAndPolicy'
+import { FaWhatsappSquare } from 'react-icons/fa'
+import {MdWhatsapp} from "react-icons/md"
 const App = () => {
   AOS.init({
     once:true,
@@ -103,8 +105,12 @@ const App = () => {
         <Route path='*' element={<div className=''>Not found</div>} />
       </Routes>
       <ToastContainer position='bottom-center' />
-      <a href="https://wa.me/+919446027777">
-      <img src='/images/whtspimg.png' className=' w-10 h-10 md:w-16 md:h-16 rounded-full fixed bottom-20 right-5 z-10 text-5xl md:text-6xl ' />
+      <a href="https://wa.me/+919446027777" className=''>
+      <MdWhatsapp className='size-16 text-green-500  fixed bottom-20 right-5 z-10 '/>
+      {/* <img 
+      alt='whatsapp'
+      src='/images/whtspimg.png' 
+      className='size-16 rounded-full  fixed bottom-20 right-5 z-10  ' /> */}
       </a>
       {loading && <Loader />}
     </div>

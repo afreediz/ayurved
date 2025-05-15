@@ -34,7 +34,7 @@ export default function CTA() {
           {/* Text and Button Section with improved spacing and alignment */}
           <div className="text-center md:text-left md:w-3/5 pt-4 md:pr-16 lg:pr-24">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-              A2 Milk Bilona Ghee
+              A2A2 Milk Bilona Ghee
             </h2>
             <p className="text-base md:text-lg text-white opacity-90 mb-8">
               Enjoy the purity of our A2 Bilona Ghee, made from free-roaming

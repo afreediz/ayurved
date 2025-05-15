@@ -11,6 +11,7 @@ import ShopBySolution from '../components/user/ShopBySolution'
 import ExploreMoreProducts from '../components/user/ExploreMoreProducts'
 import CTA from '../components/user/cta'
 import BilonaCowDetails from '../components/user/bilona-cow-details'
+import VisitingCard from '../components/user/visiting-card'
 
 
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
         <ShopBySolution />
         </div>
         <CTA/>
+        <VisitingCard/>
         {/* <CustomerReview /> */}
         <ExploreMoreProducts />
       
