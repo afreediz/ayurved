@@ -14,7 +14,7 @@ export default function CTA() {
         <img
           src="/images/product.png"
           alt="A2 Bilona Ghee"
-          className="h-64 md:h-80 lg:h-[36rem] object-contain drop-shadow-2xl"
+          className="h-64 md:h-80 lg:h-[36rem] object-contain drop-shadow-3xl"
         />
       </div>
 

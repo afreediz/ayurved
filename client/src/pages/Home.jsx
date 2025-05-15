@@ -12,6 +12,7 @@ import ExploreMoreProducts from '../components/user/ExploreMoreProducts'
 import CTA from '../components/user/cta'
 import BilonaCowDetails from '../components/user/bilona-cow-details'
 import VisitingCard from '../components/user/visiting-card'
+import AllProductsSummary from '../components/user/all-product-summary'
 
 
 const Home = () => {
@@ -22,6 +23,7 @@ const Home = () => {
         <ProductVideos />
         <div className="">
         <Slider />
+        <AllProductsSummary/>
         <HighlightedProducts />
         <Why />
         <BilonaCowDetails/>
