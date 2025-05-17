@@ -10,19 +10,7 @@ const ProductCard= ({ product }) => {
     <Link to={`/products/${product.slug}`} className="block group relative">
       <div className="bg-white border border-gray-100 rounded-xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-1">
         {/* Organic Badge */}
-        <div className="absolute top-4 right-4 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1 z-10">
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-          </svg>
-          Organic
-        </div>
-        
-        {/* Premium Indicator */}
-        {product.premium && (
-          <div className="absolute top-4 left-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white text-xs font-semibold px-3 py-1 rounded-full z-10">
-            Premium
-          </div>
-        )}
+       
         
         {/* Image Container */}
         <div className="relative aspect-square  flex items-center justify-center p-10 overflow-hidden border">
