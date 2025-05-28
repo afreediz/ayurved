@@ -12,10 +12,12 @@ const ProductIntroShowcase = () => {
   const products = [
     {
       id: 'a2-bilona-production',
-      name: 'A2 Bilona Ghee - Crafted Purity',
+      name: 'Welcome to FORTUNE GATE ORGANIC FARMING (FGOF)',
       videoSrc: '/videos/grinding.mp4',
       tagline: 'Handcrafted with Tradition',
-      description: 'Witness the art of our A2 Bilona Ghee, made from the milk of free-roaming A2A2 cows using the ancient Bilona method. Each batch is churned by hand to preserve its rich nutrients and authentic flavor.',
+      description: `the guardian of India’s World
+No.1 Unique Ancient Traditional Methods. Rooted in the natural richness of Kerala, Eravathoor,
+Thrissur .. We are dedicated to reviving and preserving the forgotten biodynamic farming and A2-A2 dairy legacy, passed down through generations.`,
       benefits: ['Hand-churned for purity', 'Sourced from A2A2 cow milk', 'Retains natural nutrients']
     },
     {
@@ -155,7 +157,7 @@ const ProductIntroShowcase = () => {
                       {products[activeIndex].tagline}
                     </motion.div>
 
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+                    <h1 className="text-2xl lg:text-2xl font-bold text-white mb-4 sm:mb-6 leading-tight">
                       {products[activeIndex].name}
                     </h1>
 
