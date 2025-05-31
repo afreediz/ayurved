@@ -79,7 +79,7 @@ const App = () => {
           <Route path='blogs' element={<ReadBolgs />} />
           <Route path='blogs/:slug' element={<BlogDetails />} />
           <Route path='about-us' element={<OurStory />} />
-          <Route path='privacy-and-policy' element={<PrivacyPolicy />} />
+          <Route path='privacy-&-policies' element={<PrivacyPolicy />} />
           {user && <>
             <Route path='profile' element={<Profile />} />
             <Route path='orders' element={<Orders />} />
