@@ -155,7 +155,7 @@ const BlogDetails = () => {
                                     <button className="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-green-50 transition-colors duration-300 shadow-lg">
                                         Explore Products
                                     </button></Link>
-                                    <Link to="/blog">
+                                    <Link to="/blogs">
                                     <button className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-green-600 transition-colors duration-300">
                                         Read More Blogs
                                     </button>

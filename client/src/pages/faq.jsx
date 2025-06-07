@@ -57,7 +57,7 @@ const FAQ = () => {
           <HelpCircle className="w-12 h-12 text-green-500" />
         </div>
         <h2 className="text-xl md:text-2xl lg:text-5xl font-semibold text-slate-800 text-center mb-4 lg:mb-8 max-w-3xl mx-auto tracking-wide">
-          Frequently Asked <span className="text-transparent bg-gradient-to-r from-green-500 to-green-600 bg-clip-text">Questions</span>
+          Frequently Asked Questions
         </h2>
         <p className="text-gray-600 text-lg max-w-2xl mx-auto">
           Everything you need to know about FGOF, our A2-A2 milk, and traditional farming practices

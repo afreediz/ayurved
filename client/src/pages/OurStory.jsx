@@ -127,7 +127,7 @@ const OurStory = () => {
           loop
           muted
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-green-900 to-green-600/80 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black to-green-600/50 z-10" />
 
         <div className="absolute inset-0 z-20 container mx-auto px-4 flex flex-col justify-center items-center">
           <div className="max-w-3xl text-center">

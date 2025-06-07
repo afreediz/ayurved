@@ -128,7 +128,7 @@ const VideoShowcase = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold mb-4">
-            <span className="text-transparent bg-gradient-to-r from-green-500 to-green-600 bg-clip-text">
+            <span className="">
               A2A2 Milk Bilona Ghee
             </span>
           </h1>
@@ -138,7 +138,7 @@ const VideoShowcase = () => {
         </div>
 
         {/* Improved Bento Grid Layout */}
-        <div className="grid grid-cols-12 grid-rows-12 gap-4 h-[660px] ">
+        <div className="grid grid-cols-12 grid-rows-12 gap-4 h-[660px] mb-12 lg:mb-0">
           {/* Featured Video - Large */}
           <VideoCard 
             item={allContent[0]} 
@@ -172,11 +172,11 @@ const VideoShowcase = () => {
           {/* Three videos in a row */}
           <VideoCard 
             item={allContent[4]} 
-            className="col-span-4 md:col-span-5 row-span-4"
+            className="col-span-6 md:col-span-5 row-span-4"
           />
           <VideoCard 
             item={allContent[6]} 
-            className="col-span-4 md:col-span-3 row-span-4"
+            className="col-span-6 md:col-span-3 row-span-4"
           />
     
          
