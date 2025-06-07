@@ -220,12 +220,12 @@ const OurStory = () => {
               <div className="md:col-span-7">
                 <p className="text-lg leading-relaxed text-gray-700 mb-6">
                   Authentic nourishment comes from MOTHER NATURE, and to attain
-                  it in pure form is a FORTUNE. Over years of meticulous
+                  it in a pure form is a FORTUNE. Over years of meticulous
                   research and unwavering commitment, we have safeguarded and
                   refined ancient traditional agricultural and dairy methods
-                  that are truly one-of- a-kind. For years, our findings
-                  remained protected in what we called our "Safe Folders", only
-                  seeing the light during seminars, exhibitions, and awareness
+                  that are truly one-ofa-kind. For years, our findings remained
+                  protected in what we called our "Safe Folders", only seeing
+                  the light during seminars, exhibitions, and awareness
                   programs.
                 </p>
                 <p className="text-lg leading-relaxed text-gray-700 mb-6">
@@ -308,13 +308,19 @@ const OurStory = () => {
                       </p>
                     </div>
                   </div>
-
+                  <div className="flex items-center justify-start mb-12">
+                    <div className="w-12 h-1 bg-white mr-4"></div>
+                    <h2 className="text-3xl md:text-4xl font-bold">
+                      Our Vision
+                    </h2>
+                    <div className="w-12 h-1 bg-white ml-4"></div>
+                  </div>
                   <p className="text-lg leading-relaxed">
-                    Our Vision: To build a healthier world with purpose of
-                    immunity for future generations, by restoring access to
-                    authentic, chemical-free, and energetically vibrant food and
-                    dairy, nurtured by traditional wisdom and nature’s
-                    indigenous breeds and Seeds
+                    To build a healthier world with purpose of immunity for
+                    future generations, by restoring access to authentic,
+                    chemical-free, and energetically vibrant food and dairy,
+                    nurtured by traditional wisdom and nature’s indigenous
+                    breeds and Seeds
                   </p>
                 </div>
               </div>

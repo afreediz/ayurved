@@ -102,7 +102,7 @@ const ShopBySolution = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h2 className="text-4xl lg:text-5xl font-bold">
-            Professional <span className="text-transparent bg-gradient-to-r from-green-500 to-green-600 bg-clip-text">Wellness Solutions</span>
+            Professional <span className="">Wellness Solutions</span>
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Discover our comprehensive range of scientifically-backed health products designed for optimal wellness
@@ -226,10 +226,18 @@ const ShopBySolution = () => {
         >
           <div className="bg-gray-50 rounded-2xl p-8 max-w-4xl mx-auto">
             <h3 className="text-2xl font-semibold text-gray-900 mb-3">
-              Ready to Transform Your Health?
+             Why is this important?
             </h3>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Join thousands of satisfied customers who have improved their wellness with our professional-grade solutions.
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto text-center">
+              Modern dairy practices introduced A1 milk from foreign breeds, altering the very nature of milk
+and its effects. Unlike A2-A2 milk, A1 milk is linked to serious health issues including:
+Autism, brain fog, and memory loss in children,
+Protest issues, Fertility issues…etc..
+Hormonal imbalance and digestive problems
+Diabetes, heart disease, and chronic inflammation in adults, Cancer…
+Uterine health issues in women due to hormonal drugs like Oxytocin
+Our ancestors knew the power of A2-A2 milk—from cows aligned with Indian climate, soil, and
+tradition. We must reclaim that power before it's too late.
             </p>
             <motion.button
               className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-medium hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl"
