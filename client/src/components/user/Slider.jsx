@@ -59,11 +59,11 @@ const Hero = () => {
         >
           <h2 className="sub-heading">
             Experience Pure{' '}
-            <span className="green-gradient-text">
+            <span className="">
               Wellness
             </span>{' '}
             from{' '}
-            <span className="green-gradient-text">
+            <span className="">
               Nature’s
             </span>{' '}
             Best

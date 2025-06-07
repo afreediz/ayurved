@@ -43,7 +43,7 @@ const BestSellers = () => {
             transition={{ duration: 0.5 }}
             className="sub-heading"
           >
-            Our <span className="green-gradient-text">Best sellers</span>
+            Our <span className="">Best sellers</span>
           </motion.h2>
           {/* <Link
             to="/allproducts"

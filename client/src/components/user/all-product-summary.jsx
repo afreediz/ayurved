@@ -148,7 +148,7 @@ export default function AllProductsSummary() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold green-gradient-text mb-6">
+              <h2 className="text-4xl font-bold  mb-6">
                 From Our Farm to Your Home
               </h2>
               <div className="space-y-4 mb-8">
@@ -226,7 +226,7 @@ export default function AllProductsSummary() {
       {/* Benefits Section */}
       <section className="py-16 bg-gradient-to-r from-green-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold green-gradient-text text-center mb-12">
+          <h2 className="text-3xl font-bold text-center mb-12">
             Why Choose Our Ghee?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

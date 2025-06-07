@@ -47,7 +47,7 @@ export default function BilonaCowDetails() {
                 Sacred & Traditional
               </h1>
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
-               <span className="green-gradient-text">Meet </span>the <span className="green-gradient-text relative">
+               <span className="">Meet </span>the <span className=" relative">
                   A2A2 Gir Cow
                   <svg className="absolute -bottom-1 left-0 w-full h-3 text-green-300" viewBox="0 0 100 10" preserveAspectRatio="none">
                     <path d="M0 5 Q 50 0 100 5" stroke="currentColor" strokeWidth="3" fill="none"/>

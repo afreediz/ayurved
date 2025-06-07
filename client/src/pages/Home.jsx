@@ -14,6 +14,7 @@ import BilonaCowDetails from '../components/user/bilona-cow-details'
 import VisitingCard from '../components/user/visiting-card'
 import AllProductsSummary from '../components/user/all-product-summary'
 import VideoShowcase from '../components/user/videoshowcase'
+import FAQ from './faq'
 
 
 const Home = () => {
@@ -35,6 +36,7 @@ const Home = () => {
         {/* <CustomerReview /> */}
         <ExploreMoreProducts />
         <VideoShowcase/>
+        <FAQ/>
       
 
     </div>
