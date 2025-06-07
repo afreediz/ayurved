@@ -39,6 +39,7 @@ import "aos/dist/aos.css";
 import PrivacyPolicy from './pages/PrivacyAndPolicy'
 import { FaWhatsappSquare } from 'react-icons/fa'
 import {MdWhatsapp} from "react-icons/md"
+import GalleryPage from './pages/gallery'
 const App = () => {
   AOS.init({
     once:true,
@@ -80,6 +81,7 @@ const App = () => {
           <Route path='blogs/:slug' element={<BlogDetails />} />
           <Route path='about-us' element={<OurStory />} />
           <Route path='privacy-&-policies' element={<PrivacyPolicy />} />
+          <Route path="gallery" element={<GalleryPage/>}/>
           {user && <>
             <Route path='profile' element={<Profile />} />
             <Route path='orders' element={<Orders />} />

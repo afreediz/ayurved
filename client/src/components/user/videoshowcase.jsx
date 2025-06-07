@@ -138,7 +138,7 @@ const VideoShowcase = () => {
         </div>
 
         {/* Improved Bento Grid Layout */}
-        <div className="grid grid-cols-12 grid-rows-12 gap-4 h-[660px] mb-16">
+        <div className="grid grid-cols-12 grid-rows-12 gap-4 h-[660px] ">
           {/* Featured Video - Large */}
           <VideoCard 
             item={allContent[0]} 
@@ -180,6 +180,13 @@ const VideoShowcase = () => {
           />
     
          
+        </div>
+        <div className="flex justify-center items-center">
+           <Link to="/gallery">
+                <button className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 w-full md:w-auto">
+                  View Our Gallery
+                </button>
+                </Link>
         </div>
 
        
