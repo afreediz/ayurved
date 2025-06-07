@@ -16,6 +16,7 @@ const Hero = () => {
     async function getSlides() {
       try {
         const { data } = await API.get('/slider');
+        console.log("slider",data)
         const fallbackSlides = [
           {
             id: 1,
