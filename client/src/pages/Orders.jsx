@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import Center from '../components/utilities/Center'
 import { Link, useLocation } from 'react-router-dom'
 import Loader from '../components/Loader'
+import { format_date } from '../services/api'
 
 const Orders = () => {
   const [orders, setOrders] = useState()
@@ -26,13 +27,6 @@ const Orders = () => {
     }
     getOrders()
   },[])
-  const format_date = (date)=> {
-    const day = new Date(date).getDate()
-    const month = new Date(date).getMonth()
-    const year = new Date(date).getFullYear()
-
-    return `${day}/${month}/${year}`
-  }
   return (
     <Center className='my-10'>
       <div className="md:hidden mt-10 w-full flex rounded justify-around text-xl border border-gray-800 relative">
