@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/cart';
 
-
 const ProductCard= ({ product }) => {
   const { baseCurrencyRate, currencySymbol } = useCart();
   

@@ -45,6 +45,9 @@ const apiLimiter = rateLimiter({
 app.use('/api', apiLimiter)
 app.use('/api', route)
 
+const uploadDir = path.join(__dirname, 'uploads');
+app.use('/uploads', express.static(uploadDir));
+
 app.use(express.static(path.join(__dirname, 'build')))
 app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, 'build', 'index.html'))

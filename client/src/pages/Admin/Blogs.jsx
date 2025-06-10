@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import API from '../../services/api';
 import Center from '../../components/utilities/Center';
 import { Link } from 'react-router-dom';
-import { FaRegWindowClose, FaWindowClose } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
 import { toast } from 'react-toastify';
 

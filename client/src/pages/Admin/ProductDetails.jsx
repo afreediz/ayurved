@@ -3,7 +3,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import API from '../../services/api'
 import {toast} from 'react-toastify'
 import slugify from 'slugify'
-import { solution_eg } from '../../datas'
 import { IoMdAdd, IoMdClose } from "react-icons/io";
 
 const AdminProductDetails = () => {

@@ -26,7 +26,7 @@ const CustomerReview = () => {
           <div data-aos="fade-up" key={index} className="bg-white p-8 rounded-lg shadow-md">
             <p className="text-gray-700 italic mb-4">"{review.quote}"</p>
             <div className="flex items-center">
-              <img src={review.image} alt={review.name} className="w-16 h-16 rounded-full mr-4" />
+              <img src={`${review.image}`} alt={review.name} className="w-16 h-16 rounded-full mr-4" />
               <div>
                 <h3 className="text-gray-900 font-semibold">{review.name}</h3>
                 <p className="text-gray-600">{review.position}</p>
