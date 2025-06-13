@@ -203,7 +203,7 @@ const Footer = () => {
             <ul className="space-y-4">
               {[
                 { icon: <FaPhone className="text-green-400" />, text: "+91 94460 27777" },
-                { icon: <FaPhone className="text-green-400" />, text: "+971 55 678 4334" },
+                { icon: <FaPhone className="text-green-400" />, text: "+971 50 645 7509 " },
                 { 
                   icon: <FaEnvelope className="text-green-400" />, 
                   text: "fortunegate@navjeevana.com",
