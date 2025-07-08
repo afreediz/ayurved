@@ -29,7 +29,7 @@ app.use(helmet())
 app.use(helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
-      imgSrc: ["'self'", '*'],
+      imgSrc: ["'self'", 'data:', '*'],
       scriptSrc: ["'self'", "https://checkout.razorpay.com"],
       frameSrc: ["'self'", "https://api.razorpay.com"],
       connectSrc: ["'self'", "https://lumberjack-cx.razorpay.com"]

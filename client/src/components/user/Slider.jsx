@@ -49,30 +49,28 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative bg-gradient-to-b from-gray-50 to-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <h2 className="sub-heading">
-            Experience Pure{' '}
-            <span className="">
-              Wellness
-            </span>{' '}
-            from{' '}
-            <span className="">
-              Nature’s
-            </span>{' '}
-            Best
-          </h2>
-          <p className="mt-4 text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover handcrafted organic products that bring purity and vitality to your life.
-          </p>
-        </motion.div>
+<div className="bg-gradient-to-b from-gray-50 to-white py-20 px-4 sm:px-6 lg:px-8">
+  <div className="max-w-7xl mx-auto">
+    {/* Heading Section */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="text-center mb-12"
+    >
+      <h2 className="sub-heading text-3xl sm:text-4xl font-bold">
+        Experience Pure <span className="text-green-600">Wellness</span> from <span className="text-green-600"> <br />Nature’s</span> Best
+      </h2>
+      <p className="mt-4 text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+        " Sustainable Immunity can only be, on natural food. "
+      </p>
+    </motion.div>
 
+    {/* Swiper + Video Side by Side */}
+    <div className="flex flex-col lg:flex-row gap-8 items-start">
+      
+      {/* Left: Swiper (3/4) */}
+      <div className="w-full lg:w-3/4">
         <Swiper
           modules={[Navigation, Autoplay, Pagination]}
           spaceBetween={30}
@@ -101,7 +99,7 @@ const Hero = () => {
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
-                  className="relative h-[400px] sm:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl"
+                  className="relative h-[400px] sm:h-[500px] lg:h-[520px] rounded-3xl overflow-hidden shadow-2xl"
                 >
                   <img
                     src={slide.image}
@@ -144,12 +142,22 @@ const Hero = () => {
           <div className="swiper-pagination mt-6" />
         </Swiper>
       </div>
-      {/* Decorative Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        <div className="absolute top-10 left-10 w-64 h-64 bg-green-200/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-green-300/20 rounded-full blur-3xl" />
+
+      {/* Right: Video (1/4) */}
+      <div className="w-full lg:w-1/4">
+        <video
+          src="/videos/grinding.mp4"
+          autoPlay
+          muted
+          loop
+          controls
+          className="rounded-xl shadow-lg w-full h-auto"
+        />
       </div>
-    </section>
+    </div>
+  </div>
+</div>
+
   );
 };
 
