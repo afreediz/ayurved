@@ -157,15 +157,15 @@ Thrissur .. We are dedicated to reviving and preserving the forgotten biodynamic
                       {products[activeIndex].tagline}
                     </motion.div>
 
-                    <h1 className="text-2xl lg:text-2xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+                    <h1 className="text-2xl lg:text-2xl font-bold text-white mb-4 sm:mb-6 leading-tight text-center lg:text-left">
                       {products[activeIndex].name}
                     </h1>
 
-                    <p className="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8 max-w-md sm:max-w-xl">
+                    <p className="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8 max-w-md sm:max-w-xl text-center lg:text-left">
                       {products[activeIndex].description}
                     </p>
 
-                    <div className="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8">
+                    <div className="flex flex-wrap gap-2 sm:gap-3 mb-6 hidden sm:mb-8 sm:block">
                       {products[activeIndex].benefits.map((benefit, i) => (
                         <motion.span
                           key={i}

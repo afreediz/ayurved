@@ -148,7 +148,7 @@ export default function AllProductsSummary() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold  mb-6">
+              <h2 className="text-4xl font-bold  mb-6 text-center lg:text-left">
                 From Our Farm to Your Home
               </h2>
               <div className="space-y-4 mb-8">

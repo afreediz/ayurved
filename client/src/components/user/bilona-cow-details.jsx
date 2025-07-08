@@ -43,10 +43,10 @@ export default function BilonaCowDetails() {
             
             {/* Main Heading */}
             <div className="relative">
-              <h1 className="text-gray-800 text-sm font-semibold tracking-wider uppercase mb-2">
+              <h1 className="text-gray-800 text-sm font-semibold tracking-wider uppercase mb-2 text-center lg:text-left">
                 Sacred & Traditional
               </h1>
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2 text-center lg:text-left">
                <span className="">Meet </span>the <span className=" relative">
                   A2A2 Gir Cow
                   <svg className="absolute -bottom-1 left-0 w-full h-3 text-green-300" viewBox="0 0 100 10" preserveAspectRatio="none">
@@ -57,7 +57,7 @@ export default function BilonaCowDetails() {
             </div>
 
             {/* Description */}
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed text-center lg:text-left">
               Revered in Ayurveda and native to India, the Gir cow is a sacred and gentle breed known for producing highly nutritious A2A2 milk. Raised in stress-free, cruelty-free environments, these cows provide milk that is rich in beta-casein protein.
             </p>
 

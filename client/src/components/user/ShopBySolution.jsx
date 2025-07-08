@@ -169,18 +169,18 @@ const ShopBySolution = () => {
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                      <div className="w-full h-14 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
                         <IconComponent size={28} className="text-white" />
                       </div>
                     </motion.div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-semibold text-white mb-3 leading-tight">
+                    <h3 className="text-xl font-semibold text-white mb-3 leading-tight text-center lg:text-left">
                       {category.name}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-white/90 text-sm leading-relaxed mb-6 flex-grow">
+                    <p className="text-white/90 text-sm leading-relaxed mb-6 flex-grow text-center lg:text-left">
                       {isHovered ? category.detail : category.description}
                     </p>
 

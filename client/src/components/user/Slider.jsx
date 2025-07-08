@@ -144,14 +144,14 @@ const Hero = () => {
       </div>
 
       {/* Right: Video (1/4) */}
-      <div className="w-full lg:w-1/4">
+      <div className="w-full lg:w-1/4 flex justify-center">
         <video
           src="/videos/grinding.mp4"
           autoPlay
           muted
           loop
           controls
-          className="rounded-xl shadow-lg w-full h-auto"
+          className="rounded-xl shadow-lg w-full h-auto max-w-xs"
         />
       </div>
     </div>
